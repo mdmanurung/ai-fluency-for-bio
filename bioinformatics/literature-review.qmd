@@ -1,0 +1,51 @@
+---
+title: "Literature review"
+subtitle: "AI for reading, synthesizing, and finding papers — safely"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Use AI tools to summarize and triage literature without fabricating citations.
+- Distinguish tools that ground in real sources (Elicit, Consensus, SciSpace, Perplexity w/ citations) from tools that don't.
+- Build a verification habit for every AI-sourced citation.
+:::
+
+## The fundamental rule
+
+**Never cite a paper an AI surfaces without verifying it exists and reading it.** The failure mode here is severe: fabricated citations are scientific misconduct.
+
+## Triaging a new topic
+
+AI is useful as a **starting point** for literature review:
+
+- Generating a first-pass vocabulary for unfamiliar subfields.
+- Summarizing a paper you've already obtained.
+- Extracting structured information (species, sample size, method) from abstracts.
+
+It is **not useful** as the final word on:
+
+- What the important papers are.
+- What a paper says if you haven't given the AI the paper.
+- Who is working on X right now.
+
+## Grounded vs. ungrounded tools
+
+- **Grounded** (RAG, search-augmented): queries a real corpus, returns citations that should exist. Still verify. Examples: Elicit, Consensus, Perplexity-with-sources, SciSpace.
+- **Ungrounded** (base LLM): asks the model to recall papers from training. Expect a substantial fabrication rate, especially for specific citations.
+
+## A verification workflow
+
+*TODO: expand. Core: for each cited paper, confirm via PubMed/DOI before incorporating. Budget the time.*
+
+## Worked example: scoping a review on "spatial transcriptomics in the tumor microenvironment"
+
+*TODO: walk through AI-assisted triage with explicit verification at each step.*
+
+## Exercises
+
+1. Ask an ungrounded LLM for 10 citations on a niche topic in your field. Verify each against PubMed. Record your hit rate.
+2. Repeat with a grounded tool. Compare.
+
+## Further reading
+
+- *TODO.*

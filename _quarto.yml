@@ -1,0 +1,100 @@
+project:
+  type: website
+
+website:
+  page-navigation: true
+  title: "AI Fluency for Biology"
+  description: "A short course on using AI effectively in biological research — covering the 4 D's of AI fluency, LLM literacy, and hands-on bioinformatics workflows."
+  site-url: "https://mdmanurung.github.io/ai-fluency-for-bio/"
+
+  repo-url: https://github.com/mdmanurung/ai-fluency-for-bio
+  repo-actions: [edit, issue]
+
+  open-graph: true
+
+  page-footer:
+    right: "Built with [Quarto](https://quarto.org/)."
+    left: "&copy; 2026 · Licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)."
+    background: "#E8F1EE"
+
+  sidebar:
+    background: "#E8F1EE"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/mdmanurung/ai-fluency-for-bio
+        text: "Course repository"
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Course information"
+        contents:
+          - href: course-overview.qmd
+            text: Overview
+          - href: course-syllabus.qmd
+            text: Syllabus
+          - href: course-support.qmd
+            text: Support
+          - href: course-team.qmd
+            text: Teaching team
+          - href: index.qmd
+            text: Schedule
+          - href: course-faq.qmd
+            text: FAQ
+      - section: "AI fluency: the 4 D's"
+        contents:
+          - href: fluency/delegation.qmd
+            text: Delegation
+          - href: fluency/description.qmd
+            text: Description
+          - href: fluency/discernment.qmd
+            text: Discernment
+          - href: fluency/diligence.qmd
+            text: Diligence
+      - section: "AI literacy for bio"
+        contents:
+          - href: literacy/how-llms-work.qmd
+            text: How LLMs work
+          - href: literacy/prompting.qmd
+            text: Prompting
+          - href: literacy/tool-use-and-agents.qmd
+            text: Tool use & agents
+          - href: literacy/ethics-and-limits.qmd
+            text: Ethics & limits
+      - section: "Hands-on bioinformatics"
+        contents:
+          - href: bioinformatics/code-assistance.qmd
+            text: Code assistance
+          - href: bioinformatics/data-analysis.qmd
+            text: Data analysis
+          - href: bioinformatics/literature-review.qmd
+            text: Literature review
+          - href: bioinformatics/protocol-design.qmd
+            text: Protocol design
+      - section: "Weekly materials"
+        contents:
+          - href: weeks/week-1.qmd
+            text: "Week 1 — AI fluency foundations"
+          - href: weeks/week-2.qmd
+            text: "Week 2 — LLM literacy for bio"
+          - href: weeks/week-3.qmd
+            text: "Week 3 — Hands-on bioinformatics I"
+          - href: weeks/week-4.qmd
+            text: "Week 4 — Hands-on bioinformatics II"
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme.scss]
+      dark: [cosmo, theme-dark.scss]
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+
+freeze: auto
+
+editor: visual

@@ -1,0 +1,41 @@
+---
+title: "How LLMs work"
+subtitle: "Just enough to reason about their behavior in research"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Explain, at a working level, what an LLM is doing when it generates text.
+- Distinguish pretraining, post-training (RLHF / preference tuning), and inference.
+- Connect mechanism to behavior: why LLMs hallucinate, why context matters, why they sometimes refuse.
+:::
+
+## What an LLM is
+
+*TODO: concise explainer — next-token prediction, transformer architecture at a functional level, tokenization, context windows, temperature.*
+
+Key takeaways for a working researcher:
+
+- An LLM is a function from *token sequence* to *probability distribution over next tokens*.
+- The model has no internal representation of "what is true" — only "what is likely given the training distribution."
+- Long contexts are not memory — they're the only thing the model sees.
+
+## Pretraining vs. post-training
+
+*TODO: brief. Pretraining is where factual knowledge (and factual errors) come from. Post-training (RLHF, Constitutional AI, etc.) shapes tone, refusals, and format — it does not reliably fix factual gaps.*
+
+## Why LLMs hallucinate
+
+- They are trained to produce fluent, plausible text — not to abstain.
+- The training objective rewards confident completion, not calibrated uncertainty.
+- For rare facts (a specific citation, a recent paper), the model interpolates.
+
+## What this means for you
+
+- Facts at the long tail of the training distribution (specific papers, recent tools, niche protocols) are the highest-risk outputs.
+- Context you provide in the prompt is *qualitatively* more reliable than facts the model recalls.
+- Retrieval (RAG), tool use, and grounding in real documents reduce — but do not eliminate — hallucination.
+
+## Further reading
+
+- *TODO.*

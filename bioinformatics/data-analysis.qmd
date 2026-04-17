@@ -1,0 +1,42 @@
+---
+title: "Data analysis"
+subtitle: "AI-assisted exploration, QC, and statistics on bio datasets"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Use AI to accelerate exploratory data analysis without outsourcing the scientific judgment.
+- Build a QC pass for a new dataset with AI assistance, while owning every decision.
+- Evaluate AI-suggested statistical tests critically.
+:::
+
+## Where AI helps most
+
+- **Exploratory data analysis**: generating plots, summaries, sanity checks on a new dataset.
+- **Code for standard pipelines**: DESeq2, limma-voom, Seurat/Scanpy scaffolds.
+- **Explaining unfamiliar output**: "what does this diagnostic plot mean?"
+
+## Where AI helps least
+
+- **Choosing the model**: "Should I use a mixed-effects model or a paired test?" — AI's default answer is often the textbook answer, not the answer for your data.
+- **Interpreting borderline results**: p = 0.06, log2FC = 0.3, n = 5. The AI will tell you a story. Don't let it.
+
+## A template workflow
+
+1. **Describe the dataset to the AI** — structure, columns, source, known quirks. (Practice the [Description](../fluency/description.qmd) skill.)
+2. **Ask for a QC plan**, not a QC answer. Critique the plan. Then execute.
+3. **Run each step yourself** (or via an AI coding assistant you supervise). Look at the outputs.
+4. **Write interpretations in your own words**. Use AI for prose polishing, not for reasoning.
+
+## Worked example: QC on a new RNA-seq dataset
+
+*TODO: outline a full worked example — sample sheet, library size checks, PCA, outlier flags — with the AI's role at each step.*
+
+## Exercises
+
+1. Give an AI the first 20 lines of a dataset you don't know well and ask for a QC plan. Critique the plan before running it.
+2. Ask an AI to choose a statistical test for a problem you know well. Compare its recommendation to what you would do.
+
+## Further reading
+
+- *TODO.*

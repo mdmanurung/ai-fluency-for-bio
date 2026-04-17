@@ -1,0 +1,35 @@
+---
+title: "Tool use & agents"
+subtitle: "When the model stops just talking and starts doing"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Explain what "tool use" (a.k.a. function calling) means and when it changes the failure surface.
+- Distinguish chat assistants, coding assistants, and autonomous agents.
+- Reason about the marginal risks of giving an AI write access to your filesystem, shell, or APIs.
+:::
+
+## Tool use in one paragraph
+
+Modern LLMs can be given access to *tools* — functions they can call during a conversation (e.g., run a shell command, query a database, fetch a URL). The model decides when to call a tool, constructs the call, receives the result, and continues. This moves the system from "text predictor" to "loop that can act on the world."
+
+## The spectrum
+
+- **Chat assistant** (pure text) — low blast radius. Failure = a bad paragraph.
+- **Coding assistant with file edits** (Cursor, Claude Code, Copilot) — moderate blast radius. Failure = bad diffs, broken local state. Guardrail = human review before commit.
+- **Agentic assistant with shell + network** — large blast radius. Failure = destructive commands, leaked data, runaway loops. Guardrail = sandboxing, permissions, explicit confirmations.
+
+## Implications for research workflows
+
+- For analysis tasks, a coding assistant that reads/writes files is often the sweet spot.
+- For long-running literature or data-collection tasks, agentic setups are tempting — but verify at every boundary.
+- Never give an agent credentials it doesn't need.
+
+## Worked example: a minimal agent for bibliography cleanup
+
+*TODO: outline a small, safe agent loop: read `.bib`, query CrossRef, propose corrections, human confirms each one.*
+
+## Further reading
+
+- *TODO.*

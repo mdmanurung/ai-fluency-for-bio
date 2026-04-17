@@ -1,0 +1,41 @@
+---
+title: "Ethics & limits"
+subtitle: "Epistemic, social, and environmental considerations"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Name and reason about the major ethical tensions in AI use for science.
+- Identify the epistemic risks of outsourcing judgment to a model.
+- Situate your own practice within evolving norms.
+:::
+
+## Epistemic risks
+
+- **Homogenization** — everyone using the same model converges on the same framings, blind spots, and errors.
+- **Deskilling** — offloading judgment tasks can erode the skills needed to catch the model when it's wrong.
+- **Calibration failure** — LLMs present confident, fluent answers regardless of underlying certainty. This corrodes the habits of calibrated scientific writing.
+
+## Authorship and attribution
+
+*TODO: summarize current norms (ICMJE, Nature, Science) on AI as non-author, disclosure requirements, and the difference between acknowledgment and authorship.*
+
+## Data, privacy, and consent
+
+- Research data often comes with consent frameworks that predate LLMs. Check before you paste.
+- "Zero-retention" API modes are not the same as on-device — verify vendor policy.
+- Patient, protected, and embargoed data deserve extra care.
+
+## Environmental and labor costs
+
+*TODO: brief, honest summary. Training and inference have energy costs; annotation and moderation rely on human labor. Neither invalidates the technology; both should shape how you use it.*
+
+## Limits worth naming
+
+- LLMs are not reliable sources of truth about the world.
+- They are not reliable arbiters of quality or novelty.
+- They do not "understand" causality, statistics, or biology in any robust sense — though they can often produce outputs that look like they do.
+
+## Further reading
+
+- *TODO.*

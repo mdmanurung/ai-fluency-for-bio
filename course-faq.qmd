@@ -1,0 +1,27 @@
+---
+title: "FAQ"
+---
+
+## Do I need a paid AI subscription?
+
+No — the course is designed to work with free-tier access. Paid tiers (Claude Pro, ChatGPT Plus, etc.) give you more usage headroom and access to more capable models, which can make the hands-on sections smoother, but they are not required.
+
+## Which AI tool should I use?
+
+The course examples use **Claude** (Anthropic) by default, because its behavior and long-context handling are well suited to research workflows. Most exercises work with any frontier LLM. Where a tool-specific feature matters (e.g., Claude's artifacts, tool use, or computer use), it will be flagged.
+
+## Can I use AI for the assignments?
+
+Yes — that's the whole point. See the [AI-use policy](course-syllabus.qmd#ai-use-policy) in the syllabus for disclosure and verification expectations.
+
+## I'm not a bioinformatician. Will I keep up?
+
+Yes. The conceptual tracks (fluency, literacy) are stack-agnostic. For the hands-on track, we scaffold the bioinformatics examples so the AI does most of the mechanical work — you bring the biological judgment.
+
+## I'm an advanced bioinformatician. Will I be bored?
+
+The mechanics might be familiar, but the framing (delegation/discernment, epistemics, disclosure practice) is what most working bioinformaticians are missing. Treat it as professional development.
+
+## What about data privacy?
+
+Never paste confidential, embargoed, patient-identifiable, or unpublished-collaborator data into a third-party LLM without explicit permission and appropriate privacy safeguards. The course does not require you to upload any sensitive data.

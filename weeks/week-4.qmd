@@ -1,0 +1,40 @@
+---
+title: "Week 4 — Hands-on bioinformatics II & capstone"
+subtitle: "Literature, protocols, and an end-to-end research micro-project"
+---
+
+## Topics
+
+- AI-assisted literature review, with verification.
+- AI as a sparring partner for protocol design.
+- Putting it all together: a micro-project from question to writeup.
+
+## Before class
+
+Read:
+
+- [Literature review](../bioinformatics/literature-review.qmd)
+- [Protocol design](../bioinformatics/protocol-design.qmd)
+
+## In class
+
+- Demo: triaging a new subfield with a grounded search tool, verifying citations.
+- Demo: iterating on a protocol with an AI sparring partner.
+- Capstone brainstorming and peer feedback.
+
+## After class
+
+- **Capstone** *(30% of grade)*: an end-to-end research micro-project. Pick a small, tractable question in your field. Produce:
+  - A short literature brief (≤ 5 verified citations).
+  - A one-page proposed analysis or protocol.
+  - A reflection (≤ 500 words) mapping your process onto the 4 D's.
+  - A full disclosure statement.
+
+## Wrap-up
+
+- What worked, what didn't.
+- Commitments: what will you keep doing after the course?
+
+## Supplementary
+
+*TODO.*

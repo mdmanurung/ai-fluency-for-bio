@@ -1,0 +1,34 @@
+---
+title: "Week 2 — LLM literacy for bio"
+subtitle: "How the tools work, and how to prompt them"
+---
+
+## Topics
+
+- How LLMs work, at a working level.
+- Prompting patterns that actually help.
+- Tool use and agents — a short tour.
+- Ethics and limits in a research context.
+
+## Before class
+
+Read:
+
+- [How LLMs work](../literacy/how-llms-work.qmd)
+- [Prompting](../literacy/prompting.qmd)
+- [Tool use & agents](../literacy/tool-use-and-agents.qmd)
+- [Ethics & limits](../literacy/ethics-and-limits.qmd)
+
+## In class
+
+- Short lecture: what's under the hood.
+- Live prompt clinic: attendees bring a prompt that disappointed them; we diagnose.
+- Demo: a minimal tool-using agent (e.g., bibliography cleanup).
+
+## After class
+
+- **Deliverable**: a prompt-engineering exercise. Take a recurring task from your work. Produce (a) a weak prompt, (b) a strong prompt using patterns from [Prompting](../literacy/prompting.qmd), (c) outputs from each, (d) a short critique.
+
+## Supplementary
+
+*TODO.*

@@ -1,0 +1,47 @@
+---
+title: "Delegation"
+subtitle: "Deciding what to hand off to an AI — and what not to"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Articulate a decision rule for when to involve an AI assistant in a research task.
+- Distinguish *mechanical delegation* (reformat a table) from *judgment delegation* (interpret a result).
+- Identify tasks in your own workflow where delegation adds value, adds risk, or both.
+:::
+
+## The core idea
+
+**Delegation** is the first "D" of AI fluency. It is the upstream decision: given a task, should I do it myself, delegate it to an AI, or collaborate — and at what granularity?
+
+Good delegation is not "use AI for everything" or "never trust AI." It is a situational judgment informed by:
+
+- **Stakes** — what's the cost of an error?
+- **Verifiability** — can you cheaply check the output?
+- **Your own competence** — can you recognize a wrong answer?
+- **The AI's competence** — is this the kind of task current models do reliably well?
+
+## A delegation rubric for biology
+
+*TODO: expand into a full section. A starter heuristic:*
+
+| Task | Delegate fully | Collaborate | Do yourself |
+|:-----|:---------------|:------------|:------------|
+| Reformatting a CSV | ✅ | | |
+| Writing boilerplate DESeq2 code | | ✅ | |
+| Choosing the statistical test | | ✅ | |
+| Interpreting a marginal p-value | | | ✅ |
+| Fabricating a citation | | | — never acceptable |
+
+## Worked example: BLAST a batch of sequences
+
+*TODO: narrate a concrete example where a researcher delegates a BLAST batch script, shows what to specify, what to check, and what to keep in human hands.*
+
+## Exercises
+
+1. List three tasks from your current work. For each, classify it using the rubric above.
+2. For one task you currently do yourself, design a delegation: what would you ask the AI to do, what would you verify, and how?
+
+## Further reading
+
+- *TODO: link to Anthropic's AI Fluency materials and any course-internal references.*
