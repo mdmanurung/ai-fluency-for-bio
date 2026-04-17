@@ -1,0 +1,47 @@
+---
+title: "Diligence"
+subtitle: "Responsibility, disclosure, and reproducibility when using AI"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Apply norms of disclosure for AI use in research writing, code, and analysis.
+- Build a workflow that preserves provenance of AI-assisted outputs.
+- Reason about the ethics of AI use: authorship, privacy, reproducibility.
+:::
+
+## The core idea
+
+**Diligence** is the downstream responsibility: you own the output, regardless of who — or what — produced it. This D connects AI fluency to scientific integrity.
+
+Diligence is not fear. It is a set of practices that make your use of AI:
+
+- **Disclosable** — you can say what you did.
+- **Reproducible** — someone else could audit your process.
+- **Defensible** — you can stand behind the result on technical and ethical grounds.
+
+## Disclosure norms
+
+*TODO: expand. Summary of evolving journal policies (Nature, Science, ICMJE) and a template disclosure statement for use in this course.*
+
+## Provenance practices
+
+- Save the prompts and outputs that shaped a deliverable, not just the final code.
+- Version your prompts alongside your code.
+- When an AI proposes a method, cite the *method* (paper, package), not the AI.
+- Treat AI like a very fast collaborator with unreliable memory and no accountability.
+
+## Privacy and confidentiality
+
+- Do not paste patient-identifiable data, embargoed manuscripts, or collaborator data into third-party LLMs without explicit permission.
+- Prefer on-device or enterprise-tier deployments for sensitive data.
+- Know your institution's data-handling policy.
+
+## Exercises
+
+1. Draft a one-paragraph AI-disclosure statement for your most recent AI-assisted project.
+2. Reconstruct the prompt history for a recent AI-assisted task. What's missing from your records?
+
+## Further reading
+
+- *TODO.*

@@ -1,0 +1,45 @@
+---
+title: "Protocol design"
+subtitle: "AI as a sparring partner for experimental planning"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Use AI to generate, critique, and refine experimental protocols.
+- Apply the 4 D's to protocol design: delegate the draft, describe the constraints, discern the flaws, take diligent ownership.
+- Avoid the characteristic failure mode: superficially complete but scientifically naive protocols.
+:::
+
+## Where AI helps
+
+- **Draft generation**: a first-pass protocol outline given a goal, a reagent list, and constraints.
+- **Checklist generation**: controls you may have forgotten, QC steps, sample-size back-of-envelope.
+- **Critique**: "what could go wrong with this protocol?" is a surprisingly strong prompt.
+- **Translation**: between formats (lab notebook → methods section → SOP).
+
+## Where AI reliably falls short
+
+- Specific reagent choices for your organism, cell line, or platform.
+- Anything that depends on recent protocol updates (e.g., new library-prep chemistry versions).
+- Judgments that require tacit lab knowledge ("our freezer is unreliable," "this supplier is slow").
+
+## A sparring-partner workflow
+
+1. **You** draft the scientific question and hypothesis.
+2. **AI** drafts a candidate protocol given your constraints.
+3. **You** critique the protocol against your own experience and your PI's feedback.
+4. **AI** ("critique mode") lists failure modes and missing controls.
+5. **You** reconcile, finalize, and document provenance.
+
+## Worked example: designing an scRNA-seq pilot
+
+*TODO: outline a realistic iteration cycle for a small pilot study.*
+
+## Exercises
+
+1. Ask an AI to design a protocol in your area. List everything it got subtly wrong.
+2. Ask the same AI to critique its own protocol. Compare lists.
+
+## Further reading
+
+- *TODO.*

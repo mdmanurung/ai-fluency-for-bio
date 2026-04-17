@@ -1,0 +1,33 @@
+---
+title: "Week 1 — AI fluency foundations"
+subtitle: "The 4 D's: Delegation, Description, Discernment, Diligence"
+---
+
+## Topics
+
+- What "AI fluency" means, and why it matters for biology research.
+- The 4 D's framework.
+- First pass at applying the framework to your own workflow.
+
+## Before class
+
+Read:
+
+- [Delegation](../fluency/delegation.qmd)
+- [Description](../fluency/description.qmd)
+- [Discernment](../fluency/discernment.qmd)
+- [Diligence](../fluency/diligence.qmd)
+
+## In class
+
+- Introductions and workflow audit.
+- Live walkthrough: the 4 D's applied to a BLAST-and-summarize task.
+- Small-group exercise: classify tasks from your own work with the delegation rubric.
+
+## After class
+
+- **Deliverable**: a short reflection (≤ 500 words) on one task you will *start* delegating, one you will *stop* delegating, and why. Use the [Syllabus disclosure template](../course-syllabus.qmd#ai-use-policy).
+
+## Supplementary
+
+*TODO: link slides, recordings, any demo notebooks.*

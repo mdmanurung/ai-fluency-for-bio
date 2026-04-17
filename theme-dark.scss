@@ -1,0 +1,18 @@
+/*-- scss:defaults --*/
+
+$primary: #6FBFA8;
+$link-color: #6FBFA8;
+$body-bg: #0F1513;
+$body-color: #E6EDEA;
+
+$font-size-root: 17px;
+
+/*-- scss:rules --*/
+
+.sidebar-title {
+  color: $primary;
+}
+
+div.sidebar-item-container .active {
+  font-weight: 600;
+}

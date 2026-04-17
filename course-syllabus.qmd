@@ -1,0 +1,44 @@
+---
+title: "Syllabus"
+---
+
+## Logistics
+
+- **Format**: TBD (in-person / hybrid / async).
+- **Meeting time**: TBD.
+- **Location**: TBD.
+- **Duration**: 4 weeks.
+
+## Prerequisites
+
+- Comfort reading and modifying short R or Python scripts.
+- An account with at least one LLM chat interface (Claude, ChatGPT, or Gemini).
+- A laptop with a working terminal.
+
+## Assessments
+
+| Component | Weight | Description |
+|:----------|:------:|:------------|
+| Weekly exercises | 40% | Short, applied exercises tied to each week's readings. |
+| Mini-project (Week 3) | 20% | A scoped bioinformatics task completed with AI assistance, submitted as a reproducible report. |
+| Capstone (Week 4) | 30% | An end-to-end research micro-project: question → literature → analysis → writeup. |
+| Participation | 10% | Discussion, peer feedback, reflections. |
+
+## AI-use policy
+
+This is a course about using AI tools well. **You are expected to use them** for every assignment. However:
+
+- **Disclose** which tools you used and how, in every deliverable.
+- **Verify** any factual claim, citation, or piece of code before relying on it.
+- **Own** your output: you are responsible for its correctness, originality, and ethics.
+- **Do not** paste confidential or embargoed data into third-party LLM services without explicit permission and appropriate privacy safeguards.
+
+A template disclosure statement is provided with each assignment.
+
+## Academic integrity
+
+Submitting AI output as your own unverified work — without disclosure, verification, or engagement — is a violation of academic integrity, regardless of how the text was produced.
+
+## Accessibility
+
+Please reach out to the instructor if you need accommodations. Course materials are designed to be screen-reader friendly; please report any accessibility issues via the repo.

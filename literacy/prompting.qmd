@@ -1,0 +1,46 @@
+---
+title: "Prompting"
+subtitle: "A working vocabulary and a set of reliable patterns"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Use the core prompting vocabulary: system prompt, user prompt, few-shot, chain-of-thought, role prompting.
+- Choose a prompting pattern that matches the task.
+- Iterate on prompts systematically instead of randomly.
+:::
+
+## Anatomy of a prompt
+
+*TODO: diagram + short prose. System prompt = durable instructions & persona. User prompt = specific request. Assistant prompt = prior model turns (for in-context examples or ongoing conversation).*
+
+## Patterns that work
+
+1. **Role + task + context + format** — "You are X. Do Y. Given Z. Return in format F."
+2. **Few-shot** — show 2–3 input/output pairs before the real input.
+3. **Decomposition** — explicitly break a complex task into subtasks.
+4. **Self-critique** — ask the model to critique its own output before finalizing.
+5. **Constrained output** — specify the exact schema (JSON, table columns, section headings).
+
+## Patterns that reliably fail
+
+- "Don't hallucinate." (It will. Better: provide sources.)
+- "Be accurate." (Meaningless on its own.)
+- "Summarize this paper" on a paper the model has never seen. (Use RAG or paste the paper.)
+
+## Worked example: extracting structured info from a methods section
+
+*TODO: show progression from weak prompt to strong prompt, with outputs.*
+
+## Iterating on prompts
+
+Treat prompting like any other optimization:
+
+- Hold the test input fixed.
+- Change one thing per iteration.
+- Keep a log — prompt, output, verdict.
+- Save the winner as a reusable template.
+
+## Further reading
+
+- *TODO.*

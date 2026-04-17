@@ -1,0 +1,34 @@
+---
+title: "Week 3 — Hands-on bioinformatics I"
+subtitle: "Code and data analysis with an AI assistant in the loop"
+---
+
+## Topics
+
+- AI-assisted scripting for bioinformatics.
+- AI-assisted QC and EDA on a real dataset.
+- Keeping ownership of scientific judgment.
+
+## Before class
+
+Read:
+
+- [Code assistance](../bioinformatics/code-assistance.qmd)
+- [Data analysis](../bioinformatics/data-analysis.qmd)
+
+Setup:
+
+- Ensure you have a working R or Python environment, and access to at least one coding AI assistant (Claude, Copilot, Cursor, etc.).
+
+## In class
+
+- Pair programming session with AI.
+- Walkthrough: QC pass on a small RNA-seq (or scRNA-seq) dataset.
+
+## After class
+
+- **Mini-project** *(20% of grade)*: complete a scoped bioinformatics task with AI assistance. Submit a reproducible Quarto/Jupyter report including: the task statement, your prompt history (abridged is fine), the analysis, and a disclosure statement.
+
+## Supplementary
+
+*TODO: dataset link, starter repo.*

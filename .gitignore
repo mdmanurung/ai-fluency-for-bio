@@ -1,0 +1,10 @@
+/.quarto/
+/_site/
+/_freeze/
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.swp

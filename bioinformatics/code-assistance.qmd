@@ -1,0 +1,49 @@
+---
+title: "Code assistance"
+subtitle: "Using AI for bioinformatics scripting and debugging"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Use an AI coding assistant for common bioinformatics scripting tasks (R/Python).
+- Debug with AI: providing minimal reproducible context.
+- Recognize AI-generated code smells and correct them.
+:::
+
+## Scope
+
+This page focuses on **interactive coding assistance** — chat-based or in-IDE AI help for scripts you write and own. Autonomous agents are covered in [Tool use & agents](../literacy/tool-use-and-agents.qmd).
+
+## Tasks the current generation does well
+
+- Boilerplate I/O: reading `fastq`, `vcf`, `bam`, `h5ad`, Seurat/SingleCellExperiment objects.
+- Refactoring: splitting a long script into functions, renaming variables, adding type hints/roxygen docs.
+- Translating: R ↔ Python, base R ↔ tidyverse, pandas ↔ polars.
+- Explaining: "what does this block do?" on unfamiliar code.
+
+## Tasks the current generation is unreliable at
+
+- Choosing the *right* statistical test or the *right* normalization for your data.
+- Matching tool versions and API signatures when those changed recently.
+- Remembering the exact schema of a lesser-known file format.
+
+## A minimum viable workflow
+
+1. Write the function signature and docstring yourself.
+2. Ask the AI to fill in the body.
+3. Run on a minimal test case you prepared.
+4. Diff against what you would have written.
+5. Commit with a short prompt-provenance note if the logic is non-trivial.
+
+## Debugging with AI
+
+*TODO: expand. Key move: paste the full error, the failing code, and a one-paragraph description of intent — not just the error.*
+
+## Exercises
+
+1. Take a 50–100 line bioinformatics script you wrote from scratch. Ask an AI to refactor it. Keep what's better, reject what's worse.
+2. Take a bug you fixed recently. Reconstruct the error state and ask an AI to debug it cold. How close does it get?
+
+## Further reading
+
+- *TODO.*

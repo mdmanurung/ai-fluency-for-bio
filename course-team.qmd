@@ -1,0 +1,15 @@
+---
+title: "Teaching team"
+---
+
+## Instructor
+
+**TBD** — role, affiliation, short bio, research interests, contact.
+
+## Teaching assistants
+
+**TBD** — names and contact info.
+
+## Guest contributors
+
+*(Add names and topics as guest lectures are scheduled.)*

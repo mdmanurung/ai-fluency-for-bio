@@ -1,0 +1,43 @@
+---
+title: "Discernment"
+subtitle: "Critically evaluating AI output before acting on it"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Identify the common failure modes of LLM output: hallucination, confident error, subtle drift.
+- Develop a personal checklist for verifying AI-generated code, analysis, and prose.
+- Calibrate your trust: when is spot-checking enough? When do you need end-to-end verification?
+:::
+
+## The core idea
+
+**Discernment** is the evaluation layer: the ability to read AI output critically and know when to accept, correct, or discard it. It is the skill that separates researchers who benefit from AI from those who are quietly harmed by it.
+
+The default LLM failure mode in biology is not "obviously wrong" — it's **plausibly wrong**: syntactically valid code that runs but uses the wrong normalization, a review paragraph with a real-sounding citation that doesn't exist, a pathway interpretation that mixes up the direction of regulation.
+
+## Failure modes to watch for
+
+- **Fabricated citations** — author lists and DOIs that look right but aren't.
+- **Stale knowledge** — the model's training data predates current best practices or tool versions.
+- **Confident extrapolation** — filling in details it can't possibly know from context.
+- **Silent API drift** — code that uses a deprecated function signature.
+- **Wrong-organism errors** — human annotations applied to mouse data, etc.
+
+## A discernment checklist
+
+*TODO: expand into a detailed checklist. Starter:*
+
+- Did I verify every citation against a real source (PubMed, bioRxiv, publisher)?
+- Did I run the code on a minimal test case and check the output shape?
+- Did I sanity-check against a known result or a simple baseline?
+- Would I be willing to defend this output as my own?
+
+## Exercises
+
+1. Ask an LLM for five citations on a narrow topic in your field. Verify each. Record the hit rate.
+2. Ask an LLM to write a function you *know* how to write. Diff its version against yours. What did it get subtly wrong?
+
+## Further reading
+
+- *TODO.*

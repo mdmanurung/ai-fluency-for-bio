@@ -1,0 +1,20 @@
+---
+title: "Support"
+---
+
+## Getting help
+
+If you get stuck — on content, on tooling, or on an AI assistant behaving unexpectedly — please use the following channels:
+
+- **Course discussion forum**: TBD.
+- **Office hours**: TBD.
+- **Email**: TBD.
+
+## Technical issues
+
+- For issues with this website (typos, broken links, wrong info), open an issue or a pull request on the [course repository](https://github.com/mdmanurung/ai-fluency-for-bio).
+- For issues with Claude, ChatGPT, or other AI tools: check the vendor's status page first, then bring concrete reproductions to office hours.
+
+## Wellness
+
+AI tooling is changing quickly, and it's easy to feel like you're "falling behind." You are not. Treat this course as a structured way to develop taste, not a sprint. Ask for help early.

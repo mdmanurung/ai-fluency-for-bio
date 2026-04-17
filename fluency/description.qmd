@@ -1,0 +1,42 @@
+---
+title: "Description"
+subtitle: "Communicating intent, context, and constraints to an AI"
+---
+
+::: {.callout-note}
+## Learning objectives
+- Structure a request so an AI assistant can act on it without guessing.
+- Provide the *minimum sufficient context* — not a dump, not a one-liner.
+- Diagnose failure modes that stem from under-description rather than model limitations.
+:::
+
+## The core idea
+
+**Description** is how you translate a fuzzy intention into something an AI can act on. Most "bad AI output" in research contexts is actually bad description. The model filled in the gaps you left — often with plausible-sounding but wrong assumptions.
+
+A well-described task usually includes:
+
+1. **Goal** — what you want, in one sentence.
+2. **Context** — who you are, what the data is, what's upstream and downstream.
+3. **Constraints** — file formats, libraries, reproducibility requirements, style.
+4. **Success criteria** — how you'll know the output is correct.
+5. **Anti-goals** — what the AI should *not* do.
+
+## Worked example: describing an RNA-seq QC request
+
+*TODO: show a "before" (one-line) and "after" (structured) version of the same request to illustrate the payoff.*
+
+## Common failure modes
+
+- **Under-specified data shape** → AI invents column names.
+- **Missing domain constraints** → AI uses the wrong organism's reference.
+- **No success criteria** → AI hands back something plausible you can't verify.
+
+## Exercises
+
+1. Take a prompt you recently sent to an LLM. Rewrite it using the five-part structure above. Re-run. Compare.
+2. Practice writing a *system prompt* for a recurring task in your lab.
+
+## Further reading
+
+- *TODO.*

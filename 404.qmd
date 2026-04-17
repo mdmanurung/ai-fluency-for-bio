@@ -1,0 +1,7 @@
+---
+title: "Page not found"
+---
+
+The page you requested cannot be found. It may have moved, or the link may be stale.
+
+Try the [schedule](index.qmd), the [course overview](course-overview.qmd), or use the search box in the sidebar.

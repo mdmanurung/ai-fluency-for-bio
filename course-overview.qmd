@@ -1,0 +1,37 @@
+---
+title: "Overview"
+---
+
+## Course description
+
+AI tools — especially large language models (LLMs) and AI coding assistants — are rapidly entering the biology research workflow. Used well, they can accelerate analysis, surface relevant literature, and help draft code and documentation. Used carelessly, they introduce subtle errors, fabricated citations, and workflow brittleness.
+
+This short course teaches **AI fluency** for biology: the judgment and skills to collaborate with AI tools productively and responsibly.
+
+## Who this course is for
+
+- Graduate students, postdocs, and PIs in biology or adjacent fields.
+- Researchers who already use (or want to use) tools like Claude, ChatGPT, Copilot, or agentic coding assistants.
+- No prior AI/ML background required. Basic familiarity with R or Python is helpful for the hands-on sections.
+
+## Learning objectives
+
+By the end of this course, participants will be able to:
+
+- **Apply the 4 D's framework** (Delegation, Description, Discernment, Diligence) to decide when and how to involve an AI assistant in a research task.
+- **Explain at a working level** how modern LLMs are trained, how they generate text, and why they hallucinate.
+- **Write effective prompts** — including system prompts, few-shot examples, and tool-use prompts — for bio research tasks.
+- **Use AI coding assistants** for bioinformatics scripting, debugging, and data analysis.
+- **Critically evaluate** AI-generated analyses, literature summaries, and protocols for correctness and provenance.
+- **Reason about ethics and limits**: authorship, reproducibility, confidentiality, and the epistemic risks of AI in science.
+
+## Course structure
+
+The course is organized into **three conceptual tracks** and **four weekly modules**:
+
+- The **[AI fluency](fluency/delegation.qmd)** track introduces the 4 D's framework.
+- The **[AI literacy](literacy/how-llms-work.qmd)** track covers the technical and conceptual background.
+- The **[Hands-on bioinformatics](bioinformatics/code-assistance.qmd)** track is practical and project-based.
+- The **[weekly modules](weeks/week-1.qmd)** combine readings and exercises from the three tracks.
+
+See the [Syllabus](course-syllabus.qmd) for policies and assessment, and the [Schedule](index.qmd) for week-by-week topics.
