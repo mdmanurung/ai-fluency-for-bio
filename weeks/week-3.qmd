@@ -21,7 +21,18 @@ Setup:
 
 - Working R or Python environment, **pinned** (`renv` / `conda` / `uv`).
 - Coding assistant set up and working in your editor.
-- Course dataset downloaded (TBD — public, e.g., GEO).
+- Course dataset confirmed loadable on your machine (see *Course dataset* below).
+
+## Course dataset
+
+Weeks 3 and 4 use the cerebellum subset of [GSE96870](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE96870) (Blackmore et al., 2017, [PNAS](https://doi.org/10.1073/pnas.1620415114)) — 22 mouse cerebellum samples across two sexes, three timepoints, and two infection conditions (Influenza A vs. uninfected). Public on GEO; mirrored as plain CSVs by the [Carpentries bioc-rnaseq](https://github.com/carpentries-incubator/bioc-rnaseq) lesson under CC-BY 4.0, so it loads identically into R or Python with a single `read_csv` call. ~10 MB.
+
+Use the language-appropriate starter to confirm the data loads on your machine before class:
+
+- [R starter](starter-week3-r.qmd) — `readr` + `dplyr`.
+- [Python starter](starter-week3-python.qmd) — `pandas`.
+
+Both starters stop at "load + confirm shape + one summary table." The mini-project baseline is yours to write — see the [AI-use policy](../course-syllabus.qmd#ai-use-policy).
 
 ## In class
 
@@ -42,4 +53,7 @@ Setup:
 
 ## Supplementary
 
-*TODO: dataset link, starter repo, baseline analysis stub.*
+- Dataset: see *Course dataset* above.
+- Starter notebooks: [R](starter-week3-r.qmd) · [Python](starter-week3-python.qmd).
+- Worked-example walkthrough: [Data analysis](../bioinformatics/data-analysis.qmd).
+- Slides, recording, and demo notebooks will be posted here after the session.

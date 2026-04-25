@@ -1,0 +1,62 @@
+---
+title: "Week 3 starter (R)"
+subtitle: "Load the course dataset, confirm shape, render one summary table"
+---
+
+::: {.callout-important}
+## What this is — and what it is not
+This starter loads the GSE96870 cerebellum subset, confirms the dataset is what you think it is, and renders one summary table. **It does not perform the QC analysis.** That is the week 3 mini-project's *AI-free baseline* — you write that yourself, by hand, before you involve an AI assistant. See the [syllabus AI-use policy](../course-syllabus.qmd#ai-use-policy).
+
+If you copy from this starter into your baseline, you are short-circuiting the assignment. The starter exists so you do not waste the first 30 minutes of the workshop on file paths.
+:::
+
+## Setup
+
+You need R (≥ 4.3), and the packages `readr` and `dplyr`. Install with:
+
+```r
+install.packages(c("readr", "dplyr"))
+```
+
+This starter does not install Bioconductor — that comes later, when you write the baseline.
+
+## Load the data from the Carpentries mirror
+
+The two CSVs live in the [carpentries-incubator/bioc-rnaseq](https://github.com/carpentries-incubator/bioc-rnaseq) repository (CC-BY 4.0). They are stable URLs.
+
+```r
+library(readr)
+library(dplyr)
+
+base <- "https://raw.githubusercontent.com/carpentries-incubator/bioc-rnaseq/main/episodes/data"
+
+coldata <- read_csv(file.path(base, "GSE96870_coldata_cerebellum.csv"))
+counts  <- read_csv(file.path(base, "GSE96870_counts_cerebellum.csv"))
+```
+
+## Confirm the shape
+
+```r
+dim(counts)    # expect 41786 rows (genes) x 23 cols (gene + 22 samples)
+dim(coldata)   # expect 22 rows (samples) x 11 cols
+identical(coldata$sample, colnames(counts)[-1])   # expect TRUE
+```
+
+If any of those three checks fails, **stop**. The downstream baseline will produce nonsense if the sample sheet does not align with the count columns.
+
+## One summary table
+
+```r
+coldata |>
+  count(sex, infection, time) |>
+  arrange(infection, time, sex)
+```
+
+Read the output. There are 22 samples — *not* 24. Two of the twelve `sex × infection × time` cells are smaller than the others. This is a real feature of the dataset and a real source of imbalance the baseline analysis will need to be honest about.
+
+That is the end of the starter. From here, the baseline is yours.
+
+## Where to go next
+
+- [Data analysis](../bioinformatics/data-analysis.qmd) — full worked-example walkthrough of QC on this dataset, with the AI's role and the human's discernment move called out at every step.
+- [Week 3 — Hands-on bioinformatics I](week-3.qmd) — the mini-project deliverable.

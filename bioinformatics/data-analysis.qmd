@@ -28,15 +28,94 @@ subtitle: "AI-assisted exploration, QC, and statistics on bio datasets"
 3. **Run each step yourself** (or via an AI coding assistant you supervise). Look at the outputs.
 4. **Write interpretations in your own words**. Use AI for prose polishing, not for reasoning.
 
-## Worked example: QC on a new RNA-seq dataset
+## Worked example: QC on the GSE96870 cerebellum subset
 
-*TODO: outline a full worked example — sample sheet, library size checks, PCA, outlier flags — with the AI's role at each step.*
+The course dataset for weeks 3–4 is the cerebellum subset of [GSE96870](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE96870) (Blackmore et al., 2017): 22 mouse cerebellum samples across two sexes, three timepoints (Day 0, Day 4, Day 8), and two infection conditions (Influenza A vs. uninfected). The Carpentries [bioc-rnaseq](https://carpentries-incubator.github.io/bioc-rnaseq/) lesson redistributes it as plain CSVs (counts + sample metadata), so it loads identically into R or Python.
+
+The walkthrough below uses R. The Python equivalent is in [Code assistance](code-assistance.qmd) and the [Python starter notebook](../weeks/starter-week3-python.qmd) — `pandas` + `scanpy`/`pydeseq2` map onto the same steps.
+
+### Step 1 — Sample sheet
+
+Goal: load the metadata, confirm samples line up with count columns, and inspect factor balance.
+
+```r
+coldata <- readr::read_csv("GSE96870_coldata_cerebellum.csv")
+counts  <- readr::read_csv("GSE96870_counts_cerebellum.csv")
+stopifnot(identical(coldata$sample, colnames(counts)[-1]))
+table(coldata$sex, coldata$infection, coldata$time)
+```
+
+**AI's role**: writing the boilerplate `read_csv` + `stopifnot` lines from a one-line description.
+
+**The discernment move**: read the `table()` output yourself. The Carpentries subset has 22 samples — not 24, as a student expecting `2 × 3 × 2 × 2 = 24` would assume. Two cells of the design have only 1 sample. An AI will not flag this on its own; it will happily fit a model that the data cannot identify. Catching this is [Diligence](../fluency/diligence.qmd): you are the analyst of record for the design.
+
+### Step 2 — Library sizes
+
+```r
+libsize <- colSums(counts[ , -1])
+qplot(coldata$sample, libsize, geom = "col") + coord_flip()
+```
+
+**AI's role**: producing the plot. **Yours**: deciding the threshold for "too small." For this dataset library sizes range roughly 28–80 M reads — comfortably above 5 M, so no sample is flagged on size alone. The decision *itself* is the discernment, even when nothing fails it.
+
+### Step 3 — Distribution and transformation choice
+
+When you ask an AI for the next step, the default suggestion will frequently be `rlog` from DESeq2 — because `rlog` appears in early DESeq2 vignettes and is heavily represented in training data. For *n* = 22, `vst` is the better choice: comparable shrinkage, materially faster, and recommended by the package authors for any dataset above ~30 samples (and acceptable well below that).
+
+```r
+library(DESeq2)
+dds <- DESeqDataSetFromMatrix(counts[ , -1], coldata, design = ~ sex + time + infection)
+vsd <- vst(dds, blind = TRUE)
+```
+
+This is the canonical [Description](../fluency/description.qmd) move: telling the AI which step comes next (variance-stabilisation feeding into PCA, on a 22-sample dataset) lets it pick the right tool. Without that context, it guesses.
+
+### Step 4 — PCA, with two colourings
+
+```r
+plotPCA(vsd, intgroup = "infection")
+plotPCA(vsd, intgroup = c("sex", "time"))
+```
+
+Run both. PC1 is *not* guaranteed to be the variable you care about — in this dataset, time often dominates PC1 and infection appears on PC2, because time-since-infection drives broad transcriptional change. A student who only colours by `infection` and sees no separation may incorrectly conclude the experiment failed.
+
+**AI's role**: drawing the plots. **Yours**: choosing *which* colourings to look at, and reading the geometry. If a sample sits well outside its expected cluster, that is a candidate outlier — but only a candidate. Library size, RNA quality, and known wet-lab notes are the next places to check before flagging.
+
+### Step 5 — Sample–sample correlation heatmap
+
+```r
+pheatmap::pheatmap(cor(assay(vsd)), annotation_col = coldata[, c("infection","time","sex")])
+```
+
+Use this together with the PCA. A sample that is an outlier on both views is a stronger flag than one that is anomalous on a single view.
+
+### Step 6 — Outlier decision
+
+The AI can summarise the evidence ("sample X has the smallest library size and the lowest median pairwise correlation"). It cannot make the call. Removing or retaining a sample is a [Diligence](../fluency/diligence.qmd) decision: document what you did, why, and which downstream analyses are sensitive to it. Record it in the report; the disclosure rubric will ask.
+
+::: {.callout-tip}
+## Where the 4 D's showed up
+- **Description** — telling the AI the design and what comes next so it can pick `vst` over `rlog`.
+- **Discernment** — reading the `table()` and the PCA yourself; rejecting the AI's first transformation.
+- **Diligence** — owning the outlier decision and the missing-cell finding; both are documented in your own words.
+- *Delegation* — most strongly applied to the boilerplate plotting and I/O code, where AI is highly reliable.
+:::
+
+## Common failure modes
+
+- **Trusting PC1 as the biology.** PC1 is variance, not signal. Colour by every annotation you have.
+- **Asking for a QC answer instead of a QC plan.** "Is sample X an outlier?" is the wrong question. "What evidence would I need to call sample X an outlier?" is the right one.
+- **Letting the AI pick the test.** The AI will recommend the textbook test for a textbook design. Real designs have batches, dropouts, and sex imbalance. You pick.
 
 ## Exercises
 
 1. Give an AI the first 20 lines of a dataset you don't know well and ask for a QC plan. Critique the plan before running it.
 2. Ask an AI to choose a statistical test for a problem you know well. Compare its recommendation to what you would do.
+3. Run the worked example above end-to-end. Record one decision where you overrode the AI's first suggestion, and one where you accepted it. The disclosure rubric for the week 3 mini-project will ask for both.
 
 ## Further reading
 
-- *TODO.*
+- Love, M. I., Huber, W., & Anders, S. (2014). [Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2](https://doi.org/10.1186/s13059-014-0550-8). *Genome Biology* 15:550. — The DESeq2 paper. The discussion of `vst` vs. `rlog` (and *when* each is appropriate) is the source for the transformation choice in step 3.
+- Conesa, A., Madrigal, P., Tarazona, S., et al. (2016). [A survey of best practices for RNA-seq data analysis](https://doi.org/10.1186/s13059-016-0881-8). *Genome Biology* 17:13. — Long-running reference for the QC steps above; pre-AI, but the human-judgement points it surfaces are exactly the ones the AI is unreliable on.
+- Blackmore, S., Hernandez, J., Juda, M., et al. (2017). [Influenza infection triggers disease in a genetic model of experimental autoimmune encephalomyelitis](https://doi.org/10.1073/pnas.1620415114). *PNAS* 114(30): E6107–E6116. — Source paper for GSE96870. Read the experimental design before running QC; it explains the tissue × time × sex × infection structure.
+- The Carpentries Incubator. [Analysis and Interpretation of Bulk RNA-Seq Data using Bioconductor](https://carpentries-incubator.github.io/bioc-rnaseq/) (CC-BY 4.0). — Lesson that redistributes GSE96870 as the teaching dataset; the exploratory-QC episode is a useful peer reference for what a careful, AI-free workflow on this dataset looks like.
