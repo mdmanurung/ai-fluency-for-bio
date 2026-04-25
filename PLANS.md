@@ -52,7 +52,8 @@ Each coding page adds a one-paragraph "the other language" note pointing at the 
 5 PRs total, one per major chunk. Each independently mergeable.
 
 - **PR-1** — done. Branch `claude/course-next-steps-fCxoV`, commit `a2470c4`.
-- **PR-2 through PR-5** — see *Active PRs* below.
+- **PR-2** — done. Branch `claude/propose-next-steps-yVScm`.
+- **PR-3 through PR-5** — see *Active PRs* below.
 
 ---
 
@@ -135,6 +136,7 @@ Scope:
 
 ## Done
 
+- [x] **PR-2** (branch `claude/propose-next-steps-yVScm`): `bioinformatics/code-assistance.qmd` fully filled — four-part debugging pattern with weak/strong prompt comparison, `validate_sample_sheet` pytest worked example with Discernment pruning step, R/testthat equivalent note, closing 4 D's callout, Common failure modes section, 2 verified citations (Peng et al. 2023, Spracklen et al. 2024).
 - [x] **PR-1** (commit `a2470c4`, branch `claude/course-next-steps-fCxoV`): GSE96870 dataset pinned and verified; `bioinformatics/data-analysis.qmd` worked example filled with 4 verified citations; R + Python starter notebooks added (scope: load + shape + summary table only); `weeks/week-3.qmd` Course dataset and Supplementary sections updated.
 - [x] Quarto site scaffold with full sidebar, theme, and CI workflow (PR #2)
 - [x] Multi-persona audit and syllabus revision (PR #3)

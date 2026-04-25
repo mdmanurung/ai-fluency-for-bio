@@ -37,13 +37,171 @@ This page focuses on **interactive coding assistance** — chat-based or in-IDE 
 
 ## Debugging with AI
 
-*TODO: expand. Key move: paste the full error, the failing code, and a one-paragraph description of intent — not just the error.*
+The single most effective move when debugging with AI is giving it **everything needed to reproduce the failure** in one message — not just the error message. The four-part pattern:
+
+1. **Full traceback** — the complete stack trace, not just the last line.
+2. **Minimal failing code** — the smallest block that triggers the error, not the whole script.
+3. **One paragraph of intent** — what the function is *supposed* to do and what you expected to happen.
+4. **Environment** — Python version, relevant package versions (`pandas.__version__`, etc.).
+
+### Same bug, two prompts
+
+**Weak prompt (what most people send first):**
+
+> "Getting a KeyError. How do I fix it?"
+
+The AI will guess. It typically suggests wrapping everything in `if key in dict` — a fix that compiles but hides the actual problem.
+
+**Strong prompt:**
+
+> I am loading the GSE96870 coldata CSV and checking that its `sample` column matches the count-matrix column names. Here is the full traceback:
+>
+> ```
+> KeyError: 'sample'
+> Traceback (most recent call last):
+>   File "validate.py", line 12, in validate_sample_sheet
+>     assert list(coldata["sample"]) == list(counts.columns[1:])
+> KeyError: 'sample'
+> ```
+>
+> Failing code:
+>
+> ```python
+> coldata = pd.read_csv("GSE96870_coldata_cerebellum.csv")
+> counts  = pd.read_csv("GSE96870_counts_cerebellum.csv")
+> assert list(coldata["sample"]) == list(counts.columns[1:])
+> ```
+>
+> I expect `coldata` to have a column named `sample`. The raw file header (`head -1`) is:
+> `sample,title,geo_accession,organism,age,sex,infection,strain,time,tissue,mouse`
+>
+> Environment: Python 3.11, pandas 2.2.1.
+
+With the strong prompt the AI can immediately identify that `coldata["sample"]` *should* work — and ask whether the CSV was read with a leading whitespace in the header, or whether a file handle was passed instead of a path string. Both are real candidates; the weak prompt rules out neither.
+
+**Why the pattern works**: the AI is doing next-token prediction, not causal reasoning. A vague prompt produces a generic completion. A specific prompt produces a specific one. The four-part structure is the [Description](../fluency/description.qmd) skill applied to debugging.
+
+## Worked example: AI-assisted test writing for `validate_sample_sheet`
+
+Continuing the GSE96870 grad-student persona from [Data analysis](data-analysis.qmd): after the QC walkthrough loads and inspects the data, you want to lock that loading contract in code so it cannot break silently.
+
+### Step 1 — Write the function signature and docstring yourself
+
+```python
+def validate_sample_sheet(coldata_path: str, counts_path: str) -> None:
+    """
+    Raise AssertionError if the sample sheet fails any contract check.
+
+    Checks:
+    - Required columns are present in coldata.
+    - Sample order in coldata matches count-matrix column order.
+    - All expected factor levels are present (sex, infection, time).
+    """
+```
+
+Write the signature and docstring yourself. The docstring *is* the contract. Do not let the AI invent the contract — that is the [Description](../fluency/description.qmd) step.
+
+### Step 2 — Ask the AI to draft pytest test cases
+
+Use the four-part pattern to give the AI sufficient context:
+
+> Function `validate_sample_sheet` has the signature and docstring below. The GSE96870 cerebellum coldata has 22 rows; columns: sample, title, geo_accession, organism, age, sex, infection, strain, time, tissue, mouse. Factor levels: sex = {Female, Male}, infection = {Influenza A, NonInfected}, time = {Day0, Day4, Day8}. Environment: Python 3.11, pytest 8. Draft pytest tests covering the contract in the docstring.
+
+The AI returns something like:
+
+```python
+import pytest
+import pandas as pd
+from validate import validate_sample_sheet
+
+def test_passes_on_valid_input(tmp_path):
+    coldata = pd.DataFrame({
+        "sample": ["s1", "s2"], "sex": ["Female", "Male"],
+        "infection": ["Influenza A", "NonInfected"], "time": ["Day0", "Day4"]
+    })
+    counts = pd.DataFrame({"gene": ["Actb"], "s1": [100], "s2": [200]})
+    coldata.to_csv(tmp_path / "coldata.csv", index=False)
+    counts.to_csv(tmp_path / "counts.csv", index=False)
+    validate_sample_sheet(str(tmp_path / "coldata.csv"), str(tmp_path / "counts.csv"))
+
+def test_missing_required_column_raises(tmp_path):
+    coldata = pd.DataFrame({"sample": ["s1"], "sex": ["Female"]})  # no infection/time
+    counts = pd.DataFrame({"gene": ["Actb"], "s1": [100]})
+    coldata.to_csv(tmp_path / "coldata.csv", index=False)
+    counts.to_csv(tmp_path / "counts.csv", index=False)
+    with pytest.raises(AssertionError):
+        validate_sample_sheet(str(tmp_path / "coldata.csv"), str(tmp_path / "counts.csv"))
+
+def test_sample_order_mismatch_raises(tmp_path):
+    coldata = pd.DataFrame({
+        "sample": ["s2", "s1"], "sex": ["Male", "Female"],
+        "infection": ["NonInfected", "NonInfected"], "time": ["Day0", "Day0"]
+    })
+    counts = pd.DataFrame({"gene": ["Actb"], "s1": [100], "s2": [200]})
+    coldata.to_csv(tmp_path / "coldata.csv", index=False)
+    counts.to_csv(tmp_path / "counts.csv", index=False)
+    with pytest.raises(AssertionError):
+        validate_sample_sheet(str(tmp_path / "coldata.csv"), str(tmp_path / "counts.csv"))
+```
+
+### Step 3 — Prune and extend with Discernment
+
+The AI also proposes tests that `geo_accession` starts with `"GSM"`, that `organism` equals `"Mus musculus"`, and that `mouse` values are integers.
+
+**Reject these.** They validate data provenance, not the loading contract. If you later run the same validator on a different GEO series, they break even though the function is correct. The [Discernment](../fluency/discernment.qmd) move: keep tests that validate *structure your downstream code depends on*; discard tests that validate *data identity*.
+
+One test the AI misses: that `time` levels are exactly `{Day0, Day4, Day8}` with no typos (`"day0"` or `"Day 0"`). Add it yourself:
+
+```python
+def test_time_levels_exact(tmp_path):
+    coldata = pd.DataFrame({
+        "sample": ["s1"], "sex": ["Female"],
+        "infection": ["NonInfected"], "time": ["day0"]  # wrong case
+    })
+    counts = pd.DataFrame({"gene": ["Actb"], "s1": [100]})
+    coldata.to_csv(tmp_path / "coldata.csv", index=False)
+    counts.to_csv(tmp_path / "counts.csv", index=False)
+    with pytest.raises(AssertionError):
+        validate_sample_sheet(str(tmp_path / "coldata.csv"), str(tmp_path / "counts.csv"))
+```
+
+### The R equivalent
+
+In R, the same contract is expressed with `testthat`. Write the validator in `R/validate.R`, then in `tests/testthat/test-validate.R`:
+
+```r
+testthat::test_that("sample order matches count columns", {
+  testthat::expect_error(
+    validate_sample_sheet(coldata_path_bad, counts_path),
+    regexp = "order"
+  )
+})
+```
+
+The workflow is identical: you write the contract; AI drafts the test bodies; you prune.
+
+::: {.callout-tip}
+## Where the 4 D's showed up
+- **Description** — writing the function signature and docstring yourself gives the AI the contract it needs. "Write tests for my data loader" without context produces tests for a loader the AI invents.
+- **Delegation** — `tmp_path` fixture scaffolding, `pytest.raises` patterns, and the first three test bodies are exactly where AI adds speed without risk.
+- **Discernment** — rejecting brittle provenance tests; catching the level-typo test the AI missed.
+- **Diligence** — you own the contract. If `validate_sample_sheet` passes every test and the downstream analysis still breaks, the test suite was incomplete — and that is on you, not the AI.
+:::
+
+## Common failure modes
+
+- **Asking the AI to generate the contract.** "Write tests for my data loader" produces tests that pass on the AI's imagined version of the loader, not yours.
+- **Package hallucination.** AI coding assistants sometimes suggest imports from packages that do not exist, or from real packages that do not export the named function. Always `pip show <package>` before trusting a new import.
+- **Stale API signatures.** AI training data lags by months to years. For fast-moving libraries (e.g., `scanpy`, `anndata`, `PyDESeq2`), verify function signatures in the current documentation, not the AI's output.
 
 ## Exercises
 
 1. Take a 50–100 line bioinformatics script you wrote from scratch. Ask an AI to refactor it. Keep what's better, reject what's worse.
-2. Take a bug you fixed recently. Reconstruct the error state and ask an AI to debug it cold. How close does it get?
+2. Take a bug you fixed recently. Reconstruct the error state and ask an AI to debug it cold. Apply the four-part pattern. How much does context quality change the answer?
+3. Implement `validate_sample_sheet` for GSE96870 in Python or R. Run the AI-generated test suite. Add at least one test the AI missed. Bring both to the week 3 session.
 
 ## Further reading
 
-- *TODO.*
+- Peng, S., Kalliamvakou, E., Cihon, P., & Demirer, M. (2023). [The Impact of AI on Developer Productivity: Evidence from GitHub Copilot](https://arxiv.org/abs/2302.06590). arXiv:2302.06590. — Controlled experiment showing ~56% faster task completion with Copilot; productivity gains were real, but so were the failure modes (stale APIs, non-existent packages) documented in the same study.
+- Spracklen, J., Wijewickrama, R., Sakib, A. H. M. N., Maiti, A., Viswanath, B., & Jadliwala, M. (2024). [We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs](https://arxiv.org/abs/2406.10279). arXiv:2406.10279. — All 16 code models tested showed package-hallucination rates averaging 19.6%; directly motivates the "pip show before you import" rule in Common failure modes above.
+- [Description](../fluency/description.qmd) in this course — the four-part debugging pattern and the test-writing prompt above are both applications of the Description D; read this page first if the pattern feels unnatural.
