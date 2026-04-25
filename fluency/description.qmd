@@ -24,7 +24,68 @@ A well-described task usually includes:
 
 ## Worked example: describing an RNA-seq QC request
 
-*TODO: show a "before" (one-line) and "after" (structured) version of the same request to illustrate the payoff.*
+A graduate student is starting QC on a new bulk RNA-seq dataset: 24 samples, 6 treatment groups, paired-end 150 bp reads aligned with STAR, counts from featureCounts. She wants an AI coding assistant to write an R script for the QC pass.
+
+**The request she sends first:**
+
+```
+Write me an R script to do QC on my RNA-seq data.
+```
+
+The AI produces something. It is plausible. It probably uses `rlog` as the variance-stabilizing transformation, because `rlog` appears in many DESeq2 tutorials. It likely hardcodes column names it invented. It may produce a notebook rather than a script. It will not flag outlier samples because it has no data to flag them from. The output is a generic QC script for someone else's problem — coherent, runnable, subtly wrong for her situation in ways she may not catch until hours later.
+
+What the AI had to invent: the input format, the number of samples, the experimental design, the downstream analysis, the visualization requirements, the preferred transformation, the threshold for flagging suspicious samples, and the deliverable format. It filled in every gap with a plausible default. Some of those defaults will happen to match her needs. Some won't.
+
+**The request she sends after applying the five-part structure:**
+
+````
+## Goal
+Write an R script to perform QC on a bulk RNA-seq count matrix before
+differential expression analysis.
+
+## Context
+- 24 samples, 6 treatment groups (4 samples each), human cell line experiment
+- Counts from featureCounts, stored in a tab-separated file:
+  rows = Ensembl gene IDs, columns = sample IDs matching a metadata CSV
+- Metadata CSV has columns: sample_id, treatment, batch (2 batches)
+- Upstream: STAR alignment, ~80% overall mapping rate, 150 bp paired-end reads
+- Downstream: DESeq2 differential expression
+
+## Constraints
+- Use tidyverse + DESeq2 + pheatmap only; no additional packages
+- Output: one PDF of QC plots — library size bar chart, log2-count density,
+  PCA colored by treatment and by batch, sample-sample correlation heatmap
+- Deliverable is a script, not a notebook; runs from the command line with
+  two positional arguments: counts.tsv and metadata.csv
+
+## Success criteria
+- Variance stabilization uses vst(), not rlog() — the dataset is large enough
+  that vst is faster and the difference is negligible
+- The library size plot flags samples below 5 million counts in red
+- PCA labels each point with its sample_id
+
+## Anti-goals
+- Do not impute missing values; if a sample has NA counts, stop with an error
+- Do not run DESeq2 or perform any normalization in this script — that is the
+  next step
+- Do not produce per-gene plots; this is a sample-level QC pass only
+````
+
+The two prompts differ in length by about 200 words. The structured version takes perhaps three minutes to write. Here is what each element actually did:
+
+**Goal** made the scope unambiguous: pre-DE sample-level QC, not the analysis itself. Without it, the AI might add a differential expression step.
+
+**Context** gave the AI the data shape so it didn't invent column names, the experimental design so it knew to color PCA by batch (which it couldn't have guessed), and the downstream step so it understood why `vst` is appropriate — VST is preferred over `rlog` when there are many samples and speed matters, a judgment the AI can apply correctly only if it knows what comes next.
+
+**Constraints** prevented scope creep and specified the deliverable format. Without the package constraint, the AI might pull in `limma`, `edgeR`, or `Seurat` depending on what it has seen in similar contexts. Without the "script, not notebook" constraint, it may produce a `.Rmd` file.
+
+**Success criteria** are the specific technical decisions the researcher owns — `vst` not `rlog`, the 5 million count threshold, the sample ID labels. These are scientific judgments. Putting them in the prompt is not over-specifying; it is the researcher doing her job rather than delegating it.
+
+**Anti-goals** are often the highest-value element. "Do not impute" and "do not normalize" prevent the AI from doing something plausible but wrong for this workflow. LLMs are trained to be helpful; they will add imputation or normalization if those steps appear in QC pipelines they have seen, unless told not to.
+
+::: {.callout-tip}
+The structured version is longer, but the time saved in debugging, revision, and verification is larger. The goal is not brevity in the prompt — it is precision.
+:::
 
 ## Common failure modes
 
@@ -39,4 +100,7 @@ A well-described task usually includes:
 
 ## Further reading
 
-- *TODO.*
+- Wei, J., et al. (2022). [Chain-of-thought prompting elicits reasoning in large language models](https://arxiv.org/abs/2201.11903). *NeurIPS 2022.* — The foundational paper on structured prompting; explains why providing intermediate steps and context improves model output.
+- White, J., et al. (2023). [A prompt pattern catalog to enhance prompt engineering with ChatGPT](https://arxiv.org/abs/2302.11382). arXiv:2302.11382. — Practical taxonomy of prompt patterns, including context-setting, output-constraint, and persona patterns that map directly to the five-part structure.
+- Liu, P., et al. (2023). [Pre-train, prompt, and predict: A systematic survey of prompting methods in NLP](https://dl.acm.org/doi/10.1145/3560815). *ACM Computing Surveys* 55(9). — More technical; contains the "task formulation" framing that explains why constraints and success criteria matter structurally, not just stylistically.
+- Ouyang, L., et al. (2022). [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155). *NeurIPS 2022.* — Also cited in [How LLMs work](../literacy/how-llms-work.qmd). Explains why models respond better to structured specification: RLHF training shapes models to fill in gaps rather than ask for clarification.
