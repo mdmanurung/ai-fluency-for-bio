@@ -5,9 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
-## [Unreleased] — branch `claude/setup-gh-pages-course-tJTne`
+## [Unreleased]
 
-### Added
+### Added — branch `claude/course-next-steps-fCxoV` (PR-1)
+
+- **`bioinformatics/data-analysis.qmd`** — replaced TODO worked example with a six-step QC walkthrough on the GSE96870 cerebellum subset (sample sheet → library size → vst transform → PCA → correlation heatmap → outlier decision). Each step names the AI's role and the human's discernment move; closing callout maps onto Description / Discernment / Diligence / Delegation. Added 4 verified citations (Love et al. 2014, Conesa et al. 2016, Blackmore et al. 2017, Carpentries bioc-rnaseq).
+- **`weeks/starter-week3-r.qmd`, `weeks/starter-week3-python.qmd`** — new starter notebooks. Scope deliberately narrow (load + confirm shape + one summary table) so they do not short-circuit the AI-free baseline that the week 3 mini-project requires.
+- **`weeks/week-3.qmd`** — added Course dataset section pointing at the starters; replaced TODO Supplementary section with concrete links.
+
+### Added — branch `claude/setup-gh-pages-course-tJTne`
 
 - **`literacy/how-llms-work.qmd`** — replaced TODO with a working-level explainer of next-token prediction, tokenisation, the transformer attention mechanism, temperature, and context windows.
 - **`literacy/prompting.qmd`** — filled three stubs:
