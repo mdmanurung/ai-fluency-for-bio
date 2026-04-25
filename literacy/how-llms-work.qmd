@@ -17,7 +17,14 @@ This is a **working** model of how LLMs behave, not a mechanistic account. For a
 
 ## What an LLM is
 
-*TODO: concise explainer — next-token prediction, transformer architecture at a functional level, tokenization, context windows, temperature, sampling.*
+A language model is trained to predict the next token given all previous tokens. **Tokens** are not words — they are subword units, roughly 3–4 characters on average for English prose. "Transformer" and " transformer" are different tokens; "GPT" may be a single token; an emoji may expand into several. Tokenization is opaque to users and causes systematic failures on tasks that require character-level reasoning (counting letters, precise string manipulation, certain code patterns).
+
+The prediction is carried out by a **transformer** — an architecture that uses attention mechanisms to weight every token in the context against every other token at each layer. The practical upshot: the model can integrate information from anywhere in the context window, but it does not distinguish *things that are true* from *patterns that complete this sequence plausibly*. There is no internal "fact store" being queried — there is a very large set of learned associations over token sequences.
+
+Two inference-time parameters that matter:
+
+- **Temperature** — scales the sharpness of the next-token distribution before sampling. Temperature 0 is greedy (always pick the most probable token — deterministic, useful for structured output and code). Higher temperatures increase diversity and apparent creativity, but also incoherence and fabrication rate. API defaults vary; most sit around 0.7–1.0.
+- **Context window** — the maximum number of tokens the model can attend to in a single inference call. Modern frontier models have windows of 100 K–1 M tokens. Effective use at very long contexts is uneven: information in the middle of a very long context is attended to less reliably than information at the start or end (the "lost in the middle" finding).
 
 Key takeaways for a working researcher:
 
