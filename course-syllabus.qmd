@@ -4,41 +4,140 @@ title: "Syllabus"
 
 ## Logistics
 
-- **Format**: TBD (in-person / hybrid / async).
-- **Meeting time**: TBD.
-- **Location**: TBD.
-- **Duration**: 4 weeks.
+- **Format**: TBD (recommend hybrid — in-person + recorded).
+- **Sessions**: 4 weekly meetings, ~2 hours each. Format: ~30 min lecture + ~30 min live demo + ~60 min workshop.
+- **Workload**: ~3–5 hours per week outside class (calibrated to deliverables; instructor will tune after week 1).
+- **Meeting time / location**: TBD.
+- **Duration**: 4 weeks. This is a **foundations** course; real fluency requires sustained practice over months.
 
 ## Prerequisites
 
-- Comfort reading and modifying short R or Python scripts.
-- An account with at least one LLM chat interface (Claude, ChatGPT, or Gemini).
-- A laptop with a working terminal.
+- Working comfort with R *or* Python at a scripting level (read and modify a 100-line script).
+- An LLM chat account — free tier of Claude, ChatGPT, or Gemini works for most exercises (see budget note below).
+- A GitHub account.
+- Laptop with terminal access; ability to install [Quarto](https://quarto.org/) and a code assistant.
 
-## Assessments
+::: {.callout-warning}
+## Free-tier budget note
+Free-tier LLMs work for week 1–2 chat exercises. The week 3 mini-project and week 4 capstone benefit from a paid tier (Claude Pro / ChatGPT Plus) or institutional API access — free-tier rate limits will otherwise interrupt sustained code-assistance sessions. The instructor will note any institutional access available before the course starts.
+:::
 
-| Component | Weight | Description |
-|:----------|:------:|:------------|
-| Weekly exercises | 40% | Short, applied exercises tied to each week's readings. |
-| Mini-project (Week 3) | 20% | A scoped bioinformatics task completed with AI assistance, submitted as a reproducible report. |
-| Capstone (Week 4) | 30% | An end-to-end research micro-project: question → literature → analysis → writeup. |
-| Participation | 10% | Discussion, peer feedback, reflections. |
+## Required tools
+
+- **[Quarto](https://quarto.org/)** (current stable; ≥ 1.5) — for reproducible reports.
+- **Git + GitHub** — for version control and submission.
+- **A coding assistant** (one of): [Claude Code](https://docs.claude.com/en/docs/claude-code/overview), [Cursor](https://cursor.sh/), or VS Code + [GitHub Copilot](https://github.com/features/copilot).
+- **A chat LLM** (one of): [Claude](https://claude.ai/), ChatGPT, or Gemini. Course examples use Claude by default.
+- **A grounded literature tool** (one of): [Elicit](https://elicit.com/), [Consensus](https://consensus.app/), [SciSpace](https://scispace.com/), or Perplexity (sources mode).
+- **Bioinformatics environment**: R + Bioconductor *or* Python + scanpy/biopython, your choice. Use a pinned environment (`renv`, `conda`, or `uv`) for the mini-project and capstone.
+
+## Course structure
+
+The course covers three tracks across four weeks:
+
+| Week | Theme | Deliverable |
+|:----:|:------|:------------|
+| 1 | Foundations & the 4 D's | Reflection (≤ 500 words) + tooling setup confirmation |
+| 2 | LLM literacy | Prompt-engineering exercise (weak vs. strong, with critique) |
+| 3 | Hands-on I — code & data | Mini-project: reproducible AI-assisted analysis report |
+| 4 | Hands-on II — literature, protocols, capstone | Capstone: literature brief + analysis-or-protocol + reflection + disclosure |
+
+## Assessment
+
+| Component | Weight | What it measures |
+|:----------|:------:|:-----------------|
+| Weekly exercises (weeks 1, 2) | 30% | Application of weekly material to your own work. |
+| Mini-project (week 3) | 25% | Reproducible AI-assisted bioinformatics analysis. Includes an **AI-second baseline** component (see below). |
+| Capstone (weeks 3–4) | 30% | Scoped in week 3, executed in week 4. Literature → analysis-or-protocol → reflection → disclosure. |
+| Participation & peer review | 15% | Live workshops, peer feedback. **Credit / no-credit**, not graded for quality. |
+
+Each graded deliverable carries a **disclosure-quality** sub-score (see rubric below) that is part of the deliverable's grade, not separate.
 
 ## AI-use policy
 
-This is a course about using AI tools well. **You are expected to use them** for every assignment. However:
+This is a course about using AI tools well. **You are expected to use them on most assignments.** Following pedagogical research, two assignments include an **AI-free or AI-second baseline component** so you can develop and demonstrate the underlying skill, not just the collaboration skill:
 
-- **Disclose** which tools you used and how, in every deliverable.
-- **Verify** any factual claim, citation, or piece of code before relying on it.
-- **Own** your output: you are responsible for its correctness, originality, and ethics.
-- **Do not** paste confidential or embargoed data into third-party LLM services without explicit permission and appropriate privacy safeguards.
+- **Week 1 reflection**: write your initial classification of three of your own tasks *without* AI consultation. Then, optionally, run them past an AI and note what changed.
+- **Week 3 mini-project**: write a 30-line baseline analysis *first*, by hand. Then iterate with an AI assistant. Submit both, with a short note on what the AI changed and why you accepted or rejected each change.
 
-A template disclosure statement is provided with each assignment.
+For all assignments:
+
+- **Disclose** which tools you used and how. See the disclosure rubric below.
+- **Verify** every factual claim, citation, and piece of code before relying on it.
+- **Own** your output: you are the author of record. AI-generated text used verbatim must be quoted or marked.
+- **Protect** sensitive data: see the data policy below.
+
+### Disclosure rubric
+
+Every graded deliverable includes a disclosure section, scored on these dimensions (4 points total, contributes to the deliverable's grade):
+
+| Dimension | 0 | 1 |
+|:----------|:---|:---|
+| **Tools listed** | None or vague ("used AI") | Specific tool, version/model, and access tier (e.g., "Claude Sonnet 4.6, Pro tier, web UI") |
+| **Use described** | Generic ("for help") | Concrete uses ("drafted DESeq2 scaffold; rewrote intro paragraph; suggested 3 papers, 2 verified, 1 fabricated") |
+| **Verification stated** | Not mentioned | Names what you checked and how (ran tests, verified citations on PubMed, ran code on test data) |
+| **Rejections noted** | Not mentioned | Lists at least one AI suggestion you rejected and why |
+
+A template disclosure paragraph is provided with each assignment.
+
+## Data policy (required reading before any assignment using real data)
+
+Do **not** paste any of the following into a third-party LLM service without explicit, documented permission and an approved data-handling pathway:
+
+- **Patient-identifiable data** or any PHI under HIPAA (US) / personal data under GDPR (EU/UK).
+- **Controlled-access data** (NIH dbGaP, UK Biobank, EGA, etc.) — controlled-access agreements typically prohibit third-party transmission.
+- **BAA-restricted clinical data** — even de-identified data may be subject to your institution's Business Associate Agreements.
+- **Embargoed pre-publication data** — including unpublished collaborator data, manuscripts under review, and grant proposals.
+- **Sequence or other data** under a Material Transfer Agreement (MTA) with restrictive terms.
+
+For any such data: use **on-premises**, **institutional**, or **vendor enterprise tiers with appropriate contracts** (e.g., zero-retention with a signed BAA where applicable). When in doubt, consult your IRB / data steward / institutional privacy office *before* the assignment, not after.
+
+The course datasets are public (GEO, ArrayExpress, or similar) and safe to use with any tool.
+
+## Recommended readings
+
+Two short readings per week is the assigned load; the rest is a menu.
+
+**Foundations / fluency**
+
+- Anthropic, [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency) — the source of the 4 D's framework. Free course materials and PDF available from Anthropic.
+- Mollick, E. (2024). *Co-Intelligence: Living and Working with AI.* Portfolio. — practical framing for working with LLMs.
+
+**How LLMs work and why they fail**
+
+- Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). [On the dangers of stochastic parrots: Can language models be too big? 🦜](https://dl.acm.org/doi/10.1145/3442188.3445922) *FAccT '21.* Foundational; pre-RLHF era.
+- Wei, J., et al. (2022). [Emergent abilities of large language models.](https://arxiv.org/abs/2206.07682) *TMLR.* — Read with the critique below.
+- Schaeffer, R., Miranda, B., & Koyejo, S. (2023). [Are emergent abilities of large language models a mirage?](https://arxiv.org/abs/2304.15004) *NeurIPS.* — Important counterpoint to Wei et al.
+- Ouyang, L., et al. (2022). [Training language models to follow instructions with human feedback.](https://arxiv.org/abs/2203.02155) *NeurIPS.* — InstructGPT / RLHF.
+- Huang, L., et al. (2023). [A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions.](https://arxiv.org/abs/2311.05232) *ACM TOIS.* — Useful taxonomy: factuality vs. faithfulness hallucination.
+
+**AI in biology / science**
+
+- Bunne, C., et al. (2024). [How to build the virtual cell with artificial intelligence: Priorities and opportunities.](https://www.cell.com/cell/fulltext/S0092-8674(24)01332-1) *Cell* 187(25), 7045–7063. — Forward-looking perspective; advanced.
+- Boiko, D. A., MacKnight, R., Kline, B., & Gomes, G. (2023). [Autonomous chemical research with large language models.](https://www.nature.com/articles/s41586-023-06792-0) *Nature* 624, 570–578. — Chemistry rather than biology; useful as analogy for autonomous research workflows.
+
+**Ethics and policy**
+
+- Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI.](https://arxiv.org/abs/2408.11441) *AAAI/ACM AIES.* — Frames the epistemic risks of generative AI for shared knowledge.
+- ICMJE — current [Recommendations](https://www.icmje.org/recommendations/) on AI in authorship (read the current online version, not a static cite).
+- *Nature* — current [editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai) (current online version).
+- *Science* — current AI policies via the journal family's editorial guidelines (current online version).
+
+::: {.callout-note}
+## A note on the reading list
+Citations were verified at the time of writing (April 2026). Editorial policies and "current best" surveys date quickly — confirm before adopting for a new term. Items the instructor judges optional are still valuable supplements; the assigned load is two short readings per week.
+:::
+
+## Course policies
+
+- **Late work**: 24-hour grace per assignment, then −10% / day. Two no-questions extensions per term.
+- **Collaboration**: encouraged for understanding; submitted work is individual. AI collaboration is governed by the AI-use policy above.
+- **Attendance**: 3 of 4 sessions live (recordings available). Week 4 in-person strongly preferred for capstone presentations.
 
 ## Academic integrity
 
-Submitting AI output as your own unverified work — without disclosure, verification, or engagement — is a violation of academic integrity, regardless of how the text was produced.
+Submitting AI output as your own unverified, undisclosed work — without verification or critical engagement — violates academic integrity, regardless of how the text was produced. The disclosure rubric makes the expectation concrete.
 
 ## Accessibility
 
-Please reach out to the instructor if you need accommodations. Course materials are designed to be screen-reader friendly; please report any accessibility issues via the repo.
+Please reach out to the instructor in week 1 if you need accommodations. Materials are designed to be screen-reader friendly; please report accessibility issues via the [course repository](https://github.com/mdmanurung/ai-fluency-for-bio/issues).

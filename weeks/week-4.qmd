@@ -1,13 +1,18 @@
 ---
 title: "Week 4 — Hands-on bioinformatics II & capstone"
-subtitle: "Literature, protocols, and an end-to-end research micro-project"
+subtitle: "Literature, protocols, and your scoped capstone"
 ---
+
+::: {.callout-note}
+## Scope reminder
+The capstone was *scoped in week 3*. Week 4 is execution and writeup, not start-to-finish. An honest 4-week course cannot deliver an "end-to-end research project" cold.
+:::
 
 ## Topics
 
 - AI-assisted literature review, with verification.
 - AI as a sparring partner for protocol design.
-- Putting it all together: a micro-project from question to writeup.
+- Capstone execution and presentations.
 
 ## Before class
 
@@ -16,24 +21,30 @@ Read:
 - [Literature review](../bioinformatics/literature-review.qmd)
 - [Protocol design](../bioinformatics/protocol-design.qmd)
 
+Setup:
+
+- Capstone proposal (from week 3) finalized after instructor feedback.
+
 ## In class
 
-- Demo: triaging a new subfield with a grounded search tool, verifying citations.
-- Demo: iterating on a protocol with an AI sparring partner.
-- Capstone brainstorming and peer feedback.
+- Demo: triaging a new subfield with a grounded literature tool, verifying every citation against PubMed/CrossRef.
+- Demo: iterating on a protocol with an AI sparring partner — generate, critique, refine.
+- Capstone working session and peer feedback.
+- Lightning presentations.
 
 ## After class
 
-- **Capstone** *(30% of grade)*: an end-to-end research micro-project. Pick a small, tractable question in your field. Produce:
-  - A short literature brief (≤ 5 verified citations).
-  - A one-page proposed analysis or protocol.
-  - A reflection (≤ 500 words) mapping your process onto the 4 D's.
-  - A full disclosure statement.
+- **Capstone** *(30%)*: deliver on the scoped proposal from week 3. Submit:
+  1. **Literature brief**: ≤ 5 verified citations, each with a one-sentence relevance note. Verification means each citation has been checked on PubMed or CrossRef.
+  2. **Analysis or protocol** (one-page): a proposed analysis (with code in a Quarto/Jupyter report) *or* a proposed protocol (with controls, sample size reasoning, expected outcomes).
+  3. **4 D's reflection** (≤ 500 words): map your process onto Delegation, Description, Discernment, Diligence. Where did each show up? Where did you fail and recover?
+  4. **Disclosure statement** per the [rubric](../course-syllabus.qmd#disclosure-rubric).
 
 ## Wrap-up
 
 - What worked, what didn't.
-- Commitments: what will you keep doing after the course?
+- Commitments: what habits will you keep after the course?
+- Honest acknowledgment: this is a *foundations* course. Real fluency develops over months of supervised practice. Plan accordingly.
 
 ## Supplementary
 

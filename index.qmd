@@ -1,24 +1,31 @@
 ---
-title: "AI Fluency for Biology"
-subtitle: "A 4-week short course on using AI effectively in biological research"
+title: "AI Fluency Foundations for Biology"
+subtitle: "A 4-week course on collaborating effectively with AI in biological research"
 toc: false
 ---
 
-Welcome! This site hosts the course materials for **AI Fluency for Biology**, a short course covering:
+This site hosts the course materials for **AI Fluency Foundations for Biology**. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.
 
-1. **The 4 D's of AI fluency** — Delegation, Description, Discernment, Diligence — adapted for biology.
+The course covers:
+
+1. **The 4 D's of AI fluency** — Delegation, Description, Discernment, Diligence — adapted for biology research, following [Anthropic's AI Fluency Framework](https://www.anthropic.com/ai-fluency).
 2. **LLM literacy** for bio researchers — how large language models work, prompt, and fail.
 3. **Hands-on bioinformatics** — using AI assistants for code, data analysis, literature review, and protocol design.
 
-See the [Overview](course-overview.qmd) for learning objectives, or jump straight to the schedule below.
+::: {.callout-note}
+## A note on subfield scope
+Hands-on examples lean toward genomics and transcriptomics because that's where AI tooling is most mature. The 4 D's framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop.
+:::
+
+See the [Overview](course-overview.qmd) for learning outcomes, or jump straight to the schedule below.
 
 ## Schedule
 
 | Week | Dates | Topic | Readings | Deliverable |
 |:----:|:------|:------|:---------|:------------|
-| [1](weeks/week-1.qmd) | TBD | AI fluency foundations — the 4 D's | [Delegation](fluency/delegation.qmd), [Description](fluency/description.qmd), [Discernment](fluency/discernment.qmd), [Diligence](fluency/diligence.qmd) | Reflection prompt |
+| [1](weeks/week-1.qmd) | TBD | AI fluency foundations — the 4 D's | [Delegation](fluency/delegation.qmd), [Description](fluency/description.qmd), [Discernment](fluency/discernment.qmd), [Diligence](fluency/diligence.qmd) | Reflection + tooling check |
 | [2](weeks/week-2.qmd) | TBD | LLM literacy for bio researchers | [How LLMs work](literacy/how-llms-work.qmd), [Prompting](literacy/prompting.qmd), [Tool use & agents](literacy/tool-use-and-agents.qmd), [Ethics & limits](literacy/ethics-and-limits.qmd) | Prompt-engineering exercise |
-| [3](weeks/week-3.qmd) | TBD | Hands-on bioinformatics I — code & data | [Code assistance](bioinformatics/code-assistance.qmd), [Data analysis](bioinformatics/data-analysis.qmd) | Analysis mini-project |
-| [4](weeks/week-4.qmd) | TBD | Hands-on bioinformatics II — research workflow | [Literature review](bioinformatics/literature-review.qmd), [Protocol design](bioinformatics/protocol-design.qmd) | Capstone |
+| [3](weeks/week-3.qmd) | TBD | Hands-on bioinformatics I — code & data + capstone scoping | [Code assistance](bioinformatics/code-assistance.qmd), [Data analysis](bioinformatics/data-analysis.qmd) | Mini-project + capstone proposal |
+| [4](weeks/week-4.qmd) | TBD | Hands-on bioinformatics II — literature, protocols, capstone | [Literature review](bioinformatics/literature-review.qmd), [Protocol design](bioinformatics/protocol-design.qmd) | Capstone deliverable |
 
 : {tbl-colwidths="[5,12,28,35,20]"}

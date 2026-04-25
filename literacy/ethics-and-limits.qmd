@@ -7,35 +7,53 @@ subtitle: "Epistemic, social, and environmental considerations"
 ## Learning objectives
 - Name and reason about the major ethical tensions in AI use for science.
 - Identify the epistemic risks of outsourcing judgment to a model.
-- Situate your own practice within evolving norms.
+- Make grounded data-handling decisions using your institution's policies.
 :::
 
 ## Epistemic risks
 
-- **Homogenization** — everyone using the same model converges on the same framings, blind spots, and errors.
-- **Deskilling** — offloading judgment tasks can erode the skills needed to catch the model when it's wrong.
-- **Calibration failure** — LLMs present confident, fluent answers regardless of underlying certainty. This corrodes the habits of calibrated scientific writing.
+- **Homogenization** — everyone using the same model converges on the same framings, blind spots, and errors. The default LLM answer becomes the default scientific framing.
+- **Deskilling** — offloading judgment tasks can erode the skills needed to catch the model when it's wrong. The risk is highest for trainees who use AI before developing baseline competence.
+- **Calibration failure** — LLMs present confident, fluent answers regardless of underlying certainty. Used uncritically, this corrodes the habits of calibrated scientific writing.
+- **Epistemic injustice** — Kay, Kasirzadeh & Mohamed (2024) argue that generative AI can amplify *testimonial injustice* (whose voices are heard) and *hermeneutical injustice* (whose conceptual frameworks are usable), particularly outside dominant languages and traditions.
 
 ## Authorship and attribution
 
-*TODO: summarize current norms (ICMJE, Nature, Science) on AI as non-author, disclosure requirements, and the difference between acknowledgment and authorship.*
+*TODO: summarize current norms (ICMJE, Nature, Science). The convergent position as of early 2026: AI cannot be an author (no accountability), AI use must be disclosed, and AI-generated text used verbatim must be marked. Verify the current version of each policy before teaching — these change.*
+
+The distinction worth teaching:
+
+- **Authorship** requires accountability for the work. AI cannot be accountable. AI is never an author.
+- **Acknowledgment / disclosure** is required when AI was used materially. The norms for "materially" are still forming; defaults are converging on "any non-trivial use."
+- **Citation** is for ideas and methods, not for the AI tool. Cite the *underlying paper* the AI surfaced; cite the *method* the AI implemented.
 
 ## Data, privacy, and consent
 
-- Research data often comes with consent frameworks that predate LLMs. Check before you paste.
-- "Zero-retention" API modes are not the same as on-device — verify vendor policy.
-- Patient, protected, and embargoed data deserve extra care.
+Read the [Syllabus data policy](../course-syllabus.qmd#data-policy-required-reading-before-any-assignment-using-real-data) before any assignment with real data. Key clarifications:
+
+- **"Zero-retention" API tier ≠ private.** Most vendor "no-retention" tiers still retain data briefly for abuse monitoring and incident response. They are *better* than the consumer chat product, not equivalent to on-device.
+- **"De-identified" ≠ unrestricted.** De-identified clinical data may still be subject to HIPAA / IRB / BAA terms and to your institution's contractual restrictions.
+- **For sensitive workloads**, the safer options are: institutional / on-prem deployments, vendor enterprise tiers with appropriate contracts (e.g., signed BAA where applicable), or fully local inference (e.g., a local quantized model).
+- **Consent frameworks predate LLMs.** Donor consent that allowed "research use" did not anticipate transmission to a third-party model vendor. When in doubt, ask the data steward, not the model.
 
 ## Environmental and labor costs
 
-*TODO: brief, honest summary. Training and inference have energy costs; annotation and moderation rely on human labor. Neither invalidates the technology; both should shape how you use it.*
+Honestly stated:
+
+- Pretraining a frontier model uses substantial energy. Per-query inference is small; aggregate inference is not.
+- Annotation, preference labeling, and content moderation depend on human labor, often outsourced under difficult conditions.
+- Neither cost invalidates the technology — both should shape *how often* and *how thoughtlessly* you reach for it.
 
 ## Limits worth naming
 
 - LLMs are not reliable sources of truth about the world.
-- They are not reliable arbiters of quality or novelty.
-- They do not "understand" causality, statistics, or biology in any robust sense — though they can often produce outputs that look like they do.
+- They are not reliable arbiters of quality, novelty, or significance.
+- They do not "understand" causality, statistics, or biology in any robust sense — though they can produce outputs that look like they do, especially in the dominant subfields of their training distribution.
+- They are not your peer reviewer. They are not your IRB. They are not your statistical consultant.
 
 ## Further reading
 
-- *TODO.*
+- Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI.](https://arxiv.org/abs/2408.11441) *AAAI/ACM AIES.*
+- ICMJE [Recommendations](https://www.icmje.org/recommendations/) — current online version, on AI in authorship.
+- *Nature* [editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai) — current online version.
+- *Science* family editorial AI guidelines — current online version.

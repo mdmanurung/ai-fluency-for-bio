@@ -1,6 +1,6 @@
 ---
 title: "Week 3 — Hands-on bioinformatics I"
-subtitle: "Code and data analysis with an AI assistant in the loop"
+subtitle: "Code & data analysis with an AI in the loop, and capstone scoping"
 ---
 
 ## Topics
@@ -8,6 +8,7 @@ subtitle: "Code and data analysis with an AI assistant in the loop"
 - AI-assisted scripting for bioinformatics.
 - AI-assisted QC and EDA on a real dataset.
 - Keeping ownership of scientific judgment.
+- Capstone scoping: pick a question; draft a plan.
 
 ## Before class
 
@@ -18,17 +19,27 @@ Read:
 
 Setup:
 
-- Ensure you have a working R or Python environment, and access to at least one coding AI assistant (Claude, Copilot, Cursor, etc.).
+- Working R or Python environment, **pinned** (`renv` / `conda` / `uv`).
+- Coding assistant set up and working in your editor.
+- Course dataset downloaded (TBD — public, e.g., GEO).
 
 ## In class
 
-- Pair programming session with AI.
-- Walkthrough: QC pass on a small RNA-seq (or scRNA-seq) dataset.
+- Pair programming session with AI on a small bioinformatics task.
+- Walkthrough: QC pass on a small RNA-seq (or scRNA-seq) dataset — instructor narrates the discernment moves.
+- Capstone brainstorming: each student leaves class with a one-paragraph capstone proposal and instructor feedback.
 
 ## After class
 
-- **Mini-project** *(20% of grade)*: complete a scoped bioinformatics task with AI assistance. Submit a reproducible Quarto/Jupyter report including: the task statement, your prompt history (abridged is fine), the analysis, and a disclosure statement.
+- **Mini-project** *(25%)*: a scoped AI-assisted bioinformatics analysis. Submit a reproducible Quarto/Jupyter report containing:
+  1. **Baseline (AI-free)**: write a 30-line baseline analysis by hand. Run it. Save the output.
+  2. **AI-assisted iteration**: iterate with an AI assistant. Save the working version.
+  3. **Diff and discussion**: list every substantive change the AI suggested. For each, mark *accepted* / *rejected* and note why. The grade weights the *quality of your discernment* — accepting or rejecting both have to be defensible.
+  4. **Reproducibility artifact**: pinned environment file (`renv.lock` / `environment.yml` / `uv.lock`) committed alongside the report.
+  5. **Disclosure statement** per the [rubric](../course-syllabus.qmd#disclosure-rubric).
+
+- **Capstone proposal** *(part of capstone, due end of week 3)*: one-page proposal for the week 4 capstone. Question, dataset/literature, planned approach, what AI will and will not help with.
 
 ## Supplementary
 
-*TODO: dataset link, starter repo.*
+*TODO: dataset link, starter repo, baseline analysis stub.*
