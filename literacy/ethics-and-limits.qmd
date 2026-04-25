@@ -19,7 +19,19 @@ subtitle: "Epistemic, social, and environmental considerations"
 
 ## Authorship and attribution
 
-*TODO: summarize current norms (ICMJE, Nature, Science). The convergent position as of early 2026: AI cannot be an author (no accountability), AI use must be disclosed, and AI-generated text used verbatim must be marked. Verify the current version of each policy before teaching — these change.*
+As of early 2026 the major publishers and bodies have converged on three positions — with meaningful variation in implementation detail:
+
+1. **AI cannot be listed as an author.** ICMJE, *Nature*, *Science*, and most major publishers are unambiguous on this point. Authorship requires the ability to be accountable for the work — to respond to post-publication queries, accept responsibility for errors, and make corrections. AI systems cannot do this. Listing an AI as an author is not permitted.
+
+2. **AI use must be disclosed.** The threshold for what counts as "material use" varies by journal, but the convergent norm is: if AI assisted in writing, data analysis, image generation, or code, that use must be described in the methods or acknowledgments section. Most journals require specifying which tool, for what purpose, and at what stage.
+
+3. **Verbatim AI-generated text must be marked.** Using AI output as a draft and then editing it falls under disclosure; passing AI output verbatim as your own prose may constitute a policy violation or, in assessment contexts, academic misconduct. The distinction between "AI-assisted" and "AI-generated" is increasingly policed by institutional and journal policies.
+
+::: {.callout-warning}
+## These policies change — verify before teaching
+
+ICMJE, *Nature*, and *Science* update their policies on an ongoing basis. Always link to the **current online version** of each policy rather than a cached date-stamped snapshot. The summaries above reflect the convergent position as of early 2026.
+:::
 
 The distinction worth teaching:
 

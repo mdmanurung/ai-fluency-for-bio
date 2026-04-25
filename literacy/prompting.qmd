@@ -12,7 +12,13 @@ subtitle: "A working vocabulary and a set of reliable patterns"
 
 ## Anatomy of a prompt
 
-*TODO: diagram + short prose. System prompt = durable instructions & persona. User prompt = specific request. Assistant prompt = prior model turns (for in-context examples or ongoing conversation).*
+A conversation with an LLM is made up of three conceptually distinct message types:
+
+- **System prompt** — set once per session, before any user input. Contains durable instructions: persona, output format, access rules, standing context (a document, a data schema, lab conventions). In raw API calls you control this directly; in wrapped products (ChatGPT, Claude.ai) it is partially or fully hidden.
+- **User prompt** — the specific request for this turn. What most people mean when they say "the prompt."
+- **Assistant turns** — the model's prior responses, fed back into context verbatim. In few-shot prompting, you pre-populate assistant turns with worked examples to pattern-match against.
+
+The model sees all three as a flat token sequence — there is no architecturally privileged "ground truth" channel. A well-structured system prompt shapes behavior because the model learned, during training, that system-prompt-style text predicts certain response patterns. It does not "obey" the system prompt; it continues a pattern it has seen before.
 
 ## Patterns that work
 
@@ -30,7 +36,50 @@ subtitle: "A working vocabulary and a set of reliable patterns"
 
 ## Worked example: extracting structured info from a methods section
 
-*TODO: show progression from weak prompt to strong prompt, with outputs.*
+Suppose you want to pull the sequencing platform, read length, and library prep kit from a batch of methods sections.
+
+**Weak prompt:**
+
+> Summarize this methods section.
+
+Output: a paragraph. Readable; useless for downstream data entry.
+
+**Slightly better, still weak:**
+
+> Extract the key sequencing parameters from this methods section.
+
+Output: inconsistent — sometimes a list, sometimes prose, sometimes includes parameters you didn't want, sometimes omits ones you did.
+
+**Strong prompt:**
+
+```
+You are a precise scientific data extractor.
+Extract exactly the following fields from the methods section I provide.
+Return a JSON object with these keys and no others:
+
+- "platform": sequencing platform and model (string, or null if not stated)
+- "read_length": read length in base pairs (integer, or null if not stated)
+- "library_kit": library preparation kit name (string, or null if not stated)
+
+If a field is not stated in the text, set it to null. Do not infer.
+Do not add keys beyond the three listed.
+Return only the JSON object — no prose, no explanation.
+
+Methods section:
+<text>
+{{PASTE_METHODS_HERE}}
+</text>
+```
+
+Why this works:
+
+- Role framing sets the expectation for precision over fluency.
+- Explicit field list prevents the model from deciding what counts as "key."
+- `null` for missing data prevents fabrication of unstated values.
+- Structural schema (key names, types, allowed values) beats prose description.
+- "Return only the JSON object" suppresses verbose preamble.
+
+**Iteration log** — when building an extractor for more than ten documents, keep a running table: prompt version, test input, output, verdict. Change one variable per iteration. Save the winner as a reusable template.
 
 ## Iterating on prompts
 
@@ -43,4 +92,7 @@ Treat prompting like any other optimization:
 
 ## Further reading
 
-- *TODO.*
+- Anthropic. (2025). [Prompt engineering overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview). *Anthropic developer docs* — current reference for Claude-specific prompting; the principles generalize.
+- Wei, J., et al. (2022). [Chain-of-thought prompting elicits reasoning in large language models](https://arxiv.org/abs/2201.11903). *NeurIPS 2022* — the paper that established chain-of-thought as a reliable technique.
+- Brown, T., et al. (2020). [Language models are few-shot learners](https://arxiv.org/abs/2005.14165). *NeurIPS 2020* — the GPT-3 paper; Section 2.3 introduces few-shot prompting as used in practice.
+- Schulhoff, S., et al. (2024). [The prompt report: A systematic survey of prompting techniques](https://arxiv.org/abs/2406.06608). arXiv:2406.06608 — comprehensive taxonomy of prompting strategies with empirical comparisons.
