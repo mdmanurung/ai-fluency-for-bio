@@ -6,8 +6,9 @@ subtitle: "The 4 D's: Delegation, Description, Discernment, Diligence"
 ## Topics
 
 - What "AI fluency" means, and why it matters for biology research.
-- The 4 D's framework.
+- The 4 D's framework, following [Anthropic's AI Fluency: Framework & Foundations](https://www.anthropic.com/ai-fluency).
 - First pass at applying the framework to your own workflow.
+- Course tooling: Quarto + a pinned environment + a coding assistant.
 
 ## Before class
 
@@ -18,16 +19,27 @@ Read:
 - [Discernment](../fluency/discernment.qmd)
 - [Diligence](../fluency/diligence.qmd)
 
+Skim:
+
+- Anthropic, [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency) — overview page.
+
 ## In class
 
 - Introductions and workflow audit.
-- Live walkthrough: the 4 D's applied to a BLAST-and-summarize task.
-- Small-group exercise: classify tasks from your own work with the delegation rubric.
+- Live walkthrough: the 4 D's applied to a generic delegation example (e.g., "extract structured information from a methods section" — works across subfields).
+- Tooling segment (~30 min): set up Quarto, a pinned environment of your choice (`renv` / `conda` / `uv`), and a coding assistant. By the end of class you'll have a working `quarto preview` and one committed reproducible report skeleton.
+- Small-group exercise: classify three tasks from your own work using the delegation rubric — **without** consulting an AI yet.
 
 ## After class
 
-- **Deliverable**: a short reflection (≤ 500 words) on one task you will *start* delegating, one you will *stop* delegating, and why. Use the [Syllabus disclosure template](../course-syllabus.qmd#ai-use-policy).
+- **Deliverable** *(part of weekly exercises, 30%)*: a short reflection (≤ 500 words):
+  1. **AI-free first pass**: classify three tasks from your own work using the 4 D's rubric, *without* AI input. Note your reasoning.
+  2. **AI-second pass**: optionally, run the same three tasks past an AI assistant. Note what changed in your classification, what you accepted, and what you rejected.
+  3. **Tooling confirmation**: paste the URL of your `quarto preview` skeleton repo, or attach the rendered HTML.
+  4. **Disclosure statement** following the [rubric](../course-syllabus.qmd#disclosure-rubric).
+
+The AI-free first pass is the point: the goal is to develop *your* classification skill, not to recognize when an AI's classification is reasonable.
 
 ## Supplementary
 
-*TODO: link slides, recordings, any demo notebooks.*
+*TODO: link slides, recordings, demo notebooks.*

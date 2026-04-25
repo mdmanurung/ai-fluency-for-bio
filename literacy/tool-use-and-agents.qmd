@@ -10,26 +10,34 @@ subtitle: "When the model stops just talking and starts doing"
 - Reason about the marginal risks of giving an AI write access to your filesystem, shell, or APIs.
 :::
 
+::: {.callout-warning}
+## Page is conceptual; specific tools change rapidly
+The agentic-AI landscape moves on a 6-month cycle. Specific products, APIs, and capability claims here will be out of date soon. Treat the **categories and risk patterns** as durable; verify any specific tool claim before relying on it.
+:::
+
 ## Tool use in one paragraph
 
 Modern LLMs can be given access to *tools* — functions they can call during a conversation (e.g., run a shell command, query a database, fetch a URL). The model decides when to call a tool, constructs the call, receives the result, and continues. This moves the system from "text predictor" to "loop that can act on the world."
 
-## The spectrum
+## The spectrum (by blast radius)
 
-- **Chat assistant** (pure text) — low blast radius. Failure = a bad paragraph.
-- **Coding assistant with file edits** (Cursor, Claude Code, Copilot) — moderate blast radius. Failure = bad diffs, broken local state. Guardrail = human review before commit.
-- **Agentic assistant with shell + network** — large blast radius. Failure = destructive commands, leaked data, runaway loops. Guardrail = sandboxing, permissions, explicit confirmations.
+- **Chat assistant** (pure text) — low blast radius. Failure = a bad paragraph. Mitigation = read it.
+- **Coding assistant with file edits** (Cursor, Claude Code, Copilot, similar) — moderate blast radius. Failure = bad diffs, broken local state. Mitigation = human review before commit, version control, sandboxed checkout.
+- **Agentic assistant with shell + network** — large blast radius. Failure = destructive commands, leaked credentials, runaway loops, exfiltration. Mitigation = sandboxing, scoped permissions, explicit confirmations, dry-run modes, audit logs.
+
+The blast-radius framing matters more than the marketing label. A "chat assistant" with a single shell tool is functionally an agent.
 
 ## Implications for research workflows
 
-- For analysis tasks, a coding assistant that reads/writes files is often the sweet spot.
-- For long-running literature or data-collection tasks, agentic setups are tempting — but verify at every boundary.
-- Never give an agent credentials it doesn't need.
+- For analysis tasks, a coding assistant that reads/writes files is often the sweet spot — high productivity, low surprise surface.
+- For long-running literature or data-collection tasks, agentic setups are tempting — but verify at every boundary, and prefer human-in-the-loop confirmation for irreversible actions.
+- Never give an agent credentials it doesn't need. Never give an agent credentials whose blast radius you can't bound.
+- Treat any agent with write access to a shared system (cloud bucket, lab database, version-controlled repo with auto-deploy) as a junior collaborator who never sleeps, has no judgment, and submits to whoever's prompt is loudest.
 
 ## Worked example: a minimal agent for bibliography cleanup
 
-*TODO: outline a small, safe agent loop: read `.bib`, query CrossRef, propose corrections, human confirms each one.*
+*TODO: outline a small, safe agent loop: read `.bib`, query CrossRef for each entry, propose corrections, human confirms each one before write. The point of the example is the human-confirm gate, not the cleverness of the loop.*
 
 ## Further reading
 
-- *TODO.*
+- *TODO — verify before each term, since references date quickly here.*

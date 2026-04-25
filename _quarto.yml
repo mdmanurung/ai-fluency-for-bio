@@ -3,8 +3,8 @@ project:
 
 website:
   page-navigation: true
-  title: "AI Fluency for Biology"
-  description: "A short course on using AI effectively in biological research — covering the 4 D's of AI fluency, LLM literacy, and hands-on bioinformatics workflows."
+  title: "AI Fluency Foundations for Biology"
+  description: "A 4-week foundations course on using AI effectively in biological research — the 4 D's of AI fluency, LLM literacy, and hands-on bioinformatics workflows."
   site-url: "https://mdmanurung.github.io/ai-fluency-for-bio/"
 
   repo-url: https://github.com/mdmanurung/ai-fluency-for-bio

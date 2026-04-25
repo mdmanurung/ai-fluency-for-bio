@@ -6,36 +6,62 @@ subtitle: "Just enough to reason about their behavior in research"
 ::: {.callout-note}
 ## Learning objectives
 - Explain, at a working level, what an LLM is doing when it generates text.
-- Distinguish pretraining, post-training (RLHF / preference tuning), and inference.
-- Connect mechanism to behavior: why LLMs hallucinate, why context matters, why they sometimes refuse.
+- Distinguish the major training stages and connect them to observed model behavior.
+- Use the right vocabulary for failure modes: **fabrication** (made-up facts/citations) vs. **confabulation** (the mechanism that produces them).
+:::
+
+::: {.callout-warning}
+## Scope
+This is a **working** model of how LLMs behave, not a mechanistic account. For accuracy, see the linked technical readings — what's here will let you reason about *behavior in your workflow*, not about model internals.
 :::
 
 ## What an LLM is
 
-*TODO: concise explainer — next-token prediction, transformer architecture at a functional level, tokenization, context windows, temperature.*
+*TODO: concise explainer — next-token prediction, transformer architecture at a functional level, tokenization, context windows, temperature, sampling.*
 
 Key takeaways for a working researcher:
 
 - An LLM is a function from *token sequence* to *probability distribution over next tokens*.
-- The model has no internal representation of "what is true" — only "what is likely given the training distribution."
-- Long contexts are not memory — they're the only thing the model sees.
+- The model has no internal representation of "what is true" — only "what is likely given the training distribution and the in-context evidence."
+- Long contexts are not memory — the prompt window is the entire world the model can see at inference time.
 
-## Pretraining vs. post-training
+## Training stages (simplified)
 
-*TODO: brief. Pretraining is where factual knowledge (and factual errors) come from. Post-training (RLHF, Constitutional AI, etc.) shapes tone, refusals, and format — it does not reliably fix factual gaps.*
+Modern frontier models go through *at least*:
 
-## Why LLMs hallucinate
+1. **Pretraining** — next-token prediction on a large corpus of text and code. Source of broad knowledge and most factual content; also source of factual errors and biases in the training distribution.
+2. **Supervised fine-tuning (SFT)** — training on curated instruction/response pairs. Shapes the assistant format and follows-instructions behavior.
+3. **Preference optimization** (RLHF, DPO, RLAIF, constitutional methods) — training against human or AI preferences. Shapes helpfulness, honesty, refusals, and *materially affects factual and reasoning behavior* — not just tone.
+4. **Safety / character / red-team passes** — additional tuning for refusals, persona, and adversarial robustness.
 
-- They are trained to produce fluent, plausible text — not to abstain.
-- The training objective rewards confident completion, not calibrated uncertainty.
-- For rare facts (a specific citation, a recent paper), the model interpolates.
+Don't memorize this list. The takeaway: **post-training is not just "polish."** Two models with similar pretraining can behave very differently because of preference and safety tuning.
+
+## Why models fabricate
+
+We use **fabrication** for the *outcome* (made-up facts, fake citations, invented function signatures) and **confabulation** for the *mechanism* (the model fills gaps in plausible ways from the training distribution). "Hallucination" is the common term but understates the harm when applied to citations.
+
+Why it happens:
+
+- Training rewards fluent, plausible completion — not abstention or calibrated uncertainty.
+- For rare facts (a specific paper, a recent tool version, a niche protocol), the model interpolates from neighbors in the training distribution.
+- Preference tuning further pushes toward confident, helpful-sounding answers.
+
+Huang et al. (2023) distinguish two useful types:
+
+- **Factuality fabrication** — output contradicts a verifiable real-world fact.
+- **Faithfulness fabrication** — output contradicts the source the model was given (e.g., a misquote from a paper you pasted in).
+
+Both happen; both demand different defenses.
 
 ## What this means for you
 
-- Facts at the long tail of the training distribution (specific papers, recent tools, niche protocols) are the highest-risk outputs.
+- Facts at the long tail of the training distribution (specific papers, recent tools, niche protocols) are the **highest-risk outputs**.
 - Context you provide in the prompt is *qualitatively* more reliable than facts the model recalls.
-- Retrieval (RAG), tool use, and grounding in real documents reduce — but do not eliminate — hallucination.
+- Retrieval (RAG), tool use, and grounding in real documents reduce — but do not eliminate — fabrication. They can introduce *faithfulness* fabrication where they reduce *factuality* fabrication.
 
 ## Further reading
 
-- *TODO.*
+- Bender et al. (2021), [Stochastic Parrots](https://dl.acm.org/doi/10.1145/3442188.3445922) — foundational, pre-RLHF.
+- Wei et al. (2022), [Emergent Abilities](https://arxiv.org/abs/2206.07682) — read with Schaeffer et al. (2023), [Are Emergent Abilities a Mirage?](https://arxiv.org/abs/2304.15004)
+- Ouyang et al. (2022), [Training Language Models to Follow Instructions](https://arxiv.org/abs/2203.02155) — InstructGPT / RLHF.
+- Huang et al. (2023), [A Survey on Hallucination in LLMs](https://arxiv.org/abs/2311.05232) — taxonomy and mitigation.
