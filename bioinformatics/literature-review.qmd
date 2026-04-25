@@ -35,17 +35,86 @@ It is **not useful** as the final word on:
 
 ## A verification workflow
 
-*TODO: expand. Core: for each cited paper, confirm via PubMed/DOI before incorporating. Budget the time.*
+For every citation an AI surfaces — including from grounded tools — run this five-step check before incorporating:
+
+1. **Copy the full citation** as given: title, authors, journal, year, DOI or URL.
+2. **Resolve the DOI.** Paste it into `doi.org`. If the URL does not resolve, the citation is fabricated — stop here.
+3. **Check title and authors.** Does the page that loads match what the AI claimed? Pay close attention to the article title and first two authors; these are the fields AI hallucinates most creatively.
+4. **Verify it is on-topic.** Open the abstract on PubMed (search the title or PMID) and confirm the paper is actually about what the AI said it was about.
+5. **Only then incorporate.** Budget ~3 minutes per citation. If you cannot verify in 3 minutes, refuse to cite it.
+
+A grounded tool reduces (but does not eliminate) fabrication; it can still misstate what papers say. Steps 4 and 5 apply regardless of which tool you use.
 
 ## Worked example: scoping a review on "spatial transcriptomics in the tumor microenvironment"
 
-*TODO: walk through AI-assisted triage with explicit verification at each step.*
+A graduate student wants a reading list on this topic before a lab meeting. Here is the workflow with an explicit verification log at each hand-off. The citations below represent the typical output *pattern* — your actual session will differ.
+
+### Step 1 — First-pass vocabulary from a base LLM
+
+**Prompt (ungrounded, no internet access):**
+
+> What are the key concepts and methods in spatial transcriptomics applied to the tumor microenvironment? Give me 5 foundational papers I should read.
+
+**What the AI returns:** a confident list of five citations. The vocabulary section is genuinely useful — terms like *10x Visium*, *Slide-seq*, *cell-type deconvolution*, *RCTD*, *immune exclusion*, and *immunosuppressive niche* are real and worth knowing. The citations are a different matter.
+
+**Verification log — base LLM output:**
+
+| Citation as given | DOI resolves? | Title matches? | Verdict |
+|:-----------------|:-------------|:--------------|:--------|
+| Chen et al. 2021, *Nat Commun* 12: 3847 | Yes — to an unrelated metabolomics paper | **No** | **Fabricated** |
+| Zhao et al. 2021, *Cancer Cell* 39: 411 | No response | — | **Fabricated** |
+| Rodriques et al. 2019, *Science* | Yes | Yes | Pass to step 4 |
+| Moncada et al. 2020, *Nat Biotechnol* | Yes | Yes | Pass to step 4 |
+| Cable et al. 2022, *Nat Biotechnol* | Yes | Yes | Pass to step 4 |
+
+Two of five fabricated. The DOI for Chen et al. resolved — but to a completely different paper in a different field. That is the most dangerous hallucination type: it passes a superficial check (the link works) but fails on content. **Catching it requires reading the page that loads, not just confirming the link does not 404.**
+
+The Zhao et al. DOI returned no response at all — that failure is more obvious but catches fewer students off guard than the Chen pattern.
+
+### Step 2 — Switch to a grounded tool for the actual reading list
+
+Run the same query in Elicit (grounded on Semantic Scholar's index of ~138 million papers). Citations now exist by construction — Elicit cannot invent a paper that is not in its index.
+
+**Verification log — Elicit output (sample):**
+
+| Citation as given | DOI resolves? | Title matches? | Abstract on-topic? | Verdict |
+|:-----------------|:-------------|:--------------|:------------------|:--------|
+| Ji et al. 2020, *Cell* | Yes | Yes | Yes — spatial architecture, squamous carcinoma | Include |
+| Cable et al. 2022, *Nat Biotechnol* | Yes | Yes | Yes — RCTD deconvolution for spatial data | Include |
+| Moncada et al. 2020, *Nat Biotechnol* | Yes | Yes | Yes — spatial + scRNA-seq integration | Include |
+
+Zero fabrications. But Elicit's auto-extracted summary for Cable et al. states the tool works on "10x Visium data only" — the actual paper applies to any spatial platform. Step 4 still matters: read the abstract yourself before deciding a paper belongs in your review.
+
+### Step 3 — Use AI to extract structure from papers you hold
+
+Once you have the verified PDFs, the highest-reliability AI move is to paste the abstract and ask for structured extraction:
+
+> From this abstract, extract: (1) the spatial platform used, (2) the cancer type, (3) the immune cell populations analysed, (4) the main finding in one sentence.
+
+The source text is provided by you, so the AI cannot fabricate what it is summarising. Verify the extraction against the original abstract before copying it into your notes.
+
+::: {.callout-tip}
+## Where the 4 D's showed up
+- **Description** — framing the search precisely ("spatial transcriptomics in the tumor microenvironment, foundational methods papers, 2019–2023" rather than just "cancer AI") shapes what a grounded tool retrieves.
+- **Discernment** — running the five-step check; catching the DOI that resolves to the wrong paper; reading tool summaries critically rather than accepting them.
+- *Delegation* — using a grounded tool for first-pass triage; using AI to extract structured fields from papers you already hold.
+- *Diligence* — every citation in your final list was touched by a human eye before inclusion. You are the author of record, not the AI.
+:::
+
+## Common failure modes
+
+- **Stopping at "the link works."** A hallucinated citation can carry a real DOI that belongs to a different paper. The title and content check is non-optional.
+- **Trusting grounded tools unconditionally.** Elicit and Consensus can misstate what a paper says even when the paper exists. Their summaries are starting points, not quotable claims.
+- **Outsourcing synthesis.** Asking an AI "what does the field say about X?" produces a confident synthesis that may blend real results with fabricated ones. Read the primary sources; synthesise in your own words.
 
 ## Exercises
 
 1. Ask an ungrounded LLM for 10 citations on a niche topic in your field. Verify each against PubMed. Record your hit rate.
-2. Repeat with a grounded tool. Compare.
+2. Repeat with a grounded tool (Elicit, Consensus, or Perplexity-with-sources). Compare fabrication rates and the accuracy of the auto-generated summaries.
+3. Take a paper you know well. Give its abstract to an AI and ask it to extract three structured fields. Check each extraction against the original. Record any errors.
 
 ## Further reading
 
-- *TODO.*
+- Walters, W. H., & Wilder, E. I. (2023). [Fabrication and errors in the bibliographic citations generated by ChatGPT](https://doi.org/10.1038/s41598-023-41032-5). *Scientific Reports* 13: 14045. — Systematic study of 636 AI-generated citations; GPT-3.5 fabricated 55% and GPT-4 fabricated 18%. The study that quantified why the fundamental rule above is non-negotiable.
+- Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI](https://arxiv.org/abs/2408.11441). *AAAI/ACM AIES.* — Frames the risk that uncritical AI use in research undermines collective scientific knowledge; grounds the "outsource synthesis" failure mode in a broader ethical argument.
+- [Discernment](../fluency/discernment.qmd) in this course — the five-step verification workflow is a direct application of the Discernment D; revisit the verification checklist there if any step above feels ambiguous.

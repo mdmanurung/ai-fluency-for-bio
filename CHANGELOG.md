@@ -7,6 +7,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added — branch `claude/propose-next-steps-yVScm` (PR-3)
+
+- **`bioinformatics/literature-review.qmd`** — replaced both TODOs with full content:
+  - Five-step verification workflow (copy DOI → resolve via doi.org → check title/authors → verify on-topic via PubMed → incorporate; ~3 min/citation budget).
+  - Worked example: "spatial transcriptomics in the tumor microenvironment" triage with explicit verification log across two tools. Shows one caught fabrication — a DOI that resolved to a real paper in an unrelated field — and explains why that is the most dangerous hallucination type.
+  - Switched-tool comparison: base LLM (2/5 fabricated) vs. Elicit grounded search (0/3 fabricated, but summaries still require verification).
+  - Step 3: AI for structured extraction from papers you already hold.
+  - Closing 4 D's callout mapping Description / Discernment / Delegation / Diligence.
+  - Common failure modes section: the DOI-resolves-wrong trap, unconditional grounded-tool trust, outsourcing synthesis.
+  - 2 verified citations (Walters & Wilder 2023 *Scientific Reports*, Kay et al. 2024 AAAI/ACM AIES) plus internal cross-reference to `fluency/discernment.qmd`.
+
 ### Added — branch `claude/propose-next-steps-yVScm` (PR-2)
 
 - **`bioinformatics/code-assistance.qmd`** — replaced both TODOs with full content:
