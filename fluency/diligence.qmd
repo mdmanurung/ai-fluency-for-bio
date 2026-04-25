@@ -22,7 +22,27 @@ Diligence is not fear. It is a set of practices that make your use of AI:
 
 ## Disclosure norms
 
-*TODO: expand. Summary of evolving journal policies (Nature, Science, ICMJE) and a template disclosure statement for use in this course.*
+As of early 2026, the three major policy-setting bodies have converged on three shared principles: AI cannot be listed as an author (it has no accountability and cannot give consent); AI use must be disclosed in methods or acknowledgments; AI-generated text used verbatim should be marked as such. What differs across journals is the level of specificity required and the definition of "material use."
+
+| Policy source | Core requirement | Specificity expected | Where to verify |
+|:-------------|:-----------------|:---------------------|:----------------|
+| **ICMJE** (governs most major clinical and biomedical journals) | Disclose AI use in methods; AI may not be listed as author | Tool name, version, and purpose; state what was generated | [icmje.org/recommendations](https://www.icmje.org/recommendations/) — living document |
+| **Nature Portfolio** | Disclose large language model use in the methods section; AI may not be listed as author or in acknowledgments | Specific model, version, and how it was used | [nature.com editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai) — current online version |
+| **Science family** | Disclose any AI-generated text; AI may not be listed as author | Broad; current guidance specifies "detail in methods" | Science editorial guidelines — check current online version before submission |
+
+::: {.callout-warning}
+These policies change faster than course materials. Always read the journal's current submission guidelines before finalizing a disclosure; do not rely on a cached or summarized version. The ICMJE and Nature Portfolio pages linked above are the authoritative sources.
+:::
+
+For this course, use the following template as your starting point:
+
+::: {.callout-note}
+## Template: AI disclosure statement
+
+I used [tool name, version/model, access tier] for the following purposes in this work: [list specific uses — e.g., "drafted the DESeq2 scaffold (lines 45–87 of analysis.R); suggested candidate citations for the introduction (3 of 5 were verified and retained; 2 were not found in PubMed and were discarded); polished one paragraph of the discussion"]. I verified all code by running it on [describe test conditions]. I verified all citations against PubMed or the publisher's DOI. I rejected [describe at least one AI suggestion and why]. The scientific interpretations, statistical decisions, and conclusions are my own.
+:::
+
+Score your draft against the course [disclosure rubric](../course-syllabus.qmd#disclosure-rubric) before submitting — the rubric has four scored dimensions: tools listed, use described, verification stated, and rejections noted.
 
 ## Provenance practices
 
@@ -44,4 +64,8 @@ Diligence is not fear. It is a set of practices that make your use of AI:
 
 ## Further reading
 
-- *TODO.*
+- ICMJE. (current). [Recommendations for the Conduct, Reporting, Editing, and Publication of Scholarly Work in Medical Journals](https://www.icmje.org/recommendations/). — Living document; no static date. The authoritative source for AI authorship and disclosure norms across ICMJE-member journals.
+- Hosseini, M., et al. (2023). [Fighting fire with fire: Using LLM-based tools to counter LLM-based misinformation in scientific literature](https://arxiv.org/abs/2303.06833). arXiv:2303.06833. — Frames undisclosed AI use as an integrity problem with structural consequences; relevant to the "defensible" leg of the three-part framing.
+- Hutson, M. (2022). [Robo-writers: The rise and risks of language-model AIs](https://www.nature.com/articles/d41586-022-00528-1). *Nature* 602, 348–350. — Nature's own reporting on the policy problem; directly relevant to the Nature Portfolio row in the table above.
+- Gundersen, O. E., & Kjensmo, S. (2018). [State of the art: Reproducibility in artificial intelligence](https://ojs.aaai.org/index.php/AAAI/article/view/11503). *AAAI-18.* — Grounds the "reproducible" leg: what provenance is needed and how AI-assisted workflows create new gaps that prompt logging addresses.
+- Wilkinson, M. D., et al. (2016). [The FAIR guiding principles for scientific data management and stewardship](https://www.nature.com/articles/sdata201618). *Scientific Data* 3: 160018. — The FAIR framework (Findable, Accessible, Interoperable, Reusable) applies to prompts as research artifacts: a prompt that produced a key result should meet FAIR criteria alongside the code that used it.
