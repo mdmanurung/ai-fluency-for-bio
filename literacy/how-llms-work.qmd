@@ -21,6 +21,46 @@ A language model is trained to predict the next token given all previous tokens.
 
 The prediction is carried out by a **transformer** — an architecture that uses attention mechanisms to weight every token in the context against every other token at each layer. The practical upshot: the model can integrate information from anywhere in the context window, but it does not distinguish *things that are true* from *patterns that complete this sequence plausibly*. There is no internal "fact store" being queried — there is a very large set of learned associations over token sequences.
 
+### Attention in one head: a toy calculation
+
+To make this concrete, here is how one attention head computes which tokens to weight when building the representation for a single token. Use the four-token sentence:
+
+> `gene` · `is` · `not` · `expressed`
+
+Each token is mapped to three small vectors — **Q** (query), **K** (key), **V** (value) — by learned weight matrices. For illustration, use toy two-dimensional vectors (real models use 64–128 dimensions per head):
+
+| Token | K vector |
+|:------|:---------|
+| gene | [2, 1] |
+| is | [0, 1] |
+| not | [1, 0] |
+| expressed | [1, 1] |
+
+The query for **expressed** is Q = [1, 2]. To find how much "expressed" should attend to each preceding token, compute the dot product Q · K_i:
+
+| Token | Q · K_i | Scaled ÷ √2 ≈ 1.41 |
+|:------|:--------|:-------------------|
+| gene | 1×2 + 2×1 = **4** | 4 ÷ 1.41 ≈ **2.83** |
+| is | 1×0 + 2×1 = **2** | 2 ÷ 1.41 ≈ **1.41** |
+| not | 1×1 + 2×0 = **1** | 1 ÷ 1.41 ≈ **0.71** |
+| expressed | 1×1 + 2×1 = **3** | 3 ÷ 1.41 ≈ **2.12** |
+
+The scaling by √d_k prevents the dot products from growing so large that softmax saturates. Apply softmax to the scaled scores (exp of each, divided by the sum):
+
+| Token | exp(score) | Attention weight |
+|:------|:-----------|:----------------|
+| gene | exp(2.83) ≈ 16.9 | **0.54** |
+| is | exp(1.41) ≈ 4.1 | **0.13** |
+| not | exp(0.71) ≈ 2.0 | **0.06** |
+| expressed | exp(2.12) ≈ 8.3 | **0.27** |
+| *sum* | *31.3* | *1.00* |
+
+The output for "expressed" is then the weighted sum of all V vectors:
+
+> output = 0.54·V_gene + 0.13·V_is + 0.06·V_not + 0.27·V_expressed
+
+**What this tells you.** With these toy vectors, "expressed" draws mostly from "gene" (54%) and itself (27%), and barely from "not" (6%). In a real trained model the weights would look very different — the training signal would push "not" much higher because negation is semantically critical. The arithmetic above is real; only the Q/K vectors are invented. Every layer of every head in a frontier model runs this same computation millions of times per forward pass.
+
 Two inference-time parameters that matter:
 
 - **Temperature** — scales the sharpness of the next-token distribution before sampling. Temperature 0 is greedy (always pick the most probable token — deterministic, useful for structured output and code). Higher temperatures increase diversity and apparent creativity, but also incoherence and fabrication rate. API defaults vary; most sit around 0.7–1.0.

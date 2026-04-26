@@ -48,4 +48,4 @@ Setup:
 
 ## Supplementary
 
-*TODO.*
+Slides, recording, and notebooks will be posted here after each session.

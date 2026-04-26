@@ -3,6 +3,14 @@ title: "Week 2 — LLM literacy for bio"
 subtitle: "How the tools work, and how to prompt them"
 ---
 
+::: {.callout-note}
+## Learning objectives
+- Explain, at a working level, how next-token prediction and transformer attention produce LLM behavior.
+- Apply at least three reliable prompting patterns and diagnose why a weak prompt fails.
+- Distinguish tasks suited to direct chat from tasks suited to an agentic workflow.
+- Identify disclosure obligations for AI use in your research context.
+:::
+
 ## Topics
 
 - How LLMs work, at a working level.
@@ -21,14 +29,26 @@ Read:
 
 ## In class
 
-- Short lecture: what's under the hood.
-- Live prompt clinic: attendees bring a prompt that disappointed them; we diagnose.
-- Demo: a minimal tool-using agent (e.g., bibliography cleanup).
+**Short lecture (~20 min):** What is under the hood — next-token prediction, attention, training stages, why fabrication happens. Focus on the "what this means for your workflow" section of [How LLMs work](../literacy/how-llms-work.qmd), not the mechanism.
+
+**Live prompt clinic (~40 min):** Each attendee brings one real prompt that disappointed them. For each prompt:
+
+1. **Diagnose**: which failure mode applies? (Vague request? Missing context? Wrong output format? Asking for recall instead of grounding?)
+2. **Fix**: apply one change from the [Prompting](../literacy/prompting.qmd) patterns (role + task + context + format; few-shot; constrained output; etc.).
+3. **Rerun live**: compare the new output to the original.
+4. **Record**: keep a running log — original prompt / diagnosis / fix / verdict. This log is part of the deliverable.
+
+Prompt clinic works best with prompts from your own domain; generic examples lose the group quickly. Come prepared.
+
+**Demo (~20 min):** A minimal tool-using agent — the bibliography-cleanup agent from [Tool use & agents](../literacy/tool-use-and-agents.qmd). Focus on the human-confirm gate: why it is the critical design decision, not the automation loop.
 
 ## After class
 
-- **Deliverable**: a prompt-engineering exercise. Take a recurring task from your work. Produce (a) a weak prompt, (b) a strong prompt using patterns from [Prompting](../literacy/prompting.qmd), (c) outputs from each, (d) a short critique.
+- **Deliverable** *(part of weekly exercises, 30%)*:
+  1. **Prompt-engineering exercise**: take a recurring task from your work. Produce (a) a weak prompt, (b) a strong prompt using patterns from [Prompting](../literacy/prompting.qmd), (c) outputs from each, (d) a short critique explaining what changed and why.
+  2. **Clinic log**: if your prompt was discussed in class, append the diagnosis and fix. If it wasn't, apply the four-step clinic protocol yourself outside class.
+  3. **Disclosure statement** following the [rubric](../course-syllabus.qmd#disclosure-rubric). Note which AI tools you used to produce or improve the prompts in parts 1 and 2.
 
 ## Supplementary
 
-*TODO.*
+Slides, recording, and notebooks will be posted here after each session.

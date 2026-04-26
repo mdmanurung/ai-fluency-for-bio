@@ -18,6 +18,19 @@ A conversation with an LLM is made up of three conceptually distinct message typ
 - **User prompt** — the specific request for this turn. What most people mean when they say "the prompt."
 - **Assistant turns** — the model's prior responses, fed back into context verbatim. In few-shot prompting, you pre-populate assistant turns with worked examples to pattern-match against.
 
+```{mermaid}
+%%| fig-cap: "The three message types all enter the model as one flat token stream."
+flowchart LR
+    subgraph ctx["Context window — one flat token stream"]
+        direction TB
+        S["**System prompt**\ndurable instructions, persona,\nformat rules, standing context"]
+        U["**User turn**\nthis request"]
+        A["**Assistant turn(s)**\nprior responses;\npre-populated for few-shot"]
+    end
+    ctx --> M(["LLM"])
+    M --> O["Next-token\ncompletion"]
+```
+
 The model sees all three as a flat token sequence — there is no architecturally privileged "ground truth" channel. A well-structured system prompt shapes behavior because the model learned, during training, that system-prompt-style text predicts certain response patterns. It does not "obey" the system prompt; it continues a pattern it has seen before.
 
 ## Patterns that work

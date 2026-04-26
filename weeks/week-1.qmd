@@ -42,4 +42,4 @@ The AI-free first pass is the point: the goal is to develop *your* classificatio
 
 ## Supplementary
 
-*TODO: link slides, recordings, demo notebooks.*
+Slides, recording, and notebooks will be posted here after each session.

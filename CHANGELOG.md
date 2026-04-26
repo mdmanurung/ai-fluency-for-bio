@@ -7,6 +7,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added — branch `claude/propose-next-steps-yVScm` (PR-5)
+
+- **`weeks/week-2.qmd`** — full fill: added learning-objectives callout (4 objectives); expanded "In class" into three named blocks (short lecture, 40-min prompt clinic with the 4-step BYO-prompt → diagnose → fix → rerun protocol, 20-min bibliography-cleanup agent demo); added disclosure-statement requirement to deliverable; replaced bare TODO supplementary.
+- **`weeks/week-1.qmd` and `weeks/week-4.qmd`** — replaced bare `*TODO.*` Supplementary sections with: *Slides, recording, and notebooks will be posted here after each session.*
+- **`literacy/prompting.qmd`** — added Mermaid flowchart diagram of prompt anatomy (system / user / assistant boxes inside a "flat token stream" subgraph, feeding into LLM → completion), placed between the bullet-list anatomy and the explanatory prose.
+- **`literacy/how-llms-work.qmd`** — added "Attention in one head: a toy calculation" subsection: 4-token sentence `gene is not expressed`; full Q·K dot-product table, √d_k scaling, exp/softmax table, weighted-V output formula, and explicit teaching note on what the arithmetic does and does not show.
+
 ### Added — branch `claude/propose-next-steps-yVScm` (PR-4)
 
 - **`bioinformatics/protocol-design.qmd`** — replaced the worked-example TODO with full content:
