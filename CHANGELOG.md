@@ -7,6 +7,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added — branch `claude/propose-next-steps-yVScm` (PR-5)
+
+- **`weeks/week-2.qmd`** — full fill: added learning-objectives callout (4 objectives); expanded "In class" into three named blocks (short lecture, 40-min prompt clinic with the 4-step BYO-prompt → diagnose → fix → rerun protocol, 20-min bibliography-cleanup agent demo); added disclosure-statement requirement to deliverable; replaced bare TODO supplementary.
+- **`weeks/week-1.qmd` and `weeks/week-4.qmd`** — replaced bare `*TODO.*` Supplementary sections with: *Slides, recording, and notebooks will be posted here after each session.*
+- **`literacy/prompting.qmd`** — added Mermaid flowchart diagram of prompt anatomy (system / user / assistant boxes inside a "flat token stream" subgraph, feeding into LLM → completion), placed between the bullet-list anatomy and the explanatory prose.
+- **`literacy/how-llms-work.qmd`** — added "Attention in one head: a toy calculation" subsection: 4-token sentence `gene is not expressed`; full Q·K dot-product table, √d_k scaling, exp/softmax table, weighted-V output formula, and explicit teaching note on what the arithmetic does and does not show.
+
+### Added — branch `claude/propose-next-steps-yVScm` (PR-4)
+
+- **`bioinformatics/protocol-design.qmd`** — replaced the worked-example TODO with full content:
+  - Five-step sparring-partner workflow elaborated into a realistic scRNA-seq pilot scenario (lung macrophages, influenza A, 3 time points, 6 samples, 10x Chromium GEM-X v4).
+  - **AI confidently wrong (×2)**: recommended outdated Chromium v3.1 chemistry (current kit is GEM-X v4, CG000731, with different loading parameters); recommended 10,000 cells/reaction (inappropriate for large primary macrophages; correct range 5,000–7,000).
+  - **AI usefully right**: critique-mode pass identified HTO hashtag multiplexing, which halves capture reactions, reduces batch effects, and enables doublet detection — a genuine improvement the postdoc had not planned.
+  - Reconciliation table documenting each change, its source (human vs. AI), and rationale.
+  - Closing 4 D's callout (Description, Delegation, Discernment, Diligence).
+  - Common failure modes section: treating draft as protocol, accepting version numbers at face value, skipping critique pass.
+  - 3 verified citations: Boiko et al. 2023 (*Nature*), Begley & Ellis 2012 (*Nature*), 10x GEM-X v4 user guide URL.
+
 ### Added — branch `claude/propose-next-steps-yVScm` (PR-3)
 
 - **`bioinformatics/literature-review.qmd`** — replaced both TODOs with full content:
