@@ -108,4 +108,4 @@ Treat prompting like any other optimization:
 - Anthropic. (2025). [Prompt engineering overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview). *Anthropic developer docs* — current reference for Claude-specific prompting; the principles generalize.
 - Wei, J., et al. (2022). [Chain-of-thought prompting elicits reasoning in large language models](https://arxiv.org/abs/2201.11903). *NeurIPS 2022* — the paper that established chain-of-thought as a reliable technique.
 - Brown, T., et al. (2020). [Language models are few-shot learners](https://arxiv.org/abs/2005.14165). *NeurIPS 2020* — the GPT-3 paper; Section 2.3 introduces few-shot prompting as used in practice.
-- Schulhoff, S., et al. (2024). [The prompt report: A systematic survey of prompting techniques](https://arxiv.org/abs/2406.06608). arXiv:2406.06608 — comprehensive taxonomy of prompting strategies with empirical comparisons.
+- Schulhoff, S., et al. (2024). [The prompt report: A systematic survey of prompt engineering techniques](https://arxiv.org/abs/2406.06608). arXiv:2406.06608 — comprehensive taxonomy of prompting strategies with empirical comparisons.

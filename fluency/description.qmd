@@ -75,7 +75,7 @@ The two prompts differ in length by about 200 words. The structured version take
 
 **Goal** made the scope unambiguous: pre-DE sample-level QC, not the analysis itself. Without it, the AI might add a differential expression step.
 
-**Context** gave the AI the data shape so it didn't invent column names, the experimental design so it knew to color PCA by batch (which it couldn't have guessed), and the downstream step so it understood why `vst` is appropriate — VST is preferred over `rlog` when there are many samples and speed matters, a judgment the AI can apply correctly only if it knows what comes next.
+**Context** gave the AI the data shape so it didn't invent column names, the experimental design so it knew to color PCA by batch (which it couldn't have guessed), and the downstream step so it understood the transformation choice. The researcher has already decided to use `vst` (faster, and increasingly preferred as sample counts grow — the DESeq2 authors recommend it for large datasets). The AI can apply that choice correctly only if it knows what comes next; without context, it may default to `rlog` or to whatever appears most in its training data.
 
 **Constraints** prevented scope creep and specified the deliverable format. Without the package constraint, the AI might pull in `limma`, `edgeR`, or `Seurat` depending on what it has seen in similar contexts. Without the "script, not notebook" constraint, it may produce a `.Rmd` file.
 
