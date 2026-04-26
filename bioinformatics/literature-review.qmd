@@ -73,7 +73,7 @@ The Zhao et al. DOI returned no response at all — that failure is more obvious
 
 ### Step 2 — Switch to a grounded tool for the actual reading list
 
-Run the same query in Elicit (grounded on Semantic Scholar's index of ~138 million papers). Citations now exist by construction — Elicit cannot invent a paper that is not in its index.
+Run the same query in Elicit (which searches a deduplicated corpus of ~138 million papers from Semantic Scholar, PubMed, and OpenAlex). Citations now exist by construction — Elicit cannot invent a paper that is not in its index.
 
 **Verification log — Elicit output (sample):**
 

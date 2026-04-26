@@ -60,7 +60,7 @@ qplot(coldata$sample, libsize, geom = "col") + coord_flip()
 
 ### Step 3 — Distribution and transformation choice
 
-When you ask an AI for the next step, the default suggestion will frequently be `rlog` from DESeq2 — because `rlog` appears in early DESeq2 vignettes and is heavily represented in training data. For *n* = 22, `vst` is the better choice: comparable shrinkage, materially faster, and recommended by the package authors for any dataset above ~30 samples (and acceptable well below that).
+When you ask an AI for the next step, the default suggestion will frequently be `rlog` from DESeq2 — because `rlog` appears in early DESeq2 vignettes and is heavily represented in training data. For *n* = 22, both `vst` and `rlog` are acceptable: the DESeq2 authors note that `rlog` can perform better on small datasets (≤30 samples) when library-size factors vary widely, while `vst` is materially faster and becomes the preferred choice as sample counts grow (the package prints a performance warning when *n* ≥ 30 and recommends `vst` for *n* in the hundreds).
 
 ```r
 library(DESeq2)
