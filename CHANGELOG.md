@@ -7,6 +7,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added — branch `claude/propose-next-steps-yVScm` (PR-4)
+
+- **`bioinformatics/protocol-design.qmd`** — replaced the worked-example TODO with full content:
+  - Five-step sparring-partner workflow elaborated into a realistic scRNA-seq pilot scenario (lung macrophages, influenza A, 3 time points, 6 samples, 10x Chromium GEM-X v4).
+  - **AI confidently wrong (×2)**: recommended outdated Chromium v3.1 chemistry (current kit is GEM-X v4, CG000731, with different loading parameters); recommended 10,000 cells/reaction (inappropriate for large primary macrophages; correct range 5,000–7,000).
+  - **AI usefully right**: critique-mode pass identified HTO hashtag multiplexing, which halves capture reactions, reduces batch effects, and enables doublet detection — a genuine improvement the postdoc had not planned.
+  - Reconciliation table documenting each change, its source (human vs. AI), and rationale.
+  - Closing 4 D's callout (Description, Delegation, Discernment, Diligence).
+  - Common failure modes section: treating draft as protocol, accepting version numbers at face value, skipping critique pass.
+  - 3 verified citations: Boiko et al. 2023 (*Nature*), Begley & Ellis 2012 (*Nature*), 10x GEM-X v4 user guide URL.
+
 ### Added — branch `claude/propose-next-steps-yVScm` (PR-3)
 
 - **`bioinformatics/literature-review.qmd`** — replaced both TODOs with full content:
