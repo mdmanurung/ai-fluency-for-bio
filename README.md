@@ -1,193 +1,141 @@
-# AI Fluency for Biology — Course Home
+# AI-Assisted Single-Cell RNA-seq: From FASTQ to UMAP
 
-> **Who this is for:** Practicing biologists, healthcare professionals, and bio-researchers
-> who want to use AI tools effectively and responsibly in their daily work.
-> No machine-learning background required.
+> **Who this is for:** Biologists and bioinformaticians who want to analyze
+> single-cell RNA-seq data end-to-end — and use AI tools to write, debug,
+> and explain their analysis code along the way.
 
-**Estimated Time to Complete This Orientation: 10 mins**
+**Estimated Time to Complete This Orientation: 5 mins**
 
 ---
 
-## The Biology Problem First
+## The Problem
 
-You receive a FASTA file containing 3,000 protein sequences from a metagenomic study.
-A colleague suggests running them through an LLM to predict function.
-You have three immediate questions:
+You just received 300 GB of FASTQ files from the sequencing core.
+Your 10x Chromium run captured \~8,000 cells from mouse lung tissue after influenza infection.
+You need to go from raw reads to a UMAP plot showing distinct immune cell populations —
+and your PI wants interpretable results by end of week.
 
-- Can an LLM actually "read" a FASTA file, or will it hallucinate annotations?
-- Should you use a predictive model (like ESMFold) or a generative model (like GPT-4)?
-- What happens to your sequences if you paste them into a commercial chat tool?
+Where do you start? What tools do you use? And how can AI help you move faster without
+introducing errors you won't catch until your lab meeting?
 
-This course gives you the vocabulary and habits to answer those three questions confidently —
-and to ask better ones for your own data.
+This course answers all three questions.
 
 ---
 
 ## What You Will Learn
 
-By the end of this course you will be able to:
-
 | # | Outcome | Module |
 |:--|:--------|:-------|
-| 1 | Distinguish **Predictive AI** (AlphaFold, ESMFold) from **Generative AI** (LLMs) and choose the right tool for a biology task | 1 |
-| 2 | Explain how AI ingests biological data (1D sequences, 2D gel/microscopy images, 3D PDB structures) and why data quality is the binding constraint | 2 |
-| 3 | Write structured prompts for literature synthesis, protocol troubleshooting, and RAG-based document queries using only browser tools | 3 |
-| 4 | Use an LLM as a coding assistant to automate repetitive bioinformatics tasks — and catch the errors it introduces | 4 |
-| 5 | Identify algorithmic bias in genomics datasets, evaluate biosecurity and data-sovereignty risks, and know when to run a local model instead | 5 |
+| 1 | Understand scRNA-seq library structure, interpret FastQC output, and use AI to flag quality issues | 1 |
+| 2 | Run Cell Ranger or STARsolo to generate a count matrix, and use AI to write HPC job scripts | 2 |
+| 3 | Load a count matrix into Scanpy, apply QC filters, normalize, and select highly variable genes | 3 |
+| 4 | Perform PCA, build a neighborhood graph, generate a UMAP, and cluster cells with Leiden | 4 |
+| 5 | Identify marker genes, annotate cell types, run differential expression, and export publication-ready figures | 5 |
 
 ---
 
 ## Course Modules
 
-All modules run entirely in your browser — no local software installation required.
-Tools used: **Google Colab**, **ChatGPT / Claude (web)**, **NotebookLM**.
+### Module 1 — Introduction to scRNA-seq & Raw Data QC
+
+**[→ Open Module 1](modules/module-01-raw-data-qc/README.md)**
+
+Raw FASTQ files, 10x Chromium read anatomy, FastQC interpretation, AI-assisted QC triage.
+
+**Tools:** FastQC (local or HPC), Claude / ChatGPT (web) | **Estimated Time: ~60 mins**
 
 ---
 
-### Module 1 — The Bio-AI Landscape
+### Module 2 — Alignment & Count Matrix Generation
 
-**[→ Open Module 1](modules/module-01-bio-ai-landscape/README.md)**
+**[→ Open Module 2](modules/module-02-alignment-count-matrix/README.md)**
 
-**Hook:** AlphaFold predicted the structure of nearly every known protein in two years.
-GPT-4 cannot reliably tell you whether a missense variant is pathogenic.
-Why? And what does that tell you about which tool to use when?
+Cell Ranger and STARsolo workflows, reference genome setup, filtered vs. raw matrix outputs,
+AI-generated HPC submission scripts.
 
-**What you will cover:**
-- Core AI vocabulary mapped to biology: tokenization ≈ codons; embeddings ≈ sequence space
-- Predictive AI vs. Generative AI — a decision framework for bio researchers
-- Bio-AI Glossary: 20 terms every researcher needs before reading a preprint
-- Matching exercise: AI concept → biological equivalent
-
-**Estimated Time: ~45 mins**
+**Tools:** Cell Ranger or STARsolo (HPC / cloud VM required), Claude / ChatGPT (web) | **Estimated Time: ~90 mins**
 
 ---
 
-### Module 2 — Biological Data Literacy and AI
+### Module 3 — Preprocessing & Quality Control in Scanpy
 
-**[→ Open Module 2](modules/module-02-data-literacy/README.md)**
+**[→ Open Module 3](modules/module-03-preprocessing-scanpy/README.md)**
 
-**Hook:** A lab uploads a PDB file to ChatGPT and asks for a binding-site summary.
-The model returns a confident, detailed answer — based on a protein it has never seen,
-because the file contents were not actually parsed by the model.
+Loading 10x data into AnnData, QC metric violin plots, cell filtering, doublet detection,
+normalization, log-transformation, and highly variable gene selection.
+AI used to interpret thresholds and explain filtering decisions.
 
-**What you will cover:**
-- How AI ingests 1D sequences, 2D images, and 3D structures — what is actually read vs. ignored
-- The GIGO principle applied to genomics, proteomics, and clinical data
-- Hands-on (Google Colab): use Biopython to parse a `.fasta` file, compute GC-content, and flag low-quality entries via an AI-generated script
-
-**Estimated Time: ~60 mins**
+**Tools:** Google Colab (free), Claude / ChatGPT (web) | **Estimated Time: ~75 mins**
 
 ---
 
-### Module 3 — Prompt Engineering and RAG for Science
+### Module 4 — Dimensionality Reduction, Clustering & UMAP
 
-**[→ Open Module 3](modules/module-03-prompting-rag/README.md)**
+**[→ Open Module 4](modules/module-04-clustering-umap/README.md)**
 
-**Hook:** Two researchers ask the same LLM to summarize the same paper.
-One gets a hallucinated methods section. The other gets an accurate, citable summary.
-The only difference is how they structured the prompt.
+PCA, k-NN graph, UMAP embedding, Leiden clustering, and parameter tuning.
+AI used to explain algorithm choices and debug unexpected outputs.
 
-**What you will cover:**
-- Retrieval-Augmented Generation (RAG): NotebookLM and ChatGPT document upload as zero-install RAG environments
-- Lab Exercise 1: Literature Synthesis — build an evidence table from 5 uploaded PDFs
-- Lab Exercise 2: Protocol Troubleshooting — diagnose a failed PCR setup using structured prompting
-
-**Estimated Time: ~75 mins**
+**Tools:** Google Colab (free), Claude / ChatGPT (web) | **Estimated Time: ~90 mins**
 
 ---
 
-### Module 4 — Bio-Prototyping and Workflow Automation
+### Module 5 — Cell Type Annotation & Biological Interpretation
 
-**[→ Open Module 4](modules/module-04-prototyping/README.md)**
+**[→ Open Module 5](modules/module-05-annotation-interpretation/README.md)**
 
-**Hook:** The Excel gene-name error: SEPT2, MARCH1, DEC1 — Excel silently auto-corrects
-these to dates, corrupting gene lists. This error appeared in ~20% of published genomics
-papers before journals issued formal warnings. An LLM can write the fix in two lines.
-Can you tell whether the fix is correct?
+Marker gene discovery, dotplot and violin visualization, automated annotation with CellTypist,
+differential expression between conditions, and export of final annotated UMAP.
+AI used to interpret gene lists and draft biological summaries.
 
-**What you will cover:**
-- LLMs as coding assistants: scaffolding, debugging, and the failure modes they reliably introduce
-- Hands-on fix for the Excel gene-name error using an LLM-generated Python script
-- Capstone exercise: prompt an AI to write a script that cross-references messy gene data with the HGNC database, then verify its output
-
-**Estimated Time: ~90 mins**
+**Tools:** Google Colab (free), Claude / ChatGPT (web) | **Estimated Time: ~90 mins**
 
 ---
 
-### Module 5 — Bio-Ethics, Bias, and Secure Deployment
+## Dataset Used Throughout This Course
 
-**[→ Open Module 5](modules/module-05-ethics-security/README.md)**
+All hands-on exercises use the **10x PBMC 3k dataset** — 2,700 peripheral blood mononuclear
+cells from a healthy donor, sequenced on the Illumina NextSeq 500.
 
-**Hook:** A clinical AI trained predominantly on European genomics data is deployed in
-a West African hospital. Diagnostic performance drops significantly. No one flagged this at deployment.
-What review process should have caught it?
-
-**What you will cover:**
-- Algorithmic bias in genomics: GWAS dataset ancestry imbalance and downstream clinical risk
-- Biosecurity: dual-use risks when prompting LLMs with pathogen sequence data
-- Data sovereignty: Consumer Tier vs. Enterprise/API Tier — what you must NOT paste into a commercial chat tool
-- HIPAA-compliant options: introducing Local LLMs (Ollama) as a secure sandbox concept
-- Reflection exercise: diagnostic AI case study analysis
-
-**Estimated Time: ~60 mins**
+- Public domain, freely downloadable from 10x Genomics
+- Small enough to run in Google Colab on a free tier
+- Contains 8 well-characterized cell types (T cells, B cells, NK cells, monocytes, dendritic cells)
+- The canonical "hello world" dataset for single-cell analysis
 
 ---
 
-## How This Course Works
+## Tools at a Glance
 
-### Structure of Every Module
+| Module | Key Tools | Installation Required? |
+|--------|-----------|----------------------|
+| 1 | FastQC, Claude / ChatGPT | FastQC: local or HPC |
+| 2 | Cell Ranger or STARsolo | HPC or cloud VM |
+| 3 | Google Colab + Scanpy | None (browser) |
+| 4 | Google Colab + Scanpy | None (browser) |
+| 5 | Google Colab + Scanpy + CellTypist | None (browser) |
 
-Each module follows the same four-part pattern:
-
-1. **Hook** — A real biology problem that the AI concept solves (or complicates)
-2. **Concept** — Concise explanation with biology-native analogies
-3. **Hands-on** — A guided exercise using only browser tools
-4. **Check** — A gold-standard output so you can compare your own work:
-
-```html
-<details>
-<summary>View Gold Standard Output</summary>
-
-[Expected result, with explanation of why it is correct]
-
-</details>
-```
-
-### Tooling Policy
-
-This course uses **zero local installations**.
-Every exercise runs in one of:
-
-| Tool | Free? | Used in |
-|------|-------|---------|
-| [Google Colab](https://colab.research.google.com/) | Yes | Modules 2, 4 |
-| [Claude](https://claude.ai/) or [ChatGPT](https://chat.openai.com/) | Free tier sufficient | All modules |
-| [NotebookLM](https://notebooklm.google.com/) | Yes | Module 3 |
-
-If an exercise in any module asks you to install software locally, that is a content error —
-please [open an issue](https://github.com/mdmanurung/ai-fluency-for-bio/issues).
+> **Modules 3–5 are fully browser-based.** If you do not have HPC access,
+> you can skip to Module 3 using the pre-processed PBMC 3k count matrix
+> provided in that module.
 
 ---
 
 ## Getting Started
 
-1. You are on the course home page. Read the module hooks above to gauge your starting point.
-2. Open [Module 1](modules/module-01-bio-ai-landscape/README.md). Each module ends with a direct link to the next.
-3. Modules are largely independent — if you are already comfortable with the Bio-AI Landscape, start at Module 2.
+1. If you have HPC or cloud access: start at [Module 1](modules/module-01-raw-data-qc/README.md)
+2. If you only have a browser: skip to [Module 3](modules/module-03-preprocessing-scanpy/README.md) — a pre-processed count matrix is provided
 
-**Total estimated course time: ~5.5 hours across 5 modules.**
-Designed for self-paced completion over 1–2 weeks alongside an active research schedule.
+**Total estimated time: ~7.5 hours across 5 modules.**
 
 ---
 
 ## License
 
 Content is licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-You may reuse and adapt these materials for your own teaching with attribution.
+You may reuse and adapt these materials with attribution.
 
 ---
 
 ## For Course Contributors and Developers
 
-Looking to build the Quarto site locally, add module content, or deploy to GitHub Pages?
 See [CONTRIBUTING.md](CONTRIBUTING.md).
