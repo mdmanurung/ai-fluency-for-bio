@@ -39,7 +39,7 @@ For this course, use the following template as your starting point:
 ::: {.callout-note}
 ## Template: AI disclosure statement
 
-I used [tool name, version/model, access tier] for the following purposes in this work: [list specific uses — e.g., "drafted the DESeq2 scaffold (lines 45–87 of analysis.R); suggested candidate citations for the introduction (3 of 5 were verified and retained; 2 were not found in PubMed and were discarded); polished one paragraph of the discussion"]. I verified all code by running it on [describe test conditions]. I verified all citations against PubMed or the publisher's DOI. I rejected [describe at least one AI suggestion and why]. The scientific interpretations, statistical decisions, and conclusions are my own.
+I used [tool name, version/model, access tier] for the following purposes in this work: [list specific uses — e.g., "drafted the Scanpy QC scaffold (cells 3–9 of `qc.ipynb`); suggested candidate citations for the introduction (3 of 5 were verified and retained; 2 were not found in PubMed and were discarded); polished one paragraph of the discussion"]. I verified all code by running it on [describe test conditions]. I verified all citations against PubMed or the publisher's DOI. I rejected [describe at least one AI suggestion and why]. The scientific interpretations, statistical decisions, and conclusions are my own.
 :::
 
 Score your draft against the course [disclosure rubric](../course-syllabus.qmd#disclosure-rubric) before submitting — the rubric has four scored dimensions: tools listed, use described, verification stated, and rejections noted.

@@ -2,14 +2,18 @@
 title: "Teaching team"
 ---
 
+::: {.callout-note}
+This page will be finalised before week 1. If you are reading this before the term starts, names below are placeholders.
+:::
+
 ## Instructor
 
-**TBD** — role, affiliation, short bio, research interests, contact.
+*To be announced before week 1.* Role, affiliation, short bio, research interests, and contact will be posted here.
 
 ## Teaching assistants
 
-**TBD** — names and contact info.
+*To be announced before week 1.* Names and contact will be posted here when assignments are confirmed.
 
 ## Guest contributors
 
-*(Add names and topics as guest lectures are scheduled.)*
+*Added as guest sessions are scheduled.* Where possible, guest names will be posted at least one week before the relevant session.

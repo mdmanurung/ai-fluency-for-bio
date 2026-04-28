@@ -5,9 +5,9 @@ subtitle: "Using AI for bioinformatics scripting and debugging"
 
 ::: {.callout-note}
 ## Learning objectives
-- Use an AI coding assistant for common bioinformatics scripting tasks (R/Python).
-- Debug with AI: providing minimal reproducible context.
-- Recognize AI-generated code smells and correct them.
+- Use an AI coding assistant for common bioinformatics scripting tasks.
+- Debug with AI by providing minimal reproducible context.
+- Recognise AI-generated code smells and correct them.
 :::
 
 ## Scope
@@ -16,16 +16,17 @@ This page focuses on **interactive coding assistance** — chat-based or in-IDE 
 
 ## Tasks the current generation does well
 
-- Boilerplate I/O: reading `fastq`, `vcf`, `bam`, `h5ad`, Seurat/SingleCellExperiment objects.
-- Refactoring: splitting a long script into functions, renaming variables, adding type hints/roxygen docs.
-- Translating: R ↔ Python, base R ↔ tidyverse, pandas ↔ polars.
+- Boilerplate I/O: reading `fastq`, `vcf`, `bam`, `h5ad`, AnnData / Seurat / SingleCellExperiment objects.
+- Refactoring: splitting a long script into functions, renaming variables, adding type hints / docstrings.
+- Translating: R ↔ Python, pandas ↔ polars, Scanpy ↔ Seurat where the workflow maps cleanly.
 - Explaining: "what does this block do?" on unfamiliar code.
 
 ## Tasks the current generation is unreliable at
 
-- Choosing the *right* statistical test or the *right* normalization for your data.
+- Choosing the *right* clustering resolution or the *right* normalisation for your data.
 - Matching tool versions and API signatures when those changed recently.
 - Remembering the exact schema of a lesser-known file format.
+- Knowing the organism — AI defaults to human conventions (`MT-` prefix, `TP53` casing); silently wrong on mouse (`mt-`, `Trp53`).
 
 ## A minimum viable workflow
 
@@ -42,60 +43,66 @@ The single most effective move when debugging with AI is giving it **everything 
 1. **Full traceback** — the complete stack trace, not just the last line.
 2. **Minimal failing code** — the smallest block that triggers the error, not the whole script.
 3. **One paragraph of intent** — what the function is *supposed* to do and what you expected to happen.
-4. **Environment** — Python version, relevant package versions (`pandas.__version__`, etc.).
+4. **Environment** — Python version, relevant package versions (`scanpy.__version__`, etc.).
 
 ### Same bug, two prompts
 
 **Weak prompt (what most people send first):**
 
-> "Getting a KeyError. How do I fix it?"
+> "Getting a KeyError on 'mt'. How do I fix it?"
 
-The AI will guess. It typically suggests wrapping everything in `if key in dict` — a fix that compiles but hides the actual problem.
+The AI will guess. It typically suggests wrapping the access in `if 'mt' in adata.var.columns` — a fix that compiles but hides the actual problem (the flag was never computed).
 
 **Strong prompt:**
 
-> I am loading the GSE96870 coldata CSV and checking that its `sample` column matches the count-matrix column names. Here is the full traceback:
+> I am running QC on the PBMC 3k dataset in Scanpy and `sc.pp.calculate_qc_metrics` is failing. Here is the full traceback:
 >
 > ```
-> KeyError: 'sample'
+> KeyError: 'mt'
 > Traceback (most recent call last):
->   File "validate.py", line 12, in validate_sample_sheet
->     assert list(coldata["sample"]) == list(counts.columns[1:])
-> KeyError: 'sample'
+>   File "qc.py", line 7, in <module>
+>     sc.pp.calculate_qc_metrics(adata, qc_vars=['mt'], percent_top=None,
+>                                log1p=False, inplace=True)
+>   File ".../scanpy/preprocessing/_qc.py", line ...
+> KeyError: 'mt'
 > ```
 >
 > Failing code:
 >
 > ```python
-> coldata = pd.read_csv("GSE96870_coldata_cerebellum.csv")
-> counts  = pd.read_csv("GSE96870_counts_cerebellum.csv")
-> assert list(coldata["sample"]) == list(counts.columns[1:])
+> import scanpy as sc
+> adata = sc.datasets.pbmc3k()
+> adata.var_names_make_unique()
+> sc.pp.calculate_qc_metrics(adata, qc_vars=['mt'], percent_top=None,
+>                            log1p=False, inplace=True)
 > ```
 >
-> I expect `coldata` to have a column named `sample`. The raw file header (`head -1`) is:
-> `sample,title,geo_accession,organism,age,sex,infection,strain,time,tissue,mouse`
+> I expect `qc_vars=['mt']` to compute mitochondrial-fraction metrics. The dataset is 10x Chromium v1 PBMCs, human, ≈2,700 cells, ≈32,000 genes.
 >
-> Environment: Python 3.11, pandas 2.2.1.
+> Environment: Python 3.11, scanpy 1.10.1, anndata 0.10.7.
 
-With the strong prompt the AI can immediately identify that `coldata["sample"]` *should* work — and ask whether the CSV was read with a leading whitespace in the header, or whether a file handle was passed instead of a path string. Both are real candidates; the weak prompt rules out neither.
+With the strong prompt the AI can immediately identify that `qc_vars=['mt']` requires a column called `mt` in `adata.var`, and that you have not added it. The fix is `adata.var['mt'] = adata.var_names.str.startswith('MT-')` *before* the metrics call. The weak prompt gives no signal that this is the issue.
 
 **Why the pattern works**: the AI is doing next-token prediction, not causal reasoning. A vague prompt produces a generic completion. A specific prompt produces a specific one. The four-part structure is the [Description](../fluency/description.qmd) skill applied to debugging.
 
-## Worked example: AI-assisted test writing for `validate_sample_sheet`
+## Worked example: AI-assisted test writing for `validate_qc_outputs`
 
-Continuing the GSE96870 grad-student persona from [Data analysis](data-analysis.qmd): after the QC walkthrough loads and inspects the data, you want to lock that loading contract in code so it cannot break silently.
+After the QC walkthrough in [Module 3](../modules/module-03-preprocessing-scanpy/README.md) (or the [Data analysis page](data-analysis.qmd)) loads PBMC 3k and runs the QC pipeline, you want to lock that QC contract in code so the next student picking up the notebook does not silently break it.
 
 ### Step 1 — Write the function signature and docstring yourself
 
 ```python
-def validate_sample_sheet(coldata_path: str, counts_path: str) -> None:
+import anndata as ad
+
+def validate_qc_outputs(adata: ad.AnnData) -> None:
     """
-    Raise AssertionError if the sample sheet fails any contract check.
+    Raise AssertionError if the post-QC AnnData fails any contract check.
 
     Checks:
-    - Required columns are present in coldata.
-    - Sample order in coldata matches count-matrix column order.
-    - All expected factor levels are present (sex, infection, time).
+    - Required obs columns are present: n_genes_by_counts, total_counts, pct_counts_mt.
+    - var has the boolean 'mt' flag and at least one mitochondrial gene was detected.
+    - Cell count is in a plausible range for PBMC 3k after QC (1,000 < n_obs < 3,000).
+    - Counts have been log-normalised (max value < 15 on the dense slice).
     """
 ```
 
@@ -105,100 +112,91 @@ Write the signature and docstring yourself. The docstring *is* the contract. Do 
 
 Use the four-part pattern to give the AI sufficient context:
 
-> Function `validate_sample_sheet` has the signature and docstring below. The GSE96870 cerebellum coldata has 22 rows; columns: sample, title, geo_accession, organism, age, sex, infection, strain, time, tissue, mouse. Factor levels: sex = {Female, Male}, infection = {Influenza A, NonInfected}, time = {Day0, Day4, Day8}. Environment: Python 3.11, pytest 8. Draft pytest tests covering the contract in the docstring.
+> Function `validate_qc_outputs` has the signature and docstring below. The PBMC 3k dataset (`sc.datasets.pbmc3k`) starts at 2,700 × 32,738 and after standard QC (min_genes=200, n_genes<2,500, pct_counts_mt<5) has ≈2,638 cells. Environment: Python 3.11, scanpy 1.10.1, anndata 0.10.7, pytest 8. Draft pytest tests covering the contract in the docstring.
 
 The AI returns something like:
 
 ```python
 import pytest
-import pandas as pd
-from validate import validate_sample_sheet
+import numpy as np
+import scanpy as sc
+import anndata as ad
+from validate import validate_qc_outputs
 
-def test_passes_on_valid_input(tmp_path):
-    coldata = pd.DataFrame({
-        "sample": ["s1", "s2"], "sex": ["Female", "Male"],
-        "infection": ["Influenza A", "NonInfected"], "time": ["Day0", "Day4"]
-    })
-    counts = pd.DataFrame({"gene": ["Actb"], "s1": [100], "s2": [200]})
-    coldata.to_csv(tmp_path / "coldata.csv", index=False)
-    counts.to_csv(tmp_path / "counts.csv", index=False)
-    validate_sample_sheet(str(tmp_path / "coldata.csv"), str(tmp_path / "counts.csv"))
+@pytest.fixture
+def qc_adata():
+    adata = sc.datasets.pbmc3k()
+    adata.var_names_make_unique()
+    adata.var['mt'] = adata.var_names.str.startswith('MT-')
+    sc.pp.calculate_qc_metrics(adata, qc_vars=['mt'], percent_top=None,
+                               log1p=False, inplace=True)
+    sc.pp.filter_cells(adata, min_genes=200)
+    sc.pp.filter_genes(adata, min_cells=3)
+    adata = adata[adata.obs.n_genes_by_counts < 2500, :]
+    adata = adata[adata.obs.pct_counts_mt < 5, :].copy()
+    sc.pp.normalize_total(adata, target_sum=1e4)
+    sc.pp.log1p(adata)
+    return adata
 
-def test_missing_required_column_raises(tmp_path):
-    coldata = pd.DataFrame({"sample": ["s1"], "sex": ["Female"]})  # no infection/time
-    counts = pd.DataFrame({"gene": ["Actb"], "s1": [100]})
-    coldata.to_csv(tmp_path / "coldata.csv", index=False)
-    counts.to_csv(tmp_path / "counts.csv", index=False)
+def test_passes_on_valid_qc(qc_adata):
+    validate_qc_outputs(qc_adata)
+
+def test_missing_obs_column_raises(qc_adata):
+    qc_adata.obs = qc_adata.obs.drop(columns=['pct_counts_mt'])
     with pytest.raises(AssertionError):
-        validate_sample_sheet(str(tmp_path / "coldata.csv"), str(tmp_path / "counts.csv"))
+        validate_qc_outputs(qc_adata)
 
-def test_sample_order_mismatch_raises(tmp_path):
-    coldata = pd.DataFrame({
-        "sample": ["s2", "s1"], "sex": ["Male", "Female"],
-        "infection": ["NonInfected", "NonInfected"], "time": ["Day0", "Day0"]
-    })
-    counts = pd.DataFrame({"gene": ["Actb"], "s1": [100], "s2": [200]})
-    coldata.to_csv(tmp_path / "coldata.csv", index=False)
-    counts.to_csv(tmp_path / "counts.csv", index=False)
+def test_no_mt_genes_raises(qc_adata):
+    # Wrong organism prefix simulation — flag exists but is all False
+    qc_adata.var['mt'] = False
     with pytest.raises(AssertionError):
-        validate_sample_sheet(str(tmp_path / "coldata.csv"), str(tmp_path / "counts.csv"))
+        validate_qc_outputs(qc_adata)
+
+def test_unnormalised_counts_raise(qc_adata):
+    # Re-load raw counts; max value will exceed log-norm bounds
+    qc_adata.X = qc_adata.raw.X if qc_adata.raw is not None else qc_adata.X * 100
+    with pytest.raises(AssertionError):
+        validate_qc_outputs(qc_adata)
 ```
 
 ### Step 3 — Prune and extend with Discernment
 
-The AI also proposes tests that `geo_accession` starts with `"GSM"`, that `organism` equals `"Mus musculus"`, and that `mouse` values are integers.
+The AI also proposes tests that `qc_adata.obs.shape[0] == 2638` exactly, that `qc_adata.var.shape[0] >= 13000`, and that the donor is healthy.
 
-**Reject these.** They validate data provenance, not the loading contract. If you later run the same validator on a different GEO series, they break even though the function is correct. The [Discernment](../fluency/discernment.qmd) move: keep tests that validate *structure your downstream code depends on*; discard tests that validate *data identity*.
+**Reject these.** They validate dataset identity, not the QC contract. If you re-run with slightly different thresholds (or on a different PBMC sample), they break even though the function is correct. The [Discernment](../fluency/discernment.qmd) move: keep tests that validate *structure your downstream code depends on*; discard tests that validate *data identity*.
 
-One test the AI misses: that `time` levels are exactly `{Day0, Day4, Day8}` with no typos (`"day0"` or `"Day 0"`). Add it yourself:
+One test the AI misses: that the `mt` column is **boolean**, not integer or string. A user who writes `adata.var['mt'] = adata.var_names.str.startswith('MT-').astype(int)` produces a column that *looks* right and `qc_vars=['mt']` even accepts it, but downstream Scanpy code that assumes a boolean mask fails silently. Add it yourself:
 
 ```python
-def test_time_levels_exact(tmp_path):
-    coldata = pd.DataFrame({
-        "sample": ["s1"], "sex": ["Female"],
-        "infection": ["NonInfected"], "time": ["day0"]  # wrong case
-    })
-    counts = pd.DataFrame({"gene": ["Actb"], "s1": [100]})
-    coldata.to_csv(tmp_path / "coldata.csv", index=False)
-    counts.to_csv(tmp_path / "counts.csv", index=False)
-    with pytest.raises(AssertionError):
-        validate_sample_sheet(str(tmp_path / "coldata.csv"), str(tmp_path / "counts.csv"))
+def test_mt_flag_is_boolean(qc_adata):
+    assert qc_adata.var['mt'].dtype == bool
 ```
 
-### The R equivalent
+### A note on R / Seurat
 
-In R, the same contract is expressed with `testthat`. Write the validator in `R/validate.R`, then in `tests/testthat/test-validate.R`:
-
-```r
-testthat::test_that("sample order matches count columns", {
-  testthat::expect_error(
-    validate_sample_sheet(coldata_path_bad, counts_path),
-    regexp = "order"
-  )
-})
-```
-
-The workflow is identical: you write the contract; AI drafts the test bodies; you prune.
+The scRNA-seq workflow has an R/[Seurat](https://satijalab.org/seurat/) equivalent at every step (`CreateSeuratObject` → `PercentageFeatureSet(pattern = "^MT-")` → `subset` → `NormalizeData` → `FindVariableFeatures` → `ScaleData` → `RunPCA` → `FindNeighbors` → `RunUMAP` → `FindClusters`). The `testthat` workflow for the same contract is identical: write the validator in `R/validate.R`, drive it with `testthat::expect_error` in `tests/testthat/test-validate.R`. The pattern transfers. The Python path is the course default because the modules use Scanpy.
 
 ::: {.callout-tip}
 ## Where the 4 D's showed up
-- **Description** — writing the function signature and docstring yourself gives the AI the contract it needs. "Write tests for my data loader" without context produces tests for a loader the AI invents.
-- **Delegation** — `tmp_path` fixture scaffolding, `pytest.raises` patterns, and the first three test bodies are exactly where AI adds speed without risk.
-- **Discernment** — rejecting brittle provenance tests; catching the level-typo test the AI missed.
-- **Diligence** — you own the contract. If `validate_sample_sheet` passes every test and the downstream analysis still breaks, the test suite was incomplete — and that is on you, not the AI.
+- **Description** — writing the function signature and docstring yourself gives the AI the contract it needs. "Write tests for my QC function" without context produces tests for a function the AI invents.
+- **Delegation** — the pytest fixture, `pytest.raises` patterns, and the boilerplate test bodies are exactly where AI adds speed without risk.
+- **Discernment** — rejecting brittle dataset-identity tests; catching the boolean-dtype test the AI missed.
+- **Diligence** — you own the contract. If `validate_qc_outputs` passes every test and downstream clustering still breaks, the test suite was incomplete — and that is on you, not the AI.
 :::
 
 ## Common failure modes
 
-- **Asking the AI to generate the contract.** "Write tests for my data loader" produces tests that pass on the AI's imagined version of the loader, not yours.
+- **Asking the AI to generate the contract.** "Write tests for my QC function" produces tests that pass on the AI's imagined version of the function, not yours.
+- **Wrong organism conventions.** AI assistants default to human conventions: `MT-` (not `mt-`), `TP53` (not `Trp53`), `MS4A1` (not `Ms4a1`). Always specify organism in the prompt and verify the resulting flag is non-empty.
 - **Package hallucination.** AI coding assistants sometimes suggest imports from packages that do not exist, or from real packages that do not export the named function. Always `pip show <package>` before trusting a new import.
-- **Stale API signatures.** AI training data lags by months to years. For fast-moving libraries (e.g., `scanpy`, `anndata`, `PyDESeq2`), verify function signatures in the current documentation, not the AI's output.
+- **Stale API signatures.** AI training data lags by months to years. For fast-moving libraries (`scanpy`, `anndata`, `scrublet`), verify function signatures in the current documentation, not the AI's output.
+- **Operating on AnnData views.** `adata = adata[mask, :]` returns a view; subsequent in-place modification triggers warnings that often become silent inconsistencies. Add `.copy()` after subsetting if the next step writes.
 
 ## Exercises
 
 1. Take a 50–100 line bioinformatics script you wrote from scratch. Ask an AI to refactor it. Keep what's better, reject what's worse.
 2. Take a bug you fixed recently. Reconstruct the error state and ask an AI to debug it cold. Apply the four-part pattern. How much does context quality change the answer?
-3. Implement `validate_sample_sheet` for GSE96870 in Python or R. Run the AI-generated test suite. Add at least one test the AI missed. Bring both to the week 3 session.
+3. Implement `validate_qc_outputs` for PBMC 3k. Run the AI-generated test suite. Add at least one test the AI missed (consider organism conventions, dtype, view vs. copy). Bring both to the week 3 session.
 
 ## Further reading
 

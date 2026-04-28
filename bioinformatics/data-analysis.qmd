@@ -1,121 +1,158 @@
 ---
 title: "Data analysis"
-subtitle: "AI-assisted exploration, QC, and statistics on bio datasets"
+subtitle: "AI-assisted exploration, QC, and interpretation on scRNA-seq data"
 ---
 
 ::: {.callout-note}
 ## Learning objectives
-- Use AI to accelerate exploratory data analysis without outsourcing the scientific judgment.
-- Build a QC pass for a new dataset with AI assistance, while owning every decision.
-- Evaluate AI-suggested statistical tests critically.
+- Use AI to accelerate exploratory single-cell analysis without outsourcing the scientific judgement.
+- Build a QC pass for an scRNA-seq dataset with AI assistance, while owning every threshold.
+- Evaluate AI-suggested clustering parameters and annotation calls critically.
+:::
+
+::: {.callout-tip}
+## How this page relates to Module 3
+[Module 3](../modules/module-03-preprocessing-scanpy/README.md) is the **runnable procedure** — copy-paste the cells into Colab and you get a clean PBMC 3k AnnData. This page is the **AI-fluency lens** on those same steps: where AI helps most, where it fails, and which decisions stay yours. Read both. Run Module 3.
 :::
 
 ## Where AI helps most
 
-- **Exploratory data analysis**: generating plots, summaries, sanity checks on a new dataset.
-- **Code for standard pipelines**: DESeq2, limma-voom, Seurat/Scanpy scaffolds.
-- **Explaining unfamiliar output**: "what does this diagnostic plot mean?"
+- **Boilerplate I/O**: loading 10x output (`sc.read_10x_mtx`, `sc.datasets.pbmc3k`), making gene names unique, flagging mt-genes.
+- **Standard pipeline scaffolds**: Scanpy QC, Seurat QC, Bioconductor scaffolds for related tasks.
+- **Plot recipes**: violin, scatter, UMAP, dotplot calls — the syntax you forget every time.
+- **Explaining unfamiliar output**: "what does this scrublet histogram mean?" "what does my QC violin plot say about this tissue?"
 
 ## Where AI helps least
 
-- **Choosing the model**: "Should I use a mixed-effects model or a paired test?" — AI's default answer is often the textbook answer, not the answer for your data.
-- **Interpreting borderline results**: p = 0.06, log2FC = 0.3, n = 5. The AI will tell you a story. Don't let it.
+- **Choosing tissue-specific thresholds.** "What `pct_counts_mt` cutoff should I use?" gets a textbook answer (5% for PBMCs); the *right* answer depends on tissue, dissociation protocol, and the shape of *your* histogram. AI cannot see your histogram.
+- **Reading clustering for biology.** Leiden gives you clusters at a resolution; the AI will guess what each cluster is. The biological interpretation — supported by markers, prior knowledge, and the experimental context — is yours.
+- **Borderline cases.** A tail of high-mt cells: ambient RNA, dying cells, real biology, or all three? The AI will tell you a story. Don't let it.
 
 ## A template workflow
 
-1. **Describe the dataset to the AI** — structure, columns, source, known quirks. (Practice the [Description](../fluency/description.qmd) skill.)
+1. **Describe the dataset to the AI** — platform, organism, tissue, expected cell types, library version, total cells. (Practice the [Description](../fluency/description.qmd) D.)
 2. **Ask for a QC plan**, not a QC answer. Critique the plan. Then execute.
-3. **Run each step yourself** (or via an AI coding assistant you supervise). Look at the outputs.
-4. **Write interpretations in your own words**. Use AI for prose polishing, not for reasoning.
+3. **Run each step yourself** (or via an AI coding assistant you supervise). Look at every plot.
+4. **Write interpretations in your own words.** Use AI for prose polishing, not for reasoning.
 
-## Worked example: QC on the GSE96870 cerebellum subset
+## Worked example: QC on 10x PBMC 3k
 
-The course dataset for weeks 3–4 is the cerebellum subset of [GSE96870](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE96870) (Blackmore et al., 2017): 22 mouse cerebellum samples across two sexes, three timepoints (Day 0, Day 4, Day 8), and two infection conditions (Influenza A vs. uninfected). The Carpentries [bioc-rnaseq](https://carpentries-incubator.github.io/bioc-rnaseq/) lesson redistributes it as plain CSVs (counts + sample metadata), so it loads identically into R or Python.
+The course dataset is the [10x PBMC 3k](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0) — 2,700 PBMCs from a healthy donor, 10x Chromium v1, ≈8 well-characterised cell types. Scanpy bundles it as `sc.datasets.pbmc3k()`.
 
-The walkthrough below uses R. The Python equivalent is in [Code assistance](code-assistance.qmd) and the [Python starter notebook](../weeks/starter-week3-python.qmd) — `pandas` + `scanpy`/`pydeseq2` map onto the same steps.
+The walkthrough below is the AI-fluency commentary on Module 3's QC steps; the runnable code is in the [module](../modules/module-03-preprocessing-scanpy/README.md). Both proceed in the same order.
 
-### Step 1 — Sample sheet
+### Step 1 — Frame the dataset for the AI
 
-Goal: load the metadata, confirm samples line up with count columns, and inspect factor balance.
+Goal: load the count matrix, confirm the shape, and give the AI enough context that its later suggestions land.
 
-```r
-coldata <- readr::read_csv("GSE96870_coldata_cerebellum.csv")
-counts  <- readr::read_csv("GSE96870_counts_cerebellum.csv")
-stopifnot(identical(coldata$sample, colnames(counts)[-1]))
-table(coldata$sex, coldata$infection, coldata$time)
+```python
+import scanpy as sc
+adata = sc.datasets.pbmc3k()
+adata.var_names_make_unique()
+print(adata)              # n_obs × n_vars = 2700 × 32738
 ```
 
-**AI's role**: writing the boilerplate `read_csv` + `stopifnot` lines from a one-line description.
+**AI's role**: writing the load + dedup + print pattern from a one-line description. **Yours**: telling the AI explicitly that this is *human* PBMCs from a *10x Chromium v1* run with a *healthy donor*, and that you expect about 8 cell types. Without that context every later suggestion (mt threshold, doublet rate, marker panel, organism prefix) will be a guess.
 
-**The discernment move**: read the `table()` output yourself. The Carpentries subset has 22 samples — not 24, as a student expecting `2 × 3 × 2 × 2 = 24` would assume. Two cells of the design have only 1 sample. An AI will not flag this on its own; it will happily fit a model that the data cannot identify. Catching this is [Diligence](../fluency/diligence.qmd): you are the analyst of record for the design.
+### Step 2 — Calculate QC metrics
 
-### Step 2 — Library sizes
-
-```r
-libsize <- colSums(counts[ , -1])
-qplot(coldata$sample, libsize, geom = "col") + coord_flip()
+```python
+adata.var['mt'] = adata.var_names.str.startswith('MT-')   # human prefix
+sc.pp.calculate_qc_metrics(adata, qc_vars=['mt'], percent_top=None,
+                           log1p=False, inplace=True)
 ```
 
-**AI's role**: producing the plot. **Yours**: deciding the threshold for "too small." For this dataset library sizes range roughly 28–80 M reads — comfortably above 5 M, so no sample is flagged on size alone. The decision *itself* is the discernment, even when nothing fails it.
+**AI's role**: the boilerplate. **The discernment move**: the prefix is `MT-` for human and `mt-` for mouse. An AI that does not know your organism will pick one — and on a mouse dataset it will silently flag *zero* mt-genes, which is not a QC pass; it is a missed step. Always specify the organism in the prompt; always confirm `adata.var['mt'].sum() > 0` before trusting the result.
 
-### Step 3 — Distribution and transformation choice
+### Step 3 — Read the violin plots
 
-When you ask an AI for the next step, the default suggestion will frequently be `rlog` from DESeq2 — because `rlog` appears in early DESeq2 vignettes and is heavily represented in training data. For *n* = 22, both `vst` and `rlog` are acceptable: the DESeq2 authors note that `rlog` can perform better on small datasets (≤30 samples) when library-size factors vary widely, while `vst` is materially faster and becomes the preferred choice as sample counts grow (the package prints a performance warning when *n* ≥ 30 and recommends `vst` for *n* in the hundreds).
-
-```r
-library(DESeq2)
-dds <- DESeqDataSetFromMatrix(counts[ , -1], coldata, design = ~ sex + time + infection)
-vsd <- vst(dds, blind = TRUE)
+```python
+sc.pl.violin(adata, ['n_genes_by_counts', 'total_counts', 'pct_counts_mt'],
+             jitter=0.4, multi_panel=True)
 ```
 
-This is the canonical [Description](../fluency/description.qmd) move: telling the AI which step comes next (variance-stabilisation feeding into PCA, on a 22-sample dataset) lets it pick the right tool. Without that context, it guesses.
+The AI can describe what these metrics mean. It cannot read *your* plots. The discernment move at this step is to look at the shape:
 
-### Step 4 — PCA, with two colourings
+- A clean PBMC 3k violin shows a tight `n_genes_by_counts` distribution centred around 1,000–1,500, a thin upper tail, and `pct_counts_mt` mostly below 5%.
+- A bimodal `n_genes_by_counts` violin would say something different — possible doublet population, possible cell-type imbalance, possible empty-droplet contamination.
+- A long upper tail in `total_counts` without a corresponding `n_genes_by_counts` shoulder suggests ambient RNA rather than doublets.
 
-```r
-plotPCA(vsd, intgroup = "infection")
-plotPCA(vsd, intgroup = c("sex", "time"))
+Asking the AI "what threshold should I use?" without showing it your violin shape gets a textbook answer. Asking "given a clean unimodal violin centred at 1,200 genes with a thin upper shoulder above 2,500 genes, what max-genes threshold removes plausible doublets without trimming real cells?" gets a calibrated one.
+
+### Step 4 — Choose thresholds and filter
+
+```python
+sc.pp.filter_cells(adata, min_genes=200)
+sc.pp.filter_genes(adata, min_cells=3)
+adata = adata[adata.obs.n_genes_by_counts < 2500, :]
+adata = adata[adata.obs.pct_counts_mt < 5, :]
 ```
 
-Run both. PC1 is *not* guaranteed to be the variable you care about — in this dataset, time often dominates PC1 and infection appears on PC2, because time-since-infection drives broad transcriptional change. A student who only colours by `infection` and sees no separation may incorrectly conclude the experiment failed.
+**AI's role**: drafting the four lines. **Yours**: every number. PBMCs tolerate strict mt cutoffs (5%) because PBMCs are robust; neurons or muscle would not — those tissues regularly show 15–25% mt% in healthy cells and a 5% cutoff would silently delete most of the experiment. The threshold is the [Discernment](../fluency/discernment.qmd) move; the code is delegation.
 
-**AI's role**: drawing the plots. **Yours**: choosing *which* colourings to look at, and reading the geometry. If a sample sits well outside its expected cluster, that is a candidate outlier — but only a candidate. Library size, RNA quality, and known wet-lab notes are the next places to check before flagging.
+### Step 5 — Doublet detection (Scrublet)
 
-### Step 5 — Sample–sample correlation heatmap
-
-```r
-pheatmap::pheatmap(cor(assay(vsd)), annotation_col = coldata[, c("infection","time","sex")])
+```python
+import scrublet as scr
+scrub = scr.Scrublet(adata.X)
+doublet_scores, predicted_doublets = scrub.scrub_doublets()
+adata.obs['doublet_score'] = doublet_scores
+adata.obs['predicted_doublet'] = predicted_doublets
 ```
 
-Use this together with the PCA. A sample that is an outlier on both views is a stronger flag than one that is anomalous on a single view.
+The AI will run Scrublet. The discernment move: ask whether the predicted doublet rate matches what you would expect for your loading concentration. PBMC 3k loaded ≈3,000 cells; expected doublet rate is ≈2–4%. If Scrublet flags 12% as doublets, something is off — either the call rate is too aggressive or the input was over-loaded. Either way it is a flag for you, not for the AI to silently accept.
 
-### Step 6 — Outlier decision
+### Step 6 — Normalise, log-transform, and select HVGs
 
-The AI can summarise the evidence ("sample X has the smallest library size and the lowest median pairwise correlation"). It cannot make the call. Removing or retaining a sample is a [Diligence](../fluency/diligence.qmd) decision: document what you did, why, and which downstream analyses are sensitive to it. Record it in the report; the disclosure rubric will ask.
+```python
+sc.pp.normalize_total(adata, target_sum=1e4)
+sc.pp.log1p(adata)
+adata.raw = adata
+sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
+adata = adata[:, adata.var.highly_variable]
+```
+
+**AI's role**: the four-line pattern. **The discernment move**: `target_sum=1e4` is a convention, not a law; the appropriate value depends on the median library size of your dataset. For PBMC 3k it is fine. The HVG defaults are also a convention; expect ≈1,800–2,000 HVGs for PBMC 3k — if you get 200 or 8,000, the defaults are wrong for this dataset and you re-tune.
+
+### Step 7 — Embed and cluster
+
+```python
+sc.pp.scale(adata, max_value=10)
+sc.tl.pca(adata, svd_solver='arpack')
+sc.pp.neighbors(adata, n_neighbors=10, n_pcs=40)
+sc.tl.umap(adata)
+sc.tl.leiden(adata, resolution=0.5)
+sc.pl.umap(adata, color='leiden')
+```
+
+This is where AI-as-collaborator becomes most useful and most dangerous. Useful: it remembers the boilerplate, it suggests reasonable parameter starting points, it explains why `n_pcs` matters. Dangerous: it will name your clusters from `leiden` IDs alone if you ask it to — a confident hallucination, since cluster identity comes from markers and prior biological context, not from the cluster number.
+
+The discernment move: choose `resolution`, `n_neighbors`, and `n_pcs` yourself. Run the elbow plot. Look at the UMAP. Ask whether the cluster count matches the number of cell types you expected (≈8 for PBMC 3k). Then pass to Module 5 for annotation — by markers, *not* by guessing.
 
 ::: {.callout-tip}
 ## Where the 4 D's showed up
-- **Description** — telling the AI the design and what comes next so it can pick `vst` over `rlog`.
-- **Discernment** — reading the `table()` and the PCA yourself; rejecting the AI's first transformation.
-- **Diligence** — owning the outlier decision and the missing-cell finding; both are documented in your own words.
-- *Delegation* — most strongly applied to the boilerplate plotting and I/O code, where AI is highly reliable.
+- **Description** — telling the AI it is *human* PBMCs from *10x Chromium v1* so it picks the right mt prefix and the right doublet expectation.
+- **Discernment** — reading the violin plots, the doublet score distribution, and the UMAP shape yourself; rejecting one-size-fits-all thresholds.
+- **Diligence** — owning every threshold and parameter; documenting the choices in the notebook for the disclosure rubric.
+- *Delegation* — most strongly applied to the boilerplate I/O, plotting, and per-cell metric calls, where AI is highly reliable when given organism context.
 :::
 
 ## Common failure modes
 
-- **Trusting PC1 as the biology.** PC1 is variance, not signal. Colour by every annotation you have.
-- **Asking for a QC answer instead of a QC plan.** "Is sample X an outlier?" is the wrong question. "What evidence would I need to call sample X an outlier?" is the right one.
-- **Letting the AI pick the test.** The AI will recommend the textbook test for a textbook design. Real designs have batches, dropouts, and sex imbalance. You pick.
+- **Trusting the textbook threshold.** PBMC 5%, neuron 20%, muscle 25% — tissue context matters; ask the AI for tissue-specific reasoning, not a universal answer.
+- **Asking for a QC answer instead of a QC plan.** "Is this dataset clean?" is the wrong question. "What evidence would I need to call this dataset clean?" is the right one.
+- **Letting the AI name your clusters.** Cluster identity is markers + prior knowledge, not Leiden numbers. The AI will guess if you ask it to. Don't.
+- **Wrong organism prefix.** `MT-` is human, `mt-` is mouse. Mismatch silently flags zero mt-genes and corrupts every threshold downstream.
 
 ## Exercises
 
-1. Give an AI the first 20 lines of a dataset you don't know well and ask for a QC plan. Critique the plan before running it.
-2. Ask an AI to choose a statistical test for a problem you know well. Compare its recommendation to what you would do.
-3. Run the worked example above end-to-end. Record one decision where you overrode the AI's first suggestion, and one where you accepted it. The disclosure rubric for the week 3 mini-project will ask for both.
+1. Load PBMC 3k. Without consulting an AI, sketch a QC plan in 5 bullet points before any code. Compare with what the AI suggests. Where do you disagree?
+2. Take a small dataset of your own (or a public one from your subfield). Frame it for an AI in three sentences (platform / organism / expected biology). Then ask for a QC plan. Critique it before running.
+3. Run the worked example end-to-end. Record one decision where you overrode the AI's first suggestion, and one where you accepted it. The disclosure rubric for the week 3 mini-project will ask for both.
 
 ## Further reading
 
-- Love, M. I., Huber, W., & Anders, S. (2014). [Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2](https://doi.org/10.1186/s13059-014-0550-8). *Genome Biology* 15:550. — The DESeq2 paper. The discussion of `vst` vs. `rlog` (and *when* each is appropriate) is the source for the transformation choice in step 3.
-- Conesa, A., Madrigal, P., Tarazona, S., et al. (2016). [A survey of best practices for RNA-seq data analysis](https://doi.org/10.1186/s13059-016-0881-8). *Genome Biology* 17:13. — Long-running reference for the QC steps above; pre-AI, but the human-judgement points it surfaces are exactly the ones the AI is unreliable on.
-- Blackmore, S., Hernandez, J., Juda, M., et al. (2017). [Influenza infection triggers disease in a genetic model of experimental autoimmune encephalomyelitis](https://doi.org/10.1073/pnas.1620415114). *PNAS* 114(30): E6107–E6116. — Source paper for GSE96870. Read the experimental design before running QC; it explains the tissue × time × sex × infection structure.
-- The Carpentries Incubator. [Analysis and Interpretation of Bulk RNA-Seq Data using Bioconductor](https://carpentries-incubator.github.io/bioc-rnaseq/) (CC-BY 4.0). — Lesson that redistributes GSE96870 as the teaching dataset; the exploratory-QC episode is a useful peer reference for what a careful, AI-free workflow on this dataset looks like.
+- Wolf, F. A., Angerer, P., & Theis, F. J. (2018). [SCANPY: large-scale single-cell gene expression data analysis](https://doi.org/10.1186/s13059-017-1382-0). *Genome Biology* 19:15. — The Scanpy paper. The QC and embedding workflow above is the canonical Scanpy path.
+- Heumos, L., Schaar, A. C., Lance, C., et al. (2023). [Best practices for single-cell analysis across modalities](https://doi.org/10.1038/s41576-023-00586-w). *Nature Reviews Genetics* 24, 550–572. — Long-running reference for the QC, normalisation, and clustering decisions above; pre-AI, but the human-judgement points it surfaces are exactly the ones the AI is unreliable on.
+- Wolock, S. L., Lopez, R., & Klein, A. M. (2019). [Scrublet: Computational identification of cell doublets in single-cell transcriptomic data](https://doi.org/10.1016/j.cels.2018.11.005). *Cell Systems* 8, 281–291. — The Scrublet paper; read before trusting any predicted-doublet rate.
+- 10x Genomics. [PBMC 3k dataset documentation](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0). — Source documentation; read the chemistry version and library characteristics before quoting expected metrics.

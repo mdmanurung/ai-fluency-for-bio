@@ -1,38 +1,39 @@
 # Plans
 
-Tracked next steps for the course site. **If you are a fresh Claude session, read "Locked decisions" first** — those choices look like preferences but are non-trivial to undo, and PR-2 through PR-5 assume them.
+Tracked next steps for the course site. **If you are a fresh Claude session, read "Locked decisions" first** — those choices look like preferences but are non-trivial to undo.
+
+::: {.callout-warning}
+## Pivot to scRNA-seq merged into the 4-week course (April 2026)
+
+The course was restructured to merge the 5-module scRNA-seq pipeline (PBMC 3k) into the 4-week instructor-led structure. As a result, the GSE96870 bulk-RNA-seq lock and the R/Python parity decision below are **superseded**. The active dataset is 10x PBMC 3k (loaded by `sc.datasets.pbmc3k()`); the active hands-on language is Python (Scanpy). R/Seurat is supported as a student preference, not a course-default parallel path.
+
+The historical lock entries below are kept for context — they explain why the bioinformatics pages and starter notebooks looked the way they did before the merge — and to make the change visible.
+:::
 
 ---
 
 ## Locked decisions (do not re-litigate)
 
-These were resolved in earlier sessions; PRs from PR-2 onward depend on them.
+### Course dataset for weeks 3–4 *(superseded April 2026 — see callout above)*
 
-### Course dataset for weeks 3–4
+~~**GSE96870 cerebellum subset (22 mouse cerebellum samples).**~~ Superseded by **10x PBMC 3k** (≈2,700 PBMCs from a healthy donor, 10x Chromium v1, bundled in Scanpy as `sc.datasets.pbmc3k()`). The PBMC 3k dataset is the spine of Modules 3–5 and is now the spine of the week 3 mini-project and the Path-A capstone.
 
-**GSE96870 cerebellum subset (22 mouse cerebellum samples).** Source: Blackmore et al. 2017, *PNAS* — <https://doi.org/10.1073/pnas.1620415114>. Mirrored as plain CSVs by the [Carpentries bioc-rnaseq](https://github.com/carpentries-incubator/bioc-rnaseq) lesson under CC-BY 4.0; loads identically into R or Python from raw GitHub URLs:
+### Language allocation across the bioinformatics track *(partially superseded April 2026)*
 
-- Counts: <https://raw.githubusercontent.com/carpentries-incubator/bioc-rnaseq/main/episodes/data/GSE96870_counts_cerebellum.csv>
-- Coldata: <https://raw.githubusercontent.com/carpentries-incubator/bioc-rnaseq/main/episodes/data/GSE96870_coldata_cerebellum.csv>
+Pre-pivot intent was R/Python parity:
 
-Coldata columns: `sample, title, geo_accession, organism, age, sex, infection, strain, time, tissue, mouse`. Counts: 41,786 genes × 22 samples; first column is `gene` (symbol). Design factors are sex × infection (Influenza A vs NonInfected) × time (Day 0/4/8). The 22-sample subset has two cells with smaller-than-others counts — surface this as a real teaching moment, not a flaw.
+- `bioinformatics/data-analysis.qmd` — was R (DESeq2 + tidyverse). **Now Python (Scanpy + PBMC 3k).**
+- `bioinformatics/code-assistance.qmd` — Python (validate function + pytest). Worked example **rewritten** from `validate_sample_sheet` (GSE96870) to `validate_qc_outputs` (PBMC 3k AnnData).
+- `bioinformatics/literature-review.qmd` — language-agnostic (no code). Unchanged.
+- `bioinformatics/protocol-design.qmd` — language-agnostic (wet-lab). Unchanged (still scRNA-seq pilot worked example, which now matches the rest of the course).
 
-### Language allocation across the bioinformatics track
-
-Balance R and Python across the four pages:
-
-- `bioinformatics/data-analysis.qmd` — **R** (DESeq2 + tidyverse). *Done in PR-1.*
-- `bioinformatics/code-assistance.qmd` — **Python** (pandas + pytest debugging worked example). PR-2.
-- `bioinformatics/literature-review.qmd` — language-agnostic (no code). PR-3.
-- `bioinformatics/protocol-design.qmd` — language-agnostic (wet-lab). PR-4.
-
-Each coding page adds a one-paragraph "the other language" note pointing at the equivalent toolchain.
+R/Seurat is a supported alternative for students who prefer it; the course default for instructor-led demos and the modules is Python.
 
 ### Worked-example personas (continuity across pages)
 
-- `data-analysis.qmd` (R) and `code-assistance.qmd` (Python): graduate student doing bulk RNA-seq QC on GSE96870. The Python sample-sheet validator example in PR-2 fits naturally because that exact validation step is in the data-analysis worked example.
-- `protocol-design.qmd`: postdoc planning a small scRNA-seq pilot.
-- `literature-review.qmd`: graduate student scoping "spatial transcriptomics in the tumor microenvironment."
+- `data-analysis.qmd` (Python) and `code-assistance.qmd` (Python): graduate student running QC on PBMC 3k.
+- `protocol-design.qmd`: postdoc planning a small scRNA-seq pilot. *(Already aligned.)*
+- `literature-review.qmd`: graduate student scoping "spatial transcriptomics in the tumor microenvironment." *(Already aligned.)*
 
 ### Audit corrections (carry into every PR)
 
@@ -125,14 +126,15 @@ Scope:
 ## Infrastructure
 
 - [ ] **Enable GitHub Pages** — Settings → Pages, set source to `Deploy from a branch` → `gh-pages` / `/ (root)`. The workflow (`.github/workflows/publish.yml`) is already in place; this one-click step triggers the first deployment to `https://mdmanurung.github.io/ai-fluency-for-bio/`.
-- [ ] **Merge unreleased branches → `main`** — `origin/main` is currently 14+ commits behind. The publish workflow only fires on push to `main`, so nothing on `claude/setup-gh-pages-course-tJTne` or `claude/course-next-steps-fCxoV` is live yet. Open a consolidating PR (or sequential PRs) into `main` once content quality is approved.
+- [ ] **Merge the merged-course branch → `main`** — work for the merge sits on `claude/review-ai-fluency-course-QgsyP`. The publish workflow only fires on push to `main`, so nothing is live until that PR merges.
+- [ ] **Commit a pinned environment** — the syllabus offers `conda` / `uv` as a local alternative to Colab. Adding an `environment.yml` (Scanpy + scrublet + leidenalg + matplotlib + pandas) makes that alternative reproducible.
 
 ---
 
 ## Nice-to-have
 
 - [ ] **404 page polish** — `404.qmd` exists but may benefit from a navigation prompt back to the course home once all sections are live.
-- [ ] **Optional: full 45-sample GSE96870** — the current pin is the 22-sample cerebellum subset. The full 45-sample dataset (cerebellum + spinal cord) is an obvious capstone-extension hook if a student wants tissue × infection.
+- [ ] **Pre-built count matrix for Module 3 fallback** — if a student does Module 1–2 on their own data instead of skipping to PBMC 3k, a small public `.h5ad` (e.g., a public 10x mouse lung subset) staged in a GitHub release would give them a second teaching dataset. Currently optional.
 
 ---
 

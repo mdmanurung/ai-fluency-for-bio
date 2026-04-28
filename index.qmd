@@ -10,22 +10,25 @@ The course covers:
 
 1. **The 4 D's of AI fluency** — Delegation, Description, Discernment, Diligence — adapted for biology research, following [Anthropic's AI Fluency Framework](https://www.anthropic.com/ai-fluency).
 2. **LLM literacy** for bio researchers — how large language models work, prompt, and fail.
-3. **Hands-on bioinformatics** — using AI assistants for code, data analysis, literature review, and protocol design.
+3. **Hands-on bioinformatics** — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.
+4. **A complete scRNA-seq pipeline** — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.
 
 ::: {.callout-note}
-## A note on subfield scope
-Hands-on examples lean toward genomics and transcriptomics because that's where AI tooling is most mature. The 4 D's framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop.
+## Subfield scope
+The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D's. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.
 :::
 
 See the [Overview](course-overview.qmd) for learning outcomes, or jump straight to the schedule below.
 
 ## Schedule
 
-| Week | Dates | Topic | Readings | Deliverable |
-|:----:|:------|:------|:---------|:------------|
-| [1](weeks/week-1.qmd) | TBD | AI fluency foundations — the 4 D's | [Delegation](fluency/delegation.qmd), [Description](fluency/description.qmd), [Discernment](fluency/discernment.qmd), [Diligence](fluency/diligence.qmd) | Reflection + tooling check |
-| [2](weeks/week-2.qmd) | TBD | LLM literacy for bio researchers | [How LLMs work](literacy/how-llms-work.qmd), [Prompting](literacy/prompting.qmd), [Tool use & agents](literacy/tool-use-and-agents.qmd), [Ethics & limits](literacy/ethics-and-limits.qmd) | Prompt-engineering exercise |
-| [3](weeks/week-3.qmd) | TBD | Hands-on bioinformatics I — code & data + capstone scoping | [Code assistance](bioinformatics/code-assistance.qmd), [Data analysis](bioinformatics/data-analysis.qmd) | Mini-project + capstone proposal |
-| [4](weeks/week-4.qmd) | TBD | Hands-on bioinformatics II — literature, protocols, capstone | [Literature review](bioinformatics/literature-review.qmd), [Protocol design](bioinformatics/protocol-design.qmd) | Capstone deliverable |
+Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.
 
-: {tbl-colwidths="[5,12,28,35,20]"}
+| Week | Dates | Topic | Readings | Hands-on | Deliverable |
+|:----:|:------|:------|:---------|:---------|:------------|
+| [1](weeks/week-1.qmd) | *Announced before term* | AI fluency foundations — the 4 D's | [Delegation](fluency/delegation.qmd), [Description](fluency/description.qmd), [Discernment](fluency/discernment.qmd), [Diligence](fluency/diligence.qmd) | Tooling setup | Reflection + tooling check |
+| [2](weeks/week-2.qmd) | *Announced before term* | LLM literacy for bio researchers | [How LLMs work](literacy/how-llms-work.qmd), [Prompting](literacy/prompting.qmd), [Tool use & agents](literacy/tool-use-and-agents.qmd), [Ethics & limits](literacy/ethics-and-limits.qmd) | Live prompt clinic | Prompt-engineering exercise |
+| [3](weeks/week-3.qmd) | *Announced before term* | scRNA-seq I — QC, normalisation, clustering | [Code assistance](bioinformatics/code-assistance.qmd), [Data analysis](bioinformatics/data-analysis.qmd), [Module 1](modules/module-01-raw-data-qc/README.md), [Module 2](modules/module-02-alignment-count-matrix/README.md) | [Module 3](modules/module-03-preprocessing-scanpy/README.md) in-class; [Module 4](modules/module-04-clustering-umap/README.md) after-class | Mini-project (PBMC 3k) + capstone proposal |
+| [4](weeks/week-4.qmd) | *Announced before term* | scRNA-seq II — annotation, capstone | [Literature review](bioinformatics/literature-review.qmd), [Protocol design](bioinformatics/protocol-design.qmd) | [Module 5](modules/module-05-annotation-interpretation/README.md) in-class | Capstone (annotation, lit brief, or protocol — student choice) |
+
+: {tbl-colwidths="[5,12,22,25,16,20]"}

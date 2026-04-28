@@ -4,10 +4,10 @@ title: "Syllabus"
 
 ## Logistics
 
-- **Format**: TBD (recommend hybrid — in-person + recorded).
+- **Format**: *announced before term* (recommend hybrid — in-person + recorded).
 - **Sessions**: 4 weekly meetings, ~2 hours each. Format: ~30 min lecture + ~30 min live demo + ~60 min workshop.
 - **Workload**: ~3–5 hours per week outside class (calibrated to deliverables; instructor will tune after week 1).
-- **Meeting time / location**: TBD.
+- **Meeting time / location**: *announced before term*.
 - **Duration**: 4 weeks. This is a **foundations** course; real fluency requires sustained practice over months.
 
 ## Prerequisites
@@ -29,18 +29,20 @@ Free-tier LLMs work for week 1–2 chat exercises. The week 3 mini-project and w
 - **A coding assistant** (one of): [Claude Code](https://docs.claude.com/en/docs/claude-code/overview), [Cursor](https://cursor.sh/), or VS Code + [GitHub Copilot](https://github.com/features/copilot).
 - **A chat LLM** (one of): [Claude](https://claude.ai/), ChatGPT, or Gemini. Course examples use Claude by default.
 - **A grounded literature tool** (one of): [Elicit](https://elicit.com/), [Consensus](https://consensus.app/), [SciSpace](https://scispace.com/), or Perplexity (sources mode).
-- **Bioinformatics environment**: R + Bioconductor *or* Python + scanpy/biopython, your choice. Use a pinned environment (`renv`, `conda`, or `uv`) for the mini-project and capstone.
+- **Bioinformatics environment**: Python with [Scanpy](https://scanpy.readthedocs.io/) is the course default for the hands-on track. The 5-module scRNA-seq pipeline runs in **Google Colab** out of the box (no install required for Modules 3–5; Modules 1–2 need HPC or are skippable). If you prefer a local setup, a pinned environment (`conda` or `uv`) is supported — see `weeks/week-3.qmd` Setup. R/[Seurat](https://satijalab.org/seurat/) users can substitute the equivalent Bioconductor toolchain for the mini-project; an instructor pointer is in [Code assistance](bioinformatics/code-assistance.qmd).
 
 ## Course structure
 
-The course covers three tracks across four weeks:
+The course covers three conceptual tracks and a 5-module scRNA-seq pipeline across four weeks:
 
-| Week | Theme | Deliverable |
-|:----:|:------|:------------|
-| 1 | Foundations & the 4 D's | Reflection (≤ 500 words) + tooling setup confirmation |
-| 2 | LLM literacy | Prompt-engineering exercise (weak vs. strong, with critique) |
-| 3 | Hands-on I — code & data | Mini-project: reproducible AI-assisted analysis report |
-| 4 | Hands-on II — literature, protocols, capstone | Capstone: literature brief + analysis-or-protocol + reflection + disclosure |
+| Week | Theme | Hands-on | Deliverable |
+|:----:|:------|:---------|:------------|
+| 1 | Foundations & the 4 D's | Tooling setup | Reflection (≤ 500 words) + tooling confirmation |
+| 2 | LLM literacy | Live prompt clinic | Prompt-engineering exercise (weak vs. strong, with critique) |
+| 3 | scRNA-seq I — QC, normalisation, clustering (Modules 3 & 4) | Module 3 in-class; Module 4 after-class | Mini-project: reproducible AI-assisted PBMC 3k QC + clustering report |
+| 4 | scRNA-seq II — annotation, capstone (Module 5) | Module 5 in-class | Capstone: literature brief + analysis-or-protocol + reflection + disclosure |
+
+Modules 1 (FastQC) and 2 (Cell Ranger / STARsolo) are pre-week-3 reading. Module 2 needs HPC; if you don't have it, skip directly to Module 3 — a pre-built count matrix is loaded by Scanpy.
 
 ## Assessment
 
@@ -58,7 +60,7 @@ Each graded deliverable carries a **disclosure-quality** sub-score (see rubric b
 This is a course about using AI tools well. **You are expected to use them on most assignments.** Following pedagogical research, two assignments include an **AI-free or AI-second baseline component** so you can develop and demonstrate the underlying skill, not just the collaboration skill:
 
 - **Week 1 reflection**: write your initial classification of three of your own tasks *without* AI consultation. Then, optionally, run them past an AI and note what changed.
-- **Week 3 mini-project**: write a 30-line baseline analysis *first*, by hand. Then iterate with an AI assistant. Submit both, with a short note on what the AI changed and why you accepted or rejected each change.
+- **Week 3 mini-project**: write a small (~25-line) AI-free baseline of the PBMC 3k QC pass *first*, by hand — `sc.datasets.pbmc3k()`, mt-gene flag, three QC violin plots, threshold filter, log-normalise. Then iterate with an AI assistant on the rest (clustering, marker checks, refactor). Submit both, with a short note on what the AI changed and why you accepted or rejected each change.
 
 For all assignments:
 
@@ -92,7 +94,7 @@ Do **not** paste any of the following into a third-party LLM service without exp
 
 For any such data: use **on-premises**, **institutional**, or **vendor enterprise tiers with appropriate contracts** (e.g., zero-retention with a signed BAA where applicable). When in doubt, consult your IRB / data steward / institutional privacy office *before* the assignment, not after.
 
-The course datasets are public (GEO, ArrayExpress, or similar) and safe to use with any tool.
+The course dataset (10x PBMC 3k) is public and safe to use with any tool. Supplementary references to other public datasets (e.g., from GEO or ArrayExpress) are also safe.
 
 ## Recommended readings
 

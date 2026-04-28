@@ -1,141 +1,124 @@
-# AI-Assisted Single-Cell RNA-seq: From FASTQ to UMAP
+# AI Fluency Foundations for Biology
 
-> **Who this is for:** Biologists and bioinformaticians who want to analyze
-> single-cell RNA-seq data end-to-end — and use AI tools to write, debug,
-> and explain their analysis code along the way.
+A 4-week course that teaches AI fluency to biologists by running a **single-cell RNA-seq pipeline** — FASTQ → annotated UMAP — with an AI assistant in the loop.
 
-**Estimated Time to Complete This Orientation: 5 mins**
-
----
-
-## The Problem
-
-You just received 300 GB of FASTQ files from the sequencing core.
-Your 10x Chromium run captured \~8,000 cells from mouse lung tissue after influenza infection.
-You need to go from raw reads to a UMAP plot showing distinct immune cell populations —
-and your PI wants interpretable results by end of week.
-
-Where do you start? What tools do you use? And how can AI help you move faster without
-introducing errors you won't catch until your lab meeting?
-
-This course answers all three questions.
+> **Course site:** <https://mdmanurung.github.io/ai-fluency-for-bio/>
+> *(Enable GitHub Pages → Settings → Pages once `main` is updated.)*
 
 ---
 
-## What You Will Learn
+## What this course is
 
-| # | Outcome | Module |
-|:--|:--------|:-------|
-| 1 | Understand scRNA-seq library structure, interpret FastQC output, and use AI to flag quality issues | 1 |
-| 2 | Run Cell Ranger or STARsolo to generate a count matrix, and use AI to write HPC job scripts | 2 |
-| 3 | Load a count matrix into Scanpy, apply QC filters, normalize, and select highly variable genes | 3 |
-| 4 | Perform PCA, build a neighborhood graph, generate a UMAP, and cluster cells with Leiden | 4 |
-| 5 | Identify marker genes, annotate cell types, run differential expression, and export publication-ready figures | 5 |
+AI tools — Claude, ChatGPT, Copilot, Cursor, agentic assistants — are entering biology research workflows fast. Used well, they accelerate analysis, surface relevant literature, and help draft code. Used carelessly, they introduce subtle errors, fabricated citations, and brittle pipelines.
 
----
+This course teaches the framework, vocabulary, and habits to collaborate with AI tools productively and responsibly. The conceptual content is subfield-agnostic; the hands-on track is a complete single-cell RNA-seq pipeline on the 10x PBMC 3k dataset.
 
-## Course Modules
+You finish the course with:
 
-### Module 1 — Introduction to scRNA-seq & Raw Data QC
+- A working understanding of the **4 D's of AI fluency** — Delegation, Description, Discernment, Diligence — adapted for biology research, following [Anthropic's AI Fluency Framework](https://www.anthropic.com/ai-fluency).
+- A working-level mental model of how LLMs are trained, generate text, and fail.
+- A reproducible, AI-assisted scRNA-seq analysis you wrote yourself, with disclosure and verification practices that hold up to peer review.
 
-**[→ Open Module 1](modules/module-01-raw-data-qc/README.md)**
+## How the course is structured
 
-Raw FASTQ files, 10x Chromium read anatomy, FastQC interpretation, AI-assisted QC triage.
+The course has three conceptual tracks and a weekly schedule that braids them together.
 
-**Tools:** FastQC (local or HPC), Claude / ChatGPT (web) | **Estimated Time: ~60 mins**
+**Three tracks** (all in the [course site sidebar](https://mdmanurung.github.io/ai-fluency-for-bio/)):
 
----
+1. **AI fluency: the 4 D's** — Delegation, Description, Discernment, Diligence.
+2. **AI literacy for bio** — how LLMs work, prompting, tool use & agents, ethics & limits.
+3. **Hands-on bioinformatics** — code assistance, data analysis, literature review, protocol design — with worked examples grounded in the scRNA-seq project.
 
-### Module 2 — Alignment & Count Matrix Generation
+**The hands-on project** is a 5-module scRNA-seq pipeline, taught alongside the theory:
 
-**[→ Open Module 2](modules/module-02-alignment-count-matrix/README.md)**
+| Module | Topic | Compute | When |
+|:------:|:------|:--------|:-----|
+| [1](modules/module-01-raw-data-qc/README.md) | Raw data QC (FastQC on 10x Chromium reads) | Local or HPC | Pre-week 3 reading |
+| [2](modules/module-02-alignment-count-matrix/README.md) | Alignment & count matrix (Cell Ranger / STARsolo) | HPC (or skip — pre-built matrix in Module 3) | Pre-week 3 reading |
+| [3](modules/module-03-preprocessing-scanpy/README.md) | Preprocessing & QC in Scanpy | Google Colab (free) | Week 3 in-class + mini-project |
+| [4](modules/module-04-clustering-umap/README.md) | Dimensionality reduction, clustering, UMAP | Google Colab (free) | Week 3 after-class |
+| [5](modules/module-05-annotation-interpretation/README.md) | Cell-type annotation & differential expression | Google Colab (free) | Week 4 capstone |
 
-Cell Ranger and STARsolo workflows, reference genome setup, filtered vs. raw matrix outputs,
-AI-generated HPC submission scripts.
+**Dataset:** 10x PBMC 3k throughout — 2,700 PBMCs from a healthy donor, ~8 well-characterised cell types, small enough to run in Colab on a free tier.
 
-**Tools:** Cell Ranger or STARsolo (HPC / cloud VM required), Claude / ChatGPT (web) | **Estimated Time: ~90 mins**
+**Weekly schedule** (4 weekly meetings, ~2 hours each):
 
----
+| Week | Theme | Deliverable |
+|:----:|:------|:------------|
+| [1](weeks/week-1.qmd) | AI fluency foundations — the 4 D's | Reflection + tooling check |
+| [2](weeks/week-2.qmd) | LLM literacy for bio researchers | Prompt-engineering exercise |
+| [3](weeks/week-3.qmd) | scRNA-seq I — QC, normalisation, clustering | Mini-project (PBMC 3k QC + clustering) + capstone proposal |
+| [4](weeks/week-4.qmd) | scRNA-seq II — annotation, capstone | Capstone (annotation OR literature brief OR protocol — student choice) |
 
-### Module 3 — Preprocessing & Quality Control in Scanpy
+See the [Syllabus](course-syllabus.qmd) for the full assessment scheme, AI-use policy, disclosure rubric, and reading list.
 
-**[→ Open Module 3](modules/module-03-preprocessing-scanpy/README.md)**
+## Two ways to take the material
 
-Loading 10x data into AnnData, QC metric violin plots, cell filtering, doublet detection,
-normalization, log-transformation, and highly variable gene selection.
-AI used to interpret thresholds and explain filtering decisions.
+- **The 4-week course (recommended).** Live sessions, weekly deliverables, capstone. The structure that makes the practice deliberate.
+- **Self-paced through the modules.** Modules 1–5 are runnable end-to-end without the weekly meetings if you only want the scRNA-seq pipeline. You miss the fluency framework and the disclosure practice — those live in the [course site](https://mdmanurung.github.io/ai-fluency-for-bio/).
 
-**Tools:** Google Colab (free), Claude / ChatGPT (web) | **Estimated Time: ~75 mins**
+## What you need
 
----
+- Working comfort with Python at a scripting level.
+- A GitHub account.
+- A free-tier LLM chat account (Claude, ChatGPT, or Gemini). Paid tiers help in weeks 3–4 but are not required.
+- A coding assistant (Claude Code, Cursor, or VS Code + Copilot).
+- A grounded literature tool (Elicit, Consensus, SciSpace, or Perplexity sources mode).
+- For the hands-on weeks: a Google account for Colab. Local Scanpy via conda/uv works too — see `weeks/week-3.qmd` Setup.
+- HPC or cloud access *only* if you want to run Modules 1–2. Otherwise start at Module 3.
 
-### Module 4 — Dimensionality Reduction, Clustering & UMAP
+## Repo layout
 
-**[→ Open Module 4](modules/module-04-clustering-umap/README.md)**
+```
+.
+├── _quarto.yml                 # site config and sidebar
+├── index.qmd                   # site landing
+├── course-overview.qmd         # learning outcomes
+├── course-syllabus.qmd         # assessment, AI-use policy, disclosure rubric, readings
+├── course-faq.qmd              # FAQ
+├── course-team.qmd             # instructor + TAs
+├── course-support.qmd          # how to get help
+├── fluency/                    # 4 D's
+│   ├── delegation.qmd
+│   ├── description.qmd
+│   ├── discernment.qmd
+│   └── diligence.qmd
+├── literacy/                   # LLM background
+│   ├── how-llms-work.qmd
+│   ├── prompting.qmd
+│   ├── tool-use-and-agents.qmd
+│   └── ethics-and-limits.qmd
+├── bioinformatics/             # AI-fluency lens on hands-on tasks
+│   ├── code-assistance.qmd
+│   ├── data-analysis.qmd
+│   ├── literature-review.qmd
+│   └── protocol-design.qmd
+├── modules/                    # scRNA-seq pipeline (FASTQ → annotated UMAP)
+│   ├── module-01-raw-data-qc/
+│   ├── module-02-alignment-count-matrix/
+│   ├── module-03-preprocessing-scanpy/
+│   ├── module-04-clustering-umap/
+│   └── module-05-annotation-interpretation/
+└── weeks/                      # weekly student-facing pages
+    ├── week-1.qmd
+    ├── week-2.qmd
+    ├── week-3.qmd
+    ├── week-4.qmd
+    └── starter-week3-python.qmd
+```
 
-PCA, k-NN graph, UMAP embedding, Leiden clustering, and parameter tuning.
-AI used to explain algorithm choices and debug unexpected outputs.
+## Building the site locally
 
-**Tools:** Google Colab (free), Claude / ChatGPT (web) | **Estimated Time: ~90 mins**
-
----
-
-### Module 5 — Cell Type Annotation & Biological Interpretation
-
-**[→ Open Module 5](modules/module-05-annotation-interpretation/README.md)**
-
-Marker gene discovery, dotplot and violin visualization, automated annotation with CellTypist,
-differential expression between conditions, and export of final annotated UMAP.
-AI used to interpret gene lists and draft biological summaries.
-
-**Tools:** Google Colab (free), Claude / ChatGPT (web) | **Estimated Time: ~90 mins**
-
----
-
-## Dataset Used Throughout This Course
-
-All hands-on exercises use the **10x PBMC 3k dataset** — 2,700 peripheral blood mononuclear
-cells from a healthy donor, sequenced on the Illumina NextSeq 500.
-
-- Public domain, freely downloadable from 10x Genomics
-- Small enough to run in Google Colab on a free tier
-- Contains 8 well-characterized cell types (T cells, B cells, NK cells, monocytes, dendritic cells)
-- The canonical "hello world" dataset for single-cell analysis
-
----
-
-## Tools at a Glance
-
-| Module | Key Tools | Installation Required? |
-|--------|-----------|----------------------|
-| 1 | FastQC, Claude / ChatGPT | FastQC: local or HPC |
-| 2 | Cell Ranger or STARsolo | HPC or cloud VM |
-| 3 | Google Colab + Scanpy | None (browser) |
-| 4 | Google Colab + Scanpy | None (browser) |
-| 5 | Google Colab + Scanpy + CellTypist | None (browser) |
-
-> **Modules 3–5 are fully browser-based.** If you do not have HPC access,
-> you can skip to Module 3 using the pre-processed PBMC 3k count matrix
-> provided in that module.
-
----
-
-## Getting Started
-
-1. If you have HPC or cloud access: start at [Module 1](modules/module-01-raw-data-qc/README.md)
-2. If you only have a browser: skip to [Module 3](modules/module-03-preprocessing-scanpy/README.md) — a pre-processed count matrix is provided
-
-**Total estimated time: ~7.5 hours across 5 modules.**
-
----
+```bash
+# install Quarto >= 1.5 (https://quarto.org/docs/get-started/)
+quarto preview          # live preview at http://localhost:4444
+quarto render           # build to _site/
+```
 
 ## License
 
-Content is licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-You may reuse and adapt these materials with attribution.
+Content is licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You may reuse and adapt these materials with attribution.
 
----
+## For contributors
 
-## For Course Contributors and Developers
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md). Active development notes live in [PLANS.md](PLANS.md); recent changes are recorded in [CHANGELOG.md](CHANGELOG.md).

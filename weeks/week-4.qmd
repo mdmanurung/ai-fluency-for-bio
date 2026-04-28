@@ -1,16 +1,26 @@
 ---
-title: "Week 4 — Hands-on bioinformatics II & capstone"
-subtitle: "Literature, protocols, and your scoped capstone"
+title: "Week 4 — scRNA-seq II (annotation, capstone)"
+subtitle: "Cell-type annotation, literature, protocols, and your scoped capstone"
 ---
 
 ::: {.callout-note}
+## Learning objectives
+- Apply marker-based and reference-based cell-type annotation (CellTypist) and exercise the **Discernment** D against the AI's biological claims.
+- Run a small differential-expression analysis between conditions; own the interpretation in your own words (**Diligence**).
+- Use grounded literature tools to verify every citation in a short literature brief.
+- Use AI as a sparring partner for protocol design without ceding scientific judgement.
+- Deliver a 4-D's-aware capstone with a complete disclosure statement.
+:::
+
+::: {.callout-warning}
 ## Scope reminder
 The capstone was *scoped in week 3*. Week 4 is execution and writeup, not start-to-finish. An honest 4-week course cannot deliver an "end-to-end research project" cold.
 :::
 
 ## Topics
 
-- AI-assisted literature review, with verification.
+- AI-assisted cell-type annotation (markers + CellTypist) and differential expression.
+- AI-assisted literature review with verification.
 - AI as a sparring partner for protocol design.
 - Capstone execution and presentations.
 
@@ -18,27 +28,37 @@ The capstone was *scoped in week 3*. Week 4 is execution and writeup, not start-
 
 Read:
 
-- [Literature review](../bioinformatics/literature-review.qmd)
-- [Protocol design](../bioinformatics/protocol-design.qmd)
+- [Literature review](../bioinformatics/literature-review.qmd) — verification workflow + worked fabrication catch.
+- [Protocol design](../bioinformatics/protocol-design.qmd) — AI-sparring worked example with two AI-was-wrong moments.
+- [Module 5 — Annotation & interpretation](../modules/module-05-annotation-interpretation/README.md) — full module reading; you will run it in class.
 
 Setup:
 
-- Capstone proposal (from week 3) finalized after instructor feedback.
+- Capstone proposal (from week 3) finalised after instructor feedback.
+- For students continuing the PBMC 3k thread: post-clustering AnnData ready (output of [Module 4](../modules/module-04-clustering-umap/README.md)). For students on a non-genomics capstone: relevant data, papers, or protocol drafts collected.
 
 ## In class
 
-- Demo: triaging a new subfield with a grounded literature tool, verifying every citation against PubMed/CrossRef.
-- Demo: iterating on a protocol with an AI sparring partner — generate, critique, refine.
-- Capstone working session and peer feedback.
-- Lightning presentations.
+**Module 5 walkthrough (~40 min):** instructor leads marker-gene discovery (`sc.tl.rank_genes_groups`), dotplot inspection, CellTypist automated annotation, manual override of disagreements, differential expression between conditions, and export of the annotated UMAP. Discernment moves are narrated explicitly: *when to trust CellTypist*, *what the AI's interpretation gets right and wrong*, *organism-conventions traps* (e.g., `MS4A1` vs. `Ms4a1`).
+
+**Demo: literature & protocol AI sparring (~30 min):** instructor triages a new subfield with a grounded literature tool (verifying every citation against PubMed/CrossRef), then iterates on a protocol with an AI sparring partner — generate, critique, refine.
+
+**Capstone working session and peer feedback (~30 min):** focused work on the deliverable.
+
+**Lightning presentations (~20 min):** 3-minute presentations per student. The 4 D's are the rubric; what did each look like in your work?
 
 ## After class
 
-- **Capstone** *(30%)*: deliver on the scoped proposal from week 3. Submit:
-  1. **Literature brief**: ≤ 5 verified citations, each with a one-sentence relevance note. Verification means each citation has been checked on PubMed or CrossRef.
-  2. **Analysis or protocol** (one-page): a proposed analysis (with code in a Quarto/Jupyter report) *or* a proposed protocol (with controls, sample size reasoning, expected outcomes).
-  3. **4 D's reflection** (≤ 500 words): map your process onto Delegation, Description, Discernment, Diligence. Where did each show up? Where did you fail and recover?
-  4. **Disclosure statement** per the [rubric](../course-syllabus.qmd#disclosure-rubric).
+- **Capstone** *(30%)*: deliver on the scoped proposal from week 3. Pick **one** of three paths (chosen at week 3 scoping):
+  - **Path A — scRNA-seq analysis on PBMC 3k.** Continue the mini-project: marker-based annotation, CellTypist, one differential-expression contrast, and an annotated UMAP figure. ([Module 5](../modules/module-05-annotation-interpretation/README.md) is the runnable reference.)
+  - **Path B — literature brief.** A scoped review of a question relevant to your work, ≤ 5 verified citations each with a one-sentence relevance note. Verification means each citation has been checked on PubMed or CrossRef per the [verification workflow](../bioinformatics/literature-review.qmd).
+  - **Path C — protocol design.** A one-page wet-lab or computational protocol, designed using AI as a sparring partner per [Protocol design](../bioinformatics/protocol-design.qmd). Include controls, sample-size reasoning, expected outcomes, and at least one place where you rejected an AI suggestion with a documented reason.
+
+  Whichever path you pick, every capstone must include:
+
+  1. The deliverable (analysis notebook, literature brief, or protocol).
+  2. **4 D's reflection** (≤ 500 words): map your process onto Delegation, Description, Discernment, Diligence. Where did each show up? Where did you fail and recover?
+  3. **Disclosure statement** per the [rubric](../course-syllabus.qmd#disclosure-rubric).
 
 ## Wrap-up
 
@@ -48,4 +68,6 @@ Setup:
 
 ## Supplementary
 
-Slides, recording, and notebooks will be posted here after each session.
+- [Module 5 — Annotation & interpretation](../modules/module-05-annotation-interpretation/README.md).
+- [Literature review](../bioinformatics/literature-review.qmd) and [Protocol design](../bioinformatics/protocol-design.qmd) — capstone Path B and Path C reference.
+- Slides, recording, and notebooks will be posted here after each session.
