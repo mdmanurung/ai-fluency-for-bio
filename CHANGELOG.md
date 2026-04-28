@@ -7,6 +7,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed — branch `claude/review-ai-fluency-course-QgsyP` (course merge)
+
+Merge the 5-module scRNA-seq pipeline (PBMC 3k) into the 4-week instructor-led course. The two were previously inconsistent — README and modules described a self-paced FASTQ→UMAP course; the Quarto site described a 4-week AI-fluency course on bulk RNA-seq (GSE96870). After the merge, the course is one coherent thing:
+
+- **`README.md`** — rewritten to describe the merged structure: the 4-week course is primary; modules 1–5 are the concrete scRNA-seq project run alongside the theory tracks. Both Colab (default) and local conda/uv supported. Repo layout section added.
+- **`_quarto.yml`** — added "scRNA-seq pipeline (modules)" section to the sidebar (modules 1–5 now linkable from the rendered site). Updated site description and weekly section labels (Week 3 → "scRNA-seq I", Week 4 → "scRNA-seq II").
+- **`index.qmd`** — schedule rebuilt to show readings + hands-on + deliverable per week, with module references inlined. Placeholder dates ("Announced before term") replace bare TBDs.
+- **`course-overview.qmd`** — practical-track scope and outcome 4 reframed around scRNA-seq; structure section now lists the 5-module project explicitly.
+- **`course-syllabus.qmd`** — required-tools changed to Python (Scanpy) primary with Seurat as supported alternative; AI-second baseline scoped to a 25-line PBMC 3k QC sketch; structure table updated to show modules; data policy note updated to PBMC 3k.
+- **`weeks/week-3.qmd`** — full rewrite: PBMC 3k as dataset; modules 1–2 as pre-class reading, Module 3 in-class, Module 4 after-class; mini-project deliverable updated to (a) AI-free baseline on PBMC 3k QC, (b) AI-assisted clustering extension, (c) accept/reject log, (d) reproducibility artifact, (e) disclosure.
+- **`weeks/week-4.qmd`** — full rewrite: Module 5 walkthrough as the in-class block; capstone explicitly forks into Path A (scRNA-seq analysis), Path B (literature brief), Path C (protocol design), retaining flexibility for non-genomics students; learning objectives callout added.
+- **`bioinformatics/data-analysis.qmd`** — full rewrite from R/DESeq2/GSE96870 to Python/Scanpy/PBMC 3k; explicit page-vs-Module-3 differentiation (page = AI-fluency principles; module = runnable procedure); 7-step QC walkthrough with discernment moves named at every step; closing 4 D's callout retained; further reading updated to Wolf 2018 (Scanpy), Heumos 2023 (sc best practices), Wolock 2019 (Scrublet), 10x PBMC 3k docs.
+- **`bioinformatics/code-assistance.qmd`** — worked example rewritten from `validate_sample_sheet` (GSE96870 coldata) to `validate_qc_outputs` (PBMC 3k post-QC AnnData); debugging weak/strong example rewritten around the realistic `KeyError: 'mt'` scanpy QC error; R/Seurat note revised to a brief "the workflow transfers" pointer (no longer parallel R path); organism-conventions trap (`MT-` vs. `mt-`) added to common failure modes.
+- **`weeks/starter-week3-python.qmd`** — full rewrite for `sc.datasets.pbmc3k()`; load + shape assertion + non-zero-genes-per-cell summary table; install instructions for both Colab (default) and local pip.
+- **`weeks/starter-week3-r.qmd`** — **deleted**. R/Seurat parity dropped; students who prefer R can use the Seurat equivalent of the Python starter without instructor scaffolding.
+- **`course-team.qmd`, `course-support.qmd`** — bare `TBD` replaced with explicit "to be announced before week 1" placeholders.
+- **`fluency/description.qmd`** — worked example rewritten from a postdoc planning a bulk RNA-seq QC script (DESeq2 / `vst` / batch-coloured PCA) to a postdoc planning a PBMC 3k scRNA-seq QC script (Scanpy / mt prefix / QC violins / log-norm). Same five-part Description framework; aligned with the rest of the course.
+- **`fluency/diligence.qmd`** — disclosure-statement template example updated from "drafted the DESeq2 scaffold" to "drafted the Scanpy QC scaffold".
+- **`PLANS.md`** — superseded callouts on the GSE96870 dataset lock and R/Python parity lock; infrastructure section updated to reference the active branch; nice-to-have updated.
+
 ### Added — branch `claude/propose-next-steps-yVScm` (PR-5)
 
 - **`weeks/week-2.qmd`** — full fill: added learning-objectives callout (4 objectives); expanded "In class" into three named blocks (short lecture, 40-min prompt clinic with the 4-step BYO-prompt → diagnose → fix → rerun protocol, 20-min bibliography-cleanup agent demo); added disclosure-statement requirement to deliverable; replaced bare TODO supplementary.

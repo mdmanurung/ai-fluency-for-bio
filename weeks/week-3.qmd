@@ -1,59 +1,79 @@
 ---
-title: "Week 3 — Hands-on bioinformatics I"
-subtitle: "Code & data analysis with an AI in the loop, and capstone scoping"
+title: "Week 3 — scRNA-seq I (QC → clustering)"
+subtitle: "AI-assisted single-cell QC, normalisation, and clustering on PBMC 3k"
 ---
+
+::: {.callout-note}
+## Learning objectives
+- Load a 10x scRNA-seq count matrix into Scanpy and exercise the **Description** D by framing the dataset for an AI assistant.
+- Apply tissue-aware QC thresholds and exercise the **Discernment** D by reading the violin plots yourself before accepting an AI suggestion.
+- Build PCA → neighbours → UMAP → Leiden, and use AI for the boilerplate while owning the parameter choices.
+- Scope a 4-D's-aware capstone proposal for week 4.
+:::
 
 ## Topics
 
-- AI-assisted scripting for bioinformatics.
-- AI-assisted QC and EDA on a real dataset.
-- Keeping ownership of scientific judgment.
+- AI-assisted scripting for scRNA-seq.
+- AI-assisted QC and clustering on a real dataset.
+- Keeping ownership of scientific judgement (tissue-specific thresholds, parameter tuning).
 - Capstone scoping: pick a question; draft a plan.
 
 ## Before class
 
 Read:
 
-- [Code assistance](../bioinformatics/code-assistance.qmd)
-- [Data analysis](../bioinformatics/data-analysis.qmd)
+- [Code assistance](../bioinformatics/code-assistance.qmd) — debugging pattern + AI-assisted test writing.
+- [Data analysis](../bioinformatics/data-analysis.qmd) — the AI-fluency lens on scRNA-seq QC.
+- [Module 1 — Raw data QC](../modules/module-01-raw-data-qc/README.md) — FastQC interpretation for 10x reads. (Reading only; no run required.)
+- [Module 2 — Alignment & count matrix](../modules/module-02-alignment-count-matrix/README.md) — Cell Ranger / STARsolo. (Reading only unless you have HPC and want to run it.)
 
 Setup:
 
-- Working R or Python environment, **pinned** (`renv` / `conda` / `uv`).
-- Coding assistant set up and working in your editor.
-- Course dataset confirmed loadable on your machine (see *Course dataset* below).
+- A working **Google Colab** account (course default — Modules 3–5 run in the browser; no install). *Or* a local Python ≥ 3.11 environment with `scanpy`, `scrublet`, `leidenalg`, `pandas`, `numpy`, `matplotlib`, pinned with `conda` or `uv`.
+- Coding assistant set up and working in your editor (Claude Code, Cursor, or VS Code + Copilot).
+- Course dataset confirmed loadable on your machine (see [Python starter](starter-week3-python.qmd)).
 
 ## Course dataset
 
-Weeks 3 and 4 use the cerebellum subset of [GSE96870](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE96870) (Blackmore et al., 2017, [PNAS](https://doi.org/10.1073/pnas.1620415114)) — 22 mouse cerebellum samples across two sexes, three timepoints, and two infection conditions (Influenza A vs. uninfected). Public on GEO; mirrored as plain CSVs by the [Carpentries bioc-rnaseq](https://github.com/carpentries-incubator/bioc-rnaseq) lesson under CC-BY 4.0, so it loads identically into R or Python with a single `read_csv` call. ~10 MB.
+Weeks 3 and 4 use the **10x PBMC 3k** dataset — 2,700 peripheral blood mononuclear cells from a healthy donor, sequenced on Illumina NextSeq 500 with 10x Chromium v1. The matrix is bundled with Scanpy and loads in one call:
 
-Use the language-appropriate starter to confirm the data loads on your machine before class:
+```python
+import scanpy as sc
+adata = sc.datasets.pbmc3k()
+# AnnData object with n_obs × n_vars = 2700 × 32738
+```
 
-- [R starter](starter-week3-r.qmd) — `readr` + `dplyr`.
-- [Python starter](starter-week3-python.qmd) — `pandas`.
+PBMC 3k is the "hello world" dataset for single-cell analysis: small, well-characterised (≈8 cell types — T, B, NK, monocytes, DCs), and small enough to run end-to-end in a free Colab session. We use it for **both** the week 3 mini-project and the week 4 capstone hands-on.
 
-Both starters stop at "load + confirm shape + one summary table." The mini-project baseline is yours to write — see the [AI-use policy](../course-syllabus.qmd#ai-use-policy).
+Run the [Python starter](starter-week3-python.qmd) to confirm the data loads on your machine before class. The starter stops at "load + confirm shape + one summary table" — the mini-project baseline is yours to write (see the [AI-use policy](../course-syllabus.qmd#ai-use-policy)).
 
 ## In class
 
-- Pair programming session with AI on a small bioinformatics task.
-- Walkthrough: QC pass on a small RNA-seq (or scRNA-seq) dataset — instructor narrates the discernment moves.
-- Capstone brainstorming: each student leaves class with a one-paragraph capstone proposal and instructor feedback.
+**Short demo (~20 min):** instructor walks through [Module 3](../modules/module-03-preprocessing-scanpy/README.md) live — load PBMC 3k, calculate QC metrics, generate violin plots, choose thresholds, filter, normalise, log-transform, select highly variable genes. The discernment moves are narrated explicitly: *why this threshold for this tissue*, *why not trust the AI's first answer*, *what the AI sees vs. what only you see*.
+
+**Pair workshop (~70 min):** in pairs, pick up Module 3 from the demo's stopping point and finish the QC-to-HVG sweep on your own Colab. Use AI assistance for the boilerplate; pause and write down every threshold you accept or reject, and why. The pair partner is your first line of discernment — ask each other "would you defend that threshold to a reviewer?" before moving on.
+
+**Brief intro to Module 4 (~10 min):** instructor previews PCA → neighbours → UMAP → Leiden on the post-QC AnnData. Full module is for after-class.
+
+**Capstone brainstorming (~20 min):** each student leaves class with a one-paragraph capstone proposal and instructor feedback.
 
 ## After class
 
-- **Mini-project** *(25%)*: a scoped AI-assisted bioinformatics analysis. Submit a reproducible Quarto/Jupyter report containing:
-  1. **Baseline (AI-free)**: write a 30-line baseline analysis by hand. Run it. Save the output.
-  2. **AI-assisted iteration**: iterate with an AI assistant. Save the working version.
-  3. **Diff and discussion**: list every substantive change the AI suggested. For each, mark *accepted* / *rejected* and note why. The grade weights the *quality of your discernment* — accepting or rejecting both have to be defensible.
-  4. **Reproducibility artifact**: pinned environment file (`renv.lock` / `environment.yml` / `uv.lock`) committed alongside the report.
+- **Mini-project** *(25%)*: a scoped AI-assisted scRNA-seq analysis. Submit a reproducible Quarto/Jupyter notebook (or Colab link) containing:
+  1. **AI-free baseline** (~25 lines): hand-write `sc.datasets.pbmc3k()` → mt-gene flag → three QC violin plots → threshold filter → log-normalise. Run it. Save the output. **No AI assistance** for this section. (See the [AI-use policy](../course-syllabus.qmd#ai-use-policy).)
+  2. **AI-assisted iteration**: extend the baseline with HVG selection, scaling, PCA, neighbours, UMAP, and Leiden clustering. AI assistance is encouraged here — use [Module 4](../modules/module-04-clustering-umap/README.md) as your reference.
+  3. **Diff and discussion**: list every substantive AI suggestion. For each, mark *accepted* / *rejected* and note why. The grade weights the *quality of your discernment* — accepting and rejecting both have to be defensible.
+  4. **Reproducibility artifact**: pinned environment file (`environment.yml` or `uv.lock`) committed alongside the report, *or* a working Colab link. State which.
   5. **Disclosure statement** per the [rubric](../course-syllabus.qmd#disclosure-rubric).
 
-- **Capstone proposal** *(part of capstone, due end of week 3)*: one-page proposal for the week 4 capstone. Question, dataset/literature, planned approach, what AI will and will not help with.
+- **Capstone proposal** *(part of capstone, due end of week 3)*: one-page proposal for the week 4 capstone. Question, dataset/literature, planned approach, what AI will and will not help with. Module 5 (annotation + DE on PBMC 3k) is one valid path; you may also propose a literature brief on an unrelated subfield, or an AI-sparring-partner protocol design.
 
 ## Supplementary
 
 - Dataset: see *Course dataset* above.
-- Starter notebooks: [R](starter-week3-r.qmd) · [Python](starter-week3-python.qmd).
-- Worked-example walkthrough: [Data analysis](../bioinformatics/data-analysis.qmd).
+- [Python starter](starter-week3-python.qmd) — load + shape check + one summary table.
+- Worked-example walkthroughs:
+  - [Data analysis](../bioinformatics/data-analysis.qmd) — the AI-fluency lens on QC.
+  - [Module 3](../modules/module-03-preprocessing-scanpy/README.md) — full QC walkthrough with prompts and gold-standard outputs.
+  - [Module 4](../modules/module-04-clustering-umap/README.md) — clustering and UMAP.
 - Slides, recording, and demo notebooks will be posted here after the session.

@@ -16,7 +16,9 @@ This course teaches **AI fluency foundations** for biology: the framework, vocab
 
 ## Scope and bias
 
-The conceptual content (4 D's, LLM literacy, ethics) is **subfield-agnostic**. Hands-on examples lean toward **genomics and transcriptomics** because that's where AI tooling is most mature. Students from other subfields (structural, microbial, ecological, neural, developmental) are encouraged to bring their own datasets and questions; the framework transfers.
+The conceptual content (4 D's, LLM literacy, ethics) is **subfield-agnostic**. The hands-on project is a complete **single-cell RNA-seq pipeline** on the 10x PBMC 3k dataset — chosen because the tooling is mature, the dataset is small enough to run in a free-tier Colab, and the workflow exercises every step of the AI-fluency framework (delegating boilerplate, describing dataset structure, discerning thresholds, owning interpretation).
+
+Students from other subfields (structural, microbial, ecological, neural, developmental) are welcome and encouraged to bring their own datasets to the capstone. The 4 D's transfer; the scRNA-seq concrete project is the scaffold, not the limit.
 
 ## Learning outcomes
 
@@ -27,18 +29,19 @@ By the end of this course, participants will be able to:
 | 1 | **Apply** the 4 D's framework to classify a research task and choose a delegation pattern. | Apply | Week 1 reflection |
 | 2 | **Explain** at a working level how LLMs are trained, generate text, and fail. | Understand | Week 2 exercise |
 | 3 | **Construct** structured prompts (system, few-shot, tool-use) for bio research tasks. | Apply | Week 2 exercise |
-| 4 | **Use** an AI coding assistant to scaffold and debug a bioinformatics analysis. | Apply | Week 3 mini-project |
+| 4 | **Use** an AI coding assistant to scaffold and debug an scRNA-seq analysis. | Apply | Week 3 mini-project |
 | 5 | **Evaluate** AI-generated analyses, citations, and protocols for correctness, provenance, and methodological soundness. | Evaluate | Week 3 mini-project + week 4 capstone |
 | 6 | **Produce** a reproducible, AI-assisted research deliverable with a complete disclosure statement. | Create | Week 4 capstone |
 | 7 | **Critique** the ethical, epistemic, and reproducibility implications of a given AI use in research. | Evaluate | Throughout, formalized in capstone reflection |
 
 ## Course structure
 
-The course is organized into **three conceptual tracks** and **four weekly modules**:
+The course is organised into **three conceptual tracks**, a **5-module scRNA-seq pipeline**, and **four weekly meetings** that braid them together.
 
 - The **[AI fluency](fluency/delegation.qmd)** track introduces the 4 D's framework.
 - The **[AI literacy](literacy/how-llms-work.qmd)** track covers the technical and conceptual background.
-- The **[Hands-on bioinformatics](bioinformatics/code-assistance.qmd)** track is practical and project-based.
-- The **[weekly modules](weeks/week-1.qmd)** combine readings and exercises from the three tracks.
+- The **[Hands-on bioinformatics](bioinformatics/code-assistance.qmd)** track is the AI-fluency lens applied to four research tasks (code, data, literature, protocols).
+- The **[scRNA-seq pipeline](modules/module-01-raw-data-qc/README.md)** is the concrete project: 5 modules from FASTQ to annotated UMAP on 10x PBMC 3k. Modules 1–2 are pre-week-3 reading; Module 3 anchors week 3 in-class; Module 4 is week 3 after-class; Module 5 is one valid path for the week 4 capstone.
+- The **[weekly meetings](weeks/week-1.qmd)** combine readings, live demos, and workshops from the three tracks and the modules.
 
 See the [Syllabus](course-syllabus.qmd) for policies, assessment, the AI-use rubric, and the reading list. See the [Schedule](index.qmd) for week-by-week topics.

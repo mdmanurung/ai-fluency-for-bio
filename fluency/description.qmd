@@ -22,66 +22,67 @@ A well-described task usually includes:
 4. **Success criteria** — how you'll know the output is correct.
 5. **Anti-goals** — what the AI should *not* do.
 
-## Worked example: describing an RNA-seq QC request
+## Worked example: describing an scRNA-seq QC request
 
-A graduate student is starting QC on a new bulk RNA-seq dataset: 24 samples, 6 treatment groups, paired-end 150 bp reads aligned with STAR, counts from featureCounts. She wants an AI coding assistant to write an R script for the QC pass.
+A graduate student is starting QC on a 10x Chromium v1 PBMC dataset (≈2,700 cells from a healthy human donor — the canonical PBMC 3k). She wants an AI coding assistant to write a Python script for the sample-level QC pass before clustering.
 
 **The request she sends first:**
 
 ```
-Write me an R script to do QC on my RNA-seq data.
+Write me a Python script to do QC on my scRNA-seq data.
 ```
 
-The AI produces something. It is plausible. It probably uses `rlog` as the variance-stabilizing transformation, because `rlog` appears in many DESeq2 tutorials. It likely hardcodes column names it invented. It may produce a notebook rather than a script. It will not flag outlier samples because it has no data to flag them from. The output is a generic QC script for someone else's problem — coherent, runnable, subtly wrong for her situation in ways she may not catch until hours later.
+The AI produces something. It is plausible. It probably uses Seurat-style `mt-` prefix because that pattern is common in older single-cell tutorials, or it picks `MT-` and assumes the species. It likely hardcodes thresholds (200 minimum genes, 5% mt) without checking the violin plots. It may produce a Jupyter notebook rather than a script. It will not flag the right doublet rate because it has no information about loading concentration. The output is a generic QC script for someone else's problem — coherent, runnable, subtly wrong for her situation in ways she may not catch until hours later.
 
-What the AI had to invent: the input format, the number of samples, the experimental design, the downstream analysis, the visualization requirements, the preferred transformation, the threshold for flagging suspicious samples, and the deliverable format. It filled in every gap with a plausible default. Some of those defaults will happen to match her needs. Some won't.
+What the AI had to invent: the input format, the organism, the cell count, the chemistry version, the expected cell-type count, the downstream analysis, the threshold for filtering, the doublet-detection tool, and the deliverable format. It filled in every gap with a plausible default. Some of those defaults will happen to match her needs. Some won't.
 
 **The request she sends after applying the five-part structure:**
 
 ````
 ## Goal
-Write an R script to perform QC on a bulk RNA-seq count matrix before
-differential expression analysis.
+Write a Python script to perform sample-level QC on a 10x scRNA-seq count
+matrix before clustering and annotation.
 
 ## Context
-- 24 samples, 6 treatment groups (4 samples each), human cell line experiment
-- Counts from featureCounts, stored in a tab-separated file:
-  rows = Ensembl gene IDs, columns = sample IDs matching a metadata CSV
-- Metadata CSV has columns: sample_id, treatment, batch (2 batches)
-- Upstream: STAR alignment, ~80% overall mapping rate, 150 bp paired-end reads
-- Downstream: DESeq2 differential expression
+- 10x Chromium v1, human PBMCs from a healthy donor, ~2,700 cells (PBMC 3k)
+- Loaded via `sc.datasets.pbmc3k()`; AnnData with ~32,000 genes
+- Expecting ≈8 well-characterised cell types (T, B, NK, monocytes, DCs)
+- Loaded ≈3,000 cells; expected doublet rate ≈2-4%
+- Downstream: HVG selection → PCA → neighbours → UMAP → Leiden clustering
 
 ## Constraints
-- Use tidyverse + DESeq2 + pheatmap only; no additional packages
-- Output: one PDF of QC plots — library size bar chart, log2-count density,
-  PCA colored by treatment and by batch, sample-sample correlation heatmap
-- Deliverable is a script, not a notebook; runs from the command line with
-  two positional arguments: counts.tsv and metadata.csv
+- Use scanpy + scrublet + matplotlib only; no additional packages
+- Output: one PDF of QC plots — three QC violins (n_genes_by_counts,
+  total_counts, pct_counts_mt), total_counts vs. pct_counts_mt scatter,
+  total_counts vs. n_genes_by_counts scatter, doublet-score histogram
+- Deliverable is a Python script, not a notebook; runs from the command line
+  and writes the post-QC AnnData to a specified .h5ad path
 
 ## Success criteria
-- Variance stabilization uses vst(), not rlog() — the dataset is large enough
-  that vst is faster and the difference is negligible
-- The library size plot flags samples below 5 million counts in red
-- PCA labels each point with its sample_id
+- mt-gene flag uses `MT-` (human prefix); script asserts >0 mt genes detected
+- Filters: min_genes=200, n_genes_by_counts < 2500, pct_counts_mt < 5
+- After filtering, log-normalise with target_sum=1e4 and log1p
+- Save raw counts to `adata.raw` before any scaling
 
 ## Anti-goals
-- Do not impute missing values; if a sample has NA counts, stop with an error
-- Do not run DESeq2 or perform any normalization in this script — that is the
+- Do not run PCA, clustering, or annotation in this script — that is the
   next step
-- Do not produce per-gene plots; this is a sample-level QC pass only
+- Do not impute missing values; AnnData treats sparse zeros correctly
+- Do not produce per-cell or per-gene plots beyond the QC overview;
+  this is a sample-level QC pass only
 ````
 
 The two prompts differ in length by about 200 words. The structured version takes perhaps three minutes to write. Here is what each element actually did:
 
-**Goal** made the scope unambiguous: pre-DE sample-level QC, not the analysis itself. Without it, the AI might add a differential expression step.
+**Goal** made the scope unambiguous: pre-clustering sample-level QC, not the clustering itself. Without it, the AI might add PCA, neighbours, and UMAP — turning a 30-line QC script into a 200-line analysis pipeline.
 
-**Context** gave the AI the data shape so it didn't invent column names, the experimental design so it knew to color PCA by batch (which it couldn't have guessed), and the downstream step so it understood the transformation choice. The researcher has already decided to use `vst` (faster, and increasingly preferred as sample counts grow — the DESeq2 authors recommend it for large datasets). The AI can apply that choice correctly only if it knows what comes next; without context, it may default to `rlog` or to whatever appears most in its training data.
+**Context** gave the AI the data shape and chemistry so it didn't invent the read structure, the organism so it picked the right mt prefix (`MT-` for human, not `mt-`), the expected cell-type count so it could calibrate clustering recommendations later, and the downstream step so it understood why this script ends at filtered + log-normalised AnnData.
 
-**Constraints** prevented scope creep and specified the deliverable format. Without the package constraint, the AI might pull in `limma`, `edgeR`, or `Seurat` depending on what it has seen in similar contexts. Without the "script, not notebook" constraint, it may produce a `.Rmd` file.
+**Constraints** prevented scope creep and specified the deliverable format. Without the package constraint, the AI might pull in `pegasus`, `scvi-tools`, or `bbknn` depending on what it has seen in similar contexts. Without the "script, not notebook" constraint, it may produce a `.ipynb` file.
 
-**Success criteria** are the specific technical decisions the researcher owns — `vst` not `rlog`, the 5 million count threshold, the sample ID labels. These are scientific judgments. Putting them in the prompt is not over-specifying; it is the researcher doing her job rather than delegating it.
+**Success criteria** are the specific technical decisions the researcher owns — `MT-` not `mt-`, the 5% mt threshold (PBMC-appropriate; she would use 20% for neurons), the explicit `adata.raw` save before any future scaling. These are scientific judgments. Putting them in the prompt is not over-specifying; it is the researcher doing her job rather than delegating it.
 
-**Anti-goals** are often the highest-value element. "Do not impute" and "do not normalize" prevent the AI from doing something plausible but wrong for this workflow. LLMs are trained to be helpful; they will add imputation or normalization if those steps appear in QC pipelines they have seen, unless told not to.
+**Anti-goals** are often the highest-value element. "Do not impute" and "do not run clustering" prevent the AI from doing something plausible but wrong for this workflow. LLMs are trained to be helpful; they will add clustering or imputation if those steps appear in QC pipelines they have seen, unless told not to.
 
 ::: {.callout-tip}
 The structured version is longer, but the time saved in debugging, revision, and verification is larger. The goal is not brevity in the prompt — it is precision.

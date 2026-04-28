@@ -4,7 +4,7 @@ project:
 website:
   page-navigation: true
   title: "AI Fluency Foundations for Biology"
-  description: "A 4-week foundations course on using AI effectively in biological research — the 4 D's of AI fluency, LLM literacy, and hands-on bioinformatics workflows."
+  description: "A 4-week foundations course on using AI effectively in biological research — the 4 D's of AI fluency, LLM literacy, and a hands-on single-cell RNA-seq pipeline (FASTQ → annotated UMAP) run with AI in the loop."
   site-url: "https://mdmanurung.github.io/ai-fluency-for-bio/"
 
   repo-url: https://github.com/mdmanurung/ai-fluency-for-bio
@@ -74,6 +74,18 @@ website:
             text: Literature review
           - href: bioinformatics/protocol-design.qmd
             text: Protocol design
+      - section: "scRNA-seq pipeline (modules)"
+        contents:
+          - href: modules/module-01-raw-data-qc/README.md
+            text: "Module 1 — Raw data QC"
+          - href: modules/module-02-alignment-count-matrix/README.md
+            text: "Module 2 — Alignment & count matrix"
+          - href: modules/module-03-preprocessing-scanpy/README.md
+            text: "Module 3 — Preprocessing in Scanpy"
+          - href: modules/module-04-clustering-umap/README.md
+            text: "Module 4 — Clustering & UMAP"
+          - href: modules/module-05-annotation-interpretation/README.md
+            text: "Module 5 — Annotation & interpretation"
       - section: "Weekly materials"
         contents:
           - href: weeks/week-1.qmd
@@ -81,9 +93,9 @@ website:
           - href: weeks/week-2.qmd
             text: "Week 2 — LLM literacy for bio"
           - href: weeks/week-3.qmd
-            text: "Week 3 — Hands-on bioinformatics I"
+            text: "Week 3 — scRNA-seq I (QC → clustering)"
           - href: weeks/week-4.qmd
-            text: "Week 4 — Hands-on bioinformatics II"
+            text: "Week 4 — scRNA-seq II (annotation, capstone)"
 
 format:
   html:

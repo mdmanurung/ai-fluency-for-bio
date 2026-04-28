@@ -1,63 +1,81 @@
 ---
 title: "Week 3 starter (Python)"
-subtitle: "Load the course dataset, confirm shape, render one summary table"
+subtitle: "Load PBMC 3k, confirm shape, render one summary table"
 ---
 
 ::: {.callout-important}
 ## What this is — and what it is not
-This starter loads the GSE96870 cerebellum subset, confirms the dataset is what you think it is, and renders one summary table. **It does not perform the QC analysis.** That is the week 3 mini-project's *AI-free baseline* — you write that yourself, by hand, before you involve an AI assistant. See the [syllabus AI-use policy](../course-syllabus.qmd#ai-use-policy).
+This starter loads the PBMC 3k dataset, confirms the AnnData is what you think it is, and renders one summary table. **It does not perform the QC analysis.** That is the week 3 mini-project's *AI-free baseline* — you write that yourself, by hand, before you involve an AI assistant. See the [syllabus AI-use policy](../course-syllabus.qmd#ai-use-policy).
 
-If you copy from this starter into your baseline, you are short-circuiting the assignment. The starter exists so you do not waste the first 30 minutes of the workshop on file paths.
+If you copy from this starter into your baseline, you are short-circuiting the assignment. The starter exists so you do not waste the first 30 minutes of the workshop on installs and shapes.
 :::
 
 ## Setup
 
-You need Python (≥ 3.10) and `pandas`. Install with:
-
-```bash
-pip install pandas
-```
-
-This starter does not install `scanpy` or `pydeseq2` — those come later, when you write the baseline.
-
-## Load the data from the Carpentries mirror
-
-The two CSVs live in the [carpentries-incubator/bioc-rnaseq](https://github.com/carpentries-incubator/bioc-rnaseq) repository (CC-BY 4.0). They are stable URLs.
+The course default is **Google Colab** — open [colab.research.google.com](https://colab.research.google.com/), create a new notebook, and run the cells below. On the first run, install Scanpy:
 
 ```python
-import pandas as pd
+!pip install -q scanpy
+```
 
-BASE = "https://raw.githubusercontent.com/carpentries-incubator/bioc-rnaseq/main/episodes/data"
+If you prefer a local install, you need Python (≥ 3.11) and Scanpy. The minimal install:
 
-coldata = pd.read_csv(f"{BASE}/GSE96870_coldata_cerebellum.csv")
-counts  = pd.read_csv(f"{BASE}/GSE96870_counts_cerebellum.csv", index_col="gene")
+```bash
+pip install scanpy
+```
+
+This starter does not install `scrublet`, `leidenalg`, or other downstream packages — those come later, when you write the baseline and extend it for clustering.
+
+## Load the dataset
+
+Scanpy bundles PBMC 3k, so the load is one call (no download to manage):
+
+```python
+import scanpy as sc
+
+adata = sc.datasets.pbmc3k()
+adata.var_names_make_unique()
 ```
 
 ## Confirm the shape
 
 ```python
-print(counts.shape)     # expect (41786, 22)
-print(coldata.shape)    # expect (22, 11)
-assert list(coldata["sample"]) == list(counts.columns), "sample sheet does not match count columns"
+print(adata)
+# expect: AnnData object with n_obs × n_vars = 2700 × 32738
+assert adata.n_obs == 2700, "unexpected cell count"
+assert adata.n_vars == 32738, "unexpected gene count"
 ```
 
-If any of those three checks fails, **stop**. The downstream baseline will produce nonsense if the sample sheet does not align with the count columns.
+If either assertion fails, **stop**. Either Scanpy's bundled dataset has changed in a new version (check `sc.__version__`) or you loaded the wrong matrix. The downstream baseline will produce nonsense if the shape is not what you expect.
 
 ## One summary table
 
 ```python
-(coldata
-   .groupby(["sex", "infection", "time"])
-   .size()
-   .reset_index(name="n")
-   .sort_values(["infection", "time", "sex"]))
+import pandas as pd
+
+# How many genes have at least one count per cell?
+nonzero_per_cell = (adata.X > 0).sum(axis=1)
+nonzero_per_cell = pd.Series(
+    nonzero_per_cell.A1 if hasattr(nonzero_per_cell, 'A1') else nonzero_per_cell
+)
+
+summary = pd.DataFrame({
+    "metric": ["min", "median", "max"],
+    "genes_with_counts_per_cell": [
+        int(nonzero_per_cell.min()),
+        int(nonzero_per_cell.median()),
+        int(nonzero_per_cell.max()),
+    ],
+})
+print(summary)
 ```
 
-Read the output. There are 22 samples — *not* 24. Two of the twelve `sex × infection × time` cells are smaller than the others. This is a real feature of the dataset and a real source of imbalance the baseline analysis will need to be honest about.
+Read the output. The median should be roughly 800–1,000; the maximum reaches a few thousand. The minimum reveals empty droplets and dying cells — these are the cells your QC will filter out. Recognising this is part of the [Discernment](../fluency/discernment.qmd) move you exercise in the baseline.
 
 That is the end of the starter. From here, the baseline is yours.
 
 ## Where to go next
 
-- [Data analysis](../bioinformatics/data-analysis.qmd) — full worked-example walkthrough of QC on this dataset (in R; the Python equivalent is one-to-one for these steps).
-- [Week 3 — Hands-on bioinformatics I](week-3.qmd) — the mini-project deliverable.
+- [Module 3 — Preprocessing & QC in Scanpy](../modules/module-03-preprocessing-scanpy/README.md) — the full runnable QC walkthrough you'll work through in week 3 in-class.
+- [Data analysis](../bioinformatics/data-analysis.qmd) — the AI-fluency lens on QC, with the AI's role and the human's discernment move called out at every step.
+- [Week 3 — scRNA-seq I](week-3.qmd) — the mini-project deliverable.
