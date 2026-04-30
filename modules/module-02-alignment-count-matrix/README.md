@@ -278,6 +278,25 @@ mismatch is the actual issue.
 
 ---
 
+## Self-check
+
+Try to answer before checking. If you miss two, re-read the worked Cell Ranger example.
+
+1. Why use `filtered_feature_bc_matrix/` for analysis instead of `raw_feature_bc_matrix/`? What's the cost of getting this wrong?
+2. The `web_summary.html` shows 65% valid barcode rate and 5,000 cells expected vs. 28,000 detected. Which number do you trust, and what does the discrepancy suggest?
+3. You're choosing between Cell Ranger and STARsolo for a standard 3' gene-expression library. List one consideration that would push you toward each.
+
+<details>
+<summary>Self-check answers</summary>
+
+1. The **filtered** matrix has been processed by Cell Ranger's empty-droplet filter (EmptyDrops or knee-point detection), so it contains only barcodes that look like real cells. The **raw** matrix includes every barcode that received any read — usually >100,000 of them, mostly empty droplets. Loading raw into Scanpy and running normalisation/clustering on it produces meaningless results dominated by ambient RNA noise. This is a common silent failure when an AI suggests "load the count matrix" without specifying which one.
+2. **Trust the detected count, but investigate the discrepancy.** 28,000 cells when you expected 5,000 is a 5–6× over-detection — usually a sign of high ambient RNA inflating the empty-droplet filter, or that the chip was overloaded. The 65% valid-barcode rate is a separate concern: > 90% is healthy, and 65% suggests sequencing or chemistry issues. Both numbers indicate the run needs investigation before proceeding to Scanpy.
+3. **Cell Ranger**: use it if you have an unusual library (VDJ, ATAC, Feature Barcoding), if your collaborators use it (reproducibility), or if you want the canonical web summary. **STARsolo**: use it if compute is a constraint (much faster), if you want finer control over alignment parameters, or if you're integrating with an existing STAR-based pipeline.
+
+</details>
+
+---
+
 ## Key Takeaways
 
 1. **Cell Ranger is the standard; STARsolo is the fast alternative.** Both produce compatible output. Use Cell Ranger if you have an unusual library type (ATAC, VDJ, Feature Barcoding).

@@ -2,26 +2,65 @@
 title: "FAQ"
 ---
 
+## How long will this course take?
+
+Plan on **4–8 weeks** end-to-end depending on your background and time. Each unit is roughly 3–5 hours (Weeks 1–2) or 5–7 hours (Weeks 3–4) of focused work. Some learners compress it into a long weekend per unit; others spread it over two weeks per unit. There are no deadlines — pick a pace you can sustain.
+
+## Do I need a cohort or instructor?
+
+No. The course is designed to be taken solo. Every exercise has a self-check answer key; every project has a learner-facing self-rubric; every conceptual page has a "Check your understanding" callout. See [How to use this course](course-how-to-use.qmd) for the self-assessment model.
+
+If you'd prefer to take it with peers, it works well as a **study group** of 3–5 people who agree on a shared cadence — but that's optional, not required.
+
+## How do I know if I've understood the material?
+
+Four levels of feedback:
+
+1. **Per-page checks** at the bottom of every conceptual page (3–5 questions, worked answers).
+2. **Per-week knowledge checks** at the end of each week page (5–8 mixed questions).
+3. **Hands-on practice exercises** that apply each unit to your own work.
+4. **Self-rubrics** for each project so you can grade your own work against the same dimensions an instructor would.
+
+If you miss two or more questions on a topic in the knowledge check, **revisit the reading**, then redo the practice. The check is the signal, the reading is the fix.
+
+## Can I skip a week?
+
+Each week is a unit, and they build:
+
+- **Week 1 (4 D's)** is the framework that everything else hangs off. Don't skip it.
+- **Week 2 (LLM literacy)** is foundational for the prompt-engineering and hands-on tracks. Skipping it means weaker prompts in Week 3+.
+- **Weeks 3 and 4** are the hands-on bioinformatics track. If you are not in genomics and don't care about the scRNA-seq pipeline, you can substitute a Week 4 final project from your own subfield (Path B: literature brief, or Path C: protocol design — see [Week 4](weeks/week-4.qmd)).
+
+## What if I get stuck on the project?
+
+For Week 3 mini-project specifically: a [Python starter](weeks/starter-week3-python.qmd) confirms the dataset loads on your machine, and Modules 3–4 are runnable Colab notebooks with prompts and gold-standard outputs. If your AI-free baseline isn't running, that's the signal to slow down — debug the baseline before adding AI assistance, because the AI will paper over an unclear bug.
+
+For all projects: the [Self-review template](reference/peer-review.qmd) and the disclosure rubric in the syllabus give you concrete questions to ask of your own work. If you can answer them, the project is done; if you can't, that's where the work is.
+
 ## Do I need a paid AI subscription?
 
-No — the course is designed to work with free-tier access. Paid tiers (Claude Pro, ChatGPT Plus, etc.) give you more usage headroom and access to more capable models, which can make the hands-on sections smoother, but they are not required.
+No — the course is designed to work with free-tier access. Paid tiers (Claude Pro, ChatGPT Plus, etc.) give you more usage headroom and access to more capable models, which can make the hands-on units smoother, but they are not required. Free-tier rate limits may interrupt sustained code-assistance sessions in Weeks 3–4 — plan accordingly.
 
 ## Which AI tool should I use?
 
-The course examples use **Claude** (Anthropic) by default, because its behavior and long-context handling are well suited to research workflows. Most exercises work with any frontier LLM. Where a tool-specific feature matters (e.g., Claude's artifacts, tool use, or computer use), it will be flagged.
+The course examples use **Claude** (Anthropic) by default, because its behaviour and long-context handling are well suited to research workflows. Most exercises work with any frontier LLM. Where a tool-specific feature matters (e.g., Claude's artifacts, tool use, or computer use), it is flagged.
 
-## Can I use AI for the assignments?
+## Can I use AI for the projects?
 
-Yes — that's the whole point. See the [AI-use policy](course-syllabus.qmd#ai-use-policy) in the syllabus for disclosure and verification expectations.
+Yes — that's the whole point. See the [AI-use policy](course-syllabus.qmd#ai-use-policy) in the syllabus for disclosure and verification expectations. Two projects (Week 1 and Week 3) explicitly include an **AI-free baseline component** so you build the underlying skill before collaborating with an AI; that's a pedagogical choice, not a "no-AI" rule.
 
 ## I'm not a bioinformatician. Will I keep up?
 
-Yes. The conceptual tracks (fluency, literacy) are stack-agnostic. For the hands-on track, we scaffold the bioinformatics examples so the AI does most of the mechanical work — you bring the biological judgment.
+Yes. The conceptual tracks (fluency, literacy) are stack-agnostic. For the hands-on track, the bioinformatics examples are scaffolded so the AI does most of the mechanical work — you bring the biological judgement. If you don't have a genomics background at all, Week 4 lets you choose a non-genomics path (literature brief or protocol design) for the final project.
 
 ## I'm an advanced bioinformatician. Will I be bored?
 
-The mechanics might be familiar, but the framing (delegation/discernment, epistemics, disclosure practice) is what most working bioinformaticians are missing. Treat it as professional development.
+The mechanics might be familiar, but the framing (delegation/discernment, epistemics, disclosure practice) is what most working bioinformaticians are missing. Treat it as professional development. The "Check your understanding" callouts are a fast filter — if you breeze through them, skip the reading and try the practice exercise.
+
+## Is there a certificate?
+
+No. The course is open materials, no enrolment, no exam, no certificate. If you want something to point to after finishing, your **completed final project** (with its disclosure statement and self-review) is the artifact — open it on a GitHub repo and link it from your CV. That's a stronger signal than a certificate.
 
 ## What about data privacy?
 
-Never paste confidential, embargoed, patient-identifiable, or unpublished-collaborator data into a third-party LLM without explicit permission and appropriate privacy safeguards. The course does not require you to upload any sensitive data.
+Never paste confidential, embargoed, patient-identifiable, or unpublished-collaborator data into a third-party LLM without explicit permission and appropriate privacy safeguards. The course does not require you to upload any sensitive data — the PBMC 3k dataset is fully public. See the [data policy](course-syllabus.qmd#data-policy-required-reading-before-any-exercise-using-real-data) in the syllabus for the full list.

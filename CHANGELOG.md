@@ -7,6 +7,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed — branch `claude/self-paced-course-redesign-eUh6I` (self-paced conversion)
+
+Convert the course from an instructor-led 4-week cohort to a fully self-paced solo-learner experience, with formative assessments and self-rubrics throughout. The 4-week structure is preserved as **suggested pacing milestones**, not a class schedule.
+
+- **`_quarto.yml`** — sidebar restructured: each Week is now a top-level pathway containing its own readings (with conceptual pages and module READMEs nested directly under the relevant week, including duplicate entries where pages are reused). Old by-topic sections (`AI fluency`, `AI literacy`, `Hands-on bioinformatics`, `scRNA-seq pipeline (modules)`, `Weekly materials`) collapsed into the per-week sections. Reference section gains a new "Topic index" link for learners who want the by-subject view. "Schedule" replaced by "Roadmap" + new "How to use this course" entry. "Teaching team" renamed "About the author".
+- **`index.qmd`** — Schedule table replaced with a self-paced Roadmap (drops "Dates" column, replaces "Announced before term" with "Suggested time"). Adds a "How to self-assess" section linking to the four feedback mechanisms. Site title and description updated to "self-paced".
+- **`course-how-to-use.qmd`** — new file. Covers the self-paced philosophy, the shape of each week page (readings → practice → knowledge check → project → rubric), the four levels of self-feedback, prerequisites, a learner-progress checklist, and an optional study-group note (no "instructor mode").
+- **`course-syllabus.qmd`** — major rewrite. Drops Logistics' cohort framing (sessions, meetings, workload outside class, meeting time, term duration). Drops percentage weights (was 30/25/30/15). Renames "Assessment" → "Self-assessment" with a feedback-mechanism table. Disclosure rubric, AI-use policy, and data policy preserved verbatim (locked content). Drops Late-work and Attendance policies entirely. Reframes Collaboration for optional study groups.
+- **`course-overview.qmd`** — drops "Four weekly meetings" and "3–5 hours of independent work per week" cohort phrasing. Adds explicit self-paced framing and a note for learners willing to do their own assessment. Course-structure section reframed around four self-paced units; "weekly meetings" link removed.
+- **`course-faq.qmd`** — full rewrite. Drops cohort-specific questions (meeting time, attendance, recordings, late work, peer-review pairing). Adds: how long this takes, do I need a cohort, how do I self-assess, can I skip a week, what if I get stuck, is there a certificate (no).
+- **`weeks/week-1.qmd` through `weeks/week-4.qmd`** — full rewrites with a uniform self-paced template: Learning objectives → Suggested pacing (table) → Readings (with focus-on notes) → Hands-on practice (2–3 exercises with collapsible self-checks) → Knowledge check (5–8 mixed conceptual + applied questions with worked answers) → Project (existing deliverable, reframed) → Self-rubric (4–5 dimensions, mirrors disclosure rubric format) → Going further. Drops "before class / in class / after class / supplementary" sections, "lightning presentations", "slides will be posted", "instructor will". Keeps AI-free baselines for Weeks 1 & 3, the three-path final project for Week 4, and the disclosure-rubric requirement.
+- **`modules/module-0[1-5]/README.md`** — added a "Self-check" section to each module README (3–4 questions with answer keys, in `<details>` blocks for cross-rendering compatibility), positioned just before "Key Takeaways". Topics: R1/R2 anatomy and UMI duplication (M1); filtered vs. raw matrix and STARsolo trade-offs (M2); `adata.raw` ordering, doublet vs. low-quality bimodality, organism-specific mt cutoffs (M3); scaling-before-PCA, Leiden resolution stability, UMAP-as-evidence trap, `n_neighbors` tuning (M4); CellTypist confidence vs. marker reading, DE significance inflation, mouse-on-human-reference traps, T+monocyte hybrid as artefact (M5).
+- **`reference/peer-review.qmd`** — title and framing reframed from "Peer-review template" (cohort-graded) to "Self-review template" (solo-default, peer-optional). Drops "submission deadline" / "anonymous return" cohort logistics. Tone callout updated to apply equally to self-review.
+- **`reference/topic-index.qmd`** — new file. By-subject index of all conceptual pages, modules, reference pages, and course-info pages — the by-topic view for learners who finished the course or who want to look something up without going through a week page.
+
+### Added (formative assessments)
+
+- **Per-week knowledge checks**: each `weeks/week-N.qmd` now ends with a 5–8 question collapsible callout covering recall, applied scenarios, and "diagnose the failure" prompts, with worked answers.
+- **Per-week hands-on practice exercises**: each week has 2–3 small applied tasks against the learner's own work, each with a collapsible self-check answer.
+- **Per-project self-rubrics**: each of the four projects (Week 1 reflection, Week 2 prompt-engineering exercise, Week 3 PBMC 3k mini-project, Week 4 final project) has a learner-facing rubric with 4–5 binary dimensions mirroring the disclosure-rubric pattern.
+- **Per-module Self-check callouts**: each Module 1–5 README now has 3–4 questions with answer keys.
+- The existing per-conceptual-page "Check your understanding" callouts (added in PR-D) are preserved unchanged.
+
 ### Changed — branch `claude/course-improvement-feedback-Dc10Y` (open-source / reuse pass, PR-D)
 
 - **`bioinformatics/code-assistance.qmd`** — trimmed (~205 → ~155 lines): "Where AI helps / falls short" tightened into a two-paragraph block; verbose pytest fixture in the test-writing example replaced with a four-bullet summary of what the AI returns; weak/strong debugging prompts compressed; closing comprehension callout added.

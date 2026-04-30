@@ -7,31 +7,31 @@ subtitle: "AI-assisted single-cell QC, normalisation, and clustering on PBMC 3k"
 ## Learning objectives
 - Load a 10x scRNA-seq count matrix into Scanpy and exercise the **Description** D by framing the dataset for an AI assistant.
 - Apply tissue-aware QC thresholds and exercise the **Discernment** D by reading the violin plots yourself before accepting an AI suggestion.
-- Build PCA → neighbours → UMAP → Leiden, and use AI for the boilerplate while owning the parameter choices.
-- Scope a 4-D's-aware capstone proposal for week 4.
+- Build PCA → neighbours → UMAP → Leiden, using AI for boilerplate while owning parameter choices.
+- Produce an AI-free baseline of the QC pass and compare it to your AI-assisted iteration.
 :::
 
-## Topics
+## Suggested pacing
 
-- AI-assisted scripting for scRNA-seq.
-- AI-assisted QC and clustering on a real dataset.
-- Keeping ownership of scientific judgement (tissue-specific thresholds, parameter tuning).
-- Capstone scoping: pick a question; draft a plan.
+This is a heavier unit than Weeks 1–2 — plan on **~5–7 hours**.
 
-## Before class
+| Chunk | What | Time |
+|:------|:-----|:-----|
+| 1 | Tooling setup: confirm Colab works *or* local environment loads PBMC 3k (run [Python starter](starter-week3-python.qmd)) | ~30 min |
+| 2 | Read code assistance + data analysis | ~1 hr |
+| 3 | Skim Modules 1–2; work through Module 3 in Colab | ~1.5 hrs |
+| 4 | Work through Module 4 in Colab | ~1 hr |
+| 5 | Hands-on practice exercises | ~1 hr |
+| 6 | Knowledge check | ~30 min |
+| 7 | Project: PBMC 3k mini-project (AI-free baseline + AI-assisted iteration) | ~2 hrs (often more — give it a day) |
 
-Read:
+If you have not used Scanpy before, add ~1 hour for orientation.
 
-- [Code assistance](../bioinformatics/code-assistance.qmd) — debugging pattern + AI-assisted test writing.
-- [Data analysis](../bioinformatics/data-analysis.qmd) — the AI-fluency lens on scRNA-seq QC.
-- [Module 1 — Raw data QC](../modules/module-01-raw-data-qc/README.md) — FastQC interpretation for 10x reads. (Reading only; no run required.)
-- [Module 2 — Alignment & count matrix](../modules/module-02-alignment-count-matrix/README.md) — Cell Ranger / STARsolo. (Reading only unless you have HPC and want to run it.)
-
-Setup:
+## Setup
 
 - A working **Google Colab** account (course default — Modules 3–5 run in the browser; no install). *Or* a local Python ≥ 3.11 environment with `scanpy`, `scrublet`, `leidenalg`, `pandas`, `numpy`, `matplotlib`, pinned with `conda` or `uv`.
 - Coding assistant set up and working in your editor (Claude Code, Cursor, or VS Code + Copilot).
-- Course dataset confirmed loadable on your machine (see [Python starter](starter-week3-python.qmd)).
+- Course dataset confirmed loadable on your machine — run the [Python starter](starter-week3-python.qmd) before starting Module 3.
 
 ## Course dataset
 
@@ -43,37 +43,130 @@ adata = sc.datasets.pbmc3k()
 # AnnData object with n_obs × n_vars = 2700 × 32738
 ```
 
-PBMC 3k is the "hello world" dataset for single-cell analysis: small, well-characterised (≈8 cell types — T, B, NK, monocytes, DCs), and small enough to run end-to-end in a free Colab session. We use it for **both** the week 3 mini-project and the week 4 capstone hands-on.
+PBMC 3k is the "hello world" dataset for single-cell analysis: small, well-characterised (≈8 cell types — T, B, NK, monocytes, DCs), and small enough to run end-to-end in a free Colab session. We use it for **both** the Week 3 mini-project and the Week 4 final project.
 
-Run the [Python starter](starter-week3-python.qmd) to confirm the data loads on your machine before class. The starter stops at "load + confirm shape + one summary table" — the mini-project baseline is yours to write (see the [AI-use policy](../course-syllabus.qmd#ai-use-policy)).
+Run the [Python starter](starter-week3-python.qmd) to confirm the data loads on your machine. The starter stops at "load + confirm shape + one summary table" — the mini-project baseline is yours to write (see the [AI-use policy](../course-syllabus.qmd#ai-use-policy)).
 
-## In class
+## Readings
 
-**Short demo (~20 min):** instructor walks through [Module 3](../modules/module-03-preprocessing-scanpy/README.md) live — load PBMC 3k, calculate QC metrics, generate violin plots, choose thresholds, filter, normalise, log-transform, select highly variable genes. The discernment moves are narrated explicitly: *why this threshold for this tissue*, *why not trust the AI's first answer*, *what the AI sees vs. what only you see*.
+Read the conceptual pages first, then run the modules.
 
-**Pair workshop (~70 min):** in pairs, pick up Module 3 from the demo's stopping point and finish the QC-to-HVG sweep on your own Colab. Use AI assistance for the boilerplate; pause and write down every threshold you accept or reject, and why. The pair partner is your first line of discernment — ask each other "would you defend that threshold to a reviewer?" before moving on.
+- [Code assistance](../bioinformatics/code-assistance.qmd) — **focus on**: the debugging pattern (reproducer → minimal example → ask) and the AI-assisted test-writing example. This is how you'll fix things when Module 3 inevitably breaks somewhere.
+- [Data analysis](../bioinformatics/data-analysis.qmd) — **focus on**: the AI-fluency lens on QC. The page walks through the same workflow Module 3 runs, but with explicit accept/reject reasoning at each AI suggestion.
+- [Module 1 — Raw data QC](../modules/module-01-raw-data-qc/README.md) — FastQC interpretation for 10x reads. (Reading only; no run required.)
+- [Module 2 — Alignment & count matrix](../modules/module-02-alignment-count-matrix/README.md) — Cell Ranger / STARsolo. (Reading only unless you have HPC and want to run it.)
 
-**Brief intro to Module 4 (~10 min):** instructor previews PCA → neighbours → UMAP → Leiden on the post-QC AnnData. Full module is for after-class.
+Then run, in Colab or your local environment:
 
-**Capstone brainstorming (~20 min):** each student leaves class with a one-paragraph capstone proposal and instructor feedback.
+- [Module 3 — Preprocessing in Scanpy](../modules/module-03-preprocessing-scanpy/README.md) — load, QC metrics, violin plots, threshold filter, normalise, log-transform, HVG selection.
+- [Module 4 — Clustering & UMAP](../modules/module-04-clustering-umap/README.md) — PCA → neighbours → UMAP → Leiden.
 
-## After class
+## Hands-on practice
 
-- **Mini-project** *(25%)*: a scoped AI-assisted scRNA-seq analysis. Submit a reproducible Quarto/Jupyter notebook (or Colab link) containing:
-  1. **AI-free baseline** (~25 lines): hand-write `sc.datasets.pbmc3k()` → mt-gene flag → three QC violin plots → threshold filter → log-normalise. Run it. Save the output. **No AI assistance** for this section. (See the [AI-use policy](../course-syllabus.qmd#ai-use-policy).)
-  2. **AI-assisted iteration**: extend the baseline with HVG selection, scaling, PCA, neighbours, UMAP, and Leiden clustering. AI assistance is encouraged here — use [Module 4](../modules/module-04-clustering-umap/README.md) as your reference.
-  3. **Diff and discussion**: list every substantive AI suggestion. For each, mark *accepted* / *rejected* and note why. The grade weights the *quality of your discernment* — accepting and rejecting both have to be defensible.
-  4. **Reproducibility artifact**: pinned environment file (`environment.yml` or `uv.lock`) committed alongside the report, *or* a working Colab link. State which.
-  5. **Disclosure statement** per the [rubric](../course-syllabus.qmd#disclosure-rubric).
+These are designed to surface where the AI's defaults will fail you on real data. Do each one before moving on.
 
-- **Capstone proposal** *(part of capstone, due end of week 3)*: one-page proposal for the week 4 capstone. Question, dataset/literature, planned approach, what AI will and will not help with. Module 5 (annotation + DE on PBMC 3k) is one valid path; you may also propose a literature brief on an unrelated subfield, or an AI-sparring-partner protocol design.
+### Exercise 3.1 — Predict-then-run
 
-## Supplementary
+Before running the [Python starter](starter-week3-python.qmd), write down (on paper, in a notebook cell, anywhere visible): what you expect `adata.shape` to be, what `adata.var_names[:5]` will look like, and what range you expect `pct_counts_mt` to fall in for healthy donor PBMC. Then run the starter and compare.
 
-- Dataset: see *Course dataset* above.
-- [Python starter](starter-week3-python.qmd) — load + shape check + one summary table.
-- Worked-example walkthroughs:
-  - [Data analysis](../bioinformatics/data-analysis.qmd) — the AI-fluency lens on QC.
-  - [Module 3](../modules/module-03-preprocessing-scanpy/README.md) — full QC walkthrough with prompts and gold-standard outputs.
-  - [Module 4](../modules/module-04-clustering-umap/README.md) — clustering and UMAP.
-- Slides, recording, and demo notebooks will be posted here after the session.
+::: {.callout-tip collapse="true"}
+## Self-check: Exercise 3.1
+You're calibrated if you got at least two of three right. Common surprises:
+
+- The matrix is `n_obs × n_vars = 2700 × 32738` — the var dimension is the *full transcriptome*, not just expressed genes. Most of those columns are zero.
+- The var names are gene symbols (uppercase for human), not Ensembl IDs.
+- For healthy PBMC, `pct_counts_mt` median should be ≤ 5% with a tail to ≈10%. If your prior was "20%+", you were thinking of a damaged or stressed dataset.
+
+The exercise isn't a quiz — it's about noticing whether your prior matches the data. If you weren't sure what to predict, that's the signal: read the [data analysis](../bioinformatics/data-analysis.qmd) page before doing the project.
+:::
+
+### Exercise 3.2 — Threshold defence
+
+In Module 3 you choose threshold values for `pct_counts_mt`, `n_genes_by_counts`, and minimum cells per gene. For **one** of those thresholds, write a one-paragraph defence (≤ 8 sentences) of the value you chose: what does the violin plot show, what tissue-specific knowledge informed the threshold, and what would change your mind?
+
+::: {.callout-tip collapse="true"}
+## Self-check: Exercise 3.2
+A good defence references **the histogram you actually plotted**, not a generic "5% is standard". Strong defences include:
+
+- A specific value drawn from the data (median + tail point), not a literature default.
+- Tissue-specific reasoning (PBMC is a healthy fresh-frozen sample; mitochondrial enrichment > 10% likely indicates dying cells, not biology).
+- A counterfactual: what would the violin look like for you to choose 8% instead of 5%? "If the median were 8% with a heavy tail to 25%, I'd suspect a dissociation issue and check upstream QC."
+
+A weak defence: "I used 5% because the AI suggested it and the [data analysis](../bioinformatics/data-analysis.qmd) page used 5%." That's not Discernment — that's deference.
+:::
+
+### Exercise 3.3 — AI-assisted vs. AI-free diff
+
+After completing your AI-free baseline (~25 lines, no AI) *and* the AI-assisted iteration (Modules 3–4 with AI help), list **three substantive differences** between the two outputs. For each, classify it as:
+
+- **Improvement** (the AI suggestion was right and you accepted it).
+- **Regression** (the AI suggestion was wrong and you (should have) rejected it).
+- **Equivalent** (different but both defensible).
+
+::: {.callout-tip collapse="true"}
+## Self-check: Exercise 3.3
+A useful diff list is **specific and reproducible**. Examples of strong entries:
+
+- "AI used `sc.pp.normalize_total(adata, target_sum=1e4)` instead of my baseline's `target_sum=None`. **Improvement** — explicit median scaling is the Scanpy default and makes downstream comparisons stable across cells."
+- "AI omitted my `min_genes=200` filter on cells. **Regression** — without it, the HVG selection picks up empty droplets as 'cells with unique expression patterns', which contaminates the PCA."
+- "AI used 30 PCs for the neighbour graph; I used 50. **Equivalent** — the elbow plot is ambiguous between 20 and 50; both produce stable Leiden clusters at resolution 0.5."
+
+If your diff list is just "the AI version is shorter" or "the AI version uses different variable names", you didn't actually compare outputs — go back and run both pipelines through the same downstream check (Leiden cluster count, top markers per cluster).
+:::
+
+## Knowledge check
+
+::: {.callout-tip collapse="true"}
+## Knowledge check — Week 3
+1. The AI suggests `adata.var['mt'] = adata.var_names.str.startswith('MT-')` for a *mouse* lung dataset. What goes wrong and what's the fix?
+2. Your PBMC dataset shows `pct_counts_mt` median 12% with a tail to 25%. The AI recommends a 5% cutoff "as standard for PBMCs." Should you accept it? Why or why not?
+3. Scrublet on a 3,000-cell PBMC sample flags 11% as predicted doublets. What does that flag, and what would you check before filtering?
+4. The standard Scanpy clustering pipeline is **PCA → neighbours → UMAP → Leiden**. Why this order, and what goes wrong if you compute UMAP before neighbours?
+5. You ran `sc.pp.highly_variable_genes` on un-normalised data and got plausible-looking genes back. Why is this a bug even though the output looks fine?
+6. The AI generates a UMAP and tells you "cluster 4 is T cells based on the embedding shape." What's the Discernment problem with this sentence?
+7. You've done your AI-free baseline, then run the AI-assisted iteration, and the cluster count differs (8 vs. 11). The AI says "this is normal variability." What do you check before accepting that explanation?
+
+**Answers:**
+
+1. Mouse mitochondrial genes are `mt-Nd1`, `mt-Co1`, etc. — lowercase prefix. The `'MT-'` filter matches zero genes in mouse, so your `pct_counts_mt` is silently 0 for every cell, which means **no cells get filtered for mitochondrial enrichment**. Fix: use `'mt-'` for mouse, or detect dynamically (`startswith(('MT-', 'mt-'))`). This is one of the most common organism-convention bugs in scRNA-seq.
+
+2. **No.** The 5% rule is a heuristic for healthy PBMC; if your median is 12%, the dataset is either stressed/damaged at sample prep or contains a tissue with naturally higher mitochondrial expression (some immune cells run hotter). Accepting 5% would discard most of your data. Plot the violin, look at the distribution, and pick a cutoff that splits "biological tail" from "dying cells" — likely 20–25% here, with an upstream check on what happened at dissociation.
+
+3. Scrublet flags **probable doublets** — droplets that received two cells. 11% is high for a 3,000-cell sample (target loading is usually < 5% doublet rate). Before filtering, check: (a) was the 10x loading concentration too high? (b) does Scrublet's UMAP cluster the predicted doublets in a "between-cluster" position consistent with multiplets? (c) are any predicted-doublet clusters actually rare-but-real cell types? Filtering blindly at 11% may delete real biology.
+
+4. The order encodes information dependencies. **PCA** denoises the high-dimensional gene-expression matrix into a few dozen meaningful axes. **Neighbours** builds a kNN graph in PCA space — this is what UMAP and Leiden both consume. **UMAP** projects the kNN graph to 2D for visualisation. **Leiden** clusters on the same kNN graph (independent of UMAP). Computing UMAP before neighbours doesn't make sense — UMAP needs the graph as input. Computing Leiden on raw gene space (skipping PCA) is a common mistake and produces noise-dominated clusters.
+
+5. HVG selection on un-normalised data picks up genes with high variance because they have **high counts**, not because they have biologically informative variability. Library-size effects dominate. The output "looks fine" because real biology genes (B-cell markers, T-cell markers, etc.) are also highly expressed, so they survive — but so do housekeeping genes that vary purely with sequencing depth. Always normalise (and log-transform) before HVG selection. The Scanpy docs are explicit; the AI sometimes is not.
+
+6. UMAP shape **is not biological evidence**. Cluster 4 might be T cells, but the way to know is to look at **marker genes** in cluster 4 — `CD3D`, `CD3E`, `TRAC`, etc. — not "the embedding looks like a T-cell blob." UMAP geometry is dominated by neighbour-graph topology, not cell biology; treating shape as identity is exactly the kind of pattern-match the AI is good at and you have to override.
+
+7. Cluster count is sensitive to **resolution** (Leiden's main hyperparameter), to the **number of PCs**, to the **number of neighbours** in the kNN graph, and to **random seeds**. Before accepting "normal variability", check: was the seed set the same? Same Leiden resolution? Same PC count? Same neighbour count? If all four match and the count still differs, look at **what's in the new clusters** — are they sub-clusters of an existing one (resolution effect, often defensible) or completely different cells (a real disagreement, worth investigating)? "Normal variability" is rarely the right answer when the numbers are different and the inputs are not.
+:::
+
+## Project — PBMC 3k mini-project
+
+A scoped AI-assisted scRNA-seq analysis. Produce a reproducible Quarto/Jupyter notebook (or Colab link) containing:
+
+1. **AI-free baseline** (~25 lines): hand-write `sc.datasets.pbmc3k()` → mt-gene flag → three QC violin plots → threshold filter → log-normalise. Run it. Save the output. **No AI assistance** for this section. (See the [AI-use policy](../course-syllabus.qmd#ai-use-policy).)
+2. **AI-assisted iteration**: extend the baseline with HVG selection, scaling, PCA, neighbours, UMAP, and Leiden clustering. AI assistance is encouraged here — use [Module 4](../modules/module-04-clustering-umap/README.md) as your reference.
+3. **Diff and discussion**: list every substantive AI suggestion. For each, mark *accepted* / *rejected* and note why. The strength of your work here is in the *quality of your discernment* — accepting and rejecting both have to be defensible.
+4. **Reproducibility artifact**: pinned environment file (`environment.yml` or `uv.lock`) committed alongside the report, *or* a working Colab link. State which.
+5. **Disclosure statement** per the [rubric](../course-syllabus.qmd#disclosure-rubric).
+
+### Self-rubric — PBMC 3k mini-project
+
+| Dimension | 0 | 1 |
+|:----------|:---|:---|
+| **AI-free baseline correctness** | Doesn't run, missing required steps, or shows clear AI fingerprints (style/idioms not yours) | ~25-line baseline runs end-to-end, hand-written, three violins + filter + log-normalise |
+| **AI-assisted iteration quality** | Steps in wrong order; HVG before normalise; UMAP without neighbours; etc. | Pipeline runs in correct order; produces stable Leiden clusters; UMAP + cluster labels render |
+| **Discernment log** | Generic ("accepted AI suggestions"); no rejected suggestions named | At least 3 specific accepts and 1 specific reject, each with a 1–2 sentence reason |
+| **Reproducibility** | No environment artifact; or Colab link that fails to open | Pinned env file *or* working Colab link committed; specify which |
+| **Disclosure** | Vague or absent | Tool, version, tier, concrete uses, what was verified, at least one rejected suggestion |
+
+Score 4–5/5: project is done. Score 2–3/5: pick one row at a 0 and fix it before moving on. Score 0–1/5: revisit Module 3 and the [data analysis](../bioinformatics/data-analysis.qmd) reading; the project is testing your discernment, not your typing.
+
+## Going further
+
+- If you want to scope a Week 4 final project that builds directly on this one (Path A), draft a one-paragraph plan now while the dataset is fresh: question, expected approach, what the AI will and will not help with. The plan is for *you* — it costs nothing to write and saves a lot of Week 4.
+- For a deeper take on QC choices, the original Scanpy [tutorial](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering.html) is short and the prose is excellent.
+- If you want to swap in a different dataset to feel ownership of the choices, the Tabula Muris organ datasets (also Scanpy-bundled) are good next steps — but PBMC 3k is the dataset the rest of the course is calibrated against.

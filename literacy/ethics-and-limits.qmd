@@ -41,7 +41,7 @@ The distinction worth teaching:
 
 ## Data, privacy, and consent
 
-Read the [Syllabus data policy](../course-syllabus.qmd#data-policy-required-reading-before-any-assignment-using-real-data) before any assignment with real data. Key clarifications:
+Read the [Syllabus data policy](../course-syllabus.qmd#data-policy-required-reading-before-any-exercise-using-real-data) before any exercise with real data. Key clarifications:
 
 - **"Zero-retention" API tier ≠ private.** Most vendor "no-retention" tiers still retain data briefly for abuse monitoring and incident response. They are *better* than the consumer chat product, not equivalent to on-device.
 - **"De-identified" ≠ unrestricted.** De-identified clinical data may still be subject to HIPAA / IRB / BAA terms and to your institution's contractual restrictions.

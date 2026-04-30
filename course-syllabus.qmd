@@ -4,11 +4,10 @@ title: "Syllabus"
 
 ## Logistics
 
-- **Format**: *announced before term* (recommend hybrid — in-person + recorded).
-- **Sessions**: 4 weekly meetings, ~2 hours each. Format: ~30 min lecture + ~30 min live demo + ~60 min workshop.
-- **Workload**: ~3–5 hours per week outside class (calibrated to deliverables; instructor will tune after week 1).
-- **Meeting time / location**: *announced before term*.
-- **Duration**: 4 weeks. This is a **foundations** course; real fluency requires sustained practice over months.
+- **Format**: self-paced. No instructor, no schedule, no grades.
+- **Suggested pacing**: ~1 week per unit, ~3–5 hours per week (Weeks 1–2) or ~5–7 hours per week (Weeks 3–4). Allow yourself **4–8 weeks** end-to-end depending on background and time.
+- **Cadence**: each week page is self-contained — readings → practice → knowledge check → project. Move at the speed you learn.
+- **Duration scope**: this is a **foundations** course; real fluency develops over months of supervised practice on real research problems. Plan accordingly.
 
 ## Prerequisites
 
@@ -19,59 +18,47 @@ title: "Syllabus"
 
 ::: {.callout-warning}
 ## Free-tier budget note
-Free-tier LLMs work for week 1–2 chat exercises. The week 3 mini-project and week 4 capstone benefit from a paid tier (Claude Pro / ChatGPT Plus) or institutional API access — free-tier rate limits will otherwise interrupt sustained code-assistance sessions. The instructor will note any institutional access available before the course starts.
+Free-tier LLMs work for Week 1–2 chat exercises. The Week 3 mini-project and Week 4 final project benefit from a paid tier (Claude Pro / ChatGPT Plus) or institutional API access — free-tier rate limits will otherwise interrupt sustained code-assistance sessions. If you have institutional access via a research computing service, check whether they offer enterprise LLM access before paying out of pocket.
 :::
 
 ## Required tools
 
 - **[Quarto](https://quarto.org/)** (current stable; ≥ 1.5) — for reproducible reports.
-- **Git + GitHub** — for version control and submission.
+- **Git + GitHub** — for version control and storing your project artifacts.
 - **A coding assistant** (one of): [Claude Code](https://docs.claude.com/en/docs/claude-code/overview), [Cursor](https://cursor.sh/), or VS Code + [GitHub Copilot](https://github.com/features/copilot).
 - **A chat LLM** (one of): [Claude](https://claude.ai/), ChatGPT, or Gemini. Course examples use Claude by default.
 - **A grounded literature tool** (one of): [Elicit](https://elicit.com/), [Consensus](https://consensus.app/), [SciSpace](https://scispace.com/), or Perplexity (sources mode).
-- **Bioinformatics environment**: Python with [Scanpy](https://scanpy.readthedocs.io/) is the course default for the hands-on track. The 5-module scRNA-seq pipeline runs in **Google Colab** out of the box (no install required for Modules 3–5; Modules 1–2 need HPC or are skippable). If you prefer a local setup, a pinned environment (`conda` or `uv`) is supported — see `weeks/week-3.qmd` Setup. R/[Seurat](https://satijalab.org/seurat/) users can substitute the equivalent Bioconductor toolchain for the mini-project; an instructor pointer is in [Code assistance](bioinformatics/code-assistance.qmd).
+- **Bioinformatics environment**: Python with [Scanpy](https://scanpy.readthedocs.io/) is the course default for the hands-on track. The 5-module scRNA-seq pipeline runs in **Google Colab** out of the box (no install required for Modules 3–5; Modules 1–2 need HPC or are skippable). If you prefer a local setup, a pinned environment (`conda` or `uv`) is supported — see [Week 3](weeks/week-3.qmd). R/[Seurat](https://satijalab.org/seurat/) users can substitute the equivalent Bioconductor toolchain for the mini-project; pointers in [Code assistance](bioinformatics/code-assistance.qmd).
 
 ## Course structure
 
-The course covers three conceptual tracks and a 5-module scRNA-seq pipeline across four weeks:
+The course covers three conceptual tracks and a 5-module scRNA-seq pipeline across four self-paced units:
 
-| Week | Theme | Hands-on | Deliverable |
+| Unit | Theme | Hands-on | Project (with self-rubric) |
 |:----:|:------|:---------|:------------|
-| 1 | Foundations & the 4 D's | Tooling setup | Reflection (≤ 500 words) + tooling confirmation |
-| 2 | LLM literacy | Live prompt clinic | Prompt-engineering exercise (weak vs. strong, with critique) |
-| 3 | scRNA-seq I — QC, normalisation, clustering (Modules 3 & 4) | Module 3 in-class; Module 4 after-class | Mini-project: reproducible AI-assisted PBMC 3k QC + clustering report |
-| 4 | scRNA-seq II — annotation, capstone (Module 5) | Module 5 in-class | Capstone: literature brief + analysis-or-protocol + reflection + disclosure |
+| 1 | Foundations & the 4 D's | Tooling setup; workflow audit | Reflection (≤ 500 words) + tooling confirmation |
+| 2 | LLM literacy | Solo prompt clinic | Prompt-engineering exercise (weak vs. strong, with critique) |
+| 3 | scRNA-seq I — QC, normalisation, clustering (Modules 3 & 4) | Module 3 + Module 4 in Colab | Mini-project: reproducible AI-assisted PBMC 3k QC + clustering report |
+| 4 | scRNA-seq II — annotation, final project (Module 5) | Module 5 in Colab | Final project: literature brief, analysis, or protocol — your choice |
 
-Modules 1 (FastQC) and 2 (Cell Ranger / STARsolo) are pre-week-3 reading. Module 2 needs HPC; if you don't have it, skip directly to Module 3 — a pre-built count matrix is loaded by Scanpy.
+Modules 1 (FastQC) and 2 (Cell Ranger / STARsolo) are reading material before Week 3 if you want the full picture. Module 2 needs HPC; if you don't have it, skip directly to Module 3 — a pre-built count matrix is loaded by Scanpy.
 
-## Assessment
+## Self-assessment
 
-| Component | Weight | What it measures |
-|:----------|:------:|:-----------------|
-| Weekly exercises (weeks 1, 2) | 30% | Application of weekly material to your own work. |
-| Mini-project (week 3) | 25% | Reproducible AI-assisted bioinformatics analysis. Includes an **AI-second baseline** component (see below). |
-| Capstone (weeks 3–4) | 30% | Scoped in week 3, executed in week 4. Literature → analysis-or-protocol → reflection → disclosure. |
-| Participation & peer review | 15% | Live workshops, peer feedback. **Credit / no-credit**, not graded for quality. Use the [peer-review template](reference/peer-review.qmd) for written reviews. |
+This course has no grades. Instead, you assess yourself with four kinds of feedback:
 
-Each graded deliverable carries a **disclosure-quality** sub-score (see rubric below) that is part of the deliverable's grade, not separate.
+| Mechanism | Where it lives | What it's for |
+|:----------|:----|:----|
+| Per-page **Check your understanding** | Bottom of each conceptual page | Confirm a single page landed before moving on (3–5 questions, worked answers) |
+| Per-week **Knowledge check** | End of each week page | Cumulative check across the week's readings (5–8 mixed conceptual + applied questions) |
+| Per-week **Hands-on practice** | Middle of each week page | Apply the unit to your own data / questions (2–3 small exercises with self-check answers) |
+| Project **self-rubric** | End of each week page (Weeks 1, 2, 3, 4) | Grade your own project against the same dimensions an instructor would |
 
-## AI-use policy
-
-This is a course about using AI tools well. **You are expected to use them on most assignments.** Following pedagogical research, two assignments include an **AI-free or AI-second baseline component** so you can develop and demonstrate the underlying skill, not just the collaboration skill:
-
-- **Week 1 reflection**: write your initial classification of three of your own tasks *without* AI consultation. Then, optionally, run them past an AI and note what changed.
-- **Week 3 mini-project**: write a small (~25-line) AI-free baseline of the PBMC 3k QC pass *first*, by hand — `sc.datasets.pbmc3k()`, mt-gene flag, three QC violin plots, threshold filter, log-normalise. Then iterate with an AI assistant on the rest (clustering, marker checks, refactor). Submit both, with a short note on what the AI changed and why you accepted or rejected each change.
-
-For all assignments:
-
-- **Disclose** which tools you used and how. See the disclosure rubric below.
-- **Verify** every factual claim, citation, and piece of code before relying on it.
-- **Own** your output: you are the author of record. AI-generated text used verbatim must be quoted or marked.
-- **Protect** sensitive data: see the data policy below.
+If you miss two or more knowledge-check questions on a topic, revisit the reading and redo the practice. The **disclosure rubric** below applies to every project — it is not graded by anyone, but if you cannot defend the disclosure, the project is not finished.
 
 ### Disclosure rubric
 
-Every graded deliverable includes a disclosure section, scored on these dimensions (4 points total, contributes to the deliverable's grade):
+Every project includes a disclosure section, scored on these dimensions (use it as a self-check on whether your work meets the bar):
 
 | Dimension | 0 | 1 |
 |:----------|:---|:---|
@@ -80,9 +67,23 @@ Every graded deliverable includes a disclosure section, scored on these dimensio
 | **Verification stated** | Not mentioned | Names what you checked and how (ran tests, verified citations on PubMed, ran code on test data) |
 | **Rejections noted** | Not mentioned | Lists at least one AI suggestion you rejected and why |
 
-A template disclosure paragraph is provided with each assignment.
+A template disclosure paragraph is provided with each project.
 
-## Data policy (required reading before any assignment using real data)
+## AI-use policy
+
+This is a course about using AI tools well. **You are expected to use them on most exercises.** Following pedagogical research, two projects include an **AI-free or AI-second baseline component** so you can develop and demonstrate the underlying skill, not just the collaboration skill:
+
+- **Week 1 reflection**: write your initial classification of three of your own tasks *without* AI consultation. Then, optionally, run them past an AI and note what changed.
+- **Week 3 mini-project**: write a small (~25-line) AI-free baseline of the PBMC 3k QC pass *first*, by hand — `sc.datasets.pbmc3k()`, mt-gene flag, three QC violin plots, threshold filter, log-normalise. Then iterate with an AI assistant on the rest (clustering, marker checks, refactor). Submit both, with a short note on what the AI changed and why you accepted or rejected each change.
+
+For all projects:
+
+- **Disclose** which tools you used and how. See the disclosure rubric above.
+- **Verify** every factual claim, citation, and piece of code before relying on it.
+- **Own** your output: you are the author of record. AI-generated text used verbatim must be quoted or marked.
+- **Protect** sensitive data: see the data policy below.
+
+## Data policy (required reading before any exercise using real data)
 
 Do **not** paste any of the following into a third-party LLM service without explicit, documented permission and an approved data-handling pathway:
 
@@ -92,13 +93,13 @@ Do **not** paste any of the following into a third-party LLM service without exp
 - **Embargoed pre-publication data** — including unpublished collaborator data, manuscripts under review, and grant proposals.
 - **Sequence or other data** under a Material Transfer Agreement (MTA) with restrictive terms.
 
-For any such data: use **on-premises**, **institutional**, or **vendor enterprise tiers with appropriate contracts** (e.g., zero-retention with a signed BAA where applicable). When in doubt, consult your IRB / data steward / institutional privacy office *before* the assignment, not after.
+For any such data: use **on-premises**, **institutional**, or **vendor enterprise tiers with appropriate contracts** (e.g., zero-retention with a signed BAA where applicable). When in doubt, consult your IRB / data steward / institutional privacy office *before* the exercise, not after.
 
 The course dataset (10x PBMC 3k) is public and safe to use with any tool. Supplementary references to other public datasets (e.g., from GEO or ArrayExpress) are also safe.
 
 ## Recommended readings
 
-Two short readings per week is the assigned load; the rest is a menu.
+Two short readings per unit is the assigned load; the rest is a menu.
 
 **Foundations / fluency**
 
@@ -127,19 +128,21 @@ Two short readings per week is the assigned load; the rest is a menu.
 
 ::: {.callout-note}
 ## A note on the reading list
-Citations were verified at the time of writing (April 2026). Editorial policies and "current best" surveys date quickly — confirm before adopting for a new term. Items the instructor judges optional are still valuable supplements; the assigned load is two short readings per week.
+Citations were verified at the time of writing (April 2026). Editorial policies and "current best" surveys date quickly — confirm before relying on them. Items not flagged as core are still valuable supplements; the assigned load is two short readings per unit.
 :::
 
 ## Course policies
 
-- **Late work**: 24-hour grace per assignment, then −10% / day. Two no-questions extensions per term.
-- **Collaboration**: encouraged for understanding; submitted work is individual. AI collaboration is governed by the AI-use policy above.
-- **Attendance**: 3 of 4 sessions live (recordings available). Week 4 in-person strongly preferred for capstone presentations.
+- **Pacing**: there are no deadlines. The "weeks" are recommended pacing milestones, not a schedule.
+- **Working with peers (optional)**: if you take this with a study group, share verification approaches and prompt logs but write your own work. Use the [self-review template](reference/peer-review.qmd) on each other's projects.
+- **AI collaboration**: governed by the AI-use policy above. Disclosure is the bar.
 
 ## Academic integrity
 
-Submitting AI output as your own unverified, undisclosed work — without verification or critical engagement — violates academic integrity, regardless of how the text was produced. The disclosure rubric makes the expectation concrete.
+If you are taking this course as part of a programme that submits credit, the same standard applies as in any course: AI output submitted as your own unverified, undisclosed work — without verification or critical engagement — violates academic integrity, regardless of how the text was produced. The disclosure rubric makes the expectation concrete.
+
+If you are taking the course on your own, the same standard still applies — to *yourself*. Disclosure and verification are habits to build now, not bureaucracy to perform later.
 
 ## Accessibility
 
-Please reach out to the instructor in week 1 if you need accommodations. Materials are designed to be screen-reader friendly; please report accessibility issues via the [course repository](https://github.com/mdmanurung/ai-fluency-for-bio/issues).
+Materials are designed to be screen-reader friendly. Please report accessibility issues via the [course repository](https://github.com/mdmanurung/ai-fluency-for-bio/issues).

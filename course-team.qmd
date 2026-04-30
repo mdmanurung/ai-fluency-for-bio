@@ -1,22 +1,24 @@
 ---
-title: "Teaching team"
+title: "About the author"
 ---
 
 ::: {.callout-note}
 ## Course template note
-This repository is a forkable course template. If you are running this course at your institution, fork the repo and replace the placeholders below with your own team and contact info.
+This repository is a forkable, open-source course. If you are adapting it for your institution or your own learning context, fork the repo and replace the placeholders below with your own info.
 
-If you are a student in a specific offering, this page is finalised before week 1.
+The course can be taken **fully self-paced** with no instructor — see [How to use this course](course-how-to-use.qmd). The fields below are for credit and contact, not for live support.
 :::
 
-## Instructor
+## Author
 
-*To be announced before week 1.* Role, affiliation, short bio, research interests, and contact will be posted here.
+*Course author info goes here.* Role, affiliation, short bio, research interests, and how to get in touch.
 
-## Teaching assistants
+## Contributors
 
-*To be announced before week 1.* Names and contact will be posted here when assignments are confirmed.
+*If you adapted, extended, or contributed to this course, list yourself here.* This is a living document — see the [course repository](https://github.com/mdmanurung/ai-fluency-for-bio) for the change history.
 
-## Guest contributors
+## Citation
 
-*Added as guest sessions are scheduled.* Where possible, guest names will be posted at least one week before the relevant session.
+If you use this course's material in your own teaching or work, please cite the GitHub repository ([github.com/mdmanurung/ai-fluency-for-bio](https://github.com/mdmanurung/ai-fluency-for-bio)) and credit the original author.
+
+The course is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — adapt freely with attribution.

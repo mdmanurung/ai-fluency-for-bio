@@ -12,7 +12,7 @@ execute:
 website:
   page-navigation: true
   title: "AI Fluency Foundations for Biology"
-  description: "A 4-week foundations course on using AI effectively in biological research — the 4 D's of AI fluency, LLM literacy, and a hands-on single-cell RNA-seq pipeline (FASTQ → annotated UMAP) run with AI in the loop."
+  description: "A self-paced foundations course on using AI effectively in biological research — the 4 D's of AI fluency, LLM literacy, and a hands-on single-cell RNA-seq pipeline (FASTQ → annotated UMAP) run with AI in the loop. Plan on ~1 week per unit at ~3–5 hours; go faster or slower at your own pace."
   site-url: "https://mdmanurung.github.io/ai-fluency-for-bio/"
 
   repo-url: https://github.com/mdmanurung/ai-fluency-for-bio
@@ -40,50 +40,52 @@ website:
     contents:
       - section: "Course information"
         contents:
+          - href: index.qmd
+            text: Roadmap
           - href: course-overview.qmd
             text: Overview
+          - href: course-how-to-use.qmd
+            text: How to use this course
           - href: course-syllabus.qmd
             text: Syllabus
           - href: course-support.qmd
             text: Support
           - href: course-team.qmd
-            text: Teaching team
-          - href: index.qmd
-            text: Schedule
+            text: About the author
           - href: course-faq.qmd
             text: FAQ
-      - section: "AI fluency: the 4 D's"
+      - section: "Week 1 — AI fluency foundations"
         contents:
+          - href: weeks/week-1.qmd
+            text: "Week 1 path"
           - href: fluency/delegation.qmd
-            text: Delegation
+            text: "Reading: Delegation"
           - href: fluency/description.qmd
-            text: Description
+            text: "Reading: Description"
           - href: fluency/discernment.qmd
-            text: Discernment
+            text: "Reading: Discernment"
           - href: fluency/diligence.qmd
-            text: Diligence
-      - section: "AI literacy for bio"
+            text: "Reading: Diligence"
+      - section: "Week 2 — LLM literacy for bio"
         contents:
+          - href: weeks/week-2.qmd
+            text: "Week 2 path"
           - href: literacy/how-llms-work.qmd
-            text: How LLMs work
+            text: "Reading: How LLMs work"
           - href: literacy/prompting.qmd
-            text: Prompting
+            text: "Reading: Prompting"
           - href: literacy/tool-use-and-agents.qmd
-            text: Tool use & agents
+            text: "Reading: Tool use & agents"
           - href: literacy/ethics-and-limits.qmd
-            text: Ethics & limits
-      - section: "Hands-on bioinformatics"
+            text: "Reading: Ethics & limits"
+      - section: "Week 3 — scRNA-seq I (QC → clustering)"
         contents:
+          - href: weeks/week-3.qmd
+            text: "Week 3 path"
           - href: bioinformatics/code-assistance.qmd
-            text: Code assistance
+            text: "Reading: Code assistance"
           - href: bioinformatics/data-analysis.qmd
-            text: Data analysis
-          - href: bioinformatics/literature-review.qmd
-            text: Literature review
-          - href: bioinformatics/protocol-design.qmd
-            text: Protocol design
-      - section: "scRNA-seq pipeline (modules)"
-        contents:
+            text: "Reading: Data analysis"
           - href: modules/module-01-raw-data-qc/README.md
             text: "Module 1 — Raw data QC"
           - href: modules/module-02-alignment-count-matrix/README.md
@@ -92,18 +94,18 @@ website:
             text: "Module 3 — Preprocessing in Scanpy"
           - href: modules/module-04-clustering-umap/README.md
             text: "Module 4 — Clustering & UMAP"
+          - href: weeks/starter-week3-python.qmd
+            text: "Python starter (PBMC 3k)"
+      - section: "Week 4 — scRNA-seq II (annotation, capstone)"
+        contents:
+          - href: weeks/week-4.qmd
+            text: "Week 4 path"
+          - href: bioinformatics/literature-review.qmd
+            text: "Reading: Literature review"
+          - href: bioinformatics/protocol-design.qmd
+            text: "Reading: Protocol design"
           - href: modules/module-05-annotation-interpretation/README.md
             text: "Module 5 — Annotation & interpretation"
-      - section: "Weekly materials"
-        contents:
-          - href: weeks/week-1.qmd
-            text: "Week 1 — AI fluency foundations"
-          - href: weeks/week-2.qmd
-            text: "Week 2 — LLM literacy for bio"
-          - href: weeks/week-3.qmd
-            text: "Week 3 — scRNA-seq I (QC → clustering)"
-          - href: weeks/week-4.qmd
-            text: "Week 4 — scRNA-seq II (annotation, capstone)"
       - section: "Reference"
         contents:
           - href: reference/glossary.qmd
@@ -111,7 +113,9 @@ website:
           - href: reference/prompt-library.qmd
             text: Prompt library
           - href: reference/peer-review.qmd
-            text: Peer-review template
+            text: "Self-review template"
+          - href: reference/topic-index.qmd
+            text: "Topic index (by subject)"
 
 format:
   html:

@@ -1,0 +1,88 @@
+---
+title: "How to use this course"
+subtitle: "Self-paced. Learning is the goal; weeks are guidance, not gates."
+---
+
+This is a **self-paced** course. There is no instructor, no schedule, no grades. The four weeks are a recommended pacing — they exist so you can budget time, not so you can be late.
+
+## The shape of the course
+
+The course is organised as four units, each labelled "Week N". Each unit takes most learners about **3–5 hours** of focused work, so a week is a comfortable cadence — but plenty of learners spread it over two weeks, and some compress it into a long weekend. The total volume is roughly the same as a typical 4-week graduate seminar, so allow yourself **4–8 weeks** end-to-end depending on your background and time.
+
+| Unit | Theme | Hands-on |
+|:-----|:------|:---------|
+| [Week 1](weeks/week-1.qmd) | The 4 D's of AI fluency | Workflow audit |
+| [Week 2](weeks/week-2.qmd) | LLM literacy | Prompt engineering |
+| [Week 3](weeks/week-3.qmd) | scRNA-seq I — QC and clustering on PBMC 3k | AI-free baseline + AI-assisted analysis |
+| [Week 4](weeks/week-4.qmd) | scRNA-seq II — annotation, literature, protocols | Final project (one of three paths) |
+
+## What's on each week page
+
+Every week page (`weeks/week-N.qmd`) has the same structure:
+
+1. **Learning objectives** — what you should be able to do after the unit.
+2. **Suggested pacing** — a rough breakdown of where the 3–5 hours go.
+3. **Readings** — the conceptual pages for that unit, with a one-line "what to focus on" pointer for each.
+4. **Hands-on practice** — 2–3 small applied exercises with collapsible self-check answers. Do these against your own work, not toy examples.
+5. **Knowledge check** — a 5–8 question self-test covering recall, applied scenarios, and "diagnose the failure" prompts. Worked answers are in a collapsible callout — try to answer first, then check.
+6. **Project** — a larger applied piece. Week 1 and 2 are short reflections; Week 3 is the PBMC 3k mini-project; Week 4 is your final project.
+7. **Self-rubric** — a small table you use to grade your own project against the same dimensions an instructor would.
+8. **Going further** — optional extensions and pointers.
+
+## How to self-assess
+
+This course gives you four levels of feedback, all self-driven:
+
+- **Per-page "Check your understanding" callouts** — every conceptual page (in `fluency/`, `literacy/`, `bioinformatics/`, and the module READMEs) has 3–5 questions with worked answers tucked into a collapsible callout. Use them to confirm a page landed before moving on.
+- **Per-week knowledge checks** — at the end of each week page. These are cumulative across the week's readings.
+- **Per-week practice exercises** — applied tasks against your own data and questions. The point is not to get a "right answer"; it's to make the patterns muscle-memory.
+- **Project self-rubrics** — for each of the three projects (Week 1 reflection, Week 3 mini-project, Week 4 final project), a learner-facing rubric is provided so you can grade your own work against the same dimensions an instructor would.
+
+If you miss two or more knowledge-check questions on a topic, **revisit the reading**, then redo the practice. The check is the signal, the reading is the fix.
+
+## Prerequisites
+
+See the [Syllabus](course-syllabus.qmd#prerequisites) for the full list. Briefly: comfort reading and modifying R or Python at the 100-line-script level, an LLM chat account (Claude, ChatGPT, or Gemini — free tier is fine for Weeks 1–2), a coding assistant (Claude Code, Cursor, or VS Code + Copilot), and a GitHub account.
+
+The hands-on track for Weeks 3 and 4 runs in **Google Colab** out of the box, so no local install is needed for the core exercises.
+
+## A learner-progress checklist
+
+Tick these off as you go. Markdown checkboxes won't render as interactive on the rendered site, but they make a useful copy-paste artifact for a notebook or issue.
+
+- [ ] **Week 1 — AI fluency foundations**
+  - [ ] Read all four D's
+  - [ ] Hands-on practice (workflow audit)
+  - [ ] Knowledge check
+  - [ ] Project: 4 D's reflection + tooling confirmation
+- [ ] **Week 2 — LLM literacy for bio**
+  - [ ] Read the four literacy pages
+  - [ ] Hands-on practice (prompt clinic, solo)
+  - [ ] Knowledge check
+  - [ ] Project: prompt-engineering exercise
+- [ ] **Week 3 — scRNA-seq I**
+  - [ ] Read code assistance + data analysis
+  - [ ] Skim Modules 1–2; run Modules 3–4 in Colab
+  - [ ] Hands-on practice (predict-then-run, threshold defence, diff)
+  - [ ] Knowledge check
+  - [ ] Project: PBMC 3k mini-project (AI-free baseline + AI-assisted iteration)
+- [ ] **Week 4 — scRNA-seq II**
+  - [ ] Read literature review + protocol design
+  - [ ] Run Module 5 in Colab
+  - [ ] Hands-on practice (citation verification, protocol critique, marker-gene prediction)
+  - [ ] Knowledge check
+  - [ ] Final project (Path A, B, or C) + 4 D's reflection + disclosure
+
+## Doing this with peers (optional)
+
+Self-paced doesn't mean you have to be alone. The course works well as a small **study group** of 3–5 people who agree to a shared cadence and meet weekly to compare notes. If you do this:
+
+- Share **prompt logs** and **discernment notes** — these are where the learning happens.
+- Use the [self-review template](reference/peer-review.qmd) on each other's projects. It's the same template instructors would use, and it's the highest-bandwidth feedback you can get.
+- Resist the urge to consensus-grade. Disagreement on what "done well" looks like is data, not a problem.
+
+There is no instructor mode, no facilitator guide, no answer key beyond what's in the page itself. The repository is open ([github.com/mdmanurung/ai-fluency-for-bio](https://github.com/mdmanurung/ai-fluency-for-bio)) — fork it, adapt it, run it.
+
+## Honest scope
+
+This is a **foundations** course. Real AI fluency develops over months of supervised practice on real research problems. Four weeks (or eight, or twelve at your pace) gives you the framework, vocabulary, and habits to start that practice deliberately — not to finish it. Plan accordingly.

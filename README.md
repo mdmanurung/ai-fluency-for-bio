@@ -1,6 +1,6 @@
 # AI Fluency Foundations for Biology
 
-A 4-week course that teaches AI fluency to biologists by running a **single-cell RNA-seq pipeline** — FASTQ → annotated UMAP — with an AI assistant in the loop.
+A **self-paced** course that teaches AI fluency to biologists by running a **single-cell RNA-seq pipeline** — FASTQ → annotated UMAP — with an AI assistant in the loop. Plan on ~1 week per unit at ~3–5 hours; allow 4–8 weeks total. No instructor, no grades, fully solo.
 
 > **Course site:** <https://mdmanurung.github.io/ai-fluency-for-bio/>
 > *(Enable GitHub Pages → Settings → Pages once `main` is updated.)*
@@ -21,47 +21,51 @@ You finish the course with:
 
 ## How the course is structured
 
-The course has three conceptual tracks and a weekly schedule that braids them together.
+The course is organised as **four self-paced units** ("Week N"), each combining readings from three conceptual tracks with a hands-on scRNA-seq pipeline. Each week page is self-contained: **readings → practice → knowledge check → project → self-rubric**.
 
-**Three tracks** (all in the [course site sidebar](https://mdmanurung.github.io/ai-fluency-for-bio/)):
+**Three conceptual tracks** (anchored to weeks, but cross-referenced as needed):
 
-1. **AI fluency: the 4 D's** — Delegation, Description, Discernment, Diligence.
-2. **AI literacy for bio** — how LLMs work, prompting, tool use & agents, ethics & limits.
-3. **Hands-on bioinformatics** — code assistance, data analysis, literature review, protocol design — with worked examples grounded in the scRNA-seq project.
+1. **AI fluency: the 4 D's** — Delegation, Description, Discernment, Diligence (Week 1).
+2. **AI literacy for bio** — how LLMs work, prompting, tool use & agents, ethics & limits (Week 2).
+3. **Hands-on bioinformatics** — code assistance, data analysis, literature review, protocol design — grounded in the scRNA-seq project (Weeks 3 & 4).
 
-**The hands-on project** is a 5-module scRNA-seq pipeline, taught alongside the theory:
+**The hands-on project** is a 5-module scRNA-seq pipeline:
 
 | Module | Topic | Compute | When |
 |:------:|:------|:--------|:-----|
-| [1](modules/module-01-raw-data-qc/README.md) | Raw data QC (FastQC on 10x Chromium reads) | Local or HPC | Pre-week 3 reading |
-| [2](modules/module-02-alignment-count-matrix/README.md) | Alignment & count matrix (Cell Ranger / STARsolo) | HPC (or skip — pre-built matrix in Module 3) | Pre-week 3 reading |
-| [3](modules/module-03-preprocessing-scanpy/README.md) | Preprocessing & QC in Scanpy | Google Colab (free) | Week 3 in-class + mini-project |
-| [4](modules/module-04-clustering-umap/README.md) | Dimensionality reduction, clustering, UMAP | Google Colab (free) | Week 3 after-class |
-| [5](modules/module-05-annotation-interpretation/README.md) | Cell-type annotation & differential expression | Google Colab (free) | Week 4 capstone |
+| [1](modules/module-01-raw-data-qc/README.md) | Raw data QC (FastQC on 10x Chromium reads) | Local or HPC | Week 3 reading |
+| [2](modules/module-02-alignment-count-matrix/README.md) | Alignment & count matrix (Cell Ranger / STARsolo) | HPC (or skip — pre-built matrix in Module 3) | Week 3 reading |
+| [3](modules/module-03-preprocessing-scanpy/README.md) | Preprocessing & QC in Scanpy | Google Colab (free) | Week 3 hands-on |
+| [4](modules/module-04-clustering-umap/README.md) | Dimensionality reduction, clustering, UMAP | Google Colab (free) | Week 3 hands-on |
+| [5](modules/module-05-annotation-interpretation/README.md) | Cell-type annotation & differential expression | Google Colab (free) | Week 4 hands-on |
 
 **Dataset:** 10x PBMC 3k throughout — 2,700 PBMCs from a healthy donor, ~8 well-characterised cell types, small enough to run in Colab on a free tier.
 
-**Weekly schedule** (4 weekly meetings, ~2 hours each):
+**Suggested pacing** (~1 week per unit, ~3–5 hours; allow 4–8 weeks total):
 
-| Week | Theme | Deliverable |
+| Unit | Theme | Project (with self-rubric) |
 |:----:|:------|:------------|
 | [1](weeks/week-1.qmd) | AI fluency foundations — the 4 D's | Reflection + tooling check |
 | [2](weeks/week-2.qmd) | LLM literacy for bio researchers | Prompt-engineering exercise |
-| [3](weeks/week-3.qmd) | scRNA-seq I — QC, normalisation, clustering | Mini-project (PBMC 3k QC + clustering) + capstone proposal |
-| [4](weeks/week-4.qmd) | scRNA-seq II — annotation, capstone | Capstone (annotation OR literature brief OR protocol — student choice) |
+| [3](weeks/week-3.qmd) | scRNA-seq I — QC, normalisation, clustering | Mini-project (PBMC 3k QC + clustering, AI-free baseline + AI-assisted iteration) |
+| [4](weeks/week-4.qmd) | scRNA-seq II — annotation, final project | Final project (annotation OR literature brief OR protocol — your choice) |
 
-See the [Syllabus](course-syllabus.qmd) for the full assessment scheme, AI-use policy, disclosure rubric, and reading list.
+See the [Syllabus](course-syllabus.qmd) for the AI-use policy, disclosure rubric, data policy, and reading list. See [How to use this course](course-how-to-use.qmd) for the self-pacing model and self-assessment mechanisms.
 
-## Two ways to take the material
+## Self-assessment
 
-- **The 4-week course (recommended).** Live sessions, weekly deliverables, capstone. The structure that makes the practice deliberate.
-- **Self-paced through the modules.** Modules 1–5 are runnable end-to-end without the weekly meetings if you only want the scRNA-seq pipeline. You miss the fluency framework and the disclosure practice — those live in the [course site](https://mdmanurung.github.io/ai-fluency-for-bio/).
+There are no grades. Four mechanisms let you check your own progress:
+
+- **Per-page "Check your understanding" callouts** at the bottom of each conceptual page (3–5 questions, worked answers).
+- **Per-week knowledge checks** at the end of each week page (5–8 questions, worked answers).
+- **Per-week hands-on practice exercises** with self-check answers.
+- **Per-project self-rubrics** so you can grade your own work against the same dimensions an instructor would.
 
 ## What you need
 
 - Working comfort with Python at a scripting level.
 - A GitHub account.
-- A free-tier LLM chat account (Claude, ChatGPT, or Gemini). Paid tiers help in weeks 3–4 but are not required.
+- A free-tier LLM chat account (Claude, ChatGPT, or Gemini). Paid tiers help in Weeks 3–4 but are not required.
 - A coding assistant (Claude Code, Cursor, or VS Code + Copilot).
 - A grounded literature tool (Elicit, Consensus, SciSpace, or Perplexity sources mode).
 - For the hands-on weeks: a Google account for Colab. For a local install, use the pinned `environment.yml` (conda) or `requirements.txt` (pip / uv) at the repo root — `conda env create -f environment.yml && conda activate ai-fluency-for-bio` reproduces the full stack.
@@ -76,8 +80,9 @@ See the [Syllabus](course-syllabus.qmd) for the full assessment scheme, AI-use p
 ├── course-overview.qmd         # learning outcomes
 ├── course-syllabus.qmd         # assessment, AI-use policy, disclosure rubric, readings
 ├── course-faq.qmd              # FAQ
-├── course-team.qmd             # instructor + TAs
-├── course-support.qmd          # how to get help
+├── course-how-to-use.qmd       # self-paced model + learner-progress checklist
+├── course-team.qmd             # about the author
+├── course-support.qmd          # how to get unstuck
 ├── fluency/                    # 4 D's
 │   ├── delegation.qmd
 │   ├── description.qmd
@@ -99,12 +104,17 @@ See the [Syllabus](course-syllabus.qmd) for the full assessment scheme, AI-use p
 │   ├── module-03-preprocessing-scanpy/
 │   ├── module-04-clustering-umap/
 │   └── module-05-annotation-interpretation/
-└── weeks/                      # weekly student-facing pages
-    ├── week-1.qmd
-    ├── week-2.qmd
-    ├── week-3.qmd
-    ├── week-4.qmd
-    └── starter-week3-python.qmd
+├── weeks/                      # per-week learner-facing pages
+│   ├── week-1.qmd
+│   ├── week-2.qmd
+│   ├── week-3.qmd
+│   ├── week-4.qmd
+│   └── starter-week3-python.qmd
+└── reference/                  # cross-cutting reference material
+    ├── glossary.qmd
+    ├── prompt-library.qmd
+    ├── peer-review.qmd         # self-review template
+    └── topic-index.qmd         # by-subject index
 ```
 
 ## Building the site locally
