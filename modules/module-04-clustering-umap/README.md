@@ -1,9 +1,13 @@
 # Module 4: Dimensionality Reduction, Clustering & UMAP
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mdmanurung/ai-fluency-for-bio/blob/main/modules/module-04-clustering-umap/notebook.ipynb)
+
 **Estimated Time to Complete: ~90 mins**
 
 > **Tools needed:** Google Colab (free, no installation), Claude or ChatGPT (free web)
 > **Prerequisites:** Complete Module 3, or start fresh using the setup code below
+>
+> Click the **Open in Colab** badge above to launch the runnable notebook. The README below is the narrative companion.
 
 ---
 

@@ -1,10 +1,14 @@
 # Module 3: Preprocessing & Quality Control in Scanpy
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mdmanurung/ai-fluency-for-bio/blob/main/modules/module-03-preprocessing-scanpy/notebook.ipynb)
+
 **Estimated Time to Complete: ~75 mins**
 
 > **Tools needed:** Google Colab (free, no installation), Claude or ChatGPT (free web)
 > **HPC required?** No. Everything in this module runs in your browser.
 > **Dataset:** 10x PBMC 3k (loaded directly by Scanpy — no download needed)
+>
+> Click the **Open in Colab** badge above to launch the runnable notebook. The README below is the narrative companion; the notebook mirrors it cell-for-cell.
 
 ---
 

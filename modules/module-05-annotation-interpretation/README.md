@@ -1,9 +1,13 @@
 # Module 5: Cell Type Annotation & Biological Interpretation
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mdmanurung/ai-fluency-for-bio/blob/main/modules/module-05-annotation-interpretation/notebook.ipynb)
+
 **Estimated Time to Complete: ~90 mins**
 
 > **Tools needed:** Google Colab (free, no installation), Claude or ChatGPT (free web)
 > **Prerequisites:** Complete Module 4, or load the saved `pbmc3k_processed.h5ad`
+>
+> Click the **Open in Colab** badge above to launch the runnable notebook. The README below is the narrative companion.
 
 ---
 

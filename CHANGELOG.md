@@ -7,6 +7,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added — branch `claude/course-improvement-feedback-Dc10Y` (open-source / reuse pass)
+
+- **`environment.yml`** + **`requirements.txt`** — pin the full Scanpy + scrublet + leidenalg + igraph + jupyterlab stack at the repo root so self-paced learners can reproduce the hands-on track without dependency drift. Closes the "Commit a pinned environment" item in `PLANS.md` Infrastructure.
+- **`.github/workflows/link-check.yml`** — Lychee link-check on push, PR, and a weekly Monday cron. Catches link rot in the URL-heavy further-reading lists across all 12 fluency / literacy / bioinformatics pages.
+- **`modules/module-0[3,4,5]-*/notebook.ipynb`** — paired runnable Jupyter notebooks for the three Colab modules (preprocessing, clustering/UMAP, annotation). Generated from the existing README content via `tools/readme_to_ipynb.py`; each module README now has an "Open in Colab" badge at the top resolving to the notebook on `main`.
+- **`tools/readme_to_ipynb.py`** — small idempotent helper that converts a module README into a paired notebook (markdown for prose, code cells for `python` blocks). Lets maintainers keep README and notebook in sync by re-running.
+- **`course-team.qmd`, `course-support.qmd`** — added a "course template" callout flagging the page placeholders as fork-and-replace targets, so adopters know they are fork-friendly and not pre-filled for a specific cohort.
+- **`weeks/starter-week3-python.qmd`** — Setup section now references `environment.yml` / `requirements.txt` for local installs.
+- **`README.md`** — "What you need" references the pinned env files.
+
 ### Changed — branch `claude/review-ai-fluency-course-QgsyP` (course merge)
 
 Merge the 5-module scRNA-seq pipeline (PBMC 3k) into the 4-week instructor-led course. The two were previously inconsistent — README and modules described a self-paced FASTQ→UMAP course; the Quarto site described a 4-week AI-fluency course on bulk RNA-seq (GSE96870). After the merge, the course is one coherent thing:
