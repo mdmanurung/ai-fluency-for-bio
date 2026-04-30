@@ -4,22 +4,22 @@ title: "Overview"
 
 ## Course description
 
-AI tools — especially large language models (LLMs) and AI coding assistants — are rapidly entering the biology research workflow. Used well, they can accelerate analysis, surface relevant literature, and help draft code and documentation. Used carelessly, they introduce subtle errors, fabricated citations, and workflow brittleness.
+Large language models and AI coding assistants are now part of biology research workflows. Used well, they speed up analysis, surface relevant literature, and help draft code and documentation. Used carelessly, they introduce subtle errors, fabricated citations, and brittle pipelines.
 
-This course teaches **AI fluency foundations** for biology: the framework, vocabulary, and habits to collaborate with AI tools productively and responsibly. It is **self-paced** — you take it on your own, at your own pace, with no instructor and no schedule. It is a starting point. Real fluency comes from sustained practice with feedback over months — this course is designed to make that practice deliberate from the outset.
+This course teaches AI fluency foundations for biology: the framework, vocabulary, and habits to collaborate with AI tools productively and responsibly. It is self-paced. You take it on your own, with no instructor and no schedule. It is a starting point. Real fluency comes from sustained practice with feedback over months. This course is designed to make that practice deliberate from the outset.
 
 ## Who this course is for
 
-- Graduate students, postdocs, PIs, and staff scientists in life sciences.
+- Graduate students, postdocs, PIs, and staff scientists in the life sciences.
 - Researchers who already use, or want to use, tools like Claude, ChatGPT, Copilot, Cursor, or agentic coding assistants.
-- No prior AI/ML background required. Working comfort with R or Python at a scripting level is helpful for the hands-on units.
-- Self-motivated learners willing to do their own assessment. There is no instructor, no grade, and no certificate — the bar is the one you set yourself, calibrated by the rubrics provided.
+- No prior AI or ML background is required. Working comfort with R or Python at a scripting level helps for the hands-on units.
+- Self-motivated learners willing to do their own assessment. There is no instructor, no grade, and no certificate. You set the bar yourself, calibrated by the rubrics provided.
 
 ## Scope and bias
 
-The conceptual content (4 D's, LLM literacy, ethics) is **subfield-agnostic**. The hands-on project is a complete **single-cell RNA-seq pipeline** on the 10x PBMC 3k dataset — chosen because the tooling is mature, the dataset is small enough to run in a free-tier Colab, and the workflow exercises every step of the AI-fluency framework (delegating boilerplate, describing dataset structure, discerning thresholds, owning interpretation).
+The conceptual content (4 D's, LLM literacy, ethics) works for any subfield. The hands-on project is a complete single-cell RNA-seq pipeline on the 10x PBMC 3k dataset. We chose it because the tooling is mature, the dataset is small enough to run in a free-tier Colab, and the workflow exercises every step of the AI-fluency framework: delegating boilerplate, describing dataset structure, discerning thresholds, and owning interpretation.
 
-Learners from other subfields (structural, microbial, ecological, neural, developmental) are encouraged to bring their own datasets to the Week 4 final project. The 4 D's transfer; the scRNA-seq concrete project is the scaffold, not the limit.
+If you work in a different subfield (structural, microbial, ecological, neural, developmental), bring your own dataset to the Week 4 final project. The 4 D's transfer. The scRNA-seq project is the scaffold, not the limit.
 
 ## Learning outcomes
 
@@ -27,22 +27,22 @@ By the end of this course, learners will be able to:
 
 | # | Outcome | Bloom level | Self-evidenced by |
 |:--|:--------|:-----------:|:-------------|
-| 1 | **Apply** the 4 D's framework to classify a research task and choose a delegation pattern. | Apply | Week 1 reflection |
-| 2 | **Explain** at a working level how LLMs are trained, generate text, and fail. | Understand | Week 2 knowledge check + exercise |
-| 3 | **Construct** structured prompts (system, few-shot, tool-use) for bio research tasks. | Apply | Week 2 exercise |
-| 4 | **Use** an AI coding assistant to scaffold and debug an scRNA-seq analysis. | Apply | Week 3 mini-project |
-| 5 | **Evaluate** AI-generated analyses, citations, and protocols for correctness, provenance, and methodological soundness. | Evaluate | Week 3 mini-project + Week 4 final project |
-| 6 | **Produce** a reproducible, AI-assisted research artifact with a complete disclosure statement. | Create | Week 4 final project |
-| 7 | **Critique** the ethical, epistemic, and reproducibility implications of a given AI use in research. | Evaluate | Throughout, formalised in Week 4 reflection |
+| 1 | Apply the 4 D's framework to classify a research task and choose a delegation pattern. | Apply | Week 1 reflection |
+| 2 | Explain at a working level how LLMs are trained, generate text, and fail. | Understand | Week 2 knowledge check and exercise |
+| 3 | Construct structured prompts (system, few-shot, tool-use) for bio research tasks. | Apply | Week 2 exercise |
+| 4 | Use an AI coding assistant to scaffold and debug an scRNA-seq analysis. | Apply | Week 3 mini-project |
+| 5 | Evaluate AI-generated analyses, citations, and protocols for correctness, provenance, and methodological soundness. | Evaluate | Week 3 mini-project and Week 4 final project |
+| 6 | Produce a reproducible, AI-assisted research artifact with a complete disclosure statement. | Create | Week 4 final project |
+| 7 | Critique the ethical, epistemic, and reproducibility implications of a given AI use in research. | Evaluate | Throughout, formalised in Week 4 reflection |
 
 ## Course structure
 
-The course is organised into **four self-paced units**, each combining readings from three conceptual tracks and a 5-module scRNA-seq pipeline:
+The course has four self-paced units. Each combines readings from three conceptual tracks with a 5-module scRNA-seq pipeline:
 
-- The **[AI fluency](fluency/delegation.qmd)** track introduces the 4 D's framework (anchors Week 1).
-- The **[AI literacy](literacy/how-llms-work.qmd)** track covers the technical and conceptual background (anchors Week 2).
-- The **[Hands-on bioinformatics](bioinformatics/code-assistance.qmd)** track applies the AI-fluency lens to four research tasks — code, data, literature, protocols (split across Weeks 3 and 4).
-- The **[scRNA-seq pipeline](modules/module-01-raw-data-qc/README.md)** is the concrete hands-on project: 5 modules from FASTQ to annotated UMAP on 10x PBMC 3k. Modules 1–2 are background reading; Modules 3–4 are Week 3; Module 5 is one valid path for the Week 4 final project.
-- The **[week pages](weeks/week-1.qmd)** are the **primary navigation** — each is self-contained: readings → practice → knowledge check → project.
+- The [AI fluency](fluency/delegation.qmd) track introduces the 4 D's framework. It anchors Week 1.
+- The [AI literacy](literacy/how-llms-work.qmd) track covers the technical and conceptual background. It anchors Week 2.
+- The [hands-on bioinformatics](bioinformatics/code-assistance.qmd) track applies the AI-fluency lens to four research tasks: code, data, literature, and protocols. It is split across Weeks 3 and 4.
+- The [scRNA-seq pipeline](modules/module-01-raw-data-qc/README.md) is the concrete hands-on project. Five modules go from FASTQ to annotated UMAP on 10x PBMC 3k. Modules 1 and 2 are background reading, Modules 3 and 4 are Week 3, and Module 5 is one valid path for the Week 4 final project.
+- The [week pages](weeks/week-1.qmd) are the primary navigation. Each is self-contained: readings, practice, knowledge check, and project.
 
 See the [Syllabus](course-syllabus.qmd) for the AI-use policy, disclosure rubric, and reading list. See [How to use this course](course-how-to-use.qmd) for the self-pacing model. See the [Roadmap](index.qmd) for the unit-by-unit summary.

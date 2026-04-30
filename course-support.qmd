@@ -11,26 +11,26 @@ If you are adapting this course for your institution and *do* have a teaching te
 
 ## When you get stuck
 
-If a project or exercise is not working, work through this list before reaching out anywhere:
+If a project or exercise is not working, work through this list before reaching out:
 
-1. **Re-read the relevant page.** Most "stuck" moments are an invitation to look at the reading again. The week pages list which conceptual page covers each topic.
-2. **Try the knowledge check** for that week. If you can't answer the questions, the gap is the reading, not the project.
-3. **Check the [Glossary](reference/glossary.qmd) and the [Prompt library](reference/prompt-library.qmd)** if a term or pattern is unfamiliar.
-4. **Talk to an AI assistant about being stuck**, but use the [Description](fluency/description.qmd) framing — describe what you've tried, what failed, and what you expected. Vague "I'm stuck" prompts produce vague help.
+1. Re-read the relevant page. Most "stuck" moments are an invitation to look at the reading again. The week pages tell you which conceptual page covers each topic.
+2. Try the knowledge check for that week. If you can't answer the questions, the gap is the reading, not the project.
+3. Check the [glossary](reference/glossary.qmd) and the [prompt library](reference/prompt-library.qmd) if a term or pattern is unfamiliar.
+4. Talk to an AI assistant about being stuck, but use the [Description](fluency/description.qmd) framing. Describe what you tried, what failed, and what you expected. Vague "I'm stuck" prompts produce vague help.
 
-If after that you still can't move, the issue is more likely a code/environment problem than a learning problem — see Technical issues below.
+If you still can't move, the issue is more likely a code or environment problem than a learning problem. See Technical issues below.
 
 ## Technical issues
 
 - For issues with this website (typos, broken links, wrong info), [open an issue](https://github.com/mdmanurung/ai-fluency-for-bio/issues) or a pull request on the course repository.
-- For issues with Claude, ChatGPT, or other AI tools: check the vendor's status page first.
-- For issues running the [scRNA-seq modules](modules/module-01-raw-data-qc/README.md) — Colab quotas, Cell Ranger errors, Scanpy version mismatches — the most useful first move is to confirm the [Python starter](weeks/starter-week3-python.qmd) loads PBMC 3k. If it doesn't, the module won't either; debug the starter first.
-- For other technical questions, the GitHub repository's Issues tab is the canonical place — even if you don't get a maintainer reply, future learners will find your issue.
+- For issues with Claude, ChatGPT, or other AI tools, check the vendor's status page first.
+- For issues running the [scRNA-seq modules](modules/module-01-raw-data-qc/README.md), like Colab quotas, Cell Ranger errors, or Scanpy version mismatches, first confirm that the [Python starter](weeks/starter-week3-python.qmd) loads PBMC 3k. If it doesn't, the module won't either. Debug the starter first.
+- For other technical questions, the GitHub repository's Issues tab is the canonical place. Even if you don't get a maintainer reply, future learners will find your issue.
 
 ## Working with peers (optional)
 
-If you'd like to take this course with peers (a small study group of 3–5 works well), the [How to use this course](course-how-to-use.qmd) page has a short note on how to organise that. There is no official forum, no facilitator guide, no answer key beyond what's already in the page — fork the repo, run it your way.
+If you'd like to take this course with peers (a small study group of 3 to 5 works well), the [How to use this course](course-how-to-use.qmd) page has a short note on how to organise that. There is no official forum, no facilitator guide, and no answer key beyond what is on the page itself. Fork the repo and run it your way.
 
 ## Wellness
 
-AI tooling is changing quickly, and it's easy to feel like you're "falling behind." You are not. Treat this course as a structured way to develop taste, not a sprint. There are no deadlines — pick a pace you can sustain, and if you stop for a month, just resume from the week page where you left off.
+AI tooling is changing quickly, and it is easy to feel like you are falling behind. You are not. Treat this course as a structured way to develop taste, not a sprint. There are no deadlines. Pick a pace you can sustain, and if you stop for a month, resume from the week page where you left off.

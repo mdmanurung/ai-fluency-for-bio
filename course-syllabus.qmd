@@ -4,31 +4,31 @@ title: "Syllabus"
 
 ## Logistics
 
-- **Format**: self-paced. No instructor, no schedule, no grades.
-- **Suggested pacing**: ~1 week per unit, ~3–5 hours per week (Weeks 1–2) or ~5–7 hours per week (Weeks 3–4). Allow yourself **4–8 weeks** end-to-end depending on background and time.
-- **Cadence**: each week page is self-contained — readings → practice → knowledge check → project. Move at the speed you learn.
-- **Duration scope**: this is a **foundations** course; real fluency develops over months of supervised practice on real research problems. Plan accordingly.
+- Format: self-paced. No instructor, no schedule, no grades.
+- Suggested pacing: about a week per unit, three to five hours for Weeks 1 and 2, five to seven hours for Weeks 3 and 4. Allow yourself four to eight weeks end-to-end depending on background and time.
+- Cadence: each week page is self-contained (readings, practice, knowledge check, project). Move at the speed you learn.
+- Duration scope: this is a foundations course. Real fluency develops over months of supervised practice on real research problems. Plan accordingly.
 
 ## Prerequisites
 
-- Working comfort with R *or* Python at a scripting level (read and modify a 100-line script).
-- An LLM chat account — free tier of Claude, ChatGPT, or Gemini works for most exercises (see budget note below).
+- Working comfort with R or Python at a scripting level. You should be able to read and modify a 100-line script.
+- An LLM chat account. The free tier of Claude, ChatGPT, or Gemini works for most exercises (see the budget note below).
 - A GitHub account.
-- Laptop with terminal access; ability to install [Quarto](https://quarto.org/) and a code assistant.
+- A laptop with terminal access, and the ability to install [Quarto](https://quarto.org/) and a code assistant.
 
 ::: {.callout-warning}
 ## Free-tier budget note
-Free-tier LLMs work for Week 1–2 chat exercises. The Week 3 mini-project and Week 4 final project benefit from a paid tier (Claude Pro / ChatGPT Plus) or institutional API access — free-tier rate limits will otherwise interrupt sustained code-assistance sessions. If you have institutional access via a research computing service, check whether they offer enterprise LLM access before paying out of pocket.
+Free-tier LLMs work for the Week 1 and Week 2 chat exercises. The Week 3 mini-project and the Week 4 final project benefit from a paid tier (Claude Pro, ChatGPT Plus) or institutional API access. Free-tier rate limits will otherwise interrupt sustained code-assistance sessions. If you have institutional access through a research computing service, check whether they offer enterprise LLM access before paying out of pocket.
 :::
 
 ## Required tools
 
-- **[Quarto](https://quarto.org/)** (current stable; ≥ 1.5) — for reproducible reports.
-- **Git + GitHub** — for version control and storing your project artifacts.
-- **A coding assistant** (one of): [Claude Code](https://docs.claude.com/en/docs/claude-code/overview), [Cursor](https://cursor.sh/), or VS Code + [GitHub Copilot](https://github.com/features/copilot).
-- **A chat LLM** (one of): [Claude](https://claude.ai/), ChatGPT, or Gemini. Course examples use Claude by default.
-- **A grounded literature tool** (one of): [Elicit](https://elicit.com/), [Consensus](https://consensus.app/), [SciSpace](https://scispace.com/), or Perplexity (sources mode).
-- **Bioinformatics environment**: Python with [Scanpy](https://scanpy.readthedocs.io/) is the course default for the hands-on track. The 5-module scRNA-seq pipeline runs in **Google Colab** out of the box (no install required for Modules 3–5; Modules 1–2 need HPC or are skippable). If you prefer a local setup, a pinned environment (`conda` or `uv`) is supported — see [Week 3](weeks/week-3.qmd). R/[Seurat](https://satijalab.org/seurat/) users can substitute the equivalent Bioconductor toolchain for the mini-project; pointers in [Code assistance](bioinformatics/code-assistance.qmd).
+- [Quarto](https://quarto.org/), current stable, version 1.5 or later, for reproducible reports.
+- Git and GitHub, for version control and storing your project artifacts.
+- A coding assistant. Pick one of [Claude Code](https://docs.claude.com/en/docs/claude-code/overview), [Cursor](https://cursor.sh/), or VS Code with [GitHub Copilot](https://github.com/features/copilot).
+- A chat LLM. Pick one of [Claude](https://claude.ai/), ChatGPT, or Gemini. Course examples use Claude by default.
+- A grounded literature tool. Pick one of [Elicit](https://elicit.com/), [Consensus](https://consensus.app/), [SciSpace](https://scispace.com/), or Perplexity in sources mode.
+- A bioinformatics environment. Python with [Scanpy](https://scanpy.readthedocs.io/) is the course default. The 5-module scRNA-seq pipeline runs in Google Colab out of the box. You don't need a local install for Modules 3 to 5. Modules 1 and 2 need HPC, or you can skip them. If you prefer a local setup, a pinned `conda` or `uv` environment is supported (see [Week 3](weeks/week-3.qmd)). R and [Seurat](https://satijalab.org/seurat/) users can substitute the equivalent Bioconductor toolchain for the mini-project. Pointers are in [Code assistance](bioinformatics/code-assistance.qmd).
 
 ## Course structure
 
@@ -36,12 +36,12 @@ The course covers three conceptual tracks and a 5-module scRNA-seq pipeline acro
 
 | Unit | Theme | Hands-on | Project (with self-rubric) |
 |:----:|:------|:---------|:------------|
-| 1 | Foundations & the 4 D's | Tooling setup; workflow audit | Reflection (≤ 500 words) + tooling confirmation |
+| 1 | Foundations and the 4 D's | Tooling setup, workflow audit | Reflection (500 words or fewer), plus tooling confirmation |
 | 2 | LLM literacy | Solo prompt clinic | Prompt-engineering exercise (weak vs. strong, with critique) |
-| 3 | scRNA-seq I — QC, normalisation, clustering (Modules 3 & 4) | Module 3 + Module 4 in Colab | Mini-project: reproducible AI-assisted PBMC 3k QC + clustering report |
-| 4 | scRNA-seq II — annotation, final project (Module 5) | Module 5 in Colab | Final project: literature brief, analysis, or protocol — your choice |
+| 3 | scRNA-seq I: QC, normalisation, clustering (Modules 3 and 4) | Modules 3 and 4 in Colab | Mini-project: reproducible AI-assisted PBMC 3k QC and clustering report |
+| 4 | scRNA-seq II: annotation, final project (Module 5) | Module 5 in Colab | Final project. Your choice of literature brief, analysis, or protocol |
 
-Modules 1 (FastQC) and 2 (Cell Ranger / STARsolo) are reading material before Week 3 if you want the full picture. Module 2 needs HPC; if you don't have it, skip directly to Module 3 — a pre-built count matrix is loaded by Scanpy.
+Modules 1 (FastQC) and 2 (Cell Ranger or STARsolo) are reading material before Week 3 if you want the full picture. Module 2 needs HPC. If you don't have it, skip to Module 3. Scanpy loads a pre-built count matrix.
 
 ## Self-assessment
 
@@ -49,99 +49,99 @@ This course has no grades. Instead, you assess yourself with four kinds of feedb
 
 | Mechanism | Where it lives | What it's for |
 |:----------|:----|:----|
-| Per-page **Check your understanding** | Bottom of each conceptual page | Confirm a single page landed before moving on (3–5 questions, worked answers) |
-| Per-week **Knowledge check** | End of each week page | Cumulative check across the week's readings (5–8 mixed conceptual + applied questions) |
-| Per-week **Hands-on practice** | Middle of each week page | Apply the unit to your own data / questions (2–3 small exercises with self-check answers) |
-| Project **self-rubric** | End of each week page (Weeks 1, 2, 3, 4) | Grade your own project against the same dimensions an instructor would |
+| Per-page "Check your understanding" | Bottom of each conceptual page | Confirm a page landed before moving on (3 to 5 questions with worked answers) |
+| Per-week knowledge check | End of each week page | Cumulative check across the week's readings (5 to 8 mixed conceptual and applied questions) |
+| Per-week hands-on practice | Middle of each week page | Apply the unit to your own data and questions (2 or 3 small exercises with self-check answers) |
+| Project self-rubric | End of each week page (Weeks 1, 2, 3, 4) | Grade your own project against the same dimensions an instructor would |
 
-If you miss two or more knowledge-check questions on a topic, revisit the reading and redo the practice. The **disclosure rubric** below applies to every project — it is not graded by anyone, but if you cannot defend the disclosure, the project is not finished.
+If you miss two or more knowledge-check questions on a topic, revisit the reading and redo the practice. The disclosure rubric below applies to every project. No one grades it for you, but if you cannot defend your disclosure, the project is not finished.
 
 ### Disclosure rubric
 
-Every project includes a disclosure section, scored on these dimensions (use it as a self-check on whether your work meets the bar):
+Every project includes a disclosure section. Score it on these dimensions, and use the rubric as a self-check on whether your work meets the bar:
 
 | Dimension | 0 | 1 |
 |:----------|:---|:---|
-| **Tools listed** | None or vague ("used AI") | Specific tool, version/model, and access tier (e.g., "Claude Sonnet 4.6, Pro tier, web UI") |
-| **Use described** | Generic ("for help") | Concrete uses ("drafted DESeq2 scaffold; rewrote intro paragraph; suggested 3 papers, 2 verified, 1 fabricated") |
-| **Verification stated** | Not mentioned | Names what you checked and how (ran tests, verified citations on PubMed, ran code on test data) |
-| **Rejections noted** | Not mentioned | Lists at least one AI suggestion you rejected and why |
+| Tools listed | None or vague ("used AI") | Specific tool, version or model, and access tier (e.g., "Claude Sonnet 4.6, Pro tier, web UI") |
+| Use described | Generic ("for help") | Concrete uses ("drafted DESeq2 scaffold, rewrote intro paragraph, suggested 3 papers of which 2 verified and 1 fabricated") |
+| Verification stated | Not mentioned | Names what you checked and how (ran tests, verified citations on PubMed, ran code on test data) |
+| Rejections noted | Not mentioned | Lists at least one AI suggestion you rejected and why |
 
-A template disclosure paragraph is provided with each project.
+A template disclosure paragraph comes with each project.
 
 ## AI-use policy
 
-This is a course about using AI tools well. **You are expected to use them on most exercises.** Following pedagogical research, two projects include an **AI-free or AI-second baseline component** so you can develop and demonstrate the underlying skill, not just the collaboration skill:
+This is a course about using AI tools well. You are expected to use them on most exercises. Two projects include an AI-free or AI-second baseline component so you can build and demonstrate the underlying skill, not only the collaboration skill:
 
-- **Week 1 reflection**: write your initial classification of three of your own tasks *without* AI consultation. Then, optionally, run them past an AI and note what changed.
-- **Week 3 mini-project**: write a small (~25-line) AI-free baseline of the PBMC 3k QC pass *first*, by hand — `sc.datasets.pbmc3k()`, mt-gene flag, three QC violin plots, threshold filter, log-normalise. Then iterate with an AI assistant on the rest (clustering, marker checks, refactor). Submit both, with a short note on what the AI changed and why you accepted or rejected each change.
+- Week 1 reflection: write your initial classification of three of your own tasks without AI consultation. Then, optionally, run them past an AI and note what changed.
+- Week 3 mini-project: write a small (about 25-line) AI-free baseline of the PBMC 3k QC pass first, by hand. Use `sc.datasets.pbmc3k()`, flag mitochondrial genes, plot three QC violins, filter on thresholds, and log-normalise. Then iterate with an AI assistant on the rest (clustering, marker checks, refactor). Submit both, with a short note on what the AI changed and why you accepted or rejected each change.
 
 For all projects:
 
-- **Disclose** which tools you used and how. See the disclosure rubric above.
-- **Verify** every factual claim, citation, and piece of code before relying on it.
-- **Own** your output: you are the author of record. AI-generated text used verbatim must be quoted or marked.
-- **Protect** sensitive data: see the data policy below.
+- Disclose which tools you used and how. See the disclosure rubric above.
+- Verify every factual claim, citation, and piece of code before relying on it.
+- Own your output. You are the author of record. AI-generated text used verbatim must be quoted or marked.
+- Protect sensitive data. See the data policy below.
 
 ## Data policy (required reading before any exercise using real data)
 
-Do **not** paste any of the following into a third-party LLM service without explicit, documented permission and an approved data-handling pathway:
+Do not paste any of the following into a third-party LLM service without explicit, documented permission and an approved data-handling pathway:
 
-- **Patient-identifiable data** or any PHI under HIPAA (US) / personal data under GDPR (EU/UK).
-- **Controlled-access data** (NIH dbGaP, UK Biobank, EGA, etc.) — controlled-access agreements typically prohibit third-party transmission.
-- **BAA-restricted clinical data** — even de-identified data may be subject to your institution's Business Associate Agreements.
-- **Embargoed pre-publication data** — including unpublished collaborator data, manuscripts under review, and grant proposals.
-- **Sequence or other data** under a Material Transfer Agreement (MTA) with restrictive terms.
+- Patient-identifiable data, or any PHI under HIPAA (US) or personal data under GDPR (EU/UK).
+- Controlled-access data (NIH dbGaP, UK Biobank, EGA, and similar). Controlled-access agreements typically prohibit third-party transmission.
+- BAA-restricted clinical data. Even de-identified data may be subject to your institution's Business Associate Agreements.
+- Embargoed pre-publication data, including unpublished collaborator data, manuscripts under review, and grant proposals.
+- Sequence or other data covered by a Material Transfer Agreement with restrictive terms.
 
-For any such data: use **on-premises**, **institutional**, or **vendor enterprise tiers with appropriate contracts** (e.g., zero-retention with a signed BAA where applicable). When in doubt, consult your IRB / data steward / institutional privacy office *before* the exercise, not after.
+For any such data, use on-premises tools, institutional tools, or vendor enterprise tiers with appropriate contracts (zero-retention with a signed BAA where applicable). When in doubt, consult your IRB, data steward, or institutional privacy office before the exercise, not after.
 
-The course dataset (10x PBMC 3k) is public and safe to use with any tool. Supplementary references to other public datasets (e.g., from GEO or ArrayExpress) are also safe.
+The course dataset (10x PBMC 3k) is public and safe to use with any tool. Public supplementary datasets (from GEO, ArrayExpress, and similar archives) are also safe.
 
 ## Recommended readings
 
-Two short readings per unit is the assigned load; the rest is a menu.
+Two short readings per unit is the assigned load. The rest is a menu.
 
-**Foundations / fluency**
+**Foundations and fluency**
 
-- Anthropic, [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency) — the source of the 4 D's framework. Free course materials and PDF available from Anthropic.
-- Mollick, E. (2024). *Co-Intelligence: Living and Working with AI.* Portfolio. — practical framing for working with LLMs.
+- Anthropic. [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency). The source of the 4 D's framework. Free course materials and a PDF are available from Anthropic.
+- Mollick, E. (2024). *Co-Intelligence: Living and Working with AI.* Portfolio. Practical framing for working with LLMs.
 
 **How LLMs work and why they fail**
 
-- Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). [On the dangers of stochastic parrots: Can language models be too big? 🦜](https://dl.acm.org/doi/10.1145/3442188.3445922) *FAccT '21.* Foundational; pre-RLHF era.
-- Wei, J., et al. (2022). [Emergent abilities of large language models.](https://arxiv.org/abs/2206.07682) *TMLR.* — Read with the critique below.
-- Schaeffer, R., Miranda, B., & Koyejo, S. (2023). [Are emergent abilities of large language models a mirage?](https://arxiv.org/abs/2304.15004) *NeurIPS.* — Important counterpoint to Wei et al.
-- Ouyang, L., et al. (2022). [Training language models to follow instructions with human feedback.](https://arxiv.org/abs/2203.02155) *NeurIPS.* — InstructGPT / RLHF.
-- Huang, L., et al. (2023). [A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions.](https://arxiv.org/abs/2311.05232) *ACM TOIS.* — Useful taxonomy: factuality vs. faithfulness hallucination.
+- Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). [On the dangers of stochastic parrots: Can language models be too big? 🦜](https://dl.acm.org/doi/10.1145/3442188.3445922) *FAccT '21.* Foundational, pre-RLHF era.
+- Wei, J., et al. (2022). [Emergent abilities of large language models.](https://arxiv.org/abs/2206.07682) *TMLR.* Read alongside the critique below.
+- Schaeffer, R., Miranda, B., & Koyejo, S. (2023). [Are emergent abilities of large language models a mirage?](https://arxiv.org/abs/2304.15004) *NeurIPS.* An important counterpoint to Wei et al.
+- Ouyang, L., et al. (2022). [Training language models to follow instructions with human feedback.](https://arxiv.org/abs/2203.02155) *NeurIPS.* The InstructGPT and RLHF paper.
+- Huang, L., et al. (2023). [A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions.](https://arxiv.org/abs/2311.05232) *ACM TOIS.* A useful taxonomy: factuality vs. faithfulness hallucination.
 
-**AI in biology / science**
+**AI in biology and science**
 
-- Bunne, C., et al. (2024). [How to build the virtual cell with artificial intelligence: Priorities and opportunities.](https://www.cell.com/cell/fulltext/S0092-8674(24)01332-1) *Cell* 187(25), 7045–7063. — Forward-looking perspective; advanced.
-- Boiko, D. A., MacKnight, R., Kline, B., & Gomes, G. (2023). [Autonomous chemical research with large language models.](https://www.nature.com/articles/s41586-023-06792-0) *Nature* 624, 570–578. — Chemistry rather than biology; useful as analogy for autonomous research workflows.
+- Bunne, C., et al. (2024). [How to build the virtual cell with artificial intelligence: Priorities and opportunities.](https://www.cell.com/cell/fulltext/S0092-8674(24)01332-1) *Cell* 187(25), 7045–7063. Forward-looking perspective, advanced.
+- Boiko, D. A., MacKnight, R., Kline, B., & Gomes, G. (2023). [Autonomous chemical research with large language models.](https://www.nature.com/articles/s41586-023-06792-0) *Nature* 624, 570–578. Chemistry rather than biology, useful as an analogy for autonomous research workflows.
 
 **Ethics and policy**
 
-- Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI.](https://arxiv.org/abs/2408.11441) *AAAI/ACM AIES.* — Frames the epistemic risks of generative AI for shared knowledge.
-- ICMJE — current [Recommendations](https://www.icmje.org/recommendations/) on AI in authorship (read the current online version, not a static cite).
-- *Nature* — current [editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai) (current online version).
-- *Science* — current AI policies via the journal family's editorial guidelines (current online version).
+- Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI.](https://arxiv.org/abs/2408.11441) *AAAI/ACM AIES.* Frames the epistemic risks of generative AI for shared knowledge.
+- ICMJE. Current [Recommendations](https://www.icmje.org/recommendations/) on AI in authorship. Read the current online version, not a static cite.
+- *Nature*. Current [editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai). Read the current online version.
+- *Science*. Current AI policies in the journal family's editorial guidelines. Read the current online version.
 
 ::: {.callout-note}
 ## A note on the reading list
-Citations were verified at the time of writing (April 2026). Editorial policies and "current best" surveys date quickly — confirm before relying on them. Items not flagged as core are still valuable supplements; the assigned load is two short readings per unit.
+Citations were verified at the time of writing (April 2026). Editorial policies and "current best" surveys go stale quickly. Confirm before relying on them. Items not flagged as core are still valuable supplements. The assigned load is two short readings per unit.
 :::
 
 ## Course policies
 
-- **Pacing**: there are no deadlines. The "weeks" are recommended pacing milestones, not a schedule.
-- **Working with peers (optional)**: if you take this with a study group, share verification approaches and prompt logs but write your own work. Use the [self-review template](reference/peer-review.qmd) on each other's projects.
-- **AI collaboration**: governed by the AI-use policy above. Disclosure is the bar.
+- Pacing: there are no deadlines. The "weeks" are recommended pacing milestones, not a schedule.
+- Working with peers (optional): if you take this with a study group, share verification approaches and prompt logs, but write your own work. Use the [self-review template](reference/peer-review.qmd) on each other's projects.
+- AI collaboration: governed by the AI-use policy above. Disclosure is the bar.
 
 ## Academic integrity
 
-If you are taking this course as part of a programme that submits credit, the same standard applies as in any course: AI output submitted as your own unverified, undisclosed work — without verification or critical engagement — violates academic integrity, regardless of how the text was produced. The disclosure rubric makes the expectation concrete.
+If you take this course as part of a programme that submits credit, the same standard applies as in any course. AI output submitted as your own unverified, undisclosed work, without verification or critical engagement, violates academic integrity regardless of how the text was produced. The disclosure rubric makes the expectation concrete.
 
-If you are taking the course on your own, the same standard still applies — to *yourself*. Disclosure and verification are habits to build now, not bureaucracy to perform later.
+If you take the course on your own, the same standard still applies, to yourself. Disclosure and verification are habits to build now, not bureaucracy to perform later.
 
 ## Accessibility
 
