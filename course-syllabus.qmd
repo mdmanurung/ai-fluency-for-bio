@@ -51,7 +51,7 @@ Modules 1 (FastQC) and 2 (Cell Ranger / STARsolo) are pre-week-3 reading. Module
 | Weekly exercises (weeks 1, 2) | 30% | Application of weekly material to your own work. |
 | Mini-project (week 3) | 25% | Reproducible AI-assisted bioinformatics analysis. Includes an **AI-second baseline** component (see below). |
 | Capstone (weeks 3–4) | 30% | Scoped in week 3, executed in week 4. Literature → analysis-or-protocol → reflection → disclosure. |
-| Participation & peer review | 15% | Live workshops, peer feedback. **Credit / no-credit**, not graded for quality. |
+| Participation & peer review | 15% | Live workshops, peer feedback. **Credit / no-credit**, not graded for quality. Use the [peer-review template](reference/peer-review.qmd) for written reviews. |
 
 Each graded deliverable carries a **disclosure-quality** sub-score (see rubric below) that is part of the deliverable's grade, not separate.
 

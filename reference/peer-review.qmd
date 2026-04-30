@@ -1,0 +1,89 @@
+---
+title: "Peer-review template"
+subtitle: "Structured feedback for classmates' deliverables"
+---
+
+::: {.callout-note}
+## Why peer review is in this course
+Participation and peer review carry 15% of the grade (see the [Syllabus](../course-syllabus.qmd#assessment)). Peer review is *credit / no-credit*, not graded for quality — but the act of reading another student's disclosure carefully is the single best way to internalise the disclosure rubric for your own deliverables.
+
+The template below mirrors the four-dimensional [disclosure rubric](../course-syllabus.qmd#disclosure-rubric) so you can score what the rubric scores, plus two open-ended prompts.
+:::
+
+## How to use this template
+
+1. Read the deliverable (the analysis, brief, or protocol) before you read the disclosure.
+2. Then read the disclosure paragraph at the bottom of the deliverable.
+3. Fill in the four rubric questions and the two open-ended prompts below.
+4. Submit your review by the deadline announced in class. Reviews are returned to the author anonymously through the submission system.
+
+Aim for ~250–400 words total. **Be specific, be useful, be kind** — see the note on tone at the end.
+
+---
+
+## Template (copy and fill in)
+
+**Reviewer:** *[your name — kept private from the author]*
+**Reviewing:** *[author name or anonymised ID + deliverable title]*
+**Date:** *[YYYY-MM-DD]*
+
+### 1. Tools listed?
+
+**The disclosure names which tools were used (specific tool, model/version, access tier).**
+
+- [ ] Yes — specific (e.g., "Claude Sonnet 4.6, Pro tier, web UI")
+- [ ] Partially — names a tool but no version or tier
+- [ ] No — vague ("used AI") or absent
+
+*Brief note (1–2 sentences):* …
+
+### 2. Use described?
+
+**The disclosure says what the AI did concretely (drafted X, suggested Y, rewrote Z), not just "for help."**
+
+- [ ] Yes — concrete uses, with at least one specific example
+- [ ] Partially — generic ("for code suggestions") without specifics
+- [ ] No — not described
+
+*Brief note:* …
+
+### 3. Verification stated?
+
+**The disclosure names what was checked and how (ran tests, verified citations on PubMed, ran code on test data, cross-referenced documentation).**
+
+- [ ] Yes — specific verification steps named
+- [ ] Partially — mentions verification but vague on method
+- [ ] No — not mentioned
+
+*Brief note:* …
+
+### 4. Rejections noted?
+
+**The disclosure lists at least one AI suggestion that was rejected, with a reason.**
+
+- [ ] Yes — at least one specific rejection with a reason
+- [ ] Partially — implies rejections but does not name one
+- [ ] No — not mentioned
+
+*Brief note:* …
+
+### 5. One thing this deliverable does well
+
+*1–3 sentences. Be specific — point at a section, a decision, or a sentence.*
+
+### 6. One thing the author could improve next time
+
+*1–3 sentences. Frame as a discernment failure or a missing diligence step, not a personal critique. See the tone note below.*
+
+---
+
+## A note on tone
+
+::: {.callout-tip}
+## How to give feedback that names a discernment failure, not a person
+[Discernment](../fluency/discernment.qmd) is a skill, not a personality trait. The same person can practise good discernment on Tuesday and miss a fabricated citation on Wednesday — what matters is that the verification habit exists, not that any one student "is good at" AI critique.
+
+When you flag something the author missed, name **the move that would have caught it** ("a step-3 DOI resolution would have caught this — the link goes to a different paper"), not the person ("you didn't verify"). The first comment is actionable; the second feels like an accusation, even when it is not meant that way.
+:::
+
+The disclosure dimensions are intentionally about *practice*, not *quality*. A deliverable can be excellent science with a thin disclosure — that is what your review should flag, and it is exactly the lesson that gets the rubric to stick the next time the author writes one.

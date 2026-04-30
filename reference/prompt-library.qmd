@@ -1,0 +1,138 @@
+---
+title: "Prompt library"
+subtitle: "Reusable prompt templates for the four bioinformatics tasks"
+---
+
+::: {.callout-note}
+## How to use this page
+Each template below distils a worked pattern from the corresponding bioinformatics page into a fill-in-the-blank prompt. **They are starting points, not magic strings** — the value is the structure (specifying intent, environment, and constraints up front), not the exact wording. Adapt to your task; verify the output as the linked page describes.
+:::
+
+## 1. Debugging a stack trace
+
+**Source pattern:** [Code assistance](../bioinformatics/code-assistance.qmd) — the four-part debugging pattern.
+
+**When to use:** something failed with a traceback you do not immediately understand and you want a focused first-pass diagnosis.
+
+**Template:**
+
+```
+I am running {what the script is doing in one sentence} and {package} is failing.
+
+Full traceback:
+
+```
+{paste the entire traceback, not just the last line}
+```
+
+Minimal failing code (the smallest block that reproduces the error):
+
+```python
+{the smallest reproducer — strip everything else out}
+```
+
+Intent: I expect {what the function is supposed to do and what you expected to happen}.
+
+Environment: Python {version}, {package}=={version}, {related packages}=={versions},
+{dataset / organism / platform context if relevant}.
+```
+
+**Verify before trusting:** the AI's first guess is often a defensive try/except that hides the bug. Make sure the suggested fix addresses the *cause* (e.g., the missing pre-condition) and not just the symptom.
+
+---
+
+## 2. Test writing for a function with a docstring
+
+**Source pattern:** [Code assistance](../bioinformatics/code-assistance.qmd) — `validate_qc_outputs` worked example.
+
+**When to use:** you have a function whose contract you have written yourself, and you want pytest scaffolding around it without losing the contract.
+
+**Template:**
+
+```
+Function `{name}` has the signature and docstring below. {One sentence on the dataset
+and the realistic input the function will see.} Environment: Python {version},
+{packages}=={versions}, pytest {version}.
+
+```python
+{paste your signature and docstring — you wrote the contract, not the AI}
+```
+
+Draft pytest test cases covering the contract in the docstring. Use a fixture
+where appropriate. Do not invent additional contract beyond the docstring.
+```
+
+**Verify before trusting:** prune tests that validate *dataset identity* rather than *contract* (e.g., "exactly 2,638 cells" — fragile). Add the test the AI missed for your domain (e.g., dtype, organism convention, view-vs-copy semantics for AnnData).
+
+---
+
+## 3. Literature triage on an unfamiliar topic
+
+**Source pattern:** [Literature review](../bioinformatics/literature-review.qmd) — the five-step verification workflow.
+
+**When to use:** scoping a review or background section in a subfield you do not know yet. **Use a grounded tool (Elicit, Consensus, SciSpace, Perplexity-with-sources) for the citation list itself.** Use the prompt below for the vocabulary scaffold.
+
+**Template:**
+
+```
+I am scoping a review of {topic} for {audience: lab meeting / introduction / grant
+specific aims}. Time horizon: {date range}. {Application context: e.g., "applied to
+the tumor microenvironment" / "in mouse models" / "in primary tissue".}
+
+1. List 8–10 key concepts and methods in this area in 2026.
+2. List 3–5 landmark / foundational papers.
+3. List 3–5 currently active research groups or recent reviews (last 2–3 years).
+
+For each citation, give: title, first author, year, journal, and DOI if known.
+```
+
+**Verify every citation** with the five-step check on [Literature review](../bioinformatics/literature-review.qmd): copy DOI → resolve via doi.org → confirm title and authors match → check abstract on PubMed → only then incorporate. Budget ~3 minutes per citation; refuse to cite anything you cannot verify.
+
+**Switch tools if** the ungrounded LLM returns ≥1 citation whose DOI does not resolve or resolves to a different paper. Re-run the same query in Elicit / Consensus.
+
+---
+
+## 4. Protocol critique mode
+
+**Source pattern:** [Protocol design](../bioinformatics/protocol-design.qmd) — the sparring-partner workflow, step 4.
+
+**When to use:** you have drafted (or generated) a protocol and want a fast critique pass for missing controls and likely failure modes before showing it to your PI.
+
+**Template:**
+
+```
+Below is a draft protocol for {scientific question — one sentence}. Constraints:
+{platform / organism / sample size / budget / time window}.
+
+```
+{paste the full draft protocol here, including reagent versions, concentrations,
+and timing}
+```
+
+Critique this protocol. Specifically:
+
+1. List potential failure modes (technical and biological) and their likelihood.
+2. List controls that are missing or under-specified.
+3. List version-dependent parameters (chemistries, kit versions, software releases)
+   that I should verify against the current vendor or developer documentation
+   before ordering reagents or running.
+4. Flag anything that depends on tacit lab knowledge an AI cannot have.
+```
+
+**Verify before trusting:**
+
+- Cross-check every reagent version, kit code, or instrument firmware against the **current** vendor documentation. Training data lags by months to years, and version numbers update silently. (See the GEM-X v4 vs. v3.1 example on [Protocol design](../bioinformatics/protocol-design.qmd).)
+- Cell-loading concentrations, cycle counts, and timing parameters depend on cell type and platform; the AI gives the textbook number, not necessarily the right one.
+- Treat the critique as a starting list, not a clearance. Your PI's review and a small dry run remain non-optional.
+
+---
+
+## A note on temperature and reproducibility
+
+If you are documenting a prompt for a deliverable's disclosure, record:
+
+- The exact tool, model, and version (e.g., "Claude Sonnet 4.6, web UI, default settings").
+- The full prompt text.
+- The date of the session.
+
+LLM outputs are non-deterministic at default settings; documenting the prompt does not guarantee reproducibility, but it does enable replication and critique. The disclosure rubric in the [Syllabus](../course-syllabus.qmd#disclosure-rubric) requires "tools listed" and "use described" — these notes satisfy both.

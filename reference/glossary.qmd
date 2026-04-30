@@ -1,0 +1,68 @@
+---
+title: "Glossary"
+subtitle: "Working definitions for the AI / LLM and scRNA-seq vocabulary used throughout the course"
+---
+
+::: {.callout-note}
+Each entry is a one- or two-sentence working definition — enough to keep reading, not the rigorous treatment. The links point at the course page where the term is introduced or used most directly.
+:::
+
+## AI / LLM
+
+**Agent.** An LLM that calls tools in a loop, often without a human-confirm step between calls. Blast radius scales with the tools it can call. See [Tool use & agents](../literacy/tool-use-and-agents.qmd).
+
+**Attention.** The mechanism by which a transformer weights how much each token in the context contributes to the next-token prediction. The arithmetic walk-through is in [How LLMs work](../literacy/how-llms-work.qmd).
+
+**Blast radius.** The worst-case downstream impact of a single AI action. A chat completion has small blast radius; a shell command run by an agent has large blast radius. See [Tool use & agents](../literacy/tool-use-and-agents.qmd).
+
+**Chain-of-thought (CoT).** Prompting the model to produce intermediate reasoning steps before its final answer. Improves accuracy on multi-step problems but does not guarantee the reasoning is faithful to the answer.
+
+**Context window.** The maximum number of tokens (system prompt + user messages + assistant turns + tool results) the model can attend to at once. Anything beyond it is invisible to the model. See [How LLMs work](../literacy/how-llms-work.qmd).
+
+**Disclosure rubric.** The 4-dimensional grading rubric used in this course for AI use in deliverables: tools listed, use described, verification stated, rejections noted. Defined in the [Syllabus](../course-syllabus.qmd#disclosure-rubric).
+
+**Fabrication / hallucination.** A confident, plausible-looking output that is not true. The most dangerous flavours are citations that resolve to a real DOI but a different paper, and code that imports a non-existent package. See [Literature review](../bioinformatics/literature-review.qmd).
+
+**Function calling / tool use.** The capability that lets the model emit a structured request to call an external function (run code, fetch a URL, query a database), receive the result, and continue. See [Tool use & agents](../literacy/tool-use-and-agents.qmd).
+
+**Grounding.** Constraining the model's output to a retrieved corpus of real documents, rather than relying on its parameters' recall. Reduces fabrication; does not eliminate it. See [Literature review](../bioinformatics/literature-review.qmd).
+
+**Prompt injection.** A malicious or accidental input that hijacks the model into ignoring its prior instructions. Particularly relevant for agents that read web pages or untrusted text. See [Ethics & limits](../literacy/ethics-and-limits.qmd).
+
+**RAG (retrieval-augmented generation).** Augmenting an LLM with a search step over a document corpus before it answers. The grounding mechanism behind tools like Elicit and Consensus.
+
+**System prompt.** The top-level instruction that frames who the assistant is and how it should behave. Persists across the conversation. See [Prompting](../literacy/prompting.qmd).
+
+**Temperature.** A scalar that controls the randomness of next-token sampling. 0 is greedy / deterministic; higher values widen the distribution. See [How LLMs work](../literacy/how-llms-work.qmd).
+
+**Token.** The atomic unit a model reads and emits — typically a sub-word fragment, not a whole word. Token boundaries explain quirks like why "scRNA-seq" splits awkwardly. See [How LLMs work](../literacy/how-llms-work.qmd).
+
+## scRNA-seq / bioinformatics
+
+**AnnData.** The Python data structure (`anndata.AnnData`) that Scanpy operates on: a count matrix `X` plus aligned cell metadata (`obs`), gene metadata (`var`), and embeddings (`obsm`). See [Module 3](../modules/module-03-preprocessing-scanpy/README.md).
+
+**Batch effect.** Technical variation that correlates with sample, run, or batch — and obscures biological signal. Corrected with Harmony, Scanorama, or batch-aware modelling.
+
+**Cell type annotation.** Assigning a biological label (e.g., "CD14+ Monocyte") to each cluster based on marker-gene expression. See [Module 5](../modules/module-05-annotation-interpretation/README.md).
+
+**Count matrix.** The cells × genes integer matrix produced by Cell Ranger or STARsolo from aligned reads. The starting point of all downstream analysis. See [Module 2](../modules/module-02-alignment-count-matrix/README.md).
+
+**Doublet.** Two cells captured in one droplet, scoring artificially high gene counts. Detected with Scrublet or DoubletFinder. See [Module 3](../modules/module-03-preprocessing-scanpy/README.md).
+
+**FASTQ.** The text-based sequencing-read format with quality scores. The raw output of an Illumina run, before alignment. See [Module 1](../modules/module-01-raw-data-qc/README.md).
+
+**GEM-X.** 10x Genomics' current single-cell capture chemistry (v4 as of 2024); successor to the v3.1 chemistry that earlier protocols and AI training data describe. See [Protocol design](../bioinformatics/protocol-design.qmd).
+
+**Ground truth.** A label or measurement treated as correct for evaluation. In scRNA-seq cell-typing this is often "an expert annotated this dataset with marker-gene support" — strong, but not infallible.
+
+**HTO (hashtag oligonucleotide).** Antibody-conjugated oligos that mark cells from each sample with a unique barcode, allowing pooled capture and computational demultiplexing. Reduces batch effects.
+
+**Leiden.** A graph-based clustering algorithm that improves on Louvain by guaranteeing well-connected communities. Standard for scRNA-seq via `sc.tl.leiden`. See [Module 4](../modules/module-04-clustering-umap/README.md).
+
+**Marker gene.** A gene whose expression is enriched in one cluster relative to all others, used to assign a cell-type label. Found with `sc.tl.rank_genes_groups`. See [Module 5](../modules/module-05-annotation-interpretation/README.md).
+
+**Mitochondrial fraction (`pct_counts_mt`).** Percentage of a cell's UMI counts coming from mitochondrial genes. High values flag dying or stressed cells. Tissue-dependent threshold (PBMCs: ≤5%; neurons: ≤20%). See [Module 3](../modules/module-03-preprocessing-scanpy/README.md).
+
+**PBMC 3k.** The 10x Genomics demonstration dataset bundled with Scanpy as `sc.datasets.pbmc3k()` — 2,700 peripheral blood mononuclear cells from a healthy donor, ≈8 well-characterised cell types. The course's hands-on dataset.
+
+**UMAP.** Uniform Manifold Approximation and Projection — a non-linear embedding that places similar cells nearby in 2D. **Visualisation tool only**: inter-cluster distances are not quantitatively meaningful. See [Module 4](../modules/module-04-clustering-umap/README.md).
