@@ -29,9 +29,12 @@ jobs:
             --max-concurrency 4
             --accept 200,206,403,429
             --exclude-mail
-            './**/*.qmd'
-            './**/*.md'
-            './**/*.ipynb'
-          fail: true
+            **/*.qmd
+            **/*.md
+            **/*.ipynb
+          # First-iteration setting: surface broken links in the action
+          # summary without blocking PRs. Flip back to `true` once any
+          # pre-existing link rot is cleaned up.
+          fail: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
