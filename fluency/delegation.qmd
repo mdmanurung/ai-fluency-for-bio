@@ -54,6 +54,15 @@ What she checks before trusting the script: she runs it on 10 sequences — five
 1. List three tasks from your current work. For each, classify it using the rubric above.
 2. For one task you currently do yourself, design a delegation: what would you ask the AI to do, what would you verify, and how?
 
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. Two axes drive the delegation rubric. Name them, and explain why a task being "low-stakes" is not enough on its own to put it in the "delegate fully" column.
+2. Choosing the BLAST e-value threshold is in the "do yourself" column even though the script that runs BLAST is in "delegate fully." Why the asymmetry?
+3. Your colleague says: "I'll let the AI pick the statistical test — if it picks wrong, I'll catch it." Where is this on the rubric, and what is the structural problem with the colleague's reasoning?
+
+**Answers:** 1. Verifiability cost (how hard is it to check?) and error consequence (what happens if the answer is wrong?). Low-stakes alone is not enough — a low-stakes task that is expensive to verify still wastes time, and "low-stakes" depends on downstream uses you may not know. The rubric requires both axes. 2. The script is mechanical, deterministic, and checkable on a small test set. The e-value threshold is a scientific choice that depends on the research question, the database, and field conventions — verifying it requires the same expertise as making it. Delegating it shifts the task into the "do yourself" column. 3. "Do yourself." The structural problem: catching a wrong choice of statistical test requires understanding which test is right — i.e., the same expertise as making the choice. The AI's answer cannot be cheaply verified, so delegation does not save work; it creates an unverifiable assumption.
+:::
+
 ## Further reading
 
 - Anthropic. (2024). [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency). — The source of the 4 D's framework this page operationalizes.

@@ -21,8 +21,8 @@ Modern LLMs can be given access to *tools* — functions they can call during a 
 
 ## The spectrum (by blast radius)
 
-- **Chat assistant** (pure text) — low blast radius. Failure = a bad paragraph. Mitigation = read it.
-- **Coding assistant with file edits** (Cursor, Claude Code, Copilot, similar) — moderate blast radius. Failure = bad diffs, broken local state. Mitigation = human review before commit, version control, sandboxed checkout.
+- **Chat assistant** (pure text) — low [blast radius](../reference/glossary.qmd). Failure = a bad paragraph. Mitigation = read it.
+- **Coding assistant with file edits** (Cursor, Claude Code, Copilot) — moderate blast radius. Failure = bad diffs, broken local state. Mitigation = human review before commit, version control, sandboxed checkout.
 - **Agentic assistant with shell + network** — large blast radius. Failure = destructive commands, leaked credentials, runaway loops, exfiltration. Mitigation = sandboxing, scoped permissions, explicit confirmations, dry-run modes, audit logs.
 
 The blast-radius framing matters more than the marketing label. A "chat assistant" with a single shell tool is functionally an agent.
@@ -34,31 +34,59 @@ The blast-radius framing matters more than the marketing label. A "chat assistan
 - Never give an agent credentials it doesn't need. Never give an agent credentials whose blast radius you can't bound.
 - Treat any agent with write access to a shared system (cloud bucket, lab database, version-controlled repo with auto-deploy) as a junior collaborator who never sleeps, has no judgment, and submits to whoever's prompt is loudest.
 
-## Worked example: a minimal agent for bibliography cleanup
+## Pattern A: a minimal agent for bibliography cleanup
 
-A postdoc has a `.bib` file with 80 entries, many with incorrect or missing DOIs, inconsistent journal name abbreviations, and wrong publication years. She wants to verify and fix each entry against CrossRef. The task is tedious by hand; the AI can automate the lookups. This is an agent: it reads a file, calls an external API in a loop, and proposes writes.
+A postdoc has a `.bib` file with 80 entries, many with incorrect or missing DOIs, inconsistent journal abbreviations, and wrong years. She wants to verify and fix each entry against CrossRef. The task is tedious by hand; the AI can automate the lookups. This is an agent: it reads a file, calls an external API in a loop, and proposes writes.
 
-Here is the loop, described at the level of what the human approves:
+The loop, at the level of what the human approves:
 
 1. **Read** — load `references.bib`, parse into a list of entries.
-2. **For each entry** — send the title + first author to the CrossRef `/works` endpoint; retrieve the best match above a similarity threshold.
+2. **For each entry** — send title + first author to the CrossRef `/works` endpoint; retrieve the best match above a similarity threshold.
 3. **Propose** — surface the diff (current vs. CrossRef) to the human: `DOI: missing → 10.1093/nar/gkab1049`, `year: 2020 → 2021`.
-4. **Human confirms** — the human reviews each proposed change and types `y` or `n` (or `skip` for the whole entry).
-5. **Write** — only after explicit confirmation, overwrite the entry in the `.bib` file.
+4. **Human confirms** — the human reviews each proposed change and types `y` or `n` (or `skip`).
+5. **Write** — only after explicit confirmation, overwrite the entry.
 
-The key design decision is step 4. Without a human-confirm gate, the agent would:
+The key design decision is step 4. Without a human-confirm gate, the agent would silently correct entries that CrossRef matched wrong (common for short titles or names shared across multiple papers), overwrite your canonical abbreviation choices with CrossRef's, and propagate errors faster than you can track them. The confirm gate converts an irreversible bulk operation into a reviewed sequence of small, reversible decisions. The agent's value is not autonomy — it is eliminating tedious API lookups, leaving only judgment calls.
 
-- silently correct entries that CrossRef matched wrong (common for short titles or names shared across multiple papers),
-- overwrite your canonical abbreviation choices with CrossRef's,
-- and propagate errors faster than you can track them.
+## Pattern B: a coding assistant editing your repo
 
-The confirm gate converts an irreversible bulk operation into a reviewed sequence of small, reversible decisions. The agent's value is not autonomy — it is eliminating the tedious API lookup, leaving only judgment calls.
+Cursor, Claude Code, and Copilot Chat all sit one step short of full agents: they propose file edits and *also* propose the diff for human review before applying. The blast-radius argument applies in miniature.
 
-What this example is **not**: an argument that you should build this agent. A competent implementation requires error handling for CrossRef rate limits, disambiguation logic for multi-match results, and a rollback mechanism. For 80 entries, a careful manual pass is defensible. The point is the pattern — tool use becomes an agent when the model calls tools in a loop, and the critical risk control is the human gate before any write.
+A typical edit-with-confirm loop:
+
+1. **You describe a change** — "refactor `validate_qc_outputs` to take an optional `min_cells` argument, default 1000."
+2. **The assistant reads the relevant files** — your test file, the function, its callers.
+3. **It proposes a diff** — added parameter, updated docstring, updated tests, updated one caller.
+4. **You review the diff** — accept all, accept some, reject. The assistant cannot apply changes without your click.
+5. **Tests run** — locally or in CI.
+
+The confirm gate here is the diff review. The asymmetry that makes it work: the AI is fast at producing many small edits, and you are fast at scanning a diff. Removing the gate (an "auto-apply" mode) is the move that turns a coding assistant into an unsupervised agent — and the moment you should re-evaluate the blast radius.
+
+A failure mode specific to this pattern: an assistant that confidently rewrites a passing test to make a buggy implementation pass. The diff looks reasonable; the test no longer guards what it used to guard. The mitigation is to read the test changes, not just the implementation changes — which is exactly the [Discernment](../fluency/discernment.qmd) move.
+
+## When *not* to use an agent
+
+A loop is overhead. If the task does not benefit from the loop, do not use one.
+
+- **One-shot tasks.** "Generate a regex for the date format" does not need a loop. A chat completion is enough.
+- **Irreversible actions without easy rollback.** Submitting a manuscript, sending email, transferring funds, dropping database tables. Even with a confirm gate, the social/scientific cost of one wrong confirmation is too high — keep these in human-only workflows.
+- **Tasks where the human-confirm gate fires every step.** If you would have to approve every action anyway (e.g., reviewing every proposed edit to a manuscript), the agent is just a slower text editor with extra failure modes.
+- **High-trust, low-frequency tasks.** Rare actions are exactly the ones whose patterns the AI has not memorised reliably. The cost of a bug is high; the speed-up from automation is small.
+
+The right question is not "can I build an agent for this?" — current frameworks make that easy. It is "does the loop save more human time than the human-confirm gates and verification overhead cost?"
 
 ## Further reading
 
-- Anthropic. (2025). [Building effective agents](https://www.anthropic.com/research/building-effective-agents). — Practical taxonomy of agentic patterns (augmented LLM, routing, parallelization, orchestration); the blast-radius framing maps directly onto the orchestrator/subagent distinction.
+- Anthropic. (2025). [Building effective agents](https://www.anthropic.com/research/building-effective-agents). — Practical taxonomy of agentic patterns (augmented LLM, routing, parallelization, orchestration); the blast-radius framing maps onto the orchestrator/subagent distinction.
 - Weng, L. (2023). [LLM-powered autonomous agents](https://lilianweng.github.io/posts/2023-06-23-agent/). *Lilian Weng's blog* — thorough technical walkthrough of memory, tool use, and planning in agent architectures.
-- Yao, S., et al. (2023). [ReAct: Synergizing reasoning and acting in language models](https://arxiv.org/abs/2210.03629). *ICLR 2023* — the paper that established the think → act → observe loop underlying most current agent frameworks.
+- Yao, S., et al. (2023). [ReAct: Synergizing reasoning and acting in language models](https://arxiv.org/abs/2210.03629). *ICLR 2023* — established the think → act → observe loop underlying most current agent frameworks.
 - Ruan, Y., et al. (2023). [Identifying the risks of LM agents with an LM-emulated sandbox](https://arxiv.org/abs/2309.15817). arXiv:2309.15817 — empirical study of agent failure modes; good grounding for the blast-radius framing above.
+
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. A "chat assistant" is given a single tool: `run_shell_command`. Why is the marketing category misleading?
+2. You are using a coding assistant in edit-with-confirm mode. What is the most important thing to actually read in the proposed diff, and why?
+3. Name two task types where building an agent is the wrong move, and explain why for one of them.
+
+**Answers:** 1. The blast radius is the right framing, not the label. A single shell tool gives the assistant the ability to take destructive, irreversible actions on the host system — functionally an agent. 2. Read the test changes, not just the implementation. An assistant can "fix" a failing build by rewriting the test to match a buggy implementation; the diff looks reasonable but the test no longer guards what it used to. 3. Examples: irreversible actions without rollback (submitting a manuscript, sending email — one wrong confirmation has high social/scientific cost); tasks where the human would confirm every step anyway (the agent becomes a slower text editor with extra failure modes); one-shot tasks (a chat completion is enough — no loop needed).
+:::

@@ -63,6 +63,15 @@ Honestly stated:
 - They do not "understand" causality, statistics, or biology in any robust sense — though they can produce outputs that look like they do, especially in the dominant subfields of their training distribution.
 - They are not your peer reviewer. They are not your IRB. They are not your statistical consultant.
 
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. A collaborator wants to list ChatGPT as a co-author on a manuscript because it "drafted half the introduction." What is the convergent publisher position, and what is the underlying reason?
+2. Your institution has a "zero-retention" API tier with the model vendor. Can you safely paste de-identified clinical data into it? What questions would you ask first?
+3. Name one *epistemic* risk and one *labor / environmental* cost of frontier-model use, and explain why the two require different responses.
+
+**Answers:** 1. AI cannot be listed as an author. Authorship requires accountability — the ability to respond to post-publication queries, accept responsibility for errors, and issue corrections. An AI system cannot be accountable. Disclosure of the AI's contribution in the methods / acknowledgments is the right path, not authorship. 2. Probably not without further checks. "Zero-retention" tiers still typically retain briefly for abuse monitoring and are not equivalent to on-prem. De-identified clinical data may still be subject to HIPAA, IRB protocols, BAAs, and the original donor consent. Ask: does my institution have a signed BAA with this vendor? Does the IRB protocol cover transmission to a third-party model? What did the donor consent permit? 3. *Epistemic:* homogenisation — everyone using the same model converges on the same framings and blind spots, eroding scientific diversity. Response: name AI use, vary tools, keep your own framing. *Labor / environmental:* annotation work performed under difficult outsourced conditions; aggregate inference energy is non-trivial. Response: use AI deliberately, not thoughtlessly; favour vendors with stronger labour and disclosure practices.
+:::
+
 ## Further reading
 
 - Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI.](https://arxiv.org/abs/2408.11441) *AAAI/ACM AIES.*

@@ -7,6 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed — branch `claude/course-improvement-feedback-Dc10Y` (open-source / reuse pass, PR-D)
+
+- **`bioinformatics/code-assistance.qmd`** — trimmed (~205 → ~155 lines): "Where AI helps / falls short" tightened into a two-paragraph block; verbose pytest fixture in the test-writing example replaced with a four-bullet summary of what the AI returns; weak/strong debugging prompts compressed; closing comprehension callout added.
+- **`bioinformatics/data-analysis.qmd`** — trimmed (~158 → ~155 lines after adding the comprehension check): per-step prose tightened; closing comprehension callout added (mouse mt prefix, threshold from histogram, doublet-rate sanity check).
+- **`literacy/tool-use-and-agents.qmd`** — expanded (~64 → ~95 lines): existing bibliography-cleanup agent example kept and renamed Pattern A; added Pattern B (coding assistant editing a repo with diff-review confirm gate) and a new "When *not* to use an agent" section (one-shot tasks, irreversible actions without rollback, gate-fires-every-step, high-trust low-frequency); closing comprehension callout added.
+- **All 4 fluency pages** (`delegation.qmd`, `description.qmd`, `discernment.qmd`, `diligence.qmd`) — added a `Check your understanding` collapsible callout at the bottom (3 questions + answer key each), keyed to the page's worked example.
+- **3 of 4 literacy pages** (`how-llms-work.qmd`, `prompting.qmd`, `ethics-and-limits.qmd`) — added the same `Check your understanding` callout pattern. (`tool-use-and-agents.qmd` is covered by the expansion above.)
+- **`bioinformatics/code-assistance.qmd` and `bioinformatics/data-analysis.qmd`** — added comprehension callouts as well; bioinformatics worked examples now match the fluency / literacy formative-check pattern.
+
 ### Added — branch `claude/course-improvement-feedback-Dc10Y` (open-source / reuse pass)
 
 - **`environment.yml`** + **`requirements.txt`** — pin the full Scanpy + scrublet + leidenalg + igraph + jupyterlab stack at the repo root so self-paced learners can reproduce the hands-on track without dependency drift. Closes the "Commit a pinned environment" item in `PLANS.md` Infrastructure.

@@ -62,6 +62,15 @@ Score your draft against the course [disclosure rubric](../course-syllabus.qmd#d
 1. Draft a one-paragraph AI-disclosure statement for your most recent AI-assisted project.
 2. Reconstruct the prompt history for a recent AI-assisted task. What's missing from your records?
 
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. The three convergent disclosure principles say AI use must be disclosed, AI cannot be an author, and verbatim AI text must be marked. Why does this set converge on *disclosure* rather than *prohibition*?
+2. The course disclosure rubric scores four dimensions. Name them, and explain which is most often skipped on a first-draft disclosure.
+3. Your colleague writes: "We used ChatGPT to help with this analysis." Score this against the rubric — what dimensions does it satisfy, and what would a stronger version add?
+
+**Answers:** 1. Disclosure preserves the human accountability chain — the human author is still answerable for every claim, with AI use visible to readers and reviewers. Prohibition would push use underground, removing the audit signal that makes the practice safer. The norm is "AI is a collaborator with no accountability; the human stays accountable, and the relationship is on the record." 2. Tools listed, use described, verification stated, rejections noted. *Rejections noted* is the most often skipped — disclosing what you accepted feels natural; disclosing what you rejected requires having actually evaluated the suggestions and is the strongest signal of real engagement. 3. The colleague's sentence partially satisfies *tools listed* (names ChatGPT but no version, model, or tier) and weakly satisfies *use described* (vague "help with analysis"). It fails *verification stated* and *rejections noted* outright. A stronger version names the model and tier ("ChatGPT, GPT-4o, Pro tier, web UI"), the concrete uses ("drafted the QC scaffold; suggested 4 citations, 3 verified and retained, 1 fabricated and discarded"), the verification ("ran code on a 10-cell test slice; resolved each DOI on doi.org and confirmed authors and title against PubMed"), and at least one rejection ("rejected the AI's proposed mt threshold of 5% for our brain-tissue dataset; used 20% per Heumos et al. 2023").
+:::
+
 ## Further reading
 
 - ICMJE. (current). [Recommendations for the Conduct, Reporting, Editing, and Publication of Scholarly Work in Medical Journals](https://www.icmje.org/recommendations/). — Living document; no static date. The authoritative source for AI authorship and disclosure norms across ICMJE-member journals.

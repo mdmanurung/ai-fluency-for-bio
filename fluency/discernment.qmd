@@ -55,6 +55,15 @@ Use this before acting on any AI-generated output that will enter your research 
 1. Ask an LLM for five citations on a narrow topic in your field. Verify each. Record the hit rate.
 2. Ask an LLM to write a function you *know* how to write. Diff its version against yours. What did it get subtly wrong?
 
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. The AI gives you a citation with a real DOI. The link resolves. Why is this not enough to trust it?
+2. The AI's QC code runs without errors and produces plausible numbers. What three concrete checks would convert "looks fine" into "I will defend this"?
+3. The AI says: "This pathway is consistent with the literature." Why does this sentence fail the discernment check, and what would a researcher who passed the check have written instead?
+
+**Answers:** 1. A DOI can resolve to a real paper that is *different* from the one the AI claimed. Misattribution is the most dangerous fabrication type — it passes the link-resolves check but fails on content. Check that the title, authors, year, and journal on the page match what the AI cited; check the abstract for the claim the AI attributed to it. 2. (any three) Run on a minimal test case with a known answer; check every package function call against current docs (API drift); compare one numeric result against an independently computed value; verify organism conventions (`MT-` vs. `mt-`, `TP53` vs. `Trp53`); ask whether you would defend this output at a lab meeting. 3. The sentence cites no specific paper; "the literature" is unfalsifiable. The AI cannot do a literature review and you cannot verify a claim with no source. A researcher who passed the check would have replaced it with: "This is consistent with [specific paper], which reports [specific finding] in [specific system]" — and would have read the paper.
+:::
+
 ## Further reading
 
 - Huang, L., et al. (2023). [A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions](https://arxiv.org/abs/2311.05232). arXiv:2311.05232. — Comprehensive taxonomy; the factuality vs. faithfulness distinction maps directly onto the citations and biological-claims items above. Also cited in [How LLMs work](../literacy/how-llms-work.qmd).
