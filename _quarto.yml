@@ -1,6 +1,14 @@
 project:
   type: website
 
+execute:
+  # Render `python` and other code blocks as static syntax-highlighted
+  # text. The course pages use code blocks as illustrations, not runnable
+  # cells; this avoids requiring jupyter / scanpy / etc. in the CI render
+  # and is also what we want pedagogically (students read, then run the
+  # code in Module notebooks themselves, not on the rendered website).
+  enabled: false
+
 website:
   page-navigation: true
   title: "AI Fluency Foundations for Biology"
