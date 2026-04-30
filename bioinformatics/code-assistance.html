@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI Fluency Foundations for Biology</title>
+<title>Code assistance – AI Fluency Foundations for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,31 +23,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./course-faq.html" rel="next">
-<link href="./course-team.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d73a770eca8878dcb2583f8caec49a4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../bioinformatics/data-analysis.html" rel="next">
+<link href="../literacy/ethics-and-limits.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d73a770eca8878dcb2583f8caec49a4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,12 +112,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="AI Fluency Foundations for Biology">
-<meta property="og:description" content="A 4-week course on collaborating effectively with AI in biological research">
+<meta property="og:title" content="Code assistance – AI Fluency Foundations for Biology">
+<meta property="og:description" content="Using AI for bioinformatics scripting and debugging">
 <meta property="og:site_name" content="AI Fluency Foundations for Biology">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -253,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bioinformatics/code-assistance.html">Hands-on bioinformatics</a></li><li class="breadcrumb-item"><a href="../bioinformatics/code-assistance.html">Code assistance</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -268,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">AI Fluency Foundations for Biology</a> 
+      <a href="../">AI Fluency Foundations for Biology</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/mdmanurung/ai-fluency-for-bio" title="Course repository" class="quarto-navigation-tool px-1" aria-label="Course repository"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -284,46 +319,46 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-support.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-support.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-team.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-team.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teaching team</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAQ</span></a>
   </div>
 </li>
@@ -340,25 +375,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/delegation.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/delegation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Delegation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/description.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/description.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/discernment.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/discernment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discernment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/diligence.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/diligence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Diligence</span></a>
   </div>
 </li>
@@ -375,25 +410,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/how-llms-work.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/how-llms-work.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How LLMs work</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/prompting.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/prompting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prompting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/tool-use-and-agents.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/tool-use-and-agents.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tool use &amp; agents</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/ethics-and-limits.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/ethics-and-limits.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ethics &amp; limits</span></a>
   </div>
 </li>
@@ -401,34 +436,34 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Hands-on bioinformatics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/code-assistance.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/code-assistance.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Code assistance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/data-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/data-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/literature-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/literature-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literature review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/protocol-design.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/protocol-design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Protocol design</span></a>
   </div>
 </li>
@@ -445,31 +480,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-01-raw-data-qc/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-01-raw-data-qc/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 1 — Raw data QC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-02-alignment-count-matrix/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-02-alignment-count-matrix/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 2 — Alignment &amp; count matrix</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-03-preprocessing-scanpy/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-03-preprocessing-scanpy/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 3 — Preprocessing in Scanpy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-04-clustering-umap/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-04-clustering-umap/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 4 — Clustering &amp; UMAP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-05-annotation-interpretation/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-05-annotation-interpretation/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 5 — Annotation &amp; interpretation</span></a>
   </div>
 </li>
@@ -486,25 +521,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 — AI fluency foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 — LLM literacy for bio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 — scRNA-seq I (QC → clustering)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4 — scRNA-seq II (annotation, capstone)</span></a>
   </div>
 </li>
@@ -521,19 +556,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/glossary.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Glossary</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/prompt-library.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/prompt-library.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prompt library</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/peer-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/peer-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Peer-review template</span></a>
   </div>
 </li>
@@ -544,15 +579,39 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#scope" id="toc-scope" class="nav-link active" data-scroll-target="#scope">Scope</a></li>
+  <li><a href="#where-ai-helps-and-where-it-fails" id="toc-where-ai-helps-and-where-it-fails" class="nav-link" data-scroll-target="#where-ai-helps-and-where-it-fails">Where AI helps — and where it fails</a></li>
+  <li><a href="#a-minimum-viable-workflow" id="toc-a-minimum-viable-workflow" class="nav-link" data-scroll-target="#a-minimum-viable-workflow">A minimum viable workflow</a></li>
+  <li><a href="#debugging-with-ai" id="toc-debugging-with-ai" class="nav-link" data-scroll-target="#debugging-with-ai">Debugging with AI</a>
+  <ul class="collapse">
+  <li><a href="#same-bug-two-prompts" id="toc-same-bug-two-prompts" class="nav-link" data-scroll-target="#same-bug-two-prompts">Same bug, two prompts</a></li>
+  </ul></li>
+  <li><a href="#worked-example-ai-assisted-test-writing-for-validate_qc_outputs" id="toc-worked-example-ai-assisted-test-writing-for-validate_qc_outputs" class="nav-link" data-scroll-target="#worked-example-ai-assisted-test-writing-for-validate_qc_outputs">Worked example: AI-assisted test writing for <code>validate_qc_outputs</code></a>
+  <ul class="collapse">
+  <li><a href="#step-1-write-the-contract-yourself" id="toc-step-1-write-the-contract-yourself" class="nav-link" data-scroll-target="#step-1-write-the-contract-yourself">Step 1 — Write the contract yourself</a></li>
+  <li><a href="#step-2-ask-the-ai-to-draft-pytest-test-cases" id="toc-step-2-ask-the-ai-to-draft-pytest-test-cases" class="nav-link" data-scroll-target="#step-2-ask-the-ai-to-draft-pytest-test-cases">Step 2 — Ask the AI to draft pytest test cases</a></li>
+  <li><a href="#step-3-prune-and-extend-with-discernment" id="toc-step-3-prune-and-extend-with-discernment" class="nav-link" data-scroll-target="#step-3-prune-and-extend-with-discernment">Step 3 — Prune and extend with Discernment</a></li>
+  <li><a href="#r-seurat-note" id="toc-r-seurat-note" class="nav-link" data-scroll-target="#r-seurat-note">R / Seurat note</a></li>
+  </ul></li>
+  <li><a href="#common-failure-modes" id="toc-common-failure-modes" class="nav-link" data-scroll-target="#common-failure-modes">Common failure modes</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/bioinformatics/code-assistance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bioinformatics/code-assistance.html">Hands-on bioinformatics</a></li><li class="breadcrumb-item"><a href="../bioinformatics/code-assistance.html">Code assistance</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">AI Fluency Foundations for Biology</h1>
-<p class="subtitle lead">A 4-week course on collaborating effectively with AI in biological research</p>
+<h1 class="title">Code assistance</h1>
+<p class="subtitle lead">Using AI for bioinformatics scripting and debugging</p>
 </div>
 
 
@@ -569,85 +628,184 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This site hosts the course materials for <strong>AI Fluency Foundations for Biology</strong>. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.</p>
-<p>The course covers:</p>
-<ol type="1">
-<li><strong>The 4 D’s of AI fluency</strong> — Delegation, Description, Discernment, Diligence — adapted for biology research, following <a href="https://www.anthropic.com/ai-fluency">Anthropic’s AI Fluency Framework</a>.</li>
-<li><strong>LLM literacy</strong> for bio researchers — how large language models work, prompt, and fail.</li>
-<li><strong>Hands-on bioinformatics</strong> — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.</li>
-<li><strong>A complete scRNA-seq pipeline</strong> — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.</li>
-</ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Subfield scope
+<span class="screen-reader-only">Note</span>Learning objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D’s. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.</p>
+<ul>
+<li>Use an AI coding assistant for common bioinformatics scripting tasks.</li>
+<li>Debug with AI by providing minimal reproducible context.</li>
+<li>Recognise AI-generated code smells and correct them.</li>
+</ul>
 </div>
 </div>
-<p>See the <a href="./course-overview.html">Overview</a> for learning outcomes, or jump straight to the schedule below.</p>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p>Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 25%">
-<col style="width: 16%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Week</th>
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: left;">Readings</th>
-<th style="text-align: left;">Hands-on</th>
-<th style="text-align: left;">Deliverable</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">AI fluency foundations — the 4 D’s</td>
-<td style="text-align: left;"><a href="./fluency/delegation.html">Delegation</a>, <a href="./fluency/description.html">Description</a>, <a href="./fluency/discernment.html">Discernment</a>, <a href="./fluency/diligence.html">Diligence</a></td>
-<td style="text-align: left;">Tooling setup</td>
-<td style="text-align: left;">Reflection + tooling check</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-2.html">2</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">LLM literacy for bio researchers</td>
-<td style="text-align: left;"><a href="./literacy/how-llms-work.html">How LLMs work</a>, <a href="./literacy/prompting.html">Prompting</a>, <a href="./literacy/tool-use-and-agents.html">Tool use &amp; agents</a>, <a href="./literacy/ethics-and-limits.html">Ethics &amp; limits</a></td>
-<td style="text-align: left;">Live prompt clinic</td>
-<td style="text-align: left;">Prompt-engineering exercise</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-3.html">3</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering</td>
-<td style="text-align: left;"><a href="./bioinformatics/code-assistance.html">Code assistance</a>, <a href="./bioinformatics/data-analysis.html">Data analysis</a>, <a href="modules/module-01-raw-data-qc/README.md">Module 1</a>, <a href="modules/module-02-alignment-count-matrix/README.md">Module 2</a></td>
-<td style="text-align: left;"><a href="modules/module-03-preprocessing-scanpy/README.md">Module 3</a> in-class; <a href="modules/module-04-clustering-umap/README.md">Module 4</a> after-class</td>
-<td style="text-align: left;">Mini-project (PBMC 3k) + capstone proposal</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-4.html">4</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq II — annotation, capstone</td>
-<td style="text-align: left;"><a href="./bioinformatics/literature-review.html">Literature review</a>, <a href="./bioinformatics/protocol-design.html">Protocol design</a></td>
-<td style="text-align: left;"><a href="modules/module-05-annotation-interpretation/README.md">Module 5</a> in-class</td>
-<td style="text-align: left;">Capstone (annotation, lit brief, or protocol — student choice)</td>
-</tr>
-</tbody>
-</table>
+<section id="scope" class="level2">
+<h2 class="anchored" data-anchor-id="scope">Scope</h2>
+<p>This page focuses on <strong>interactive coding assistance</strong> — chat-based or in-IDE AI help for scripts you write and own. Autonomous agents are covered in <a href="../literacy/tool-use-and-agents.html">Tool use &amp; agents</a>.</p>
+</section>
+<section id="where-ai-helps-and-where-it-fails" class="level2">
+<h2 class="anchored" data-anchor-id="where-ai-helps-and-where-it-fails">Where AI helps — and where it fails</h2>
+<p><strong>Helps:</strong> boilerplate I/O (<code>fastq</code>, <code>vcf</code>, <code>bam</code>, <code>h5ad</code>, <a href="../reference/glossary.html">AnnData</a> / Seurat / SingleCellExperiment); refactoring (split a long script into functions, add type hints); translating (R ↔︎ Python, pandas ↔︎ polars, Scanpy ↔︎ Seurat); explaining unfamiliar code blocks.</p>
+<p><strong>Falls short on:</strong> choosing the <em>right</em> clustering resolution or normalisation for <em>your</em> data; matching tool versions and API signatures when those changed recently; recalling lesser-known file-format schemas; <strong>organism conventions</strong> — AI defaults to human (<code>MT-</code> prefix, <code>TP53</code> casing) and is silently wrong on mouse (<code>mt-</code>, <code>Trp53</code>).</p>
+</section>
+<section id="a-minimum-viable-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="a-minimum-viable-workflow">A minimum viable workflow</h2>
+<ol type="1">
+<li>Write the function signature and docstring yourself.</li>
+<li>Ask the AI to fill in the body.</li>
+<li>Run on a minimal test case you prepared.</li>
+<li>Diff against what you would have written.</li>
+<li>Commit with a short prompt-provenance note if the logic is non-trivial.</li>
+</ol>
+</section>
+<section id="debugging-with-ai" class="level2">
+<h2 class="anchored" data-anchor-id="debugging-with-ai">Debugging with AI</h2>
+<p>The single most effective move is giving the AI <strong>everything needed to reproduce the failure</strong> in one message — not just the error. The four-part pattern:</p>
+<ol type="1">
+<li><strong>Full traceback</strong> — complete stack trace, not just the last line.</li>
+<li><strong>Minimal failing code</strong> — smallest block that triggers the error, not the whole script.</li>
+<li><strong>One paragraph of intent</strong> — what the function is <em>supposed</em> to do.</li>
+<li><strong>Environment</strong> — Python version, package versions (<code>scanpy.__version__</code>, etc.).</li>
+</ol>
+<section id="same-bug-two-prompts" class="level3">
+<h3 class="anchored" data-anchor-id="same-bug-two-prompts">Same bug, two prompts</h3>
+<p><strong>Weak prompt:</strong> <em>“Getting a KeyError on ‘mt’. How do I fix it?”</em></p>
+<p>The AI guesses. Typical reply: wrap the access in <code>if 'mt' in adata.var.columns</code> — a fix that compiles but hides the actual problem (the flag was never computed).</p>
+<p><strong>Strong prompt:</strong> the full pattern — traceback, minimal code, intent, environment:</p>
+<pre class="text"><code>sc.pp.calculate_qc_metrics is failing on PBMC 3k.
+
+Traceback:
+  KeyError: 'mt'
+  File "qc.py", line 7, in &lt;module&gt;
+    sc.pp.calculate_qc_metrics(adata, qc_vars=['mt'], ...)
+
+Code:
+  adata = sc.datasets.pbmc3k(); adata.var_names_make_unique()
+  sc.pp.calculate_qc_metrics(adata, qc_vars=['mt'], percent_top=None,
+                             log1p=False, inplace=True)
+
+Intent: qc_vars=['mt'] should compute mitochondrial-fraction metrics.
+Environment: Python 3.11, scanpy 1.10.1, anndata 0.10.7.</code></pre>
+<p>With the strong prompt the AI immediately identifies that <code>qc_vars=['mt']</code> requires a column called <code>mt</code> in <code>adata.var</code>, and that you have not added it. Fix: <code>adata.var['mt'] = adata.var_names.str.startswith('MT-')</code> <em>before</em> the metrics call.</p>
+<p>The AI is doing next-token prediction, not causal reasoning. A vague prompt produces a generic completion; a specific prompt produces a specific one. The four-part structure is the <a href="../fluency/description.html">Description</a> skill applied to debugging — and the <a href="../reference/prompt-library.html#debugging-a-stack-trace">prompt library</a> has a fill-in-the-blank version of it.</p>
+</section>
+</section>
+<section id="worked-example-ai-assisted-test-writing-for-validate_qc_outputs" class="level2">
+<h2 class="anchored" data-anchor-id="worked-example-ai-assisted-test-writing-for-validate_qc_outputs">Worked example: AI-assisted test writing for <code>validate_qc_outputs</code></h2>
+<p>After <a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a>’s QC walkthrough produces a clean PBMC 3k AnnData, you want to lock that QC contract in code so the next student picking up the notebook does not silently break it.</p>
+<section id="step-1-write-the-contract-yourself" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-write-the-contract-yourself">Step 1 — Write the contract yourself</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anndata <span class="im">as</span> ad</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_qc_outputs(adata: ad.AnnData) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Raise AssertionError if the post-QC AnnData fails any contract check.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Checks:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - obs has n_genes_by_counts, total_counts, pct_counts_mt.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    - var has the boolean 'mt' flag and ≥1 mitochondrial gene was detected.</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    - 1,000 &lt; n_obs &lt; 3,000 (plausible for PBMC 3k after QC).</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    - Counts are log-normalised (max value &lt; 15 on a dense slice).</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The docstring <em>is</em> the contract. Do not let the AI invent it — that is the <a href="../fluency/description.html">Description</a> step.</p>
+</section>
+<section id="step-2-ask-the-ai-to-draft-pytest-test-cases" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-ask-the-ai-to-draft-pytest-test-cases">Step 2 — Ask the AI to draft pytest test cases</h3>
+<blockquote class="blockquote">
+<p><em>Function <code>validate_qc_outputs</code> has the signature and docstring below. The PBMC 3k dataset (<code>sc.datasets.pbmc3k</code>) starts at 2,700 × 32,738 and after standard QC has ≈2,638 cells. Environment: Python 3.11, scanpy 1.10.1, anndata 0.10.7, pytest 8. Draft pytest tests covering the contract.</em></p>
+</blockquote>
+<p>The AI returns a fixture that runs the QC pipeline end-to-end, then four tests:</p>
+<ul>
+<li><code>test_passes_on_valid_qc(qc_adata)</code> — happy path.</li>
+<li><code>test_missing_obs_column_raises(qc_adata)</code> — drops <code>pct_counts_mt</code>, expects <code>AssertionError</code>.</li>
+<li><code>test_no_mt_genes_raises(qc_adata)</code> — sets <code>var['mt'] = False</code>, expects <code>AssertionError</code>.</li>
+<li><code>test_unnormalised_counts_raise(qc_adata)</code> — restores raw counts, expects <code>AssertionError</code>.</li>
+</ul>
+<p>This is sound scaffolding; the <a href="../fluency/delegation.html">Delegation</a> move covers the fixture, <code>pytest.raises</code> patterns, and the boilerplate test bodies — exactly where AI adds speed without risk.</p>
+</section>
+<section id="step-3-prune-and-extend-with-discernment" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-prune-and-extend-with-discernment">Step 3 — Prune and extend with Discernment</h3>
+<p>The AI also proposes tests that <code>qc_adata.obs.shape[0] == 2638</code> exactly, that <code>qc_adata.var.shape[0] &gt;= 13000</code>, and that the donor is healthy.</p>
+<p><strong>Reject these.</strong> They validate dataset <em>identity</em>, not the QC <em>contract</em>. Re-run with slightly different thresholds (or on a different PBMC sample) and they break even though the function is correct. <a href="../fluency/discernment.html">Discernment</a> move: keep tests that validate structure your downstream code depends on; discard tests that validate data identity.</p>
+<p>One test the AI misses: that <code>mt</code> is <strong>boolean</strong>, not int or string. A user who writes <code>adata.var['mt'] = adata.var_names.str.startswith('MT-').astype(int)</code> produces a column that <em>looks</em> right and <code>qc_vars=['mt']</code> even accepts it, but downstream code that assumes a boolean mask fails silently. Add it yourself:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_mt_flag_is_boolean(qc_adata):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> qc_adata.var[<span class="st">'mt'</span>].dtype <span class="op">==</span> <span class="bu">bool</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="r-seurat-note" class="level3">
+<h3 class="anchored" data-anchor-id="r-seurat-note">R / Seurat note</h3>
+<p>The scRNA-seq workflow has an R/<a href="https://satijalab.org/seurat/">Seurat</a> equivalent at every step (<code>CreateSeuratObject</code> → <code>PercentageFeatureSet(pattern = "^MT-")</code> → <code>subset</code> → <code>NormalizeData</code> → <code>ScaleData</code> → <code>RunPCA</code> → <code>RunUMAP</code> → <code>FindClusters</code>). The <code>testthat</code> workflow for the same contract is identical: write the validator in <code>R/validate.R</code>, drive it with <code>testthat::expect_error</code>. The pattern transfers.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Where the 4 D’s showed up
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Description</strong> — writing the signature and docstring yourself gives the AI the contract it needs.</li>
+<li><strong>Delegation</strong> — fixture, <code>pytest.raises</code>, boilerplate test bodies; AI adds speed without risk.</li>
+<li><strong>Discernment</strong> — rejecting brittle dataset-identity tests; catching the boolean-dtype test the AI missed.</li>
+<li><strong>Diligence</strong> — you own the contract. If <code>validate_qc_outputs</code> passes every test and downstream clustering still breaks, the test suite was incomplete — and that is on you, not the AI.</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="common-failure-modes" class="level2">
+<h2 class="anchored" data-anchor-id="common-failure-modes">Common failure modes</h2>
+<ul>
+<li><strong>Asking the AI to generate the contract.</strong> “Write tests for my QC function” produces tests for the AI’s <em>imagined</em> function, not yours.</li>
+<li><strong>Wrong organism conventions.</strong> AI defaults to human: <code>MT-</code> (not <code>mt-</code>), <code>TP53</code> (not <code>Trp53</code>), <code>MS4A1</code> (not <code>Ms4a1</code>). Specify organism in every prompt; verify the resulting flag is non-empty.</li>
+<li><strong>Package hallucination.</strong> AI sometimes suggests imports from packages that do not exist or do not export the named function. <code>pip show &lt;package&gt;</code> before trusting a new import.</li>
+<li><strong>Stale API signatures.</strong> AI training data lags by months to years. For fast-moving libraries (<code>scanpy</code>, <code>anndata</code>, <code>scrublet</code>), verify in the current docs, not the AI’s output.</li>
+<li><strong>Operating on AnnData views.</strong> <code>adata = adata[mask, :]</code> returns a view; in-place modification triggers warnings that often become silent inconsistencies. Add <code>.copy()</code> after subsetting if the next step writes.</li>
+</ul>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<ol type="1">
+<li>Take a 50–100 line bioinformatics script you wrote from scratch. Ask an AI to refactor it. Keep what is better, reject what is worse.</li>
+<li>Take a bug you fixed recently. Reconstruct the error state and ask an AI to debug it cold. Apply the four-part pattern. How much does context quality change the answer?</li>
+<li>Implement <code>validate_qc_outputs</code> for PBMC 3k. Run the AI-generated test suite. Add at least one test the AI missed (consider organism conventions, dtype, view vs.&nbsp;copy). Bring both to the week 3 session.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your understanding
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>What four pieces of context turn a weak debugging prompt into a strong one?</li>
+<li>Why is “write tests for my QC function” the wrong delegation prompt? What is the right one?</li>
+<li>Your AI-generated test asserts <code>qc_adata.obs.shape[0] == 2638</code>. Is this a good test? Why or why not?</li>
+</ol>
+<p><strong>Answers:</strong> 1. Full traceback, minimal failing code, one paragraph of intent, environment (versions, organism, platform). 2. It lets the AI invent the contract — the tests will pass on the AI’s imagined function, not yours. The right prompt: “Function <code>f</code> has <em>this</em> signature and docstring (paste). Draft pytest tests covering <em>that</em> contract.” 3. No — it validates dataset <em>identity</em>, not the QC <em>contract</em>. The function is still correct if PBMC 3k is reprocessed at slightly different thresholds (e.g., 2,640 cells) or run on a different PBMC sample; identity assertions break for the wrong reason. Keep contract tests, drop identity tests.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li>Peng, S., Kalliamvakou, E., Cihon, P., &amp; Demirer, M. (2023). <a href="https://arxiv.org/abs/2302.06590">The Impact of AI on Developer Productivity: Evidence from GitHub Copilot</a>. arXiv:2302.06590. — Controlled experiment showing ~56% faster task completion with Copilot; productivity gains were real, but so were the failure modes (stale APIs, non-existent packages).</li>
+<li>Spracklen, J., Wijewickrama, R., Sakib, A. H. M. N., Maiti, A., Viswanath, B., &amp; Jadliwala, M. (2024). <a href="https://arxiv.org/abs/2406.10279">We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs</a>. arXiv:2406.10279. — All 16 code models tested showed package-hallucination rates averaging 19.6%; motivates the “pip show before you import” rule above.</li>
+<li><a href="../fluency/description.html">Description</a> in this course — the four-part debugging pattern and the test-writing prompt above are both applications of Description; read first if the pattern feels unnatural.</li>
+</ul>
 
 
 </section>
@@ -1068,13 +1226,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./course-team.html" class="pagination-link" aria-label="Teaching team">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Teaching team</span>
+      <a href="../literacy/ethics-and-limits.html" class="pagination-link" aria-label="Ethics &amp; limits">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Ethics &amp; limits</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./course-faq.html" class="pagination-link" aria-label="FAQ">
-        <span class="nav-page-text">FAQ</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../bioinformatics/data-analysis.html" class="pagination-link" aria-label="Data analysis">
+        <span class="nav-page-text">Data analysis</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1086,7 +1244,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/bioinformatics/code-assistance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

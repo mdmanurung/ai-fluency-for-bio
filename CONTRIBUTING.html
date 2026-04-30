@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI Fluency Foundations for Biology</title>
+<title>contributing – AI Fluency Foundations for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,8 +67,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./course-faq.html" rel="next">
-<link href="./course-team.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -78,11 +111,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="AI Fluency Foundations for Biology">
-<meta property="og:description" content="A 4-week course on collaborating effectively with AI in biological research">
+<meta property="og:description" content="A 4-week foundations course on using AI effectively in biological research — the 4 D’s of AI fluency, LLM literacy, and a hands-on single-cell RNA-seq pipeline (FASTQ → annotated UMAP) run with AI in the loop.">
 <meta property="og:site_name" content="AI Fluency Foundations for Biology">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -253,7 +286,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      AI Fluency Foundations for Biology
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -284,13 +319,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
@@ -317,7 +352,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -544,112 +579,77 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#contributing-developer-guide" id="toc-contributing-developer-guide" class="nav-link active" data-scroll-target="#contributing-developer-guide">Contributing &amp; Developer Guide</a>
+  <ul class="collapse">
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#local-development" id="toc-local-development" class="nav-link" data-scroll-target="#local-development">Local development</a></li>
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">Project structure</a></li>
+  <li><a href="#deploying-to-github-pages" id="toc-deploying-to-github-pages" class="nav-link" data-scroll-target="#deploying-to-github-pages">Deploying to GitHub Pages</a></li>
+  <li><a href="#authoring-content" id="toc-authoring-content" class="nav-link" data-scroll-target="#authoring-content">Authoring content</a></li>
+  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/CONTRIBUTING.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">AI Fluency Foundations for Biology</h1>
-<p class="subtitle lead">A 4-week course on collaborating effectively with AI in biological research</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<p>This site hosts the course materials for <strong>AI Fluency Foundations for Biology</strong>. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.</p>
-<p>The course covers:</p>
+<section id="contributing-developer-guide" class="level1">
+<h1>Contributing &amp; Developer Guide</h1>
+<p>This file is for <strong>course authors and contributors</strong> who need to build or modify the Quarto site. Learners looking for course materials should start at <a href="README.md">README.md</a>.</p>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p>Requires <a href="https://quarto.org/docs/get-started/">Quarto</a> version 1.4 or later. No R or Python environment is required — the site is pure Markdown/QMD.</p>
+</section>
+<section id="local-development" class="level2">
+<h2 class="anchored" data-anchor-id="local-development">Local development</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check     <span class="co"># verify the install</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview   <span class="co"># live preview at http://localhost:4200</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render    <span class="co"># build the static site into _site/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure">Project structure</h2>
+<pre><code>_quarto.yml               # site config, sidebar, theme
+index.qmd                 # landing page + schedule
+course-*.qmd              # overview, syllabus, support, team, FAQ
+404.qmd                   # custom 404
+fluency/                  # Track 1: the 4 D's of AI fluency
+literacy/                 # Track 2: AI literacy for bio
+bioinformatics/           # Track 3: hands-on bioinformatics
+weeks/                    # weekly module materials (weeks 1–4)
+modules/                  # self-paced learner modules (modules 1–5)
+theme.scss, theme-dark.scss
+.github/workflows/publish.yml   # GitHub Pages deploy workflow</code></pre>
+</section>
+<section id="deploying-to-github-pages" class="level2">
+<h2 class="anchored" data-anchor-id="deploying-to-github-pages">Deploying to GitHub Pages</h2>
+<p>The <code>.github/workflows/publish.yml</code> workflow renders the site and publishes to the <code>gh-pages</code> branch on every push to <code>main</code>.</p>
+<p>First-time setup:</p>
 <ol type="1">
-<li><strong>The 4 D’s of AI fluency</strong> — Delegation, Description, Discernment, Diligence — adapted for biology research, following <a href="https://www.anthropic.com/ai-fluency">Anthropic’s AI Fluency Framework</a>.</li>
-<li><strong>LLM literacy</strong> for bio researchers — how large language models work, prompt, and fail.</li>
-<li><strong>Hands-on bioinformatics</strong> — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.</li>
-<li><strong>A complete scRNA-seq pipeline</strong> — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.</li>
+<li>Push to <code>main</code>. The Action will run and create the <code>gh-pages</code> branch.</li>
+<li>In the repo <strong>Settings → Pages</strong>, set source to <code>Deploy from a branch</code> → <code>gh-pages</code> / <code>/ (root)</code>.</li>
+<li>The site becomes available at <code>https://mdmanurung.github.io/ai-fluency-for-bio/</code>.</li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Subfield scope
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D’s. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.</p>
-</div>
-</div>
-<p>See the <a href="./course-overview.html">Overview</a> for learning outcomes, or jump straight to the schedule below.</p>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p>Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 25%">
-<col style="width: 16%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Week</th>
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: left;">Readings</th>
-<th style="text-align: left;">Hands-on</th>
-<th style="text-align: left;">Deliverable</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">AI fluency foundations — the 4 D’s</td>
-<td style="text-align: left;"><a href="./fluency/delegation.html">Delegation</a>, <a href="./fluency/description.html">Description</a>, <a href="./fluency/discernment.html">Discernment</a>, <a href="./fluency/diligence.html">Diligence</a></td>
-<td style="text-align: left;">Tooling setup</td>
-<td style="text-align: left;">Reflection + tooling check</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-2.html">2</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">LLM literacy for bio researchers</td>
-<td style="text-align: left;"><a href="./literacy/how-llms-work.html">How LLMs work</a>, <a href="./literacy/prompting.html">Prompting</a>, <a href="./literacy/tool-use-and-agents.html">Tool use &amp; agents</a>, <a href="./literacy/ethics-and-limits.html">Ethics &amp; limits</a></td>
-<td style="text-align: left;">Live prompt clinic</td>
-<td style="text-align: left;">Prompt-engineering exercise</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-3.html">3</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering</td>
-<td style="text-align: left;"><a href="./bioinformatics/code-assistance.html">Code assistance</a>, <a href="./bioinformatics/data-analysis.html">Data analysis</a>, <a href="modules/module-01-raw-data-qc/README.md">Module 1</a>, <a href="modules/module-02-alignment-count-matrix/README.md">Module 2</a></td>
-<td style="text-align: left;"><a href="modules/module-03-preprocessing-scanpy/README.md">Module 3</a> in-class; <a href="modules/module-04-clustering-umap/README.md">Module 4</a> after-class</td>
-<td style="text-align: left;">Mini-project (PBMC 3k) + capstone proposal</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-4.html">4</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq II — annotation, capstone</td>
-<td style="text-align: left;"><a href="./bioinformatics/literature-review.html">Literature review</a>, <a href="./bioinformatics/protocol-design.html">Protocol design</a></td>
-<td style="text-align: left;"><a href="modules/module-05-annotation-interpretation/README.md">Module 5</a> in-class</td>
-<td style="text-align: left;">Capstone (annotation, lit brief, or protocol — student choice)</td>
-</tr>
-</tbody>
-</table>
+</section>
+<section id="authoring-content" class="level2">
+<h2 class="anchored" data-anchor-id="authoring-content">Authoring content</h2>
+<p>Every topical page is scaffolded with headings, learning objectives, and <code>TODO</code> markers. See <code>PLANS.md</code> for the current PR backlog and locked architectural decisions.</p>
+</section>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">License</h2>
+<p>Content is licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> unless noted otherwise.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1066,18 +1066,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./course-team.html" class="pagination-link" aria-label="Teaching team">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Teaching team</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./course-faq.html" class="pagination-link" aria-label="FAQ">
-        <span class="nav-page-text">FAQ</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1086,7 +1074,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/CONTRIBUTING.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

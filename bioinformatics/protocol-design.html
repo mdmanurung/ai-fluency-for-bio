@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI Fluency Foundations for Biology</title>
+<title>Protocol design – AI Fluency Foundations for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,28 +26,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./course-faq.html" rel="next">
-<link href="./course-team.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d73a770eca8878dcb2583f8caec49a4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../modules/module-01-raw-data-qc/README.md" rel="next">
+<link href="../bioinformatics/literature-review.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d73a770eca8878dcb2583f8caec49a4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,12 +77,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="AI Fluency Foundations for Biology">
-<meta property="og:description" content="A 4-week course on collaborating effectively with AI in biological research">
+<meta property="og:title" content="Protocol design – AI Fluency Foundations for Biology">
+<meta property="og:description" content="AI as a sparring partner for experimental planning">
 <meta property="og:site_name" content="AI Fluency Foundations for Biology">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -253,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bioinformatics/code-assistance.html">Hands-on bioinformatics</a></li><li class="breadcrumb-item"><a href="../bioinformatics/protocol-design.html">Protocol design</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -268,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">AI Fluency Foundations for Biology</a> 
+      <a href="../">AI Fluency Foundations for Biology</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/mdmanurung/ai-fluency-for-bio" title="Course repository" class="quarto-navigation-tool px-1" aria-label="Course repository"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -284,46 +284,46 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-support.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-support.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-team.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-team.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teaching team</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAQ</span></a>
   </div>
 </li>
@@ -340,25 +340,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/delegation.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/delegation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Delegation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/description.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/description.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/discernment.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/discernment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discernment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/diligence.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/diligence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Diligence</span></a>
   </div>
 </li>
@@ -375,25 +375,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/how-llms-work.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/how-llms-work.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How LLMs work</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/prompting.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/prompting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prompting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/tool-use-and-agents.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/tool-use-and-agents.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tool use &amp; agents</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/ethics-and-limits.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/ethics-and-limits.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ethics &amp; limits</span></a>
   </div>
 </li>
@@ -401,34 +401,34 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Hands-on bioinformatics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/code-assistance.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/code-assistance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Code assistance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/data-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/data-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/literature-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/literature-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literature review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/protocol-design.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/protocol-design.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Protocol design</span></a>
   </div>
 </li>
@@ -445,31 +445,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-01-raw-data-qc/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-01-raw-data-qc/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 1 — Raw data QC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-02-alignment-count-matrix/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-02-alignment-count-matrix/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 2 — Alignment &amp; count matrix</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-03-preprocessing-scanpy/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-03-preprocessing-scanpy/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 3 — Preprocessing in Scanpy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-04-clustering-umap/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-04-clustering-umap/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 4 — Clustering &amp; UMAP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-05-annotation-interpretation/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-05-annotation-interpretation/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 5 — Annotation &amp; interpretation</span></a>
   </div>
 </li>
@@ -486,25 +486,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 — AI fluency foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 — LLM literacy for bio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 — scRNA-seq I (QC → clustering)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4 — scRNA-seq II (annotation, capstone)</span></a>
   </div>
 </li>
@@ -521,19 +521,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/glossary.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Glossary</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/prompt-library.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/prompt-library.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prompt library</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/peer-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/peer-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Peer-review template</span></a>
   </div>
 </li>
@@ -544,15 +544,36 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#where-ai-helps" id="toc-where-ai-helps" class="nav-link active" data-scroll-target="#where-ai-helps">Where AI helps</a></li>
+  <li><a href="#where-ai-reliably-falls-short" id="toc-where-ai-reliably-falls-short" class="nav-link" data-scroll-target="#where-ai-reliably-falls-short">Where AI reliably falls short</a></li>
+  <li><a href="#a-sparring-partner-workflow" id="toc-a-sparring-partner-workflow" class="nav-link" data-scroll-target="#a-sparring-partner-workflow">A sparring-partner workflow</a></li>
+  <li><a href="#worked-example-designing-an-scrna-seq-pilot" id="toc-worked-example-designing-an-scrna-seq-pilot" class="nav-link" data-scroll-target="#worked-example-designing-an-scrna-seq-pilot">Worked example: designing an scRNA-seq pilot</a>
+  <ul class="collapse">
+  <li><a href="#step-1-describe-the-question-and-constraints-precisely" id="toc-step-1-describe-the-question-and-constraints-precisely" class="nav-link" data-scroll-target="#step-1-describe-the-question-and-constraints-precisely">Step 1 — Describe the question and constraints precisely</a></li>
+  <li><a href="#step-2-ai-drafts-the-candidate-protocol" id="toc-step-2-ai-drafts-the-candidate-protocol" class="nav-link" data-scroll-target="#step-2-ai-drafts-the-candidate-protocol">Step 2 — AI drafts the candidate protocol</a></li>
+  <li><a href="#step-3-human-critique-against-tacit-knowledge" id="toc-step-3-human-critique-against-tacit-knowledge" class="nav-link" data-scroll-target="#step-3-human-critique-against-tacit-knowledge">Step 3 — Human critique against tacit knowledge</a></li>
+  <li><a href="#step-4-ai-critique-mode" id="toc-step-4-ai-critique-mode" class="nav-link" data-scroll-target="#step-4-ai-critique-mode">Step 4 — AI critique mode</a></li>
+  <li><a href="#step-5-reconcile-and-document" id="toc-step-5-reconcile-and-document" class="nav-link" data-scroll-target="#step-5-reconcile-and-document">Step 5 — Reconcile and document</a></li>
+  </ul></li>
+  <li><a href="#common-failure-modes" id="toc-common-failure-modes" class="nav-link" data-scroll-target="#common-failure-modes">Common failure modes</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/bioinformatics/protocol-design.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bioinformatics/code-assistance.html">Hands-on bioinformatics</a></li><li class="breadcrumb-item"><a href="../bioinformatics/protocol-design.html">Protocol design</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">AI Fluency Foundations for Biology</h1>
-<p class="subtitle lead">A 4-week course on collaborating effectively with AI in biological research</p>
+<h1 class="title">Protocol design</h1>
+<p class="subtitle lead">AI as a sparring partner for experimental planning</p>
 </div>
 
 
@@ -569,85 +590,176 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This site hosts the course materials for <strong>AI Fluency Foundations for Biology</strong>. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.</p>
-<p>The course covers:</p>
-<ol type="1">
-<li><strong>The 4 D’s of AI fluency</strong> — Delegation, Description, Discernment, Diligence — adapted for biology research, following <a href="https://www.anthropic.com/ai-fluency">Anthropic’s AI Fluency Framework</a>.</li>
-<li><strong>LLM literacy</strong> for bio researchers — how large language models work, prompt, and fail.</li>
-<li><strong>Hands-on bioinformatics</strong> — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.</li>
-<li><strong>A complete scRNA-seq pipeline</strong> — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.</li>
-</ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Subfield scope
+<span class="screen-reader-only">Note</span>Learning objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D’s. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.</p>
+<ul>
+<li>Use AI to generate, critique, and refine experimental protocols.</li>
+<li>Apply the 4 D’s to protocol design: delegate the draft, describe the constraints, discern the flaws, take diligent ownership.</li>
+<li>Avoid the characteristic failure mode: superficially complete but scientifically naive protocols.</li>
+</ul>
 </div>
 </div>
-<p>See the <a href="./course-overview.html">Overview</a> for learning outcomes, or jump straight to the schedule below.</p>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p>Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.</p>
+<section id="where-ai-helps" class="level2">
+<h2 class="anchored" data-anchor-id="where-ai-helps">Where AI helps</h2>
+<ul>
+<li><strong>Draft generation</strong>: a first-pass protocol outline given a goal, a reagent list, and constraints.</li>
+<li><strong>Checklist generation</strong>: controls you may have forgotten, QC steps, sample-size back-of-envelope.</li>
+<li><strong>Critique</strong>: “what could go wrong with this protocol?” is a surprisingly strong prompt.</li>
+<li><strong>Translation</strong>: between formats (lab notebook → methods section → SOP).</li>
+</ul>
+</section>
+<section id="where-ai-reliably-falls-short" class="level2">
+<h2 class="anchored" data-anchor-id="where-ai-reliably-falls-short">Where AI reliably falls short</h2>
+<ul>
+<li>Specific reagent choices for your organism, cell line, or platform.</li>
+<li>Anything that depends on recent protocol updates (e.g., new library-prep chemistry versions).</li>
+<li>Judgments that require tacit lab knowledge (“our freezer is unreliable,” “this supplier is slow”).</li>
+</ul>
+</section>
+<section id="a-sparring-partner-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="a-sparring-partner-workflow">A sparring-partner workflow</h2>
+<ol type="1">
+<li><strong>You</strong> draft the scientific question and hypothesis.</li>
+<li><strong>AI</strong> drafts a candidate protocol given your constraints.</li>
+<li><strong>You</strong> critique the protocol against your own experience and your PI’s feedback.</li>
+<li><strong>AI</strong> (“critique mode”) lists failure modes and missing controls.</li>
+<li><strong>You</strong> reconcile, finalize, and document provenance.</li>
+</ol>
+</section>
+<section id="worked-example-designing-an-scrna-seq-pilot" class="level2">
+<h2 class="anchored" data-anchor-id="worked-example-designing-an-scrna-seq-pilot">Worked example: designing an scRNA-seq pilot</h2>
+<p>A postdoc wants to characterize transcriptional states of lung macrophages following influenza A infection in mice — three time points (Day 0, Day 4, Day 8), two biological replicates each, 6 samples total, 10x Chromium platform, fresh lung tissue. Here is the sparring-partner workflow from question to finalized protocol outline.</p>
+<section id="step-1-describe-the-question-and-constraints-precisely" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-describe-the-question-and-constraints-precisely">Step 1 — Describe the question and constraints precisely</h3>
+<p>The postdoc writes:</p>
+<blockquote class="blockquote">
+<p>I am planning a small scRNA-seq pilot to characterize transcriptional states of lung macrophages following influenza A infection in mice. Timeline: Day 0 (uninfected), Day 4, Day 8 post-infection. Two biological replicates per time point = 6 samples total. Platform: 10x Chromium. Budget: 6 capture reactions. Target cell types: alveolar and interstitial macrophages. Processing window: ~30 minutes after lung harvest. What is a first-pass protocol I should critique?</p>
+</blockquote>
+<p>This is the <a href="../fluency/description.html">Description</a> step: cell type, timeline, replicate number, platform, budget, and time constraint all in the same message. Without them the AI defaults to a generic tissue-dissociation protocol that fits no one in particular.</p>
+</section>
+<section id="step-2-ai-drafts-the-candidate-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-ai-drafts-the-candidate-protocol">Step 2 — AI drafts the candidate protocol</h3>
+<p>The AI returns a structured protocol: lung harvest → mincing + enzymatic digestion (collagenase IV + DNase I, 37°C, 30 min) → mechanical dissociation → RBC lysis → cell counting → dilution to target → Chromium capture → library prep → sequencing. The enzyme choices and RBC lysis step are appropriate. The protocol specifies:</p>
+<ul>
+<li>Cell loading target: <strong>10,000 cells per capture reaction</strong></li>
+<li>Chemistry: <strong>Chromium v3.1</strong></li>
+</ul>
+<p>Both numbers look authoritative. Both require scrutiny.</p>
+</section>
+<section id="step-3-human-critique-against-tacit-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-human-critique-against-tacit-knowledge">Step 3 — Human critique against tacit knowledge</h3>
+<p><strong>Where the AI was confidently wrong — chemistry version:</strong></p>
+<p>The AI recommends “Chromium v3.1 chemistry (CG000204)” because that version dominates its training data. The current kit as of late 2024 is the <strong>GEM-X Single Cell 3’ v4</strong> (CG000731). These are not drop-in substitutes: GEM-X v4 uses a different bead design, different loading parameters, and different reagent volumes. Using v3.1 cell-loading concentrations on v4 hardware degrades capture efficiency. <strong>The AI did not know the product line had changed; it cited a version number with full confidence.</strong></p>
+<p>Verify against the <a href="https://www.10xgenomics.com/support/universal-three-prime-gene-expression/documentation/steps/library-prep/chromium-gem-x-single-cell-3-v4-gene-expression-user-guide">current 10x user guide</a> before ordering reagents — not the AI’s output.</p>
+<p><strong>Where the AI was wrong on biology — cell loading target:</strong></p>
+<p>10,000 cells/reaction is the standard recommendation for smaller cell types (PBMCs, tumour organoid dissociations). Macrophages are large cells (~15–20 µm); loading at 10,000 cells/mL over-represents them in the inlet, increases chip clogging risk, and elevates doublet rates. A more appropriate target for large primary cells is <strong>5,000–7,000 cells/reaction</strong>. The AI gave the textbook number, not the cell-type-appropriate one.</p>
+<p><strong>What the postdoc also catches:</strong> the protocol has no stated cell viability cutoff. Loading low-viability preparations increases ambient RNA contamination, a known confounder in scRNA-seq. The postdoc adds a minimum viability requirement (&gt;85% by trypan exclusion or DAPI gate) before the loading step.</p>
+</section>
+<section id="step-4-ai-critique-mode" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-ai-critique-mode">Step 4 — AI critique mode</h3>
+<p>The postdoc sends the draft back:</p>
+<blockquote class="blockquote">
+<p>Critique this protocol. List potential failure modes and controls that are missing.</p>
+</blockquote>
+<p><strong>Where the AI was usefully right:</strong> the AI flags that the 6 samples are processed sequentially but come from the same experimental condition per day — and suggests considering <strong>hashtag oligonucleotide (HTO) multiplexing</strong>: stain all 6 samples with distinct HTOs, pool before capture, demultiplex computationally. This halves the number of Chromium reactions needed (3 pooled runs instead of 6 solo), reduces batch effects from separate capture events, and enables doublet detection from HTO signal. The postdoc had not planned for this. It is a genuine improvement.</p>
+<p><strong>Where the AI missed:</strong> the AI does not catch the chemistry version error. It critiques the protocol it generated using v3.1 parameters — it is not aware that those parameters are outdated.</p>
+</section>
+<section id="step-5-reconcile-and-document" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-reconcile-and-document">Step 5 — Reconcile and document</h3>
+<p>The finalized protocol outline incorporates:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 25%">
-<col style="width: 16%">
-<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Week</th>
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: left;">Readings</th>
-<th style="text-align: left;">Hands-on</th>
-<th style="text-align: left;">Deliverable</th>
+<th style="text-align: left;">Change</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Rationale</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">AI fluency foundations — the 4 D’s</td>
-<td style="text-align: left;"><a href="./fluency/delegation.html">Delegation</a>, <a href="./fluency/description.html">Description</a>, <a href="./fluency/discernment.html">Discernment</a>, <a href="./fluency/diligence.html">Diligence</a></td>
-<td style="text-align: left;">Tooling setup</td>
-<td style="text-align: left;">Reflection + tooling check</td>
+<td style="text-align: left;">GEM-X v4 (CG000731), not v3.1</td>
+<td style="text-align: left;">Human (verified against 10x docs)</td>
+<td style="text-align: left;">Product line updated; loading parameters differ</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-2.html">2</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">LLM literacy for bio researchers</td>
-<td style="text-align: left;"><a href="./literacy/how-llms-work.html">How LLMs work</a>, <a href="./literacy/prompting.html">Prompting</a>, <a href="./literacy/tool-use-and-agents.html">Tool use &amp; agents</a>, <a href="./literacy/ethics-and-limits.html">Ethics &amp; limits</a></td>
-<td style="text-align: left;">Live prompt clinic</td>
-<td style="text-align: left;">Prompt-engineering exercise</td>
+<td style="text-align: left;">Cell loading 5,000–7,000/reaction</td>
+<td style="text-align: left;">Human (tacit knowledge)</td>
+<td style="text-align: left;">Macrophage size increases doublet risk at 10k</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-3.html">3</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering</td>
-<td style="text-align: left;"><a href="./bioinformatics/code-assistance.html">Code assistance</a>, <a href="./bioinformatics/data-analysis.html">Data analysis</a>, <a href="modules/module-01-raw-data-qc/README.md">Module 1</a>, <a href="modules/module-02-alignment-count-matrix/README.md">Module 2</a></td>
-<td style="text-align: left;"><a href="modules/module-03-preprocessing-scanpy/README.md">Module 3</a> in-class; <a href="modules/module-04-clustering-umap/README.md">Module 4</a> after-class</td>
-<td style="text-align: left;">Mini-project (PBMC 3k) + capstone proposal</td>
+<td style="text-align: left;">Viability &gt;85% gate before loading</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">Controls ambient RNA contamination</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-4.html">4</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq II — annotation, capstone</td>
-<td style="text-align: left;"><a href="./bioinformatics/literature-review.html">Literature review</a>, <a href="./bioinformatics/protocol-design.html">Protocol design</a></td>
-<td style="text-align: left;"><a href="modules/module-05-annotation-interpretation/README.md">Module 5</a> in-class</td>
-<td style="text-align: left;">Capstone (annotation, lit brief, or protocol — student choice)</td>
+<td style="text-align: left;">HTO multiplexing, 3 pooled captures</td>
+<td style="text-align: left;">AI critique, accepted</td>
+<td style="text-align: left;">Reduces batch effects, enables doublet detection, saves reagent cost</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">No-enzyme digest negative control</td>
+<td style="text-align: left;">AI critique, <strong>rejected</strong></td>
+<td style="text-align: left;">Non-standard for primary tissue scRNA-seq; cost not justified for a pilot</td>
 </tr>
 </tbody>
 </table>
+<p>Document the provenance of each decision — the disclosure rubric will ask which steps were AI-assisted.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Where the 4 D’s showed up
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Description</strong> — specifying cell type, timeline, platform, budget, and processing window in one prompt drove the quality of the AI’s first draft. Generic prompts return generic protocols.</li>
+<li><strong>Delegation</strong> — draft generation, checklist enumeration, and the critique pass are appropriate delegation targets; AI is fast and covers common cases.</li>
+<li><strong>Discernment</strong> — catching the outdated chemistry version (which the AI stated confidently); adjusting cell loading for macrophage biology; evaluating which critique suggestions to keep and which to drop.</li>
+<li><strong>Diligence</strong> — the final protocol is yours. If an AI-suggested step introduces a failure mode, that is your failure mode. Document provenance, verify reagent versions against current vendor guides, and have your PI sign off before ordering.</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="common-failure-modes" class="level2">
+<h2 class="anchored" data-anchor-id="common-failure-modes">Common failure modes</h2>
+<ul>
+<li><strong>Treating the draft as the protocol.</strong> The AI’s output is a starting point for critique, not a finished SOP.</li>
+<li><strong>Accepting version numbers at face value.</strong> Chemistry kits, software packages, and instrument firmware all update faster than training data. Always verify version-specific parameters against the current vendor documentation.</li>
+<li><strong>Skipping the critique pass.</strong> Asking the AI to critique its own output is cheap and often surfaces useful gaps. It does not replace domain-expert review, but it is better than no systematic check.</li>
+</ul>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<ol type="1">
+<li>Ask an AI to design a protocol in your area. List everything it got subtly wrong.</li>
+<li>Ask the same AI to critique its own protocol. Compare lists — what did it miss in self-critique that you caught?</li>
+<li>For the scRNA-seq pilot above: look up the current 10x GEM-X v4 user guide and find the recommended cell-loading concentration for large primary cells. How far off was the AI’s number?</li>
+</ol>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li>Boiko, D. A., MacKnight, R., Kline, B., &amp; Gomes, G. (2023). <a href="https://doi.org/10.1038/s41586-023-06792-0">Autonomous chemical research with large language models</a>. <em>Nature</em> 624: 570–578. — Demonstrates AI agents autonomously designing and executing chemistry experiments; a useful reference for understanding what AI can and cannot yet transfer to biological protocol design.</li>
+<li>Begley, C. G., &amp; Ellis, L. M. (2012). <a href="https://doi.org/10.1038/483531a">Raise standards for preclinical cancer research</a>. <em>Nature</em> 483: 531–533. — The reproducibility critique that motivates why protocol rigor, documentation, and independent verification matter; the failure modes it catalogues are exactly what AI-drafted protocols can inherit if adopted uncritically.</li>
+<li>10x Genomics. <a href="https://www.10xgenomics.com/support/universal-three-prime-gene-expression/documentation/steps/library-prep/chromium-gem-x-single-cell-3-v4-gene-expression-user-guide">Chromium GEM-X Single Cell 3’ v4 Gene Expression User Guide (CG000731)</a>. — The current (2024) vendor protocol for the platform used in the worked example; the first place to check before accepting any AI-generated loading concentrations or chemistry parameters.</li>
+</ul>
 
 
 </section>
@@ -1068,13 +1180,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./course-team.html" class="pagination-link" aria-label="Teaching team">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Teaching team</span>
+      <a href="../bioinformatics/literature-review.html" class="pagination-link" aria-label="Literature review">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Literature review</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./course-faq.html" class="pagination-link" aria-label="FAQ">
-        <span class="nav-page-text">FAQ</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../modules/module-01-raw-data-qc/README.md" class="pagination-link" aria-label="Module 1 — Raw data QC">
+        <span class="nav-page-text">Module 1 — Raw data QC</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1086,7 +1198,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/bioinformatics/protocol-design.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

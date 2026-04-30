@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI Fluency Foundations for Biology</title>
+<title>Module 3: Preprocessing &amp; Quality Control in Scanpy – AI Fluency Foundations for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,31 +23,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./course-faq.html" rel="next">
-<link href="./course-team.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d73a770eca8878dcb2583f8caec49a4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d73a770eca8878dcb2583f8caec49a4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,12 +110,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="AI Fluency Foundations for Biology">
-<meta property="og:description" content="A 4-week course on collaborating effectively with AI in biological research">
+<meta property="og:title" content="Module 3: Preprocessing &amp; Quality Control in Scanpy – AI Fluency Foundations for Biology">
+<meta property="og:description" content="A 4-week foundations course on using AI effectively in biological research — the 4 D’s of AI fluency, LLM literacy, and a hands-on single-cell RNA-seq pipeline (FASTQ → annotated UMAP) run with AI in the loop.">
 <meta property="og:site_name" content="AI Fluency Foundations for Biology">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -253,7 +286,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      AI Fluency Foundations for Biology
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -268,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">AI Fluency Foundations for Biology</a> 
+      <a href="../../">AI Fluency Foundations for Biology</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/mdmanurung/ai-fluency-for-bio" title="Course repository" class="quarto-navigation-tool px-1" aria-label="Course repository"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -284,46 +319,46 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-support.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-support.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-team.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-team.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teaching team</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../../course-faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAQ</span></a>
   </div>
 </li>
@@ -340,25 +375,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/delegation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../fluency/delegation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Delegation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/description.html" class="sidebar-item-text sidebar-link">
+  <a href="../../fluency/description.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/discernment.html" class="sidebar-item-text sidebar-link">
+  <a href="../../fluency/discernment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discernment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/diligence.html" class="sidebar-item-text sidebar-link">
+  <a href="../../fluency/diligence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Diligence</span></a>
   </div>
 </li>
@@ -375,25 +410,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/how-llms-work.html" class="sidebar-item-text sidebar-link">
+  <a href="../../literacy/how-llms-work.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How LLMs work</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/prompting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../literacy/prompting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prompting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/tool-use-and-agents.html" class="sidebar-item-text sidebar-link">
+  <a href="../../literacy/tool-use-and-agents.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tool use &amp; agents</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/ethics-and-limits.html" class="sidebar-item-text sidebar-link">
+  <a href="../../literacy/ethics-and-limits.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ethics &amp; limits</span></a>
   </div>
 </li>
@@ -410,25 +445,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/code-assistance.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bioinformatics/code-assistance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Code assistance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/data-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bioinformatics/data-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/literature-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bioinformatics/literature-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literature review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/protocol-design.html" class="sidebar-item-text sidebar-link">
+  <a href="../../bioinformatics/protocol-design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Protocol design</span></a>
   </div>
 </li>
@@ -445,31 +480,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-01-raw-data-qc/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/module-01-raw-data-qc/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 1 — Raw data QC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-02-alignment-count-matrix/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/module-02-alignment-count-matrix/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 2 — Alignment &amp; count matrix</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-03-preprocessing-scanpy/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/module-03-preprocessing-scanpy/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 3 — Preprocessing in Scanpy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-04-clustering-umap/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/module-04-clustering-umap/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 4 — Clustering &amp; UMAP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-05-annotation-interpretation/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../../modules/module-05-annotation-interpretation/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 5 — Annotation &amp; interpretation</span></a>
   </div>
 </li>
@@ -486,25 +521,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 — AI fluency foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 — LLM literacy for bio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 — scRNA-seq I (QC → clustering)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4 — scRNA-seq II (annotation, capstone)</span></a>
   </div>
 </li>
@@ -521,19 +556,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/glossary.html" class="sidebar-item-text sidebar-link">
+  <a href="../../reference/glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Glossary</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/prompt-library.html" class="sidebar-item-text sidebar-link">
+  <a href="../../reference/prompt-library.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prompt library</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/peer-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../../reference/peer-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Peer-review template</span></a>
   </div>
 </li>
@@ -544,15 +579,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hook-are-those-5000-cells-real-cells" id="toc-hook-are-those-5000-cells-real-cells" class="nav-link active" data-scroll-target="#hook-are-those-5000-cells-real-cells">Hook: Are Those 5,000 “Cells” Real Cells?</a></li>
+  <li><a href="#setup-open-google-colab" id="toc-setup-open-google-colab" class="nav-link" data-scroll-target="#setup-open-google-colab">Setup: Open Google Colab</a></li>
+  <li><a href="#part-1-install-and-import" id="toc-part-1-install-and-import" class="nav-link" data-scroll-target="#part-1-install-and-import">Part 1: Install and Import</a>
+  <ul class="collapse">
+  <li><a href="#visualize-qc-metrics" id="toc-visualize-qc-metrics" class="nav-link" data-scroll-target="#visualize-qc-metrics">Visualize QC metrics</a></li>
+  <li><a href="#apply-filters" id="toc-apply-filters" class="nav-link" data-scroll-target="#apply-filters">Apply filters</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.dev/mdmanurung/ai-fluency-for-bio/blob/main/modules/module-03-preprocessing-scanpy/notebook.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">AI Fluency Foundations for Biology</h1>
-<p class="subtitle lead">A 4-week course on collaborating effectively with AI in biological research</p>
+<h1 class="title">Module 3: Preprocessing &amp; Quality Control in Scanpy</h1>
 </div>
 
 
@@ -569,87 +617,96 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This site hosts the course materials for <strong>AI Fluency Foundations for Biology</strong>. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.</p>
-<p>The course covers:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://colab.research.google.com/github/mdmanurung/ai-fluency-for-bio/blob/main/modules/module-03-preprocessing-scanpy/notebook.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid figure-img"></a></p>
+<figcaption>Open in Colab</figcaption>
+</figure>
+</div>
+<p><strong>Estimated Time to Complete: ~75 mins</strong></p>
+<blockquote class="blockquote">
+<p><strong>Tools needed:</strong> Google Colab (free, no installation), Claude or ChatGPT (free web) <strong>HPC required?</strong> No.&nbsp;Everything in this module runs in your browser. <strong>Dataset:</strong> 10x PBMC 3k (loaded directly by Scanpy — no download needed)</p>
+<p>Click the <strong>Open in Colab</strong> badge above to launch the runnable notebook. The README below is the narrative companion; the notebook mirrors it cell-for-cell.</p>
+</blockquote>
+<hr>
+<section id="hook-are-those-5000-cells-real-cells" class="level2">
+<h2 class="anchored" data-anchor-id="hook-are-those-5000-cells-real-cells">Hook: Are Those 5,000 “Cells” Real Cells?</h2>
+<p>Cell Ranger reports 5,013 detected cells. But some of those barcodes represent: - <strong>Dead or dying cells</strong> — high mitochondrial RNA, low gene count - <strong>Empty droplets</strong> — ambient RNA, almost no genes - <strong>Doublets</strong> — two cells captured in one droplet, artificially high gene count</p>
+<p>If you skip QC and cluster raw data, your “cell types” will include dead-cell clusters, doublet artifacts, and noisy background populations. Annotation becomes impossible.</p>
+<p><strong>QC is not optional.</strong> This module teaches you what to measure, what to cut, and how to use AI to help justify your thresholds.</p>
+<hr>
+</section>
+<section id="setup-open-google-colab" class="level2">
+<h2 class="anchored" data-anchor-id="setup-open-google-colab">Setup: Open Google Colab</h2>
 <ol type="1">
-<li><strong>The 4 D’s of AI fluency</strong> — Delegation, Description, Discernment, Diligence — adapted for biology research, following <a href="https://www.anthropic.com/ai-fluency">Anthropic’s AI Fluency Framework</a>.</li>
-<li><strong>LLM literacy</strong> for bio researchers — how large language models work, prompt, and fail.</li>
-<li><strong>Hands-on bioinformatics</strong> — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.</li>
-<li><strong>A complete scRNA-seq pipeline</strong> — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.</li>
+<li>Go to <a href="https://colab.research.google.com/">colab.research.google.com</a></li>
+<li>Create a new notebook</li>
+<li>Copy and run each code block below in sequence</li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<hr>
+</section>
+<section id="part-1-install-and-import" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-install-and-import">Part 1: Install and Import</h2>
+<div id="cell-2" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this cell first — takes ~2 minutes!pip install scanpy scrublet -qimport scanpy as scimport numpy as npimport pandas as pdimport scrublet as scrimport matplotlib.pyplot as pltsc.settings.verbosity = 1sc.settings.figdir = './'print(f"Scanpy version: {sc.__version__}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Subfield scope
+<p>—## Part 2: Load the PBMC 3k DatasetThe PBMC 3k dataset (2,700 PBMCs from a healthy donor, 10x Chromium v1) is built intoScanpy for tutorial purposes.</p>
+<div id="cell-4" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load directly from Scanpy's built-in datasetsadata = sc.datasets.pbmc3k()print(adata)# AnnData object with n_obs × n_vars = 2700 × 32738# The AnnData object is the core data structure in Scanpy:#   adata.X      = count matrix (cells × genes)#   adata.obs    = cell metadata (rows)#   adata.var    = gene metadata (columns)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><strong>If you have your own Cell Ranger output,</strong> replace the above with:</p>
+<div id="cell-6" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load from Cell Ranger filtered outputadata = sc.read_10x_mtx(    '/path/to/filtered_feature_bc_matrix/',    var_names='gene_symbols',   # use gene symbols (e.g. CD3E) not Ensembl IDs    cache=True)adata.var_names_make_unique()  # ensure gene names are unique</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout-body-container callout-body">
-<p>The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D’s. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.</p>
+<p>—## Part 3: Calculate QC Metrics</p>
+<div id="cell-8" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag mitochondrial genes (human: MT- prefix; mouse: mt- prefix)adata.var['mt'] = adata.var_names.str.startswith('MT-')# Calculate QC metrics — adds columns to adata.obs and adata.varsc.pp.calculate_qc_metrics(    adata,    qc_vars=['mt'],    percent_top=None,    log1p=False,    inplace=True)# Key new columns in adata.obs:# n_genes_by_counts  = number of genes with at least 1 count# total_counts       = total UMI count per cell# pct_counts_mt      = % of counts from mitochondrial genes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<section id="visualize-qc-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-qc-metrics">Visualize QC metrics</h3>
+<div id="cell-10" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sc.pl.violin(    adata,    [<span class="st">'n_genes_by_counts'</span>, <span class="st">'total_counts'</span>, <span class="st">'pct_counts_mt'</span>],    jitter<span class="op">=</span><span class="fl">0.4</span>,    multi_panel<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>See the <a href="./course-overview.html">Overview</a> for learning outcomes, or jump straight to the schedule below.</p>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p>Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 25%">
-<col style="width: 16%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Week</th>
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: left;">Readings</th>
-<th style="text-align: left;">Hands-on</th>
-<th style="text-align: left;">Deliverable</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">AI fluency foundations — the 4 D’s</td>
-<td style="text-align: left;"><a href="./fluency/delegation.html">Delegation</a>, <a href="./fluency/description.html">Description</a>, <a href="./fluency/discernment.html">Discernment</a>, <a href="./fluency/diligence.html">Diligence</a></td>
-<td style="text-align: left;">Tooling setup</td>
-<td style="text-align: left;">Reflection + tooling check</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-2.html">2</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">LLM literacy for bio researchers</td>
-<td style="text-align: left;"><a href="./literacy/how-llms-work.html">How LLMs work</a>, <a href="./literacy/prompting.html">Prompting</a>, <a href="./literacy/tool-use-and-agents.html">Tool use &amp; agents</a>, <a href="./literacy/ethics-and-limits.html">Ethics &amp; limits</a></td>
-<td style="text-align: left;">Live prompt clinic</td>
-<td style="text-align: left;">Prompt-engineering exercise</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-3.html">3</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering</td>
-<td style="text-align: left;"><a href="./bioinformatics/code-assistance.html">Code assistance</a>, <a href="./bioinformatics/data-analysis.html">Data analysis</a>, <a href="modules/module-01-raw-data-qc/README.md">Module 1</a>, <a href="modules/module-02-alignment-count-matrix/README.md">Module 2</a></td>
-<td style="text-align: left;"><a href="modules/module-03-preprocessing-scanpy/README.md">Module 3</a> in-class; <a href="modules/module-04-clustering-umap/README.md">Module 4</a> after-class</td>
-<td style="text-align: left;">Mini-project (PBMC 3k) + capstone proposal</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-4.html">4</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq II — annotation, capstone</td>
-<td style="text-align: left;"><a href="./bioinformatics/literature-review.html">Literature review</a>, <a href="./bioinformatics/protocol-design.html">Protocol design</a></td>
-<td style="text-align: left;"><a href="modules/module-05-annotation-interpretation/README.md">Module 5</a> in-class</td>
-<td style="text-align: left;">Capstone (annotation, lit brief, or protocol — student choice)</td>
-</tr>
-</tbody>
-</table>
+<p><strong>What you’re looking for:</strong>- <code>n_genes_by_counts</code>: most cells should cluster in a clear range; outliers at the bottom are empty/dead, at the top are doublets- <code>total_counts</code>: should mirror n_genes; extreme outliers at the top = doublets- <code>pct_counts_mt</code>: healthy cells &lt; 20%; a long tail above 20–25% = dying cells</p>
+<div id="cell-12" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot to visualize the relationshipsc.pl.scatter(adata, x='total_counts', y='pct_counts_mt')sc.pl.scatter(adata, x='total_counts', y='n_genes_by_counts')</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+—## Part 4: Filter Low-Quality Cells### AI-assisted threshold selectionBefore filtering, use this prompt:<code>I am analyzing 10x scRNA-seq data from human PBMCs.My QC violin plots show:- n_genes_by_counts: median ~1,200, range 200–5,000, with a few cells above 3,500- total_counts: median ~2,500, range 500–20,000- pct_counts_mt: median ~3%, with a tail up to 30%What filtering thresholds should I use for:1. Minimum genes per cell2. Maximum genes per cell (to remove doublets)3. Maximum mitochondrial percentagePlease justify each threshold and note any assumptions about my tissue type.</code>
+<details>
+<summary>
+View Gold Standard Output
+</summary>
+A well-calibrated LLM should recommend approximately:- <strong>Minimum genes:</strong> 200–300 (removes empty droplets; PBMC median of 1,200 means this is a conservative lower bound)- <strong>Maximum genes:</strong> 2,500–3,500 (the few cells above 3,500 likely represent doublets; the exact cutoff should be set just above the main distribution shoulder)- <strong>Maximum mitochondrial %:</strong> 5–10% for PBMCs (PBMCs are robust; more fragile tissues like neurons may require up to 20–25%)<strong>Correct reasoning the AI should include:</strong>- Doublet threshold is tissue/protocol dependent — for PBMCs a max of ~2,500 genes is standard; for a complex tissue like brain you’d set it higher- Mitochondrial threshold for PBMCs can be strict (5%) because healthy PBMCs have low mt expression; tissues with high metabolic activity (muscle, heart) warrant more permissive thresholds<strong>Flag if the AI omits:</strong> tissue context matters — a single universal threshold does not exist.
+</details>
+</section>
+<section id="apply-filters" class="level3">
+<h3 class="anchored" data-anchor-id="apply-filters">Apply filters</h3>
+<div id="cell-14" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply thresholds (adjust based on your own violin plots)sc.pp.filter_cells(adata, min_genes=200)sc.pp.filter_genes(adata, min_cells=3)# Filter by QC thresholdsadata = adata[adata.obs.n_genes_by_counts &lt; 2500, :]adata = adata[adata.obs.pct_counts_mt &lt; 5, :]print(f"Cells after filtering: {adata.n_obs}")print(f"Genes after filtering: {adata.n_vars}")# Expected for PBMC 3k: ~2,638 cells, ~13,000 genes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>—## Part 5: Doublet Detection with Scrublet</p>
+<div id="cell-16" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run Scrublet to score each cell for doublet probabilityscrub = scr.Scrublet(adata.X)doublet_scores, predicted_doublets = scrub.scrub_doublets()adata.obs['doublet_score'] = doublet_scoresadata.obs['predicted_doublet'] = predicted_doublets# Visualize doublet score distributionscrub.plot_histogram()# Remove predicted doubletsprint(f"Predicted doublets: {predicted_doublets.sum()}")adata = adata[~adata.obs['predicted_doublet'], :]print(f"Cells after doublet removal: {adata.n_obs}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>—## Part 6: Normalization &amp; Log-Transformation</p>
+<div id="cell-18" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize each cell to 10,000 total counts (library size correction)sc.pp.normalize_total(adata, target_sum=1e4)# Log-transform: log(X + 1) — stabilizes variance, makes data more normally distributedsc.pp.log1p(adata)# Save the normalized, log-transformed values as the 'raw' layer for later useadata.raw = adata</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>—## Part 7: Highly Variable Gene (HVG) SelectionWorking with all ~13,000 genes is computationally expensive and adds noise.Highly variable genes carry the most biological signal.</p>
+<div id="cell-20" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify highly variable genessc.pp.highly_variable_genes(    adata,    min_mean=0.0125,    max_mean=3,    min_disp=0.5)# Visualize HVG distributionsc.pl.highly_variable_genes(adata)print(f"Highly variable genes: {adata.var.highly_variable.sum()}")# Expected: ~1,800–2,000 HVGs for PBMC 3k# Subset to HVGs for downstream analysisadata = adata[:, adata.var.highly_variable]print(f"AnnData after HVG selection: {adata}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+—## Exercise: Interpret a QC IssueYou run the QC pipeline on a new dataset and observe:- Two distinct clusters in the <code>total_counts</code> vs <code>n_genes_by_counts</code> scatter plot — one cluster has low counts and low genes, one has normal counts and genes- The low cluster accounts for ~30% of cells- <code>pct_counts_mt</code> for the low cluster averages 28%Use Claude or ChatGPT: <strong>What does this pattern indicate, and what is the correct course of action?</strong>
+<details>
+<summary>
+View Gold Standard Output
+</summary>
+<strong>The pattern indicates a large fraction of dying or stressed cells.</strong>Two-cluster structure in <code>total_counts</code> vs <code>n_genes_by_counts</code> where one cluster has:- Low UMI counts + low gene counts + high mt% = classic “damaged cell” signature<strong>Correct course of action:</strong>1. Set a strict mt% threshold (e.g., 20–25%) to remove the damaged cluster2. Investigate the biology: was this a tissue dissociation artifact? Long time from dissection to library prep? Cold ischemia?3. If &gt;30% of cells are low quality, consider whether the experiment is salvageable — a high ambient RNA signal may also be present, warranting Cellbender or SoupX correction<strong>What the AI should NOT say:</strong>- That a two-cluster pattern is always normal (it is not)- That you should retain the low-quality cells because “they might be a real cell type” without evidenceIf the AI suggests running Cellbender or SoupX for ambient RNA correction on top of the mt% filtering, that is a correct and advanced recommendation.
+</details>
+<p>—## Key Takeaways1. <strong>Three core QC metrics:</strong> <code>n_genes_by_counts</code> (doublets up, dead cells down), <code>total_counts</code> (mirrors genes), <code>pct_counts_mt</code> (dead cells up).2. <strong>Thresholds are not universal.</strong> PBMCs tolerate strict mt% cutoffs; neurons do not. Always use tissue and protocol context when asking AI for threshold recommendations.3. <strong>Normalization to 10,000 counts + log-transform is the standard starting point.</strong> Save <code>adata.raw</code> before any further scaling — you’ll need raw log-counts for differential expression later.4. <strong>HVG selection reduces noise.</strong> ~2,000 HVGs is typical; using all genes adds compute cost without improving clustering quality for most datasets.—## → Next: Module 4 — Dimensionality Reduction, Clustering &amp; UMAP<a href="../module-04-clustering-umap/README.md">Open Module 4</a><em>In Module 4, you will scale the data, run PCA, build a neighborhood graph,generate a UMAP embedding, and cluster cells with the Leiden algorithm.</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1066,18 +1123,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./course-team.html" class="pagination-link" aria-label="Teaching team">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Teaching team</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./course-faq.html" class="pagination-link" aria-label="FAQ">
-        <span class="nav-page-text">FAQ</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1086,7 +1131,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/mdmanurung/ai-fluency-for-bio/blob/main/modules/module-03-preprocessing-scanpy/notebook.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

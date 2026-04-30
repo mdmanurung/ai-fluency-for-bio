@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI Fluency Foundations for Biology</title>
+<title>How LLMs work – AI Fluency Foundations for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,28 +26,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./course-faq.html" rel="next">
-<link href="./course-team.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d73a770eca8878dcb2583f8caec49a4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../literacy/prompting.html" rel="next">
+<link href="../fluency/diligence.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d73a770eca8878dcb2583f8caec49a4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-61e0335d2b40009bfee4605e51c54b97.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,12 +77,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="AI Fluency Foundations for Biology">
-<meta property="og:description" content="A 4-week course on collaborating effectively with AI in biological research">
+<meta property="og:title" content="How LLMs work – AI Fluency Foundations for Biology">
+<meta property="og:description" content="Just enough to reason about their behavior in research">
 <meta property="og:site_name" content="AI Fluency Foundations for Biology">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -253,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../literacy/how-llms-work.html">AI literacy for bio</a></li><li class="breadcrumb-item"><a href="../literacy/how-llms-work.html">How LLMs work</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -268,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">AI Fluency Foundations for Biology</a> 
+      <a href="../">AI Fluency Foundations for Biology</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/mdmanurung/ai-fluency-for-bio" title="Course repository" class="quarto-navigation-tool px-1" aria-label="Course repository"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -284,46 +284,46 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-support.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-support.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-team.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-team.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teaching team</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAQ</span></a>
   </div>
 </li>
@@ -340,25 +340,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/delegation.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/delegation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Delegation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/description.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/description.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/discernment.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/discernment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Discernment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fluency/diligence.html" class="sidebar-item-text sidebar-link">
+  <a href="../fluency/diligence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Diligence</span></a>
   </div>
 </li>
@@ -366,34 +366,34 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">AI literacy for bio</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/how-llms-work.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/how-llms-work.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">How LLMs work</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/prompting.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/prompting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prompting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/tool-use-and-agents.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/tool-use-and-agents.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tool use &amp; agents</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./literacy/ethics-and-limits.html" class="sidebar-item-text sidebar-link">
+  <a href="../literacy/ethics-and-limits.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ethics &amp; limits</span></a>
   </div>
 </li>
@@ -410,25 +410,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/code-assistance.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/code-assistance.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Code assistance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/data-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/data-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/literature-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/literature-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literature review</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bioinformatics/protocol-design.html" class="sidebar-item-text sidebar-link">
+  <a href="../bioinformatics/protocol-design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Protocol design</span></a>
   </div>
 </li>
@@ -445,31 +445,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-01-raw-data-qc/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-01-raw-data-qc/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 1 — Raw data QC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-02-alignment-count-matrix/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-02-alignment-count-matrix/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 2 — Alignment &amp; count matrix</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-03-preprocessing-scanpy/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-03-preprocessing-scanpy/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 3 — Preprocessing in Scanpy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-04-clustering-umap/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-04-clustering-umap/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 4 — Clustering &amp; UMAP</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modules/module-05-annotation-interpretation/README.md" class="sidebar-item-text sidebar-link">
+  <a href="../modules/module-05-annotation-interpretation/README.md" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 5 — Annotation &amp; interpretation</span></a>
   </div>
 </li>
@@ -486,25 +486,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 — AI fluency foundations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 — LLM literacy for bio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 — scRNA-seq I (QC → clustering)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./weeks/week-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 4 — scRNA-seq II (annotation, capstone)</span></a>
   </div>
 </li>
@@ -521,19 +521,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/glossary.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Glossary</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/prompt-library.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/prompt-library.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prompt library</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reference/peer-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/peer-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Peer-review template</span></a>
   </div>
 </li>
@@ -544,15 +544,30 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-an-llm-is" id="toc-what-an-llm-is" class="nav-link active" data-scroll-target="#what-an-llm-is">What an LLM is</a>
+  <ul class="collapse">
+  <li><a href="#attention-in-one-head-a-toy-calculation" id="toc-attention-in-one-head-a-toy-calculation" class="nav-link" data-scroll-target="#attention-in-one-head-a-toy-calculation">Attention in one head: a toy calculation</a></li>
+  </ul></li>
+  <li><a href="#training-stages-simplified" id="toc-training-stages-simplified" class="nav-link" data-scroll-target="#training-stages-simplified">Training stages (simplified)</a></li>
+  <li><a href="#why-models-fabricate" id="toc-why-models-fabricate" class="nav-link" data-scroll-target="#why-models-fabricate">Why models fabricate</a></li>
+  <li><a href="#what-this-means-for-you" id="toc-what-this-means-for-you" class="nav-link" data-scroll-target="#what-this-means-for-you">What this means for you</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/literacy/how-llms-work.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../literacy/how-llms-work.html">AI literacy for bio</a></li><li class="breadcrumb-item"><a href="../literacy/how-llms-work.html">How LLMs work</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">AI Fluency Foundations for Biology</h1>
-<p class="subtitle lead">A 4-week course on collaborating effectively with AI in biological research</p>
+<h1 class="title">How LLMs work</h1>
+<p class="subtitle lead">Just enough to reason about their behavior in research</p>
 </div>
 
 
@@ -569,85 +584,224 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This site hosts the course materials for <strong>AI Fluency Foundations for Biology</strong>. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.</p>
-<p>The course covers:</p>
-<ol type="1">
-<li><strong>The 4 D’s of AI fluency</strong> — Delegation, Description, Discernment, Diligence — adapted for biology research, following <a href="https://www.anthropic.com/ai-fluency">Anthropic’s AI Fluency Framework</a>.</li>
-<li><strong>LLM literacy</strong> for bio researchers — how large language models work, prompt, and fail.</li>
-<li><strong>Hands-on bioinformatics</strong> — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.</li>
-<li><strong>A complete scRNA-seq pipeline</strong> — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.</li>
-</ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Subfield scope
+<span class="screen-reader-only">Note</span>Learning objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D’s. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.</p>
+<ul>
+<li>Explain, at a working level, what an LLM is doing when it generates text.</li>
+<li>Distinguish the major training stages and connect them to observed model behavior.</li>
+<li>Use the right vocabulary for failure modes: <strong>fabrication</strong> (made-up facts/citations) vs.&nbsp;<strong>confabulation</strong> (the mechanism that produces them).</li>
+</ul>
 </div>
 </div>
-<p>See the <a href="./course-overview.html">Overview</a> for learning outcomes, or jump straight to the schedule below.</p>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p>Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Scope
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a <strong>working</strong> model of how LLMs behave, not a mechanistic account. For accuracy, see the linked technical readings — what’s here will let you reason about <em>behavior in your workflow</em>, not about model internals.</p>
+</div>
+</div>
+<section id="what-an-llm-is" class="level2">
+<h2 class="anchored" data-anchor-id="what-an-llm-is">What an LLM is</h2>
+<p>A language model is trained to predict the next token given all previous tokens. <strong>Tokens</strong> are not words — they are subword units, roughly 3–4 characters on average for English prose. “Transformer” and ” transformer” are different tokens; “GPT” may be a single token; an emoji may expand into several. Tokenization is opaque to users and causes systematic failures on tasks that require character-level reasoning (counting letters, precise string manipulation, certain code patterns).</p>
+<p>The prediction is carried out by a <strong>transformer</strong> — an architecture that uses attention mechanisms to weight every token in the context against every other token at each layer. The practical upshot: the model can integrate information from anywhere in the context window, but it does not distinguish <em>things that are true</em> from <em>patterns that complete this sequence plausibly</em>. There is no internal “fact store” being queried — there is a very large set of learned associations over token sequences.</p>
+<section id="attention-in-one-head-a-toy-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="attention-in-one-head-a-toy-calculation">Attention in one head: a toy calculation</h3>
+<p>To make this concrete, here is how one attention head computes which tokens to weight when building the representation for a single token. Use the four-token sentence:</p>
+<blockquote class="blockquote">
+<p><code>gene</code> · <code>is</code> · <code>not</code> · <code>expressed</code></p>
+</blockquote>
+<p>Each token is mapped to three small vectors — <strong>Q</strong> (query), <strong>K</strong> (key), <strong>V</strong> (value) — by learned weight matrices. For illustration, use toy two-dimensional vectors (real models use 64–128 dimensions per head):</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 25%">
-<col style="width: 16%">
-<col style="width: 20%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Week</th>
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: left;">Readings</th>
-<th style="text-align: left;">Hands-on</th>
-<th style="text-align: left;">Deliverable</th>
+<th style="text-align: left;">Token</th>
+<th style="text-align: left;">K vector</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">AI fluency foundations — the 4 D’s</td>
-<td style="text-align: left;"><a href="./fluency/delegation.html">Delegation</a>, <a href="./fluency/description.html">Description</a>, <a href="./fluency/discernment.html">Discernment</a>, <a href="./fluency/diligence.html">Diligence</a></td>
-<td style="text-align: left;">Tooling setup</td>
-<td style="text-align: left;">Reflection + tooling check</td>
+<td style="text-align: left;">gene</td>
+<td style="text-align: left;">[2, 1]</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-2.html">2</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">LLM literacy for bio researchers</td>
-<td style="text-align: left;"><a href="./literacy/how-llms-work.html">How LLMs work</a>, <a href="./literacy/prompting.html">Prompting</a>, <a href="./literacy/tool-use-and-agents.html">Tool use &amp; agents</a>, <a href="./literacy/ethics-and-limits.html">Ethics &amp; limits</a></td>
-<td style="text-align: left;">Live prompt clinic</td>
-<td style="text-align: left;">Prompt-engineering exercise</td>
+<td style="text-align: left;">is</td>
+<td style="text-align: left;">[0, 1]</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-3.html">3</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering</td>
-<td style="text-align: left;"><a href="./bioinformatics/code-assistance.html">Code assistance</a>, <a href="./bioinformatics/data-analysis.html">Data analysis</a>, <a href="modules/module-01-raw-data-qc/README.md">Module 1</a>, <a href="modules/module-02-alignment-count-matrix/README.md">Module 2</a></td>
-<td style="text-align: left;"><a href="modules/module-03-preprocessing-scanpy/README.md">Module 3</a> in-class; <a href="modules/module-04-clustering-umap/README.md">Module 4</a> after-class</td>
-<td style="text-align: left;">Mini-project (PBMC 3k) + capstone proposal</td>
+<td style="text-align: left;">not</td>
+<td style="text-align: left;">[1, 0]</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-4.html">4</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq II — annotation, capstone</td>
-<td style="text-align: left;"><a href="./bioinformatics/literature-review.html">Literature review</a>, <a href="./bioinformatics/protocol-design.html">Protocol design</a></td>
-<td style="text-align: left;"><a href="modules/module-05-annotation-interpretation/README.md">Module 5</a> in-class</td>
-<td style="text-align: left;">Capstone (annotation, lit brief, or protocol — student choice)</td>
+<td style="text-align: left;">expressed</td>
+<td style="text-align: left;">[1, 1]</td>
 </tr>
 </tbody>
 </table>
+<p>The query for <strong>expressed</strong> is Q = [1, 2]. To find how much “expressed” should attend to each preceding token, compute the dot product Q · K_i:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Token</th>
+<th style="text-align: left;">Q · K_i</th>
+<th style="text-align: left;">Scaled ÷ √2 ≈ 1.41</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">gene</td>
+<td style="text-align: left;">1×2 + 2×1 = <strong>4</strong></td>
+<td style="text-align: left;">4 ÷ 1.41 ≈ <strong>2.83</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">is</td>
+<td style="text-align: left;">1×0 + 2×1 = <strong>2</strong></td>
+<td style="text-align: left;">2 ÷ 1.41 ≈ <strong>1.41</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">not</td>
+<td style="text-align: left;">1×1 + 2×0 = <strong>1</strong></td>
+<td style="text-align: left;">1 ÷ 1.41 ≈ <strong>0.71</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">expressed</td>
+<td style="text-align: left;">1×1 + 2×1 = <strong>3</strong></td>
+<td style="text-align: left;">3 ÷ 1.41 ≈ <strong>2.12</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The scaling by √d_k prevents the dot products from growing so large that softmax saturates. Apply softmax to the scaled scores (exp of each, divided by the sum):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Token</th>
+<th style="text-align: left;">exp(score)</th>
+<th style="text-align: left;">Attention weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">gene</td>
+<td style="text-align: left;">exp(2.83) ≈ 16.9</td>
+<td style="text-align: left;"><strong>0.54</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">is</td>
+<td style="text-align: left;">exp(1.41) ≈ 4.1</td>
+<td style="text-align: left;"><strong>0.13</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">not</td>
+<td style="text-align: left;">exp(0.71) ≈ 2.0</td>
+<td style="text-align: left;"><strong>0.06</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">expressed</td>
+<td style="text-align: left;">exp(2.12) ≈ 8.3</td>
+<td style="text-align: left;"><strong>0.27</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>sum</em></td>
+<td style="text-align: left;"><em>31.3</em></td>
+<td style="text-align: left;"><em>1.00</em></td>
+</tr>
+</tbody>
+</table>
+<p>The output for “expressed” is then the weighted sum of all V vectors:</p>
+<blockquote class="blockquote">
+<p>output = 0.54·V_gene + 0.13·V_is + 0.06·V_not + 0.27·V_expressed</p>
+</blockquote>
+<p><strong>What this tells you.</strong> With these toy vectors, “expressed” draws mostly from “gene” (54%) and itself (27%), and barely from “not” (6%). In a real trained model the weights would look very different — the training signal would push “not” much higher because negation is semantically critical. The arithmetic above is real; only the Q/K vectors are invented. Every layer of every head in a frontier model runs this same computation millions of times per forward pass.</p>
+<p>Two inference-time parameters that matter:</p>
+<ul>
+<li><strong>Temperature</strong> — scales the sharpness of the next-token distribution before sampling. Temperature 0 is greedy (always pick the most probable token — deterministic, useful for structured output and code). Higher temperatures increase diversity and apparent creativity, but also incoherence and fabrication rate. API defaults vary; most sit around 0.7–1.0.</li>
+<li><strong>Context window</strong> — the maximum number of tokens the model can attend to in a single inference call. Modern frontier models have windows of 100 K–1 M tokens. Effective use at very long contexts is uneven: information in the middle of a very long context is attended to less reliably than information at the start or end (the “lost in the middle” finding).</li>
+</ul>
+<p>Key takeaways for a working researcher:</p>
+<ul>
+<li>An LLM is a function from <em>token sequence</em> to <em>probability distribution over next tokens</em>.</li>
+<li>The model has no internal representation of “what is true” — only “what is likely given the training distribution and the in-context evidence.”</li>
+<li>Long contexts are not memory — the prompt window is the entire world the model can see at inference time.</li>
+</ul>
+</section>
+</section>
+<section id="training-stages-simplified" class="level2">
+<h2 class="anchored" data-anchor-id="training-stages-simplified">Training stages (simplified)</h2>
+<p>Modern frontier models go through <em>at least</em>:</p>
+<ol type="1">
+<li><strong>Pretraining</strong> — next-token prediction on a large corpus of text and code. Source of broad knowledge and most factual content; also source of factual errors and biases in the training distribution.</li>
+<li><strong>Supervised fine-tuning (SFT)</strong> — training on curated instruction/response pairs. Shapes the assistant format and follows-instructions behavior.</li>
+<li><strong>Preference optimization</strong> (RLHF, DPO, RLAIF, constitutional methods) — training against human or AI preferences. Shapes helpfulness, honesty, refusals, and <em>materially affects factual and reasoning behavior</em> — not just tone.</li>
+<li><strong>Safety / character / red-team passes</strong> — additional tuning for refusals, persona, and adversarial robustness.</li>
+</ol>
+<p>Don’t memorize this list. The takeaway: <strong>post-training is not just “polish.”</strong> Two models with similar pretraining can behave very differently because of preference and safety tuning.</p>
+</section>
+<section id="why-models-fabricate" class="level2">
+<h2 class="anchored" data-anchor-id="why-models-fabricate">Why models fabricate</h2>
+<p>We use <strong>fabrication</strong> for the <em>outcome</em> (made-up facts, fake citations, invented function signatures) and <strong>confabulation</strong> for the <em>mechanism</em> (the model fills gaps in plausible ways from the training distribution). “Hallucination” is the common term but understates the harm when applied to citations.</p>
+<p>Why it happens:</p>
+<ul>
+<li>Training rewards fluent, plausible completion — not abstention or calibrated uncertainty.</li>
+<li>For rare facts (a specific paper, a recent tool version, a niche protocol), the model interpolates from neighbors in the training distribution.</li>
+<li>Preference tuning further pushes toward confident, helpful-sounding answers.</li>
+</ul>
+<p>Huang et al.&nbsp;(2023) distinguish two useful types:</p>
+<ul>
+<li><strong>Factuality fabrication</strong> — output contradicts a verifiable real-world fact.</li>
+<li><strong>Faithfulness fabrication</strong> — output contradicts the source the model was given (e.g., a misquote from a paper you pasted in).</li>
+</ul>
+<p>Both happen; both demand different defenses.</p>
+</section>
+<section id="what-this-means-for-you" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-means-for-you">What this means for you</h2>
+<ul>
+<li>Facts at the long tail of the training distribution (specific papers, recent tools, niche protocols) are the <strong>highest-risk outputs</strong>.</li>
+<li>Context you provide in the prompt is <em>qualitatively</em> more reliable than facts the model recalls.</li>
+<li>Retrieval (RAG), tool use, and grounding in real documents reduce — but do not eliminate — fabrication. They can introduce <em>faithfulness</em> fabrication where they reduce <em>factuality</em> fabrication.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Check your understanding
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>A colleague asks why a frontier LLM “knows” the abstract of a recent paper from your subfield but invents the figure legends. What is the structural reason in terms of training distribution and confabulation?</li>
+<li>You set temperature = 0 and the model still produces a different answer to the same prompt across two API calls. Name two plausible causes.</li>
+<li>Distinguish factuality fabrication from faithfulness fabrication with one example each from a research workflow.</li>
+</ol>
+<p><strong>Answers:</strong> 1. Abstracts of widely cited papers appear many times in the training corpus (broad coverage at the head of the distribution); figure legends from a single paper appear once or not at all (long tail). When asked for the legends, the model has no learned association to recall and confabulates a plausible completion. 2. Non-determinism in the inference stack: batched sampling can break ties differently across calls; many providers do not guarantee bit-exact determinism even at temperature 0; system prompts or hidden context (date, region) may differ between calls. 3. <em>Factuality:</em> the model invents a paper title and DOI (“Smith et al.&nbsp;2021, <em>Nature Methods</em>”) that does not exist. <em>Faithfulness:</em> you paste a real paper and ask for a summary; the model says the study used n=200 mice when the paper says n=20.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li>Bender et al.&nbsp;(2021), <a href="https://dl.acm.org/doi/10.1145/3442188.3445922">Stochastic Parrots</a> — foundational, pre-RLHF.</li>
+<li>Wei et al.&nbsp;(2022), <a href="https://arxiv.org/abs/2206.07682">Emergent Abilities</a> — read with Schaeffer et al.&nbsp;(2023), <a href="https://arxiv.org/abs/2304.15004">Are Emergent Abilities a Mirage?</a></li>
+<li>Ouyang et al.&nbsp;(2022), <a href="https://arxiv.org/abs/2203.02155">Training Language Models to Follow Instructions</a> — InstructGPT / RLHF.</li>
+<li>Huang et al.&nbsp;(2023), <a href="https://arxiv.org/abs/2311.05232">A Survey on Hallucination in LLMs</a> — taxonomy and mitigation.</li>
+</ul>
 
 
 </section>
@@ -1068,13 +1222,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./course-team.html" class="pagination-link" aria-label="Teaching team">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Teaching team</span>
+      <a href="../fluency/diligence.html" class="pagination-link" aria-label="Diligence">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Diligence</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./course-faq.html" class="pagination-link" aria-label="FAQ">
-        <span class="nav-page-text">FAQ</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../literacy/prompting.html" class="pagination-link" aria-label="Prompting">
+        <span class="nav-page-text">Prompting</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1086,7 +1240,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/literacy/how-llms-work.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

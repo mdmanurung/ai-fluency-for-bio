@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI Fluency Foundations for Biology</title>
+<title>Syllabus – AI Fluency Foundations for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -32,8 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./course-faq.html" rel="next">
-<link href="./course-team.html" rel="prev">
+<link href="./course-support.html" rel="next">
+<link href="./course-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -77,12 +77,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="AI Fluency Foundations for Biology">
-<meta property="og:description" content="A 4-week course on collaborating effectively with AI in biological research">
+<meta property="og:title" content="Syllabus – AI Fluency Foundations for Biology">
+<meta property="og:description" content="A 4-week foundations course on using AI effectively in biological research — the 4 D’s of AI fluency, LLM literacy, and a hands-on single-cell RNA-seq pipeline (FASTQ → annotated UMAP) run with AI in the loop.">
 <meta property="og:site_name" content="AI Fluency Foundations for Biology">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -253,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./course-syllabus.html">Syllabus</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -299,7 +299,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
@@ -317,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -544,15 +544,35 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#logistics" id="toc-logistics" class="nav-link active" data-scroll-target="#logistics">Logistics</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#required-tools" id="toc-required-tools" class="nav-link" data-scroll-target="#required-tools">Required tools</a></li>
+  <li><a href="#course-structure" id="toc-course-structure" class="nav-link" data-scroll-target="#course-structure">Course structure</a></li>
+  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment">Assessment</a></li>
+  <li><a href="#ai-use-policy" id="toc-ai-use-policy" class="nav-link" data-scroll-target="#ai-use-policy">AI-use policy</a>
+  <ul class="collapse">
+  <li><a href="#disclosure-rubric" id="toc-disclosure-rubric" class="nav-link" data-scroll-target="#disclosure-rubric">Disclosure rubric</a></li>
+  </ul></li>
+  <li><a href="#data-policy-required-reading-before-any-assignment-using-real-data" id="toc-data-policy-required-reading-before-any-assignment-using-real-data" class="nav-link" data-scroll-target="#data-policy-required-reading-before-any-assignment-using-real-data">Data policy (required reading before any assignment using real data)</a></li>
+  <li><a href="#recommended-readings" id="toc-recommended-readings" class="nav-link" data-scroll-target="#recommended-readings">Recommended readings</a></li>
+  <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies">Course policies</a></li>
+  <li><a href="#academic-integrity" id="toc-academic-integrity" class="nav-link" data-scroll-target="#academic-integrity">Academic integrity</a></li>
+  <li><a href="#accessibility" id="toc-accessibility" class="nav-link" data-scroll-target="#accessibility">Accessibility</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/course-syllabus.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./course-syllabus.html">Syllabus</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">AI Fluency Foundations for Biology</h1>
-<p class="subtitle lead">A 4-week course on collaborating effectively with AI in biological research</p>
+<h1 class="title">Syllabus</h1>
 </div>
 
 
@@ -569,85 +589,257 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This site hosts the course materials for <strong>AI Fluency Foundations for Biology</strong>. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.</p>
-<p>The course covers:</p>
-<ol type="1">
-<li><strong>The 4 D’s of AI fluency</strong> — Delegation, Description, Discernment, Diligence — adapted for biology research, following <a href="https://www.anthropic.com/ai-fluency">Anthropic’s AI Fluency Framework</a>.</li>
-<li><strong>LLM literacy</strong> for bio researchers — how large language models work, prompt, and fail.</li>
-<li><strong>Hands-on bioinformatics</strong> — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.</li>
-<li><strong>A complete scRNA-seq pipeline</strong> — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="logistics" class="level2">
+<h2 class="anchored" data-anchor-id="logistics">Logistics</h2>
+<ul>
+<li><strong>Format</strong>: <em>announced before term</em> (recommend hybrid — in-person + recorded).</li>
+<li><strong>Sessions</strong>: 4 weekly meetings, ~2 hours each. Format: ~30 min lecture + ~30 min live demo + ~60 min workshop.</li>
+<li><strong>Workload</strong>: ~3–5 hours per week outside class (calibrated to deliverables; instructor will tune after week 1).</li>
+<li><strong>Meeting time / location</strong>: <em>announced before term</em>.</li>
+<li><strong>Duration</strong>: 4 weeks. This is a <strong>foundations</strong> course; real fluency requires sustained practice over months.</li>
+</ul>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Working comfort with R <em>or</em> Python at a scripting level (read and modify a 100-line script).</li>
+<li>An LLM chat account — free tier of Claude, ChatGPT, or Gemini works for most exercises (see budget note below).</li>
+<li>A GitHub account.</li>
+<li>Laptop with terminal access; ability to install <a href="https://quarto.org/">Quarto</a> and a code assistant.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Subfield scope
+<span class="screen-reader-only">Warning</span>Free-tier budget note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D’s. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.</p>
+<p>Free-tier LLMs work for week 1–2 chat exercises. The week 3 mini-project and week 4 capstone benefit from a paid tier (Claude Pro / ChatGPT Plus) or institutional API access — free-tier rate limits will otherwise interrupt sustained code-assistance sessions. The instructor will note any institutional access available before the course starts.</p>
 </div>
 </div>
-<p>See the <a href="./course-overview.html">Overview</a> for learning outcomes, or jump straight to the schedule below.</p>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p>Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.</p>
+</section>
+<section id="required-tools" class="level2">
+<h2 class="anchored" data-anchor-id="required-tools">Required tools</h2>
+<ul>
+<li><strong><a href="https://quarto.org/">Quarto</a></strong> (current stable; ≥ 1.5) — for reproducible reports.</li>
+<li><strong>Git + GitHub</strong> — for version control and submission.</li>
+<li><strong>A coding assistant</strong> (one of): <a href="https://docs.claude.com/en/docs/claude-code/overview">Claude Code</a>, <a href="https://cursor.sh/">Cursor</a>, or VS Code + <a href="https://github.com/features/copilot">GitHub Copilot</a>.</li>
+<li><strong>A chat LLM</strong> (one of): <a href="https://claude.ai/">Claude</a>, ChatGPT, or Gemini. Course examples use Claude by default.</li>
+<li><strong>A grounded literature tool</strong> (one of): <a href="https://elicit.com/">Elicit</a>, <a href="https://consensus.app/">Consensus</a>, <a href="https://scispace.com/">SciSpace</a>, or Perplexity (sources mode).</li>
+<li><strong>Bioinformatics environment</strong>: Python with <a href="https://scanpy.readthedocs.io/">Scanpy</a> is the course default for the hands-on track. The 5-module scRNA-seq pipeline runs in <strong>Google Colab</strong> out of the box (no install required for Modules 3–5; Modules 1–2 need HPC or are skippable). If you prefer a local setup, a pinned environment (<code>conda</code> or <code>uv</code>) is supported — see <code>weeks/week-3.qmd</code> Setup. R/<a href="https://satijalab.org/seurat/">Seurat</a> users can substitute the equivalent Bioconductor toolchain for the mini-project; an instructor pointer is in <a href="./bioinformatics/code-assistance.html">Code assistance</a>.</li>
+</ul>
+</section>
+<section id="course-structure" class="level2">
+<h2 class="anchored" data-anchor-id="course-structure">Course structure</h2>
+<p>The course covers three conceptual tracks and a 5-module scRNA-seq pipeline across four weeks:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 25%">
 <col style="width: 16%">
-<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 27%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Week</th>
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: left;">Readings</th>
+<th style="text-align: left;">Theme</th>
 <th style="text-align: left;">Hands-on</th>
 <th style="text-align: left;">Deliverable</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">AI fluency foundations — the 4 D’s</td>
-<td style="text-align: left;"><a href="./fluency/delegation.html">Delegation</a>, <a href="./fluency/description.html">Description</a>, <a href="./fluency/discernment.html">Discernment</a>, <a href="./fluency/diligence.html">Diligence</a></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Foundations &amp; the 4 D’s</td>
 <td style="text-align: left;">Tooling setup</td>
-<td style="text-align: left;">Reflection + tooling check</td>
+<td style="text-align: left;">Reflection (≤ 500 words) + tooling confirmation</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-2.html">2</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">LLM literacy for bio researchers</td>
-<td style="text-align: left;"><a href="./literacy/how-llms-work.html">How LLMs work</a>, <a href="./literacy/prompting.html">Prompting</a>, <a href="./literacy/tool-use-and-agents.html">Tool use &amp; agents</a>, <a href="./literacy/ethics-and-limits.html">Ethics &amp; limits</a></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">LLM literacy</td>
 <td style="text-align: left;">Live prompt clinic</td>
-<td style="text-align: left;">Prompt-engineering exercise</td>
+<td style="text-align: left;">Prompt-engineering exercise (weak vs.&nbsp;strong, with critique)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-3.html">3</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering</td>
-<td style="text-align: left;"><a href="./bioinformatics/code-assistance.html">Code assistance</a>, <a href="./bioinformatics/data-analysis.html">Data analysis</a>, <a href="modules/module-01-raw-data-qc/README.md">Module 1</a>, <a href="modules/module-02-alignment-count-matrix/README.md">Module 2</a></td>
-<td style="text-align: left;"><a href="modules/module-03-preprocessing-scanpy/README.md">Module 3</a> in-class; <a href="modules/module-04-clustering-umap/README.md">Module 4</a> after-class</td>
-<td style="text-align: left;">Mini-project (PBMC 3k) + capstone proposal</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering (Modules 3 &amp; 4)</td>
+<td style="text-align: left;">Module 3 in-class; Module 4 after-class</td>
+<td style="text-align: left;">Mini-project: reproducible AI-assisted PBMC 3k QC + clustering report</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-4.html">4</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq II — annotation, capstone</td>
-<td style="text-align: left;"><a href="./bioinformatics/literature-review.html">Literature review</a>, <a href="./bioinformatics/protocol-design.html">Protocol design</a></td>
-<td style="text-align: left;"><a href="modules/module-05-annotation-interpretation/README.md">Module 5</a> in-class</td>
-<td style="text-align: left;">Capstone (annotation, lit brief, or protocol — student choice)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">scRNA-seq II — annotation, capstone (Module 5)</td>
+<td style="text-align: left;">Module 5 in-class</td>
+<td style="text-align: left;">Capstone: literature brief + analysis-or-protocol + reflection + disclosure</td>
 </tr>
 </tbody>
 </table>
+<p>Modules 1 (FastQC) and 2 (Cell Ranger / STARsolo) are pre-week-3 reading. Module 2 needs HPC; if you don’t have it, skip directly to Module 3 — a pre-built count matrix is loaded by Scanpy.</p>
+</section>
+<section id="assessment" class="level2">
+<h2 class="anchored" data-anchor-id="assessment">Assessment</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: center;">Weight</th>
+<th style="text-align: left;">What it measures</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Weekly exercises (weeks 1, 2)</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: left;">Application of weekly material to your own work.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mini-project (week 3)</td>
+<td style="text-align: center;">25%</td>
+<td style="text-align: left;">Reproducible AI-assisted bioinformatics analysis. Includes an <strong>AI-second baseline</strong> component (see below).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Capstone (weeks 3–4)</td>
+<td style="text-align: center;">30%</td>
+<td style="text-align: left;">Scoped in week 3, executed in week 4. Literature → analysis-or-protocol → reflection → disclosure.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Participation &amp; peer review</td>
+<td style="text-align: center;">15%</td>
+<td style="text-align: left;">Live workshops, peer feedback. <strong>Credit / no-credit</strong>, not graded for quality. Use the <a href="./reference/peer-review.html">peer-review template</a> for written reviews.</td>
+</tr>
+</tbody>
+</table>
+<p>Each graded deliverable carries a <strong>disclosure-quality</strong> sub-score (see rubric below) that is part of the deliverable’s grade, not separate.</p>
+</section>
+<section id="ai-use-policy" class="level2">
+<h2 class="anchored" data-anchor-id="ai-use-policy">AI-use policy</h2>
+<p>This is a course about using AI tools well. <strong>You are expected to use them on most assignments.</strong> Following pedagogical research, two assignments include an <strong>AI-free or AI-second baseline component</strong> so you can develop and demonstrate the underlying skill, not just the collaboration skill:</p>
+<ul>
+<li><strong>Week 1 reflection</strong>: write your initial classification of three of your own tasks <em>without</em> AI consultation. Then, optionally, run them past an AI and note what changed.</li>
+<li><strong>Week 3 mini-project</strong>: write a small (~25-line) AI-free baseline of the PBMC 3k QC pass <em>first</em>, by hand — <code>sc.datasets.pbmc3k()</code>, mt-gene flag, three QC violin plots, threshold filter, log-normalise. Then iterate with an AI assistant on the rest (clustering, marker checks, refactor). Submit both, with a short note on what the AI changed and why you accepted or rejected each change.</li>
+</ul>
+<p>For all assignments:</p>
+<ul>
+<li><strong>Disclose</strong> which tools you used and how. See the disclosure rubric below.</li>
+<li><strong>Verify</strong> every factual claim, citation, and piece of code before relying on it.</li>
+<li><strong>Own</strong> your output: you are the author of record. AI-generated text used verbatim must be quoted or marked.</li>
+<li><strong>Protect</strong> sensitive data: see the data policy below.</li>
+</ul>
+<section id="disclosure-rubric" class="level3">
+<h3 class="anchored" data-anchor-id="disclosure-rubric">Disclosure rubric</h3>
+<p>Every graded deliverable includes a disclosure section, scored on these dimensions (4 points total, contributes to the deliverable’s grade):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 57%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dimension</th>
+<th style="text-align: left;">0</th>
+<th style="text-align: left;">1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Tools listed</strong></td>
+<td style="text-align: left;">None or vague (“used AI”)</td>
+<td style="text-align: left;">Specific tool, version/model, and access tier (e.g., “Claude Sonnet 4.6, Pro tier, web UI”)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Use described</strong></td>
+<td style="text-align: left;">Generic (“for help”)</td>
+<td style="text-align: left;">Concrete uses (“drafted DESeq2 scaffold; rewrote intro paragraph; suggested 3 papers, 2 verified, 1 fabricated”)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Verification stated</strong></td>
+<td style="text-align: left;">Not mentioned</td>
+<td style="text-align: left;">Names what you checked and how (ran tests, verified citations on PubMed, ran code on test data)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Rejections noted</strong></td>
+<td style="text-align: left;">Not mentioned</td>
+<td style="text-align: left;">Lists at least one AI suggestion you rejected and why</td>
+</tr>
+</tbody>
+</table>
+<p>A template disclosure paragraph is provided with each assignment.</p>
+</section>
+</section>
+<section id="data-policy-required-reading-before-any-assignment-using-real-data" class="level2">
+<h2 class="anchored" data-anchor-id="data-policy-required-reading-before-any-assignment-using-real-data">Data policy (required reading before any assignment using real data)</h2>
+<p>Do <strong>not</strong> paste any of the following into a third-party LLM service without explicit, documented permission and an approved data-handling pathway:</p>
+<ul>
+<li><strong>Patient-identifiable data</strong> or any PHI under HIPAA (US) / personal data under GDPR (EU/UK).</li>
+<li><strong>Controlled-access data</strong> (NIH dbGaP, UK Biobank, EGA, etc.) — controlled-access agreements typically prohibit third-party transmission.</li>
+<li><strong>BAA-restricted clinical data</strong> — even de-identified data may be subject to your institution’s Business Associate Agreements.</li>
+<li><strong>Embargoed pre-publication data</strong> — including unpublished collaborator data, manuscripts under review, and grant proposals.</li>
+<li><strong>Sequence or other data</strong> under a Material Transfer Agreement (MTA) with restrictive terms.</li>
+</ul>
+<p>For any such data: use <strong>on-premises</strong>, <strong>institutional</strong>, or <strong>vendor enterprise tiers with appropriate contracts</strong> (e.g., zero-retention with a signed BAA where applicable). When in doubt, consult your IRB / data steward / institutional privacy office <em>before</em> the assignment, not after.</p>
+<p>The course dataset (10x PBMC 3k) is public and safe to use with any tool. Supplementary references to other public datasets (e.g., from GEO or ArrayExpress) are also safe.</p>
+</section>
+<section id="recommended-readings" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-readings">Recommended readings</h2>
+<p>Two short readings per week is the assigned load; the rest is a menu.</p>
+<p><strong>Foundations / fluency</strong></p>
+<ul>
+<li>Anthropic, <a href="https://www.anthropic.com/ai-fluency"><em>AI Fluency: Framework &amp; Foundations</em></a> — the source of the 4 D’s framework. Free course materials and PDF available from Anthropic.</li>
+<li>Mollick, E. (2024). <em>Co-Intelligence: Living and Working with AI.</em> Portfolio. — practical framing for working with LLMs.</li>
+</ul>
+<p><strong>How LLMs work and why they fail</strong></p>
+<ul>
+<li>Bender, E. M., Gebru, T., McMillan-Major, A., &amp; Shmitchell, S. (2021). <a href="https://dl.acm.org/doi/10.1145/3442188.3445922">On the dangers of stochastic parrots: Can language models be too big? 🦜</a> <em>FAccT ’21.</em> Foundational; pre-RLHF era.</li>
+<li>Wei, J., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2206.07682">Emergent abilities of large language models.</a> <em>TMLR.</em> — Read with the critique below.</li>
+<li>Schaeffer, R., Miranda, B., &amp; Koyejo, S. (2023). <a href="https://arxiv.org/abs/2304.15004">Are emergent abilities of large language models a mirage?</a> <em>NeurIPS.</em> — Important counterpoint to Wei et al.</li>
+<li>Ouyang, L., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2203.02155">Training language models to follow instructions with human feedback.</a> <em>NeurIPS.</em> — InstructGPT / RLHF.</li>
+<li>Huang, L., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2311.05232">A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions.</a> <em>ACM TOIS.</em> — Useful taxonomy: factuality vs.&nbsp;faithfulness hallucination.</li>
+</ul>
+<p><strong>AI in biology / science</strong></p>
+<ul>
+<li>Bunne, C., et al.&nbsp;(2024). <a href="https://www.cell.com/cell/fulltext/S0092-8674(24)01332-1">How to build the virtual cell with artificial intelligence: Priorities and opportunities.</a> <em>Cell</em> 187(25), 7045–7063. — Forward-looking perspective; advanced.</li>
+<li>Boiko, D. A., MacKnight, R., Kline, B., &amp; Gomes, G. (2023). <a href="https://www.nature.com/articles/s41586-023-06792-0">Autonomous chemical research with large language models.</a> <em>Nature</em> 624, 570–578. — Chemistry rather than biology; useful as analogy for autonomous research workflows.</li>
+</ul>
+<p><strong>Ethics and policy</strong></p>
+<ul>
+<li>Kay, J., Kasirzadeh, A., &amp; Mohamed, S. (2024). <a href="https://arxiv.org/abs/2408.11441">Epistemic injustice in generative AI.</a> <em>AAAI/ACM AIES.</em> — Frames the epistemic risks of generative AI for shared knowledge.</li>
+<li>ICMJE — current <a href="https://www.icmje.org/recommendations/">Recommendations</a> on AI in authorship (read the current online version, not a static cite).</li>
+<li><em>Nature</em> — current <a href="https://www.nature.com/nature-portfolio/editorial-policies/ai">editorial policies on AI</a> (current online version).</li>
+<li><em>Science</em> — current AI policies via the journal family’s editorial guidelines (current online version).</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A note on the reading list
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Citations were verified at the time of writing (April 2026). Editorial policies and “current best” surveys date quickly — confirm before adopting for a new term. Items the instructor judges optional are still valuable supplements; the assigned load is two short readings per week.</p>
+</div>
+</div>
+</section>
+<section id="course-policies" class="level2">
+<h2 class="anchored" data-anchor-id="course-policies">Course policies</h2>
+<ul>
+<li><strong>Late work</strong>: 24-hour grace per assignment, then −10% / day. Two no-questions extensions per term.</li>
+<li><strong>Collaboration</strong>: encouraged for understanding; submitted work is individual. AI collaboration is governed by the AI-use policy above.</li>
+<li><strong>Attendance</strong>: 3 of 4 sessions live (recordings available). Week 4 in-person strongly preferred for capstone presentations.</li>
+</ul>
+</section>
+<section id="academic-integrity" class="level2">
+<h2 class="anchored" data-anchor-id="academic-integrity">Academic integrity</h2>
+<p>Submitting AI output as your own unverified, undisclosed work — without verification or critical engagement — violates academic integrity, regardless of how the text was produced. The disclosure rubric makes the expectation concrete.</p>
+</section>
+<section id="accessibility" class="level2">
+<h2 class="anchored" data-anchor-id="accessibility">Accessibility</h2>
+<p>Please reach out to the instructor in week 1 if you need accommodations. Materials are designed to be screen-reader friendly; please report accessibility issues via the <a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues">course repository</a>.</p>
 
 
 </section>
@@ -1068,13 +1260,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./course-team.html" class="pagination-link" aria-label="Teaching team">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Teaching team</span>
+      <a href="./course-overview.html" class="pagination-link" aria-label="Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./course-faq.html" class="pagination-link" aria-label="FAQ">
-        <span class="nav-page-text">FAQ</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./course-support.html" class="pagination-link" aria-label="Support">
+        <span class="nav-page-text">Support</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1086,7 +1278,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/course-syllabus.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

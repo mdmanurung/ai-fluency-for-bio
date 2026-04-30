@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>AI Fluency Foundations for Biology</title>
+<title>changelog – AI Fluency Foundations for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -32,8 +32,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./course-faq.html" rel="next">
-<link href="./course-team.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -78,11 +76,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="AI Fluency Foundations for Biology">
-<meta property="og:description" content="A 4-week course on collaborating effectively with AI in biological research">
+<meta property="og:description" content="A 4-week foundations course on using AI effectively in biological research — the 4 D’s of AI fluency, LLM literacy, and a hands-on single-cell RNA-seq pipeline (FASTQ → annotated UMAP) run with AI in the loop.">
 <meta property="og:site_name" content="AI Fluency Foundations for Biology">
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -253,7 +251,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      AI Fluency Foundations for Biology
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -284,13 +284,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
@@ -317,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
@@ -544,112 +544,229 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#changelog" id="toc-changelog" class="nav-link active" data-scroll-target="#changelog">Changelog</a>
+  <ul class="collapse">
+  <li><a href="#unreleased" id="toc-unreleased" class="nav-link" data-scroll-target="#unreleased">[Unreleased]</a>
+  <ul class="collapse">
+  <li><a href="#changed-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass-pr-d" id="toc-changed-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass-pr-d" class="nav-link" data-scroll-target="#changed-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass-pr-d">Changed — branch <code>claude/course-improvement-feedback-Dc10Y</code> (open-source / reuse pass, PR-D)</a></li>
+  <li><a href="#added-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass" id="toc-added-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass" class="nav-link" data-scroll-target="#added-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass">Added — branch <code>claude/course-improvement-feedback-Dc10Y</code> (open-source / reuse pass)</a></li>
+  <li><a href="#changed-branch-claudereview-ai-fluency-course-qgsyp-course-merge" id="toc-changed-branch-claudereview-ai-fluency-course-qgsyp-course-merge" class="nav-link" data-scroll-target="#changed-branch-claudereview-ai-fluency-course-qgsyp-course-merge">Changed — branch <code>claude/review-ai-fluency-course-QgsyP</code> (course merge)</a></li>
+  <li><a href="#added-branch-claudepropose-next-steps-yvscm-pr-5" id="toc-added-branch-claudepropose-next-steps-yvscm-pr-5" class="nav-link" data-scroll-target="#added-branch-claudepropose-next-steps-yvscm-pr-5">Added — branch <code>claude/propose-next-steps-yVScm</code> (PR-5)</a></li>
+  <li><a href="#added-branch-claudepropose-next-steps-yvscm-pr-4" id="toc-added-branch-claudepropose-next-steps-yvscm-pr-4" class="nav-link" data-scroll-target="#added-branch-claudepropose-next-steps-yvscm-pr-4">Added — branch <code>claude/propose-next-steps-yVScm</code> (PR-4)</a></li>
+  <li><a href="#added-branch-claudepropose-next-steps-yvscm-pr-3" id="toc-added-branch-claudepropose-next-steps-yvscm-pr-3" class="nav-link" data-scroll-target="#added-branch-claudepropose-next-steps-yvscm-pr-3">Added — branch <code>claude/propose-next-steps-yVScm</code> (PR-3)</a></li>
+  <li><a href="#added-branch-claudepropose-next-steps-yvscm-pr-2" id="toc-added-branch-claudepropose-next-steps-yvscm-pr-2" class="nav-link" data-scroll-target="#added-branch-claudepropose-next-steps-yvscm-pr-2">Added — branch <code>claude/propose-next-steps-yVScm</code> (PR-2)</a></li>
+  <li><a href="#added-branch-claudecourse-next-steps-fcxov-pr-1" id="toc-added-branch-claudecourse-next-steps-fcxov-pr-1" class="nav-link" data-scroll-target="#added-branch-claudecourse-next-steps-fcxov-pr-1">Added — branch <code>claude/course-next-steps-fCxoV</code> (PR-1)</a></li>
+  <li><a href="#added-branch-claudesetup-gh-pages-course-tjtne" id="toc-added-branch-claudesetup-gh-pages-course-tjtne" class="nav-link" data-scroll-target="#added-branch-claudesetup-gh-pages-course-tjtne">Added — branch <code>claude/setup-gh-pages-course-tJTne</code></a></li>
+  </ul></li>
+  <li><a href="#pr-4-merged-to-claudesetup-gh-pages-course-tjtne" id="toc-pr-4-merged-to-claudesetup-gh-pages-course-tjtne" class="nav-link" data-scroll-target="#pr-4-merged-to-claudesetup-gh-pages-course-tjtne">[0.4.0] — 2026-04-24 (PR #4, merged to <code>claude/setup-gh-pages-course-tJTne</code>)</a>
+  <ul class="collapse">
+  <li><a href="#added" id="toc-added" class="nav-link" data-scroll-target="#added">Added</a></li>
+  </ul></li>
+  <li><a href="#pr-3-merged-to-main-via-claudequarto-ai-course-site-70ltb" id="toc-pr-3-merged-to-main-via-claudequarto-ai-course-site-70ltb" class="nav-link" data-scroll-target="#pr-3-merged-to-main-via-claudequarto-ai-course-site-70ltb">[0.3.0] — 2026-04-24 (PR #3, merged to <code>main</code> via <code>claude/quarto-ai-course-site-70lTB</code>)</a>
+  <ul class="collapse">
+  <li><a href="#changed" id="toc-changed" class="nav-link" data-scroll-target="#changed">Changed</a></li>
+  </ul></li>
+  <li><a href="#pr-2-merged-to-main-via-claudequarto-ai-course-site-70ltb" id="toc-pr-2-merged-to-main-via-claudequarto-ai-course-site-70ltb" class="nav-link" data-scroll-target="#pr-2-merged-to-main-via-claudequarto-ai-course-site-70ltb">[0.2.0] — 2026-04-24 (PR #2, merged to <code>main</code> via <code>claude/quarto-ai-course-site-70lTB</code>)</a>
+  <ul class="collapse">
+  <li><a href="#added-1" id="toc-added-1" class="nav-link" data-scroll-target="#added-1">Added</a></li>
+  </ul></li>
+  <li><a href="#initial-commit" id="toc-initial-commit" class="nav-link" data-scroll-target="#initial-commit">[0.1.0] — Initial commit</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/CHANGELOG.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">AI Fluency Foundations for Biology</h1>
-<p class="subtitle lead">A 4-week course on collaborating effectively with AI in biological research</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
+<section id="changelog" class="level1">
+<h1>Changelog</h1>
+<p>All notable changes to this repository are recorded here. Format follows <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog</a>.</p>
+<hr>
+<section id="unreleased" class="level2">
+<h2 class="anchored" data-anchor-id="unreleased">[Unreleased]</h2>
+<section id="changed-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass-pr-d" class="level3">
+<h3 class="anchored" data-anchor-id="changed-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass-pr-d">Changed — branch <code>claude/course-improvement-feedback-Dc10Y</code> (open-source / reuse pass, PR-D)</h3>
+<ul>
+<li><strong><code>bioinformatics/code-assistance.qmd</code></strong> — trimmed (~205 → ~155 lines): “Where AI helps / falls short” tightened into a two-paragraph block; verbose pytest fixture in the test-writing example replaced with a four-bullet summary of what the AI returns; weak/strong debugging prompts compressed; closing comprehension callout added.</li>
+<li><strong><code>bioinformatics/data-analysis.qmd</code></strong> — trimmed (~158 → ~155 lines after adding the comprehension check): per-step prose tightened; closing comprehension callout added (mouse mt prefix, threshold from histogram, doublet-rate sanity check).</li>
+<li><strong><code>literacy/tool-use-and-agents.qmd</code></strong> — expanded (~64 → ~95 lines): existing bibliography-cleanup agent example kept and renamed Pattern A; added Pattern B (coding assistant editing a repo with diff-review confirm gate) and a new “When <em>not</em> to use an agent” section (one-shot tasks, irreversible actions without rollback, gate-fires-every-step, high-trust low-frequency); closing comprehension callout added.</li>
+<li><strong>All 4 fluency pages</strong> (<code>delegation.qmd</code>, <code>description.qmd</code>, <code>discernment.qmd</code>, <code>diligence.qmd</code>) — added a <code>Check your understanding</code> collapsible callout at the bottom (3 questions + answer key each), keyed to the page’s worked example.</li>
+<li><strong>3 of 4 literacy pages</strong> (<code>how-llms-work.qmd</code>, <code>prompting.qmd</code>, <code>ethics-and-limits.qmd</code>) — added the same <code>Check your understanding</code> callout pattern. (<code>tool-use-and-agents.qmd</code> is covered by the expansion above.)</li>
+<li><strong><code>bioinformatics/code-assistance.qmd</code> and <code>bioinformatics/data-analysis.qmd</code></strong> — added comprehension callouts as well; bioinformatics worked examples now match the fluency / literacy formative-check pattern.</li>
+</ul>
+</section>
+<section id="added-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass" class="level3">
+<h3 class="anchored" data-anchor-id="added-branch-claudecourse-improvement-feedback-dc10y-open-source-reuse-pass">Added — branch <code>claude/course-improvement-feedback-Dc10Y</code> (open-source / reuse pass)</h3>
+<ul>
+<li><strong><code>environment.yml</code></strong> + <strong><code>requirements.txt</code></strong> — pin the full Scanpy + scrublet + leidenalg + igraph + jupyterlab stack at the repo root so self-paced learners can reproduce the hands-on track without dependency drift. Closes the “Commit a pinned environment” item in <code>PLANS.md</code> Infrastructure.</li>
+<li><strong><code>.github/workflows/link-check.yml</code></strong> — Lychee link-check on push, PR, and a weekly Monday cron. Catches link rot in the URL-heavy further-reading lists across all 12 fluency / literacy / bioinformatics pages.</li>
+<li><strong><code>modules/module-0[3,4,5]-*/notebook.ipynb</code></strong> — paired runnable Jupyter notebooks for the three Colab modules (preprocessing, clustering/UMAP, annotation). Generated from the existing README content via <code>tools/readme_to_ipynb.py</code>; each module README now has an “Open in Colab” badge at the top resolving to the notebook on <code>main</code>.</li>
+<li><strong><code>tools/readme_to_ipynb.py</code></strong> — small idempotent helper that converts a module README into a paired notebook (markdown for prose, code cells for <code>python</code> blocks). Lets maintainers keep README and notebook in sync by re-running.</li>
+<li><strong><code>reference/glossary.qmd</code></strong> — alphabetical glossary covering the AI/LLM and scRNA-seq vocabulary used throughout the course (~30 entries: agent, attention, blast radius, context window, fabrication, RAG, system prompt, temperature, token, tool use, AnnData, count matrix, doublet, FASTQ, GEM-X, HTO, leiden, marker gene, mt fraction, PBMC 3k, UMAP, etc.). Each entry cross-links to the page that introduces it.</li>
+<li><strong><code>reference/prompt-library.qmd</code></strong> — fill-in-the-blank prompt templates distilled from each bioinformatics page: debugging (four-part pattern), test writing (<code>validate_qc_outputs</code>-style), literature triage (five-step verification), protocol critique mode. Templates link back to the source page for the full worked example.</li>
+<li><strong><code>reference/peer-review.qmd</code></strong> — peer-review template that mirrors the four disclosure-rubric dimensions (tools listed, use described, verification stated, rejections noted) plus two open-ended prompts. Tone callout cross-links to <code>fluency/discernment.qmd</code> (“name the move that would have caught it, not the person”).</li>
+<li><strong><code>_quarto.yml</code></strong> — added a “Reference” sidebar section (glossary, prompt library, peer-review template).</li>
+<li><strong><code>course-syllabus.qmd</code></strong> — linked the participation/peer-review row to <code>reference/peer-review.qmd</code>.</li>
+<li><strong><code>course-team.qmd</code>, <code>course-support.qmd</code></strong> — added a “course template” callout flagging the page placeholders as fork-and-replace targets, so adopters know they are fork-friendly and not pre-filled for a specific cohort.</li>
+<li><strong><code>weeks/starter-week3-python.qmd</code></strong> — Setup section now references <code>environment.yml</code> / <code>requirements.txt</code> for local installs.</li>
+<li><strong><code>README.md</code></strong> — “What you need” references the pinned env files.</li>
+</ul>
+</section>
+<section id="changed-branch-claudereview-ai-fluency-course-qgsyp-course-merge" class="level3">
+<h3 class="anchored" data-anchor-id="changed-branch-claudereview-ai-fluency-course-qgsyp-course-merge">Changed — branch <code>claude/review-ai-fluency-course-QgsyP</code> (course merge)</h3>
+<p>Merge the 5-module scRNA-seq pipeline (PBMC 3k) into the 4-week instructor-led course. The two were previously inconsistent — README and modules described a self-paced FASTQ→UMAP course; the Quarto site described a 4-week AI-fluency course on bulk RNA-seq (GSE96870). After the merge, the course is one coherent thing:</p>
+<ul>
+<li><strong><code>README.md</code></strong> — rewritten to describe the merged structure: the 4-week course is primary; modules 1–5 are the concrete scRNA-seq project run alongside the theory tracks. Both Colab (default) and local conda/uv supported. Repo layout section added.</li>
+<li><strong><code>_quarto.yml</code></strong> — added “scRNA-seq pipeline (modules)” section to the sidebar (modules 1–5 now linkable from the rendered site). Updated site description and weekly section labels (Week 3 → “scRNA-seq I”, Week 4 → “scRNA-seq II”).</li>
+<li><strong><code>index.qmd</code></strong> — schedule rebuilt to show readings + hands-on + deliverable per week, with module references inlined. Placeholder dates (“Announced before term”) replace bare TBDs.</li>
+<li><strong><code>course-overview.qmd</code></strong> — practical-track scope and outcome 4 reframed around scRNA-seq; structure section now lists the 5-module project explicitly.</li>
+<li><strong><code>course-syllabus.qmd</code></strong> — required-tools changed to Python (Scanpy) primary with Seurat as supported alternative; AI-second baseline scoped to a 25-line PBMC 3k QC sketch; structure table updated to show modules; data policy note updated to PBMC 3k.</li>
+<li><strong><code>weeks/week-3.qmd</code></strong> — full rewrite: PBMC 3k as dataset; modules 1–2 as pre-class reading, Module 3 in-class, Module 4 after-class; mini-project deliverable updated to (a) AI-free baseline on PBMC 3k QC, (b) AI-assisted clustering extension, (c) accept/reject log, (d) reproducibility artifact, (e) disclosure.</li>
+<li><strong><code>weeks/week-4.qmd</code></strong> — full rewrite: Module 5 walkthrough as the in-class block; capstone explicitly forks into Path A (scRNA-seq analysis), Path B (literature brief), Path C (protocol design), retaining flexibility for non-genomics students; learning objectives callout added.</li>
+<li><strong><code>bioinformatics/data-analysis.qmd</code></strong> — full rewrite from R/DESeq2/GSE96870 to Python/Scanpy/PBMC 3k; explicit page-vs-Module-3 differentiation (page = AI-fluency principles; module = runnable procedure); 7-step QC walkthrough with discernment moves named at every step; closing 4 D’s callout retained; further reading updated to Wolf 2018 (Scanpy), Heumos 2023 (sc best practices), Wolock 2019 (Scrublet), 10x PBMC 3k docs.</li>
+<li><strong><code>bioinformatics/code-assistance.qmd</code></strong> — worked example rewritten from <code>validate_sample_sheet</code> (GSE96870 coldata) to <code>validate_qc_outputs</code> (PBMC 3k post-QC AnnData); debugging weak/strong example rewritten around the realistic <code>KeyError: 'mt'</code> scanpy QC error; R/Seurat note revised to a brief “the workflow transfers” pointer (no longer parallel R path); organism-conventions trap (<code>MT-</code> vs.&nbsp;<code>mt-</code>) added to common failure modes.</li>
+<li><strong><code>weeks/starter-week3-python.qmd</code></strong> — full rewrite for <code>sc.datasets.pbmc3k()</code>; load + shape assertion + non-zero-genes-per-cell summary table; install instructions for both Colab (default) and local pip.</li>
+<li><strong><code>weeks/starter-week3-r.qmd</code></strong> — <strong>deleted</strong>. R/Seurat parity dropped; students who prefer R can use the Seurat equivalent of the Python starter without instructor scaffolding.</li>
+<li><strong><code>course-team.qmd</code>, <code>course-support.qmd</code></strong> — bare <code>TBD</code> replaced with explicit “to be announced before week 1” placeholders.</li>
+<li><strong><code>fluency/description.qmd</code></strong> — worked example rewritten from a postdoc planning a bulk RNA-seq QC script (DESeq2 / <code>vst</code> / batch-coloured PCA) to a postdoc planning a PBMC 3k scRNA-seq QC script (Scanpy / mt prefix / QC violins / log-norm). Same five-part Description framework; aligned with the rest of the course.</li>
+<li><strong><code>fluency/diligence.qmd</code></strong> — disclosure-statement template example updated from “drafted the DESeq2 scaffold” to “drafted the Scanpy QC scaffold”.</li>
+<li><strong><code>PLANS.md</code></strong> — superseded callouts on the GSE96870 dataset lock and R/Python parity lock; infrastructure section updated to reference the active branch; nice-to-have updated.</li>
+</ul>
+</section>
+<section id="added-branch-claudepropose-next-steps-yvscm-pr-5" class="level3">
+<h3 class="anchored" data-anchor-id="added-branch-claudepropose-next-steps-yvscm-pr-5">Added — branch <code>claude/propose-next-steps-yVScm</code> (PR-5)</h3>
+<ul>
+<li><strong><code>weeks/week-2.qmd</code></strong> — full fill: added learning-objectives callout (4 objectives); expanded “In class” into three named blocks (short lecture, 40-min prompt clinic with the 4-step BYO-prompt → diagnose → fix → rerun protocol, 20-min bibliography-cleanup agent demo); added disclosure-statement requirement to deliverable; replaced bare TODO supplementary.</li>
+<li><strong><code>weeks/week-1.qmd</code> and <code>weeks/week-4.qmd</code></strong> — replaced bare <code>*TODO.*</code> Supplementary sections with: <em>Slides, recording, and notebooks will be posted here after each session.</em></li>
+<li><strong><code>literacy/prompting.qmd</code></strong> — added Mermaid flowchart diagram of prompt anatomy (system / user / assistant boxes inside a “flat token stream” subgraph, feeding into LLM → completion), placed between the bullet-list anatomy and the explanatory prose.</li>
+<li><strong><code>literacy/how-llms-work.qmd</code></strong> — added “Attention in one head: a toy calculation” subsection: 4-token sentence <code>gene is not expressed</code>; full Q·K dot-product table, √d_k scaling, exp/softmax table, weighted-V output formula, and explicit teaching note on what the arithmetic does and does not show.</li>
+</ul>
+</section>
+<section id="added-branch-claudepropose-next-steps-yvscm-pr-4" class="level3">
+<h3 class="anchored" data-anchor-id="added-branch-claudepropose-next-steps-yvscm-pr-4">Added — branch <code>claude/propose-next-steps-yVScm</code> (PR-4)</h3>
+<ul>
+<li><strong><code>bioinformatics/protocol-design.qmd</code></strong> — replaced the worked-example TODO with full content:
+<ul>
+<li>Five-step sparring-partner workflow elaborated into a realistic scRNA-seq pilot scenario (lung macrophages, influenza A, 3 time points, 6 samples, 10x Chromium GEM-X v4).</li>
+<li><strong>AI confidently wrong (×2)</strong>: recommended outdated Chromium v3.1 chemistry (current kit is GEM-X v4, CG000731, with different loading parameters); recommended 10,000 cells/reaction (inappropriate for large primary macrophages; correct range 5,000–7,000).</li>
+<li><strong>AI usefully right</strong>: critique-mode pass identified HTO hashtag multiplexing, which halves capture reactions, reduces batch effects, and enables doublet detection — a genuine improvement the postdoc had not planned.</li>
+<li>Reconciliation table documenting each change, its source (human vs.&nbsp;AI), and rationale.</li>
+<li>Closing 4 D’s callout (Description, Delegation, Discernment, Diligence).</li>
+<li>Common failure modes section: treating draft as protocol, accepting version numbers at face value, skipping critique pass.</li>
+<li>3 verified citations: Boiko et al.&nbsp;2023 (<em>Nature</em>), Begley &amp; Ellis 2012 (<em>Nature</em>), 10x GEM-X v4 user guide URL.</li>
+</ul></li>
+</ul>
+</section>
+<section id="added-branch-claudepropose-next-steps-yvscm-pr-3" class="level3">
+<h3 class="anchored" data-anchor-id="added-branch-claudepropose-next-steps-yvscm-pr-3">Added — branch <code>claude/propose-next-steps-yVScm</code> (PR-3)</h3>
+<ul>
+<li><strong><code>bioinformatics/literature-review.qmd</code></strong> — replaced both TODOs with full content:
+<ul>
+<li>Five-step verification workflow (copy DOI → resolve via doi.org → check title/authors → verify on-topic via PubMed → incorporate; ~3 min/citation budget).</li>
+<li>Worked example: “spatial transcriptomics in the tumor microenvironment” triage with explicit verification log across two tools. Shows one caught fabrication — a DOI that resolved to a real paper in an unrelated field — and explains why that is the most dangerous hallucination type.</li>
+<li>Switched-tool comparison: base LLM (2/5 fabricated) vs.&nbsp;Elicit grounded search (0/3 fabricated, but summaries still require verification).</li>
+<li>Step 3: AI for structured extraction from papers you already hold.</li>
+<li>Closing 4 D’s callout mapping Description / Discernment / Delegation / Diligence.</li>
+<li>Common failure modes section: the DOI-resolves-wrong trap, unconditional grounded-tool trust, outsourcing synthesis.</li>
+<li>2 verified citations (Walters &amp; Wilder 2023 <em>Scientific Reports</em>, Kay et al.&nbsp;2024 AAAI/ACM AIES) plus internal cross-reference to <code>fluency/discernment.qmd</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="added-branch-claudepropose-next-steps-yvscm-pr-2" class="level3">
+<h3 class="anchored" data-anchor-id="added-branch-claudepropose-next-steps-yvscm-pr-2">Added — branch <code>claude/propose-next-steps-yVScm</code> (PR-2)</h3>
+<ul>
+<li><strong><code>bioinformatics/code-assistance.qmd</code></strong> — replaced both TODOs with full content:
+<ul>
+<li>Expanded “Debugging with AI” section with a four-part pattern (full traceback + minimal failing code + intent paragraph + environment) and a side-by-side weak/strong prompt illustration using the GSE96870 KeyError scenario.</li>
+<li>Worked example: AI-assisted test writing for <code>validate_sample_sheet</code> in Python (pandas + pytest), continuing the GSE96870 grad-student persona. Shows three steps — write the contract yourself, ask AI for pytest bodies, prune brittle provenance tests and add the level-typo test AI missed.</li>
+<li>R equivalent note pointing at <code>testthat</code>.</li>
+<li>Closing 4 D’s callout mapping Description / Delegation / Discernment / Diligence onto the worked example.</li>
+<li>Common failure modes section: contract delegation, package hallucination, stale API signatures.</li>
+<li>2 verified citations added (Peng et al.&nbsp;2023, Spracklen et al.&nbsp;2024) plus internal cross-reference to <code>fluency/description.qmd</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="added-branch-claudecourse-next-steps-fcxov-pr-1" class="level3">
+<h3 class="anchored" data-anchor-id="added-branch-claudecourse-next-steps-fcxov-pr-1">Added — branch <code>claude/course-next-steps-fCxoV</code> (PR-1)</h3>
+<ul>
+<li><strong><code>bioinformatics/data-analysis.qmd</code></strong> — replaced TODO worked example with a six-step QC walkthrough on the GSE96870 cerebellum subset (sample sheet → library size → vst transform → PCA → correlation heatmap → outlier decision). Each step names the AI’s role and the human’s discernment move; closing callout maps onto Description / Discernment / Diligence / Delegation. Added 4 verified citations (Love et al.&nbsp;2014, Conesa et al.&nbsp;2016, Blackmore et al.&nbsp;2017, Carpentries bioc-rnaseq).</li>
+<li><strong><code>weeks/starter-week3-r.qmd</code>, <code>weeks/starter-week3-python.qmd</code></strong> — new starter notebooks. Scope deliberately narrow (load + confirm shape + one summary table) so they do not short-circuit the AI-free baseline that the week 3 mini-project requires.</li>
+<li><strong><code>weeks/week-3.qmd</code></strong> — added Course dataset section pointing at the starters; replaced TODO Supplementary section with concrete links.</li>
+</ul>
+</section>
+<section id="added-branch-claudesetup-gh-pages-course-tjtne" class="level3">
+<h3 class="anchored" data-anchor-id="added-branch-claudesetup-gh-pages-course-tjtne">Added — branch <code>claude/setup-gh-pages-course-tJTne</code></h3>
+<ul>
+<li><strong><code>literacy/how-llms-work.qmd</code></strong> — replaced TODO with a working-level explainer of next-token prediction, tokenisation, the transformer attention mechanism, temperature, and context windows.</li>
+<li><strong><code>literacy/prompting.qmd</code></strong> — filled three stubs:
+<ul>
+<li>Anatomy-of-a-prompt section: system prompt / user prompt / assistant turns with explanatory prose.</li>
+<li>Worked example: weak → strong prompt progression for structured extraction from methods sections, including a JSON schema pattern and an iteration-log workflow.</li>
+<li>Further reading: 4 references (Anthropic prompt-engineering docs, Wei et al.&nbsp;chain-of-thought, Brown et al.&nbsp;GPT-3 few-shot, Schulhoff et al.&nbsp;prompt report).</li>
+</ul></li>
+<li><strong><code>literacy/tool-use-and-agents.qmd</code></strong> — filled two stubs:
+<ul>
+<li>Worked example: bibliography-cleanup agent loop (read → lookup → propose → human-confirm → write), with analysis of why the confirm gate is the critical design decision.</li>
+<li>Further reading: 4 references (Anthropic building-effective-agents, Weng agent blog post, Yao et al.&nbsp;ReAct, Ruan et al.&nbsp;agent risk sandbox).</li>
+</ul></li>
+<li><strong><code>literacy/ethics-and-limits.qmd</code></strong> — filled authorship &amp; attribution TODO with the three convergent publisher positions as of early 2026 (AI cannot be an author; use must be disclosed; verbatim text must be marked), plus a callout to verify policies before each use.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="pr-4-merged-to-claudesetup-gh-pages-course-tjtne" class="level2">
+<h2 class="anchored" data-anchor-id="pr-4-merged-to-claudesetup-gh-pages-course-tjtne">[0.4.0] — 2026-04-24 (PR #4, merged to <code>claude/setup-gh-pages-course-tJTne</code>)</h2>
+<section id="added" class="level3">
+<h3 class="anchored" data-anchor-id="added">Added</h3>
+<ul>
+<li><strong><code>fluency/diligence.qmd</code></strong> — expanded disclosure norms with a policy-comparison table and a reusable disclosure-statement template; added further reading.</li>
+<li><strong><code>fluency/discernment.qmd</code></strong> — expanded verification checklist with step-by-step guidance; added further reading.</li>
+<li><strong><code>fluency/description.qmd</code></strong> — added RNA-seq QC before/after worked example; added further reading.</li>
+<li><strong><code>fluency/delegation.qmd</code></strong> — expanded delegation rubric with quadrant explanations; added BLAST batch-scripting worked example; added further reading.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="pr-3-merged-to-main-via-claudequarto-ai-course-site-70ltb" class="level2">
+<h2 class="anchored" data-anchor-id="pr-3-merged-to-main-via-claudequarto-ai-course-site-70ltb">[0.3.0] — 2026-04-24 (PR #3, merged to <code>main</code> via <code>claude/quarto-ai-course-site-70lTB</code>)</h2>
+<section id="changed" class="level3">
+<h3 class="anchored" data-anchor-id="changed">Changed</h3>
+<ul>
+<li>Revised syllabus and supporting pages following a multi-persona audit (student, instructor, external reviewer perspectives).</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="pr-2-merged-to-main-via-claudequarto-ai-course-site-70ltb" class="level2">
+<h2 class="anchored" data-anchor-id="pr-2-merged-to-main-via-claudequarto-ai-course-site-70ltb">[0.2.0] — 2026-04-24 (PR #2, merged to <code>main</code> via <code>claude/quarto-ai-course-site-70lTB</code>)</h2>
+<section id="added-1" class="level3">
+<h3 class="anchored" data-anchor-id="added-1">Added</h3>
+<ul>
+<li>Full Quarto site scaffold: <code>_quarto.yml</code>, <code>index.qmd</code>, <code>course-*.qmd</code>, <code>404.qmd</code>, <code>theme.scss</code>, <code>theme-dark.scss</code>, <code>.nojekyll</code>.</li>
+<li>Stub pages for all three tracks: <code>fluency/</code>, <code>literacy/</code>, <code>bioinformatics/</code>.</li>
+<li>Weekly module stubs: <code>weeks/week-1.qmd</code> through <code>week-4.qmd</code>.</li>
+<li>GitHub Actions workflow: <code>.github/workflows/publish.yml</code> (Quarto → <code>gh-pages</code> branch on push to <code>main</code>).</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="initial-commit" class="level2">
+<h2 class="anchored" data-anchor-id="initial-commit">[0.1.0] — Initial commit</h2>
+<ul>
+<li>Repository initialised with <code>README.md</code> and project structure.</li>
+</ul>
 
 
-<p>This site hosts the course materials for <strong>AI Fluency Foundations for Biology</strong>. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.</p>
-<p>The course covers:</p>
-<ol type="1">
-<li><strong>The 4 D’s of AI fluency</strong> — Delegation, Description, Discernment, Diligence — adapted for biology research, following <a href="https://www.anthropic.com/ai-fluency">Anthropic’s AI Fluency Framework</a>.</li>
-<li><strong>LLM literacy</strong> for bio researchers — how large language models work, prompt, and fail.</li>
-<li><strong>Hands-on bioinformatics</strong> — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.</li>
-<li><strong>A complete scRNA-seq pipeline</strong> — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Subfield scope
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D’s. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.</p>
-</div>
-</div>
-<p>See the <a href="./course-overview.html">Overview</a> for learning outcomes, or jump straight to the schedule below.</p>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p>Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 25%">
-<col style="width: 16%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Week</th>
-<th style="text-align: left;">Dates</th>
-<th style="text-align: left;">Topic</th>
-<th style="text-align: left;">Readings</th>
-<th style="text-align: left;">Hands-on</th>
-<th style="text-align: left;">Deliverable</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-1.html">1</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">AI fluency foundations — the 4 D’s</td>
-<td style="text-align: left;"><a href="./fluency/delegation.html">Delegation</a>, <a href="./fluency/description.html">Description</a>, <a href="./fluency/discernment.html">Discernment</a>, <a href="./fluency/diligence.html">Diligence</a></td>
-<td style="text-align: left;">Tooling setup</td>
-<td style="text-align: left;">Reflection + tooling check</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-2.html">2</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">LLM literacy for bio researchers</td>
-<td style="text-align: left;"><a href="./literacy/how-llms-work.html">How LLMs work</a>, <a href="./literacy/prompting.html">Prompting</a>, <a href="./literacy/tool-use-and-agents.html">Tool use &amp; agents</a>, <a href="./literacy/ethics-and-limits.html">Ethics &amp; limits</a></td>
-<td style="text-align: left;">Live prompt clinic</td>
-<td style="text-align: left;">Prompt-engineering exercise</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><a href="./weeks/week-3.html">3</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering</td>
-<td style="text-align: left;"><a href="./bioinformatics/code-assistance.html">Code assistance</a>, <a href="./bioinformatics/data-analysis.html">Data analysis</a>, <a href="modules/module-01-raw-data-qc/README.md">Module 1</a>, <a href="modules/module-02-alignment-count-matrix/README.md">Module 2</a></td>
-<td style="text-align: left;"><a href="modules/module-03-preprocessing-scanpy/README.md">Module 3</a> in-class; <a href="modules/module-04-clustering-umap/README.md">Module 4</a> after-class</td>
-<td style="text-align: left;">Mini-project (PBMC 3k) + capstone proposal</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><a href="./weeks/week-4.html">4</a></td>
-<td style="text-align: left;"><em>Announced before term</em></td>
-<td style="text-align: left;">scRNA-seq II — annotation, capstone</td>
-<td style="text-align: left;"><a href="./bioinformatics/literature-review.html">Literature review</a>, <a href="./bioinformatics/protocol-design.html">Protocol design</a></td>
-<td style="text-align: left;"><a href="modules/module-05-annotation-interpretation/README.md">Module 5</a> in-class</td>
-<td style="text-align: left;">Capstone (annotation, lit brief, or protocol — student choice)</td>
-</tr>
-</tbody>
-</table>
-
-
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1066,18 +1183,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./course-team.html" class="pagination-link" aria-label="Teaching team">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Teaching team</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./course-faq.html" class="pagination-link" aria-label="FAQ">
-        <span class="nav-page-text">FAQ</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1086,7 +1191,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/edit/main/CHANGELOG.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/mdmanurung/ai-fluency-for-bio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
