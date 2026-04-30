@@ -12,43 +12,43 @@ subtitle: "Critically evaluating AI output before acting on it"
 
 ## The core idea
 
-**Discernment** is the evaluation layer: the ability to read AI output critically and know when to accept, correct, or discard it. It is the skill that separates researchers who benefit from AI from those who are quietly harmed by it.
+**Discernment** is the evaluation layer. It is the skill of reading AI output critically and knowing when to accept, correct, or discard it. It is what separates researchers who benefit from AI from those who are quietly harmed by it.
 
-The default LLM failure mode in biology is not "obviously wrong" — it's **plausibly wrong**: syntactically valid code that runs but uses the wrong normalization, a review paragraph with a real-sounding citation that doesn't exist, a pathway interpretation that mixes up the direction of regulation.
+The default LLM failure mode in biology is not "obviously wrong". It is plausibly wrong: syntactically valid code that runs but uses the wrong normalisation, a review paragraph with a real-sounding citation that doesn't exist, a pathway interpretation that mixes up the direction of regulation.
 
 ## Failure modes to watch for
 
-- **Fabricated citations** — author lists and DOIs that look right but aren't.
-- **Stale knowledge** — the model's training data predates current best practices or tool versions.
-- **Confident extrapolation** — filling in details it can't possibly know from context.
-- **Silent API drift** — code that uses a deprecated function signature.
-- **Wrong-organism errors** — human annotations applied to mouse data, etc.
+- Fabricated citations: author lists and DOIs that look right but aren't.
+- Stale knowledge: the model's training data predates current best practices or tool versions.
+- Confident extrapolation: filling in details it can't possibly know from context.
+- Silent API drift: code that uses a deprecated function signature.
+- Wrong-organism errors: human annotations applied to mouse data.
 
 ## A discernment checklist
 
-Use this before acting on any AI-generated output that will enter your research record — a script you'll run, a paragraph you'll submit, a citation you'll include.
+Use this before acting on any AI-generated output that will enter your research record. A script you'll run. A paragraph you'll submit. A citation you'll include.
 
-**Citations**
+### Citations
 
-- For every citation the AI provided, retrieve the paper from PubMed, a DOI resolver, or the publisher's site. A title that looks right is not enough — check that the author list, year, and journal match exactly.
-- If the paper exists, read the abstract. Confirm that the claim the AI attributed to it actually appears there. Misattribution — the paper exists but says something different — is as dangerous as fabrication and harder to catch.
-- If you cannot access the full text, verify at minimum via the PubMed or CrossRef record. If no record exists, the citation is fabricated. Discard it.
+- For every citation the AI provided, retrieve the paper from PubMed, a DOI resolver, or the publisher's site. A title that looks right is not enough. Check that the author list, year, and journal match exactly.
+- If the paper exists, read the abstract. Confirm that the claim the AI attributed to it actually appears there. Misattribution (the paper exists but says something different) is as dangerous as fabrication and harder to catch.
+- If you can't access the full text, verify at minimum via the PubMed or CrossRef record. If no record exists, the citation is fabricated. Discard it.
 
-**Code**
+### Code
 
 - Run the AI's code on a minimal test case you prepared *before* seeing the AI output: a 10-row input with outputs you can verify by hand, or a synthetic dataset where the answer is trivially known.
-- Check every package function call against the current documentation. API drift is common for packages with recent major versions — Seurat 4→5, pandas 1.x→2.x, DESeq2 across Bioconductor releases. "It ran without error" does not mean it ran correctly.
-- If the code produces a numeric result — a count, a p-value, a normalized score — compare it against at least one result you computed independently. Spot-check two or three known outputs before trusting the rest.
+- Check every package function call against the current documentation. API drift is common for packages with recent major versions: Seurat 4 to 5, pandas 1.x to 2.x, DESeq2 across Bioconductor releases. "It ran without error" does not mean it ran correctly.
+- If the code produces a numeric result (a count, a p-value, a normalised score), compare it against at least one result you computed independently. Spot-check two or three known outputs before trusting the rest.
 
-**Biological claims and interpretations**
+### Biological claims and interpretations
 
-- For any organism, gene, pathway, or reagent detail stated as fact, verify against a primary source: Ensembl, UniProt, KEGG, the supplier's datasheet, the original paper. Gene naming conventions are an especially common silent error — `TP53` is human; `Trp53` is mouse. The AI may use whichever it saw more of in training.
+- For any organism, gene, pathway, or reagent detail stated as fact, verify against a primary source: Ensembl, UniProt, KEGG, the supplier's datasheet, the original paper. Gene naming conventions are an especially common silent error. `TP53` is human; `Trp53` is mouse. The AI may use whichever it saw more of in training.
 - For any interpretive claim ("this pathway is upregulated in X"), trace it to a specific paper or database entry you have verified. An AI stating "this is consistent with the literature" is not a literature review.
-- Watch for direction-of-regulation errors: the AI may correctly name a pathway while reversing the direction, inverting the biological conclusion.
+- Watch for direction-of-regulation errors. The AI may correctly name a pathway while reversing the direction, inverting the biological conclusion.
 
-**The final question**
+### The final question
 
-- Ask yourself: "Would I be comfortable presenting this output at a lab meeting and defending every claim?" If the answer is no for any element, that element needs verification or removal before it enters your research record. This connects directly to the Diligence D — see [Diligence](diligence.qmd) for disclosure and provenance practices that make discernment auditable.
+Ask yourself: "Would I be comfortable presenting this output at a lab meeting and defending every claim?" If the answer is no for any element, that element needs verification or removal before it enters your research record. This connects directly to the Diligence D. See [Diligence](diligence.qmd) for disclosure and provenance practices that make discernment auditable.
 
 ## Exercises
 
@@ -58,15 +58,15 @@ Use this before acting on any AI-generated output that will enter your research 
 ::: {.callout-tip collapse="true"}
 ## Check your understanding
 1. The AI gives you a citation with a real DOI. The link resolves. Why is this not enough to trust it?
-2. The AI's QC code runs without errors and produces plausible numbers. What three concrete checks would convert "looks fine" into "I will defend this"?
+2. The AI's QC code runs without errors and produces plausible numbers. What three concrete checks would turn "looks fine" into "I will defend this"?
 3. The AI says: "This pathway is consistent with the literature." Why does this sentence fail the discernment check, and what would a researcher who passed the check have written instead?
 
-**Answers:** 1. A DOI can resolve to a real paper that is *different* from the one the AI claimed. Misattribution is the most dangerous fabrication type — it passes the link-resolves check but fails on content. Check that the title, authors, year, and journal on the page match what the AI cited; check the abstract for the claim the AI attributed to it. 2. (any three) Run on a minimal test case with a known answer; check every package function call against current docs (API drift); compare one numeric result against an independently computed value; verify organism conventions (`MT-` vs. `mt-`, `TP53` vs. `Trp53`); ask whether you would defend this output at a lab meeting. 3. The sentence cites no specific paper; "the literature" is unfalsifiable. The AI cannot do a literature review and you cannot verify a claim with no source. A researcher who passed the check would have replaced it with: "This is consistent with [specific paper], which reports [specific finding] in [specific system]" — and would have read the paper.
+**Answers:** 1. A DOI can resolve to a real paper that is *different* from the one the AI claimed. Misattribution is the most dangerous fabrication type. It passes the link-resolves check but fails on content. Check that the title, authors, year, and journal on the page match what the AI cited, and check the abstract for the claim the AI attributed to it. 2. Any three of: run on a minimal test case with a known answer; check every package function call against current docs (API drift); compare one numeric result against an independently computed value; verify organism conventions (`MT-` vs. `mt-`, `TP53` vs. `Trp53`); ask whether you would defend this output at a lab meeting. 3. The sentence cites no specific paper. "The literature" is unfalsifiable. The AI cannot do a literature review and you cannot verify a claim with no source. A researcher who passed the check would have replaced it with: "This is consistent with [specific paper], which reports [specific finding] in [specific system]". And would have read the paper.
 :::
 
 ## Further reading
 
-- Huang, L., et al. (2023). [A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions](https://arxiv.org/abs/2311.05232). arXiv:2311.05232. — Comprehensive taxonomy; the factuality vs. faithfulness distinction maps directly onto the citations and biological-claims items above. Also cited in [How LLMs work](../literacy/how-llms-work.qmd).
-- Alkaissi, H., & McFarlane, S. I. (2023). [Artificial hallucinations in ChatGPT: Implications for scientific writing](https://www.cureus.com/articles/138667-artificial-hallucinations-in-chatgpt-implications-for-scientific-writing). *Cureus* 15(2): e35179. — Documents citation fabrication concretely in a biomedical context; useful for calibrating how often the problem occurs in practice.
-- Jimenez, C. E., et al. (2024). [SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770). *ICLR 2024.* — Empirical data on AI code correctness against real-world tasks; provides baseline expectations for where LLM-generated code succeeds vs. fails silently.
-- Leipzig, J., et al. (2021). [The role of metadata in reproducible computational research](https://www.sciencedirect.com/science/article/pii/S2666389921001331). *Patterns* 2(9): 100322. — Grounds the "would I defend this?" question in reproducibility practice; connects discernment to the provenance habits in Diligence.
+- Huang, L., et al. (2023). [A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions](https://arxiv.org/abs/2311.05232). arXiv:2311.05232. A complete taxonomy. The factuality vs. faithfulness distinction maps directly onto the citations and biological-claims items above. Also cited in [How LLMs work](../literacy/how-llms-work.qmd).
+- Alkaissi, H., & McFarlane, S. I. (2023). [Artificial hallucinations in ChatGPT: Implications for scientific writing](https://www.cureus.com/articles/138667-artificial-hallucinations-in-chatgpt-implications-for-scientific-writing). *Cureus* 15(2): e35179. Documents citation fabrication concretely in a biomedical context. Useful for calibrating how often the problem occurs in practice.
+- Jimenez, C. E., et al. (2024). [SWE-bench: Can language models resolve real-world GitHub issues?](https://arxiv.org/abs/2310.06770). *ICLR 2024.* Empirical data on AI code correctness against real-world tasks. Gives baseline expectations for where LLM-generated code succeeds and where it fails silently.
+- Leipzig, J., et al. (2021). [The role of metadata in reproducible computational research](https://www.sciencedirect.com/science/article/pii/S2666389921001331). *Patterns* 2(9): 100322. Grounds the "would I defend this?" question in reproducibility practice and connects discernment to the provenance habits in Diligence.

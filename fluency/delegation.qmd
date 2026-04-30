@@ -1,29 +1,29 @@
 ---
 title: "Delegation"
-subtitle: "Deciding what to hand off to an AI — and what not to"
+subtitle: "Deciding what to hand off to an AI, and what not to"
 ---
 
 ::: {.callout-note}
 ## Learning objectives
-- Articulate a decision rule for when to involve an AI assistant in a research task.
+- State a decision rule for when to involve an AI assistant in a research task.
 - Distinguish *mechanical delegation* (reformat a table) from *judgment delegation* (interpret a result).
 - Identify tasks in your own workflow where delegation adds value, adds risk, or both.
 :::
 
 ## The core idea
 
-**Delegation** is the first "D" of AI fluency. It is the upstream decision: given a task, should I do it myself, delegate it to an AI, or collaborate — and at what granularity?
+**Delegation** is the first D of AI fluency. It is the upstream decision: given a task, should you do it yourself, delegate it to an AI, or collaborate? And at what granularity?
 
-Good delegation is not "use AI for everything" or "never trust AI." It is a situational judgment informed by:
+Good delegation is not "use AI for everything" or "never trust AI". It is a situational judgement informed by four things:
 
-- **Stakes** — what's the cost of an error?
-- **Verifiability** — can you cheaply check the output?
-- **Your own competence** — can you recognize a wrong answer?
-- **The AI's competence** — is this the kind of task current models do reliably well?
+- Stakes. What is the cost of an error?
+- Verifiability. Can you cheaply check the output?
+- Your own competence. Can you recognise a wrong answer?
+- The AI's competence. Is this the kind of task current models do reliably well?
 
 ## A delegation rubric for biology
 
-Two axes drive the decision. **Verifiability cost**: how hard is it to check the AI's output? **Error consequence**: what happens if you act on a wrong answer? Tasks that are cheap to verify and low-consequence to get wrong belong in the "delegate fully" column. Tasks where verification requires the same expertise as doing the task belong in the "do yourself" column. Everything else is collaboration.
+Two axes drive the decision. *Verifiability cost*: how hard is it to check the AI's output? *Error consequence*: what happens if you act on a wrong answer? Tasks that are cheap to verify and low-consequence to get wrong belong in the "delegate fully" column. Tasks where verification requires the same expertise as doing the task belong in the "do yourself" column. Everything else is collaboration.
 
 | Task | Delegate fully | Collaborate | Do yourself |
 |:-----|:---------------|:------------|:------------|
@@ -31,23 +31,23 @@ Two axes drive the decision. **Verifiability cost**: how hard is it to check the
 | Writing boilerplate DESeq2 code | | ✅ | |
 | Choosing the statistical test | | ✅ | |
 | Interpreting a marginal p-value | | | ✅ |
-| Fabricating a citation | | | — never acceptable |
+| Fabricating a citation | | | never acceptable |
 
-**The "delegate fully" quadrant** is mechanical and checkable. The defining feature is that verifying the output is faster than doing the task — you can `diff` the file, run `head`, or eyeball column names in seconds. The CSV reformatting row is the clearest example. Another: convert a list of gene symbols to Ensembl IDs using a lookup table. You can spot-check five rows against Ensembl's website and call it done. The output is deterministic and the error mode is obvious.
+The "delegate fully" quadrant is mechanical and checkable. Its defining feature is that verifying the output is faster than doing the task. You can `diff` the file, run `head`, or eyeball column names in seconds. The CSV reformatting row is the clearest example. Another is converting a list of gene symbols to Ensembl IDs using a lookup table. You can spot-check five rows against Ensembl's website and call it done. The output is deterministic and the error mode is obvious.
 
-**The "collaborate" quadrant** is where AI assistance has the most leverage, and the most risk. The AI reduces your search space — it produces the DESeq2 scaffold so you don't write boilerplate from memory, it surfaces three normalization options so you don't have to remember all of them, it drafts a methods paragraph so you edit rather than start from blank. But *you* make the call in each case. The AI's suggestion is input to your judgment, not a substitute for it. The failure mode in this quadrant is not a crash or an obviously wrong answer — it is a plausible-sounding choice that you didn't scrutinize.
+The "collaborate" quadrant is where AI assistance has the most upside and the most risk. The AI shrinks your search space. It produces the DESeq2 scaffold so you don't write boilerplate from memory. It surfaces three normalisation options so you don't have to remember all of them. It drafts a methods paragraph so you edit rather than start from blank. But *you* make the call in each case. The AI's suggestion is input to your judgement, not a substitute for it. The failure mode here is not a crash or an obviously wrong answer. It is a plausible-sounding choice that you didn't scrutinise.
 
-**The "do yourself" quadrant** contains the tasks where the knowledge required to evaluate the AI's answer is the same knowledge required to do the task. You cannot cheaply verify whether the AI's interpretation of a marginal p-value is correct without understanding the statistics well enough to interpret it yourself. This is not a limitation of current models that will eventually be fixed — it is structural. The final row in the table is not a failure mode to watch for; it is a category error. An AI has no ground truth to fabricate *from*, so it produces a citation that looks right and isn't. There is no legitimate use of AI output in this cell.
+The "do yourself" quadrant contains tasks where the knowledge needed to evaluate the AI's answer is the same knowledge needed to do the task. You cannot cheaply verify whether the AI's interpretation of a marginal p-value is correct without understanding the statistics well enough to interpret it yourself. This is not a limitation of current models that will eventually be fixed. It is structural. The final row in the table is not a failure mode to watch for. It is a category error. An AI has no ground truth to fabricate *from*, so it produces a citation that looks right and isn't. There is no legitimate use of AI output in this cell.
 
 ## Worked example: BLAST a batch of sequences
 
-A computational postdoc has 847 novel ORFs from a nanopore metagenomic assembly of soil samples. She needs a shell script that runs `blastp` on each ORF against the NCBI nr database, parses the top hit per query into a TSV, and handles queries with no homolog gracefully. She knows what the script should do. She doesn't want to spend an hour on shell-scripting boilerplate she'll use once. This is a clear "delegate fully" task: the work is mechanical, the output is checkable, and the cost of an error in the script is recoverable.
+A computational postdoc has 847 novel ORFs from a nanopore metagenomic assembly of soil samples. She needs a shell script that runs `blastp` on each ORF against the NCBI nr database, parses the top hit per query into a TSV, and handles queries with no homolog gracefully. She knows what the script should do. She doesn't want to spend an hour on shell-scripting boilerplate she'll use once. This is a clear "delegate fully" task. The work is mechanical, the output is checkable, and the cost of an error in the script is recoverable.
 
-What she delegates is the scripting, not the science. She asks the AI to write the shell script. She does not ask the AI to choose the BLAST parameters — `-evalue`, `-max_target_seqs`, which database, what percent identity threshold counts as a hit. Those are scientific decisions shaped by her research question and her field's conventions. She owns them. Handing them to the AI would shift the task from the "delegate fully" column to the "do yourself" column and introduce an unverifiable assumption into her analysis (see [Description](description.qmd) for how to specify what you own vs. what you delegate).
+What she delegates is the scripting, not the science. She asks the AI to write the shell script. She does not ask the AI to choose the BLAST parameters: `-evalue`, `-max_target_seqs`, which database, or what percent identity threshold counts as a hit. Those are scientific decisions shaped by her research question and her field's conventions. She owns them. Handing them to the AI would shift the task from the "delegate fully" column to the "do yourself" column and introduce an unverifiable assumption into her analysis. See [Description](description.qmd) for how to specify what you own and what you delegate.
 
-What she specifies to the AI: input is a multi-FASTA file of protein sequences; output must be TSV with exactly these columns — `qseqid`, `sseqid`, `pident`, `evalue`, `bitscore`, `stitle` — matching the `blastp -outfmt 6` field names; top 1 hit per query only; if a query has no hit, write an empty row rather than omitting it (so the output stays joinable to the input table by `qseqid`); the script will run on a SLURM cluster and should not hardcode paths. Five constraints. Each one prevents a specific failure mode: missing column names cause downstream join failures; skipped no-hit rows cause silent sample-size errors; hardcoded paths break portability.
+What she specifies to the AI: input is a multi-FASTA file of protein sequences. Output must be a TSV with exactly these columns: `qseqid`, `sseqid`, `pident`, `evalue`, `bitscore`, `stitle`, matching the `blastp -outfmt 6` field names. Top 1 hit per query only. If a query has no hit, write an empty row rather than omitting it, so the output stays joinable to the input table by `qseqid`. The script will run on a SLURM cluster and must not hardcode paths. Five constraints. Each one prevents a specific failure mode. Missing column names cause downstream join failures. Skipped no-hit rows cause silent sample-size errors. Hardcoded paths break portability.
 
-What she checks before trusting the script: she runs it on 10 sequences — five with known NCBI identities (she has run BLAST on these manually before), three with no expected homologs, two edge cases (ORFs below 30 amino acids, which hit BLAST's minimum length filter differently). She verifies: correct column count, an empty row for each no-hit query, e-values in the expected range for the known-identity sequences. She does not verify all 847 results one by one. The test set substitutes for exhaustive checking. What stays in human hands: she writes the SLURM submission script herself, because the AI has no knowledge of her cluster's queue names, memory limits, or module system. She sets the e-value threshold herself, informed by prior work in her lab. And she interprets the output herself — a table of BLAST top hits is not a biological conclusion.
+What she checks before trusting the script: she runs it on ten sequences. Five with known NCBI identities (she has run BLAST on these manually before), three with no expected homologs, and two edge cases (ORFs below 30 amino acids, which hit BLAST's minimum length filter differently). She verifies the column count, an empty row for each no-hit query, and e-values in the expected range for the known-identity sequences. She does not verify all 847 results one by one. The test set substitutes for exhaustive checking. What stays in human hands: she writes the SLURM submission script herself, because the AI has no knowledge of her cluster's queue names, memory limits, or module system. She sets the e-value threshold herself, informed by prior work in her lab. And she interprets the output herself. A table of BLAST top hits is not a biological conclusion.
 
 ## Exercises
 
@@ -57,16 +57,16 @@ What she checks before trusting the script: she runs it on 10 sequences — five
 ::: {.callout-tip collapse="true"}
 ## Check your understanding
 1. Two axes drive the delegation rubric. Name them, and explain why a task being "low-stakes" is not enough on its own to put it in the "delegate fully" column.
-2. Choosing the BLAST e-value threshold is in the "do yourself" column even though the script that runs BLAST is in "delegate fully." Why the asymmetry?
-3. Your colleague says: "I'll let the AI pick the statistical test — if it picks wrong, I'll catch it." Where is this on the rubric, and what is the structural problem with the colleague's reasoning?
+2. Choosing the BLAST e-value threshold is in the "do yourself" column even though the script that runs BLAST is in "delegate fully". Why the asymmetry?
+3. A colleague says: "I'll let the AI pick the statistical test. If it picks wrong, I'll catch it." Where does this fall on the rubric, and what is the structural problem with the reasoning?
 
-**Answers:** 1. Verifiability cost (how hard is it to check?) and error consequence (what happens if the answer is wrong?). Low-stakes alone is not enough — a low-stakes task that is expensive to verify still wastes time, and "low-stakes" depends on downstream uses you may not know. The rubric requires both axes. 2. The script is mechanical, deterministic, and checkable on a small test set. The e-value threshold is a scientific choice that depends on the research question, the database, and field conventions — verifying it requires the same expertise as making it. Delegating it shifts the task into the "do yourself" column. 3. "Do yourself." The structural problem: catching a wrong choice of statistical test requires understanding which test is right — i.e., the same expertise as making the choice. The AI's answer cannot be cheaply verified, so delegation does not save work; it creates an unverifiable assumption.
+**Answers:** 1. Verifiability cost (how hard is it to check?) and error consequence (what happens if the answer is wrong?). Low-stakes alone is not enough. A low-stakes task that is expensive to verify still wastes time, and "low-stakes" depends on downstream uses you may not know. The rubric requires both axes. 2. The script is mechanical, deterministic, and checkable on a small test set. The e-value threshold is a scientific choice that depends on the research question, the database, and field conventions. Verifying it requires the same expertise as making it. Delegating it shifts the task into the "do yourself" column. 3. "Do yourself". The structural problem: catching a wrong choice of statistical test requires understanding which test is right, which is the same expertise as making the choice. The AI's answer cannot be cheaply verified, so delegation does not save work. It creates an unverifiable assumption.
 :::
 
 ## Further reading
 
-- Anthropic. (2024). [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency). — The source of the 4 D's framework this page operationalizes.
-- Mollick, E., & Mollick, L. (2023). [Assigning AI: Seven approaches for students, with prompts](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4475995). SSRN preprint. — A taxonomy of human-AI division of labor; the "AI as collaborator vs. AI as tool" framing maps directly onto the rubric above.
-- Peng, S., et al. (2023). [The impact of AI on developer productivity: Evidence from GitHub Copilot](https://arxiv.org/abs/2302.06590). arXiv:2302.06590. — Empirical data on where AI coding assistance gains are real vs. marginal; the gains cluster in the "delegate fully" quadrant.
-- Birhane, A., et al. (2022). [The values encoded in machine learning research](https://dl.acm.org/doi/10.1145/3531146.3533083). *FAccT '22*, 173–184. — For the "do yourself" quadrant: argues that delegating value-laden decisions to a model is itself a decision with consequences.
-- National Academies of Sciences, Engineering, and Medicine. (2019). [*Reproducibility and Replicability in Science*](https://doi.org/10.17226/25303). National Academies Press. — Grounds the "do yourself" judgment in the tasks that historically drive irreproducibility when they are outsourced.
+- Anthropic. (2024). [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency). The source of the 4 D's framework this page operationalises.
+- Mollick, E., & Mollick, L. (2023). [Assigning AI: Seven approaches for students, with prompts](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4475995). SSRN preprint. A taxonomy of human-AI division of labour. The "AI as collaborator vs. AI as tool" framing maps directly onto the rubric above.
+- Peng, S., et al. (2023). [The impact of AI on developer productivity: Evidence from GitHub Copilot](https://arxiv.org/abs/2302.06590). arXiv:2302.06590. Empirical data on where AI coding assistance gains are real and where they are marginal. The gains cluster in the "delegate fully" quadrant.
+- Birhane, A., et al. (2022). [The values encoded in machine learning research](https://dl.acm.org/doi/10.1145/3531146.3533083). *FAccT '22*, 173–184. For the "do yourself" quadrant. Argues that delegating value-laden decisions to a model is itself a decision with consequences.
+- National Academies of Sciences, Engineering, and Medicine. (2019). [*Reproducibility and Replicability in Science*](https://doi.org/10.17226/25303). National Academies Press. Grounds the "do yourself" judgement in the tasks that historically drive irreproducibility when they are outsourced.

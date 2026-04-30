@@ -12,26 +12,26 @@ subtitle: "Responsibility, disclosure, and reproducibility when using AI"
 
 ## The core idea
 
-**Diligence** is the downstream responsibility: you own the output, regardless of who — or what — produced it. This D connects AI fluency to scientific integrity.
+**Diligence** is the downstream responsibility. You own the output, regardless of who or what produced it. This D connects AI fluency to scientific integrity.
 
 Diligence is not fear. It is a set of practices that make your use of AI:
 
-- **Disclosable** — you can say what you did.
-- **Reproducible** — someone else could audit your process.
-- **Defensible** — you can stand behind the result on technical and ethical grounds.
+- Disclosable. You can say what you did.
+- Reproducible. Someone else could audit your process.
+- Defensible. You can stand behind the result on technical and ethical grounds.
 
 ## Disclosure norms
 
-As of early 2026, the three major policy-setting bodies have converged on three shared principles: AI cannot be listed as an author (it has no accountability and cannot give consent); AI use must be disclosed in methods or acknowledgments; AI-generated text used verbatim should be marked as such. What differs across journals is the level of specificity required and the definition of "material use."
+As of early 2026, the three major policy-setting bodies have converged on three shared principles. AI cannot be listed as an author (it has no accountability and cannot give consent). AI use must be disclosed in methods or acknowledgments. AI-generated text used verbatim should be marked as such. What differs across journals is the level of specificity required and the definition of "material use".
 
 | Policy source | Core requirement | Specificity expected | Where to verify |
 |:-------------|:-----------------|:---------------------|:----------------|
-| **ICMJE** (governs most major clinical and biomedical journals) | Disclose AI use in methods; AI may not be listed as author | Tool name, version, and purpose; state what was generated | [icmje.org/recommendations](https://www.icmje.org/recommendations/) — living document |
-| **Nature Portfolio** | Disclose large language model use in the methods section; AI may not be listed as author or in acknowledgments | Specific model, version, and how it was used | [nature.com editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai) — current online version |
-| **Science family** | Disclose any AI-generated text; AI may not be listed as author | Broad; current guidance specifies "detail in methods" | Science editorial guidelines — check current online version before submission |
+| ICMJE (governs most major clinical and biomedical journals) | Disclose AI use in methods. AI may not be listed as author | Tool name, version, and purpose. State what was generated | [icmje.org/recommendations](https://www.icmje.org/recommendations/), a living document |
+| Nature Portfolio | Disclose large language model use in the methods section. AI may not be listed as author or in acknowledgments | Specific model, version, and how it was used | [nature.com editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai), current online version |
+| Science family | Disclose any AI-generated text. AI may not be listed as author | Broad. Current guidance specifies "detail in methods" | Science editorial guidelines. Check the current online version before submission |
 
 ::: {.callout-warning}
-These policies change faster than course materials. Always read the journal's current submission guidelines before finalizing a disclosure; do not rely on a cached or summarized version. The ICMJE and Nature Portfolio pages linked above are the authoritative sources.
+These policies change faster than course materials. Always read the journal's current submission guidelines before finalising a disclosure. Do not rely on a cached or summarised version. The ICMJE and Nature Portfolio pages linked above are the authoritative sources.
 :::
 
 For this course, use the following template as your starting point:
@@ -39,10 +39,10 @@ For this course, use the following template as your starting point:
 ::: {.callout-note}
 ## Template: AI disclosure statement
 
-I used [tool name, version/model, access tier] for the following purposes in this work: [list specific uses — e.g., "drafted the Scanpy QC scaffold (cells 3–9 of `qc.ipynb`); suggested candidate citations for the introduction (3 of 5 were verified and retained; 2 were not found in PubMed and were discarded); polished one paragraph of the discussion"]. I verified all code by running it on [describe test conditions]. I verified all citations against PubMed or the publisher's DOI. I rejected [describe at least one AI suggestion and why]. The scientific interpretations, statistical decisions, and conclusions are my own.
+I used [tool name, version or model, access tier] for the following purposes in this work: [list specific uses, e.g., "drafted the Scanpy QC scaffold (cells 3–9 of `qc.ipynb`); suggested candidate citations for the introduction (3 of 5 were verified and retained; 2 were not found in PubMed and were discarded); polished one paragraph of the discussion"]. I verified all code by running it on [describe test conditions]. I verified all citations against PubMed or the publisher's DOI. I rejected [describe at least one AI suggestion and why]. The scientific interpretations, statistical decisions, and conclusions are my own.
 :::
 
-Score your draft against the course [disclosure rubric](../course-syllabus.qmd#disclosure-rubric) before submitting — the rubric has four scored dimensions: tools listed, use described, verification stated, and rejections noted.
+Score your draft against the course [disclosure rubric](../course-syllabus.qmd#disclosure-rubric) before submitting. The rubric has four scored dimensions: tools listed, use described, verification stated, and rejections noted.
 
 ## Provenance practices
 
@@ -60,20 +60,20 @@ Score your draft against the course [disclosure rubric](../course-syllabus.qmd#d
 ## Exercises
 
 1. Draft a one-paragraph AI-disclosure statement for your most recent AI-assisted project.
-2. Reconstruct the prompt history for a recent AI-assisted task. What's missing from your records?
+2. Reconstruct the prompt history for a recent AI-assisted task. What is missing from your records?
 
 ::: {.callout-tip collapse="true"}
 ## Check your understanding
 1. The three convergent disclosure principles say AI use must be disclosed, AI cannot be an author, and verbatim AI text must be marked. Why does this set converge on *disclosure* rather than *prohibition*?
 2. The course disclosure rubric scores four dimensions. Name them, and explain which is most often skipped on a first-draft disclosure.
-3. Your colleague writes: "We used ChatGPT to help with this analysis." Score this against the rubric — what dimensions does it satisfy, and what would a stronger version add?
+3. A colleague writes: "We used ChatGPT to help with this analysis." Score this against the rubric. What dimensions does it satisfy, and what would a stronger version add?
 
-**Answers:** 1. Disclosure preserves the human accountability chain — the human author is still answerable for every claim, with AI use visible to readers and reviewers. Prohibition would push use underground, removing the audit signal that makes the practice safer. The norm is "AI is a collaborator with no accountability; the human stays accountable, and the relationship is on the record." 2. Tools listed, use described, verification stated, rejections noted. *Rejections noted* is the most often skipped — disclosing what you accepted feels natural; disclosing what you rejected requires having actually evaluated the suggestions and is the strongest signal of real engagement. 3. The colleague's sentence partially satisfies *tools listed* (names ChatGPT but no version, model, or tier) and weakly satisfies *use described* (vague "help with analysis"). It fails *verification stated* and *rejections noted* outright. A stronger version names the model and tier ("ChatGPT, GPT-4o, Pro tier, web UI"), the concrete uses ("drafted the QC scaffold; suggested 4 citations, 3 verified and retained, 1 fabricated and discarded"), the verification ("ran code on a 10-cell test slice; resolved each DOI on doi.org and confirmed authors and title against PubMed"), and at least one rejection ("rejected the AI's proposed mt threshold of 5% for our brain-tissue dataset; used 20% per Heumos et al. 2023").
+**Answers:** 1. Disclosure preserves the human accountability chain. The human author is still answerable for every claim, and AI use is visible to readers and reviewers. Prohibition would push use underground and remove the audit signal that makes the practice safer. The norm is: AI is a collaborator with no accountability, the human stays accountable, and the relationship is on the record. 2. Tools listed, use described, verification stated, rejections noted. *Rejections noted* is the most often skipped. Disclosing what you accepted feels natural. Disclosing what you rejected requires having actually evaluated the suggestions, and it is the strongest signal of real engagement. 3. The colleague's sentence partially satisfies *tools listed* (names ChatGPT but no version, model, or tier) and weakly satisfies *use described* (vague "help with analysis"). It fails *verification stated* and *rejections noted* outright. A stronger version names the model and tier ("ChatGPT, GPT-4o, Pro tier, web UI"), the concrete uses ("drafted the QC scaffold; suggested 4 citations, 3 verified and retained, 1 fabricated and discarded"), the verification ("ran code on a 10-cell test slice; resolved each DOI on doi.org and confirmed authors and title against PubMed"), and at least one rejection ("rejected the AI's proposed mt threshold of 5% for our brain-tissue dataset; used 20% per Heumos et al. 2023").
 :::
 
 ## Further reading
 
-- ICMJE. (current). [Recommendations for the Conduct, Reporting, Editing, and Publication of Scholarly Work in Medical Journals](https://www.icmje.org/recommendations/). — Living document; no static date. The authoritative source for AI authorship and disclosure norms across ICMJE-member journals.
-- Hutson, M. (2021). [Robo-writers: The rise and risks of language-generating AI](https://www.nature.com/articles/d41586-021-00530-0). *Nature* 591, 22–25. — Nature's own reporting on the policy problem; directly relevant to the Nature Portfolio row in the table above.
-- Gundersen, O. E., & Kjensmo, S. (2018). [State of the art: Reproducibility in artificial intelligence](https://ojs.aaai.org/index.php/AAAI/article/view/11503). *AAAI-18.* — Grounds the "reproducible" leg: what provenance is needed and how AI-assisted workflows create new gaps that prompt logging addresses.
-- Wilkinson, M. D., et al. (2016). [The FAIR guiding principles for scientific data management and stewardship](https://www.nature.com/articles/sdata201618). *Scientific Data* 3: 160018. — The FAIR framework (Findable, Accessible, Interoperable, Reusable) applies to prompts as research artifacts: a prompt that produced a key result should meet FAIR criteria alongside the code that used it.
+- ICMJE. (current). [Recommendations for the Conduct, Reporting, Editing, and Publication of Scholarly Work in Medical Journals](https://www.icmje.org/recommendations/). A living document with no static date. The authoritative source for AI authorship and disclosure norms across ICMJE-member journals.
+- Hutson, M. (2021). [Robo-writers: The rise and risks of language-generating AI](https://www.nature.com/articles/d41586-021-00530-0). *Nature* 591, 22–25. *Nature*'s own reporting on the policy problem. Directly relevant to the Nature Portfolio row in the table above.
+- Gundersen, O. E., & Kjensmo, S. (2018). [State of the art: Reproducibility in artificial intelligence](https://ojs.aaai.org/index.php/AAAI/article/view/11503). *AAAI-18.* Grounds the "reproducible" leg: what provenance is needed and how AI-assisted workflows create new gaps that prompt logging addresses.
+- Wilkinson, M. D., et al. (2016). [The FAIR guiding principles for scientific data management and stewardship](https://www.nature.com/articles/sdata201618). *Scientific Data* 3: 160018. The FAIR framework (Findable, Accessible, Interoperable, Reusable) applies to prompts as research artifacts. A prompt that produced a key result should meet FAIR criteria alongside the code that used it.
