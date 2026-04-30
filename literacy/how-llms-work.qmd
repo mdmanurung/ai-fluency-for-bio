@@ -106,6 +106,15 @@ Both happen; both demand different defenses.
 - Context you provide in the prompt is *qualitatively* more reliable than facts the model recalls.
 - Retrieval (RAG), tool use, and grounding in real documents reduce — but do not eliminate — fabrication. They can introduce *faithfulness* fabrication where they reduce *factuality* fabrication.
 
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. A colleague asks why a frontier LLM "knows" the abstract of a recent paper from your subfield but invents the figure legends. What is the structural reason in terms of training distribution and confabulation?
+2. You set temperature = 0 and the model still produces a different answer to the same prompt across two API calls. Name two plausible causes.
+3. Distinguish factuality fabrication from faithfulness fabrication with one example each from a research workflow.
+
+**Answers:** 1. Abstracts of widely cited papers appear many times in the training corpus (broad coverage at the head of the distribution); figure legends from a single paper appear once or not at all (long tail). When asked for the legends, the model has no learned association to recall and confabulates a plausible completion. 2. Non-determinism in the inference stack: batched sampling can break ties differently across calls; many providers do not guarantee bit-exact determinism even at temperature 0; system prompts or hidden context (date, region) may differ between calls. 3. *Factuality:* the model invents a paper title and DOI ("Smith et al. 2021, *Nature Methods*") that does not exist. *Faithfulness:* you paste a real paper and ask for a summary; the model says the study used n=200 mice when the paper says n=20.
+:::
+
 ## Further reading
 
 - Bender et al. (2021), [Stochastic Parrots](https://dl.acm.org/doi/10.1145/3442188.3445922) — foundational, pre-RLHF.

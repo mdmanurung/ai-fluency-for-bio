@@ -7,6 +7,30 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed — branch `claude/course-improvement-feedback-Dc10Y` (open-source / reuse pass, PR-D)
+
+- **`bioinformatics/code-assistance.qmd`** — trimmed (~205 → ~155 lines): "Where AI helps / falls short" tightened into a two-paragraph block; verbose pytest fixture in the test-writing example replaced with a four-bullet summary of what the AI returns; weak/strong debugging prompts compressed; closing comprehension callout added.
+- **`bioinformatics/data-analysis.qmd`** — trimmed (~158 → ~155 lines after adding the comprehension check): per-step prose tightened; closing comprehension callout added (mouse mt prefix, threshold from histogram, doublet-rate sanity check).
+- **`literacy/tool-use-and-agents.qmd`** — expanded (~64 → ~95 lines): existing bibliography-cleanup agent example kept and renamed Pattern A; added Pattern B (coding assistant editing a repo with diff-review confirm gate) and a new "When *not* to use an agent" section (one-shot tasks, irreversible actions without rollback, gate-fires-every-step, high-trust low-frequency); closing comprehension callout added.
+- **All 4 fluency pages** (`delegation.qmd`, `description.qmd`, `discernment.qmd`, `diligence.qmd`) — added a `Check your understanding` collapsible callout at the bottom (3 questions + answer key each), keyed to the page's worked example.
+- **3 of 4 literacy pages** (`how-llms-work.qmd`, `prompting.qmd`, `ethics-and-limits.qmd`) — added the same `Check your understanding` callout pattern. (`tool-use-and-agents.qmd` is covered by the expansion above.)
+- **`bioinformatics/code-assistance.qmd` and `bioinformatics/data-analysis.qmd`** — added comprehension callouts as well; bioinformatics worked examples now match the fluency / literacy formative-check pattern.
+
+### Added — branch `claude/course-improvement-feedback-Dc10Y` (open-source / reuse pass)
+
+- **`environment.yml`** + **`requirements.txt`** — pin the full Scanpy + scrublet + leidenalg + igraph + jupyterlab stack at the repo root so self-paced learners can reproduce the hands-on track without dependency drift. Closes the "Commit a pinned environment" item in `PLANS.md` Infrastructure.
+- **`.github/workflows/link-check.yml`** — Lychee link-check on push, PR, and a weekly Monday cron. Catches link rot in the URL-heavy further-reading lists across all 12 fluency / literacy / bioinformatics pages.
+- **`modules/module-0[3,4,5]-*/notebook.ipynb`** — paired runnable Jupyter notebooks for the three Colab modules (preprocessing, clustering/UMAP, annotation). Generated from the existing README content via `tools/readme_to_ipynb.py`; each module README now has an "Open in Colab" badge at the top resolving to the notebook on `main`.
+- **`tools/readme_to_ipynb.py`** — small idempotent helper that converts a module README into a paired notebook (markdown for prose, code cells for `python` blocks). Lets maintainers keep README and notebook in sync by re-running.
+- **`reference/glossary.qmd`** — alphabetical glossary covering the AI/LLM and scRNA-seq vocabulary used throughout the course (~30 entries: agent, attention, blast radius, context window, fabrication, RAG, system prompt, temperature, token, tool use, AnnData, count matrix, doublet, FASTQ, GEM-X, HTO, leiden, marker gene, mt fraction, PBMC 3k, UMAP, etc.). Each entry cross-links to the page that introduces it.
+- **`reference/prompt-library.qmd`** — fill-in-the-blank prompt templates distilled from each bioinformatics page: debugging (four-part pattern), test writing (`validate_qc_outputs`-style), literature triage (five-step verification), protocol critique mode. Templates link back to the source page for the full worked example.
+- **`reference/peer-review.qmd`** — peer-review template that mirrors the four disclosure-rubric dimensions (tools listed, use described, verification stated, rejections noted) plus two open-ended prompts. Tone callout cross-links to `fluency/discernment.qmd` ("name the move that would have caught it, not the person").
+- **`_quarto.yml`** — added a "Reference" sidebar section (glossary, prompt library, peer-review template).
+- **`course-syllabus.qmd`** — linked the participation/peer-review row to `reference/peer-review.qmd`.
+- **`course-team.qmd`, `course-support.qmd`** — added a "course template" callout flagging the page placeholders as fork-and-replace targets, so adopters know they are fork-friendly and not pre-filled for a specific cohort.
+- **`weeks/starter-week3-python.qmd`** — Setup section now references `environment.yml` / `requirements.txt` for local installs.
+- **`README.md`** — "What you need" references the pinned env files.
+
 ### Changed — branch `claude/review-ai-fluency-course-QgsyP` (course merge)
 
 Merge the 5-module scRNA-seq pipeline (PBMC 3k) into the 4-week instructor-led course. The two were previously inconsistent — README and modules described a self-paced FASTQ→UMAP course; the Quarto site described a 4-week AI-fluency course on bulk RNA-seq (GSE96870). After the merge, the course is one coherent thing:

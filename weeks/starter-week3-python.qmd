@@ -18,13 +18,18 @@ The course default is **Google Colab** — open [colab.research.google.com](http
 !pip install -q scanpy
 ```
 
-If you prefer a local install, you need Python (≥ 3.11) and Scanpy. The minimal install:
+If you prefer a local install, the repo ships pinned environments. Pick one:
 
 ```bash
-pip install scanpy
+# conda (recommended for Apple Silicon — igraph wheels can misbehave on pip there)
+conda env create -f environment.yml
+conda activate ai-fluency-for-bio
+
+# or pip / uv
+uv pip install -r requirements.txt
 ```
 
-This starter does not install `scrublet`, `leidenalg`, or other downstream packages — those come later, when you write the baseline and extend it for clustering.
+`environment.yml` and `requirements.txt` install the full course stack (Scanpy, scrublet, leidenalg, igraph, jupyterlab) — enough for every starter, module, and the week 3 mini-project. You only need the bare `pip install scanpy` above if you are running this single starter on Colab and nothing else.
 
 ## Load the dataset
 

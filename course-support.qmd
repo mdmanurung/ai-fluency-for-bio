@@ -2,6 +2,11 @@
 title: "Support"
 ---
 
+::: {.callout-note}
+## Course template note
+This repository is a forkable course template. If you are running this course at your institution, replace the channels below with your own forum / office-hours / contact info.
+:::
+
 ## Getting help
 
 If you get stuck — on content, on tooling, or on an AI assistant behaving unexpectedly — please use the following channels:

@@ -103,6 +103,15 @@ Treat prompting like any other optimization:
 - Keep a log — prompt, output, verdict.
 - Save the winner as a reusable template.
 
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. Why does a system prompt shape model behaviour, given that the model sees system / user / assistant turns as one flat token stream?
+2. You add `"Don't hallucinate"` to your system prompt. Why does this not work, and what would?
+3. Your structured-extraction prompt asks for three fields but the model returns a paragraph instead of JSON. Name two changes that would tighten the format compliance.
+
+**Answers:** 1. The model learned during training that system-prompt-style text precedes certain response patterns. It is continuing a learned pattern, not "obeying" an instruction — the text in the system position still has to be the kind of text that the model has seen produce the desired behaviour. 2. The model has no internal "fact store" to suppress fabrication; the instruction is content the model can ignore as easily as follow. What works: provide the source text yourself (paste the paper, retrieve via RAG), require structured output that is hard to fabricate plausibly (DOI + verbatim title), and tell the model to use `null` when it does not know. 3. Specify the schema explicitly (key names, types, allowed values); say "Return only the JSON object — no prose, no explanation"; provide a worked example output (few-shot); set `null` as the required value for missing fields rather than letting the model decide.
+:::
+
 ## Further reading
 
 - Anthropic. (2025). [Prompt engineering overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview). *Anthropic developer docs* — current reference for Claude-specific prompting; the principles generalize.

@@ -99,6 +99,15 @@ The structured version is longer, but the time saved in debugging, revision, and
 1. Take a prompt you recently sent to an LLM. Rewrite it using the five-part structure above. Re-run. Compare.
 2. Practice writing a *system prompt* for a recurring task in your lab.
 
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. Of the five Description elements (Goal, Context, Constraints, Success criteria, Anti-goals), which one is most often the highest-leverage to add — and why?
+2. The PBMC QC prompt specifies "5% mitochondrial threshold." This looks like over-specification — isn't picking thresholds the AI's job? What is the actual purpose of putting this in the success criteria?
+3. You give an AI assistant the goal "Write a Python script for QC on my scRNA-seq data" with no other context. Name three things the AI must invent, and the failure mode each invention can cause.
+
+**Answers:** 1. Anti-goals. LLMs are trained to be helpful; without explicit "do not do X," they often add plausible-but-wrong steps from similar workflows in their training data (clustering inside a QC script, imputation, scope creep). A well-placed anti-goal prevents the most common failure: a result that looks reasonable but is for someone else's problem. 2. Picking thresholds is the *researcher's* job; the threshold encodes a tissue-specific scientific judgement (5% works for PBMCs; neurons need 15–20%). Putting it in the success criteria documents that the human owns the call and prevents the AI from picking a default that might silently delete most of the experiment. This is Description, not over-specification — the researcher is doing her job rather than delegating it. 3. Examples (any three): organism — wrong mt prefix flags zero mt-genes; chemistry version — outdated loading parameters; expected cell-type count — unhelpful clustering parameter recommendations; deliverable format — script vs. notebook mismatch; downstream step — script overruns into clustering and annotation.
+:::
+
 ## Further reading
 
 - Wei, J., et al. (2022). [Chain-of-thought prompting elicits reasoning in large language models](https://arxiv.org/abs/2201.11903). *NeurIPS 2022.* — The foundational paper on structured prompting; explains why providing intermediate steps and context improves model output.

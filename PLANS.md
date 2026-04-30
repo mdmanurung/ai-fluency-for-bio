@@ -127,7 +127,8 @@ Scope:
 
 - [ ] **Enable GitHub Pages** — Settings → Pages, set source to `Deploy from a branch` → `gh-pages` / `/ (root)`. The workflow (`.github/workflows/publish.yml`) is already in place; this one-click step triggers the first deployment to `https://mdmanurung.github.io/ai-fluency-for-bio/`.
 - [ ] **Merge the merged-course branch → `main`** — work for the merge sits on `claude/review-ai-fluency-course-QgsyP`. The publish workflow only fires on push to `main`, so nothing is live until that PR merges.
-- [ ] **Commit a pinned environment** — the syllabus offers `conda` / `uv` as a local alternative to Colab. Adding an `environment.yml` (Scanpy + scrublet + leidenalg + matplotlib + pandas) makes that alternative reproducible.
+- [x] **Commit a pinned environment** — `environment.yml` (conda) and `requirements.txt` (pip / uv) at the repo root pin Scanpy ≥ 1.10, scrublet, leidenalg, igraph, jupyterlab, etc. Branch `claude/course-improvement-feedback-Dc10Y`.
+- [x] **Add link-check CI** — `.github/workflows/link-check.yml` runs Lychee on push, PR, and weekly cron. Catches link rot in further-reading lists. Branch `claude/course-improvement-feedback-Dc10Y`.
 
 ---
 

@@ -96,6 +96,14 @@ website:
             text: "Week 3 — scRNA-seq I (QC → clustering)"
           - href: weeks/week-4.qmd
             text: "Week 4 — scRNA-seq II (annotation, capstone)"
+      - section: "Reference"
+        contents:
+          - href: reference/glossary.qmd
+            text: Glossary
+          - href: reference/prompt-library.qmd
+            text: Prompt library
+          - href: reference/peer-review.qmd
+            text: Peer-review template
 
 format:
   html:
