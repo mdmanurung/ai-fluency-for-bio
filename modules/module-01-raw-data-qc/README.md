@@ -195,6 +195,25 @@ about the duplication level?"*
 
 ---
 
+## Self-check
+
+Try to answer before checking. If you miss two, re-read the worked example.
+
+1. You see "FAIL" on per-base sequence content for R1 in a 10x Chromium dataset. Should you act on this flag? Why or why not?
+2. The AI suggests trimming all reads aggressively because of high duplication. What's wrong with this advice for a UMI-based library?
+3. Why is R2 the focus of QC interpretation rather than R1, and what would change for a non-UMI bulk RNA-seq library?
+
+<details>
+<summary>Self-check answers</summary>
+
+1. **Don't act.** R1 is the cell barcode + UMI for 10x Chromium — the first 16 bp are barcode and the next 10–12 bp are UMI, both with non-uniform composition by design. FastQC's "FAIL" is a false positive; the per-base content of a barcode read is not informative.
+2. UMIs let Cell Ranger collapse PCR duplicates downstream. High raw duplication is **expected** in a UMI library because the same cDNA molecule is sequenced many times to confirm the UMI; the duplicates are the signal. Trimming for this reason throws away real reads.
+3. R2 carries the cDNA sequence — that's the biology. R1 is structural (barcode + UMI). For non-UMI bulk RNA-seq, both reads are biology (paired-end), so per-base composition and duplication on either read are interpretable normally.
+
+</details>
+
+---
+
 ## Key Takeaways
 
 1. **R1 is the barcode read; R2 is the biology.** Always run FastQC on both, but focus your QC interpretation on R2.

@@ -81,6 +81,6 @@ That is the end of the starter. From here, the baseline is yours.
 
 ## Where to go next
 
-- [Module 3 — Preprocessing & QC in Scanpy](../modules/module-03-preprocessing-scanpy/README.md) — the full runnable QC walkthrough you'll work through in week 3 in-class.
+- [Module 3 — Preprocessing & QC in Scanpy](../modules/module-03-preprocessing-scanpy/README.md) — the full runnable QC walkthrough you'll work through in Week 3.
 - [Data analysis](../bioinformatics/data-analysis.qmd) — the AI-fluency lens on QC, with the AI's role and the human's discernment move called out at every step.
-- [Week 3 — scRNA-seq I](week-3.qmd) — the mini-project deliverable.
+- [Week 3 — scRNA-seq I](week-3.qmd) — the mini-project.

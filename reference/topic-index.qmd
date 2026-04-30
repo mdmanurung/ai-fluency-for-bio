@@ -1,0 +1,65 @@
+---
+title: "Topic index"
+subtitle: "Browse the conceptual material by subject, not by week"
+---
+
+The course's primary navigation is **by week** — each unit groups its readings, practice, knowledge check, and project together. But the conceptual pages are themselves organised by subject, and you may want to jump straight to a topic to look something up or to revisit material you read earlier.
+
+Use this index when:
+
+- You're stuck on a project and need to re-read the relevant concept.
+- You want to compare related material across the course (e.g., all the discernment moves on different tasks).
+- You finished the course and want a one-page overview of where everything lives.
+
+## AI fluency — the 4 D's
+
+Anchored in [Week 1](../weeks/week-1.qmd). Each page has a "Check your understanding" callout at the bottom.
+
+- [Delegation](../fluency/delegation.qmd) — the two-axis rubric (verifiability cost × error consequence) for choosing what to delegate to AI.
+- [Description](../fluency/description.qmd) — framing problems for AI: role, task, context, format. PBMC 3k QC worked example.
+- [Discernment](../fluency/discernment.qmd) — reading AI outputs critically; explicit accept/reject log.
+- [Diligence](../fluency/diligence.qmd) — ownership, verification, disclosure as habits, not bureaucracy.
+
+## AI literacy for bio
+
+Anchored in [Week 2](../weeks/week-2.qmd).
+
+- [How LLMs work](../literacy/how-llms-work.qmd) — next-token prediction, tokenisation, attention, temperature, context windows; what this means for your workflow.
+- [Prompting](../literacy/prompting.qmd) — system / user / assistant anatomy; weak→strong progression; reliable patterns.
+- [Tool use & agents](../literacy/tool-use-and-agents.qmd) — agent patterns (bibliography cleanup, diff review); the human-confirm gate; when *not* to agent.
+- [Ethics & limits](../literacy/ethics-and-limits.qmd) — authorship norms, hallucination, epistemic injustice, data policy.
+
+## Hands-on bioinformatics
+
+Split across [Week 3](../weeks/week-3.qmd) and [Week 4](../weeks/week-4.qmd).
+
+- [Code assistance](../bioinformatics/code-assistance.qmd) (Week 3) — debugging pattern; AI-assisted test writing; PBMC 3k worked example.
+- [Data analysis](../bioinformatics/data-analysis.qmd) (Week 3) — the AI-fluency lens on QC: load → metrics → thresholds → filter → normalise.
+- [Literature review](../bioinformatics/literature-review.qmd) (Week 4) — five-step verification workflow; worked fabricated-citation catch.
+- [Protocol design](../bioinformatics/protocol-design.qmd) (Week 4) — AI-sparring-partner pattern; scRNA-seq lung macrophage pilot with AI errors and wins.
+
+## scRNA-seq pipeline (modules)
+
+End-to-end PBMC 3k: FASTQ → annotated UMAP. Modules 1–2 are reading; Modules 3–5 are runnable in Colab. Each module has a `Self-check` callout near the end.
+
+- [Module 1 — Raw data QC](../modules/module-01-raw-data-qc/README.md) — FastQC; 10x R1/R2 anatomy; read-quality interpretation.
+- [Module 2 — Alignment & count matrix](../modules/module-02-alignment-count-matrix/README.md) — Cell Ranger / STARsolo; web summary; filtered vs. raw matrix.
+- [Module 3 — Preprocessing in Scanpy](../modules/module-03-preprocessing-scanpy/README.md) — load PBMC 3k → QC → normalise → HVG.
+- [Module 4 — Clustering & UMAP](../modules/module-04-clustering-umap/README.md) — scale → PCA → neighbours → UMAP → Leiden.
+- [Module 5 — Annotation & interpretation](../modules/module-05-annotation-interpretation/README.md) — marker genes → cell-type annotation → CellTypist → DE.
+
+## Reference
+
+- [Glossary](glossary.qmd) — short definitions cross-linked across the course.
+- [Prompt library](prompt-library.qmd) — fill-in-the-blank templates (debugging, test writing, literature triage, protocol critique).
+- [Self-review template](peer-review.qmd) — structured feedback for your own (or a peer's) project, mirroring the disclosure rubric.
+
+## Course information
+
+- [Roadmap](../index.qmd) — the recommended unit-by-unit pacing.
+- [Overview](../course-overview.qmd) — learning outcomes and audience.
+- [How to use this course](../course-how-to-use.qmd) — the self-paced model and learner-progress checklist.
+- [Syllabus](../course-syllabus.qmd) — prerequisites, AI-use policy, disclosure rubric, data policy, recommended readings.
+- [Support](../course-support.qmd) — how to get help.
+- [About the author](../course-team.qmd).
+- [FAQ](../course-faq.qmd).

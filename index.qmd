@@ -1,10 +1,10 @@
 ---
 title: "AI Fluency Foundations for Biology"
-subtitle: "A 4-week course on collaborating effectively with AI in biological research"
+subtitle: "A self-paced course on collaborating effectively with AI in biological research"
 toc: false
 ---
 
-This site hosts the course materials for **AI Fluency Foundations for Biology**. Real fluency develops over months of supervised practice — this course gives you the framework, vocabulary, and habits to start that practice deliberately.
+This site hosts the materials for **AI Fluency Foundations for Biology** — a **self-paced** course you can take on your own, at your own pace. There is no instructor, no schedule, no grades. Real fluency develops over months of supervised practice; this course gives you the framework, vocabulary, and habits to start that practice deliberately.
 
 The course covers:
 
@@ -15,20 +15,33 @@ The course covers:
 
 ::: {.callout-note}
 ## Subfield scope
-The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D's. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every workshop and to the capstone.
+The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D's. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every practice exercise and to the final project.
 :::
 
-See the [Overview](course-overview.qmd) for learning outcomes, or jump straight to the schedule below.
+New here? Start with the [Overview](course-overview.qmd) for learning outcomes, then [How to use this course](course-how-to-use.qmd) for the self-pacing model. Or jump straight to the roadmap below.
 
-## Schedule
+## Roadmap
 
-Weekly sessions are ~2 hours each (≈30 min lecture + ≈30 min live demo + ≈60 min workshop), plus 3–5 hours of independent work per week.
+The course is organised as four units. Each unit takes most learners about **3–5 hours** of focused work, so a one-week cadence is comfortable — but plenty of learners spread it over two weeks, and some compress it into a long weekend. Allow yourself **4–8 weeks** total depending on background and time.
 
-| Week | Dates | Topic | Readings | Hands-on | Deliverable |
-|:----:|:------|:------|:---------|:---------|:------------|
-| [1](weeks/week-1.qmd) | *Announced before term* | AI fluency foundations — the 4 D's | [Delegation](fluency/delegation.qmd), [Description](fluency/description.qmd), [Discernment](fluency/discernment.qmd), [Diligence](fluency/diligence.qmd) | Tooling setup | Reflection + tooling check |
-| [2](weeks/week-2.qmd) | *Announced before term* | LLM literacy for bio researchers | [How LLMs work](literacy/how-llms-work.qmd), [Prompting](literacy/prompting.qmd), [Tool use & agents](literacy/tool-use-and-agents.qmd), [Ethics & limits](literacy/ethics-and-limits.qmd) | Live prompt clinic | Prompt-engineering exercise |
-| [3](weeks/week-3.qmd) | *Announced before term* | scRNA-seq I — QC, normalisation, clustering | [Code assistance](bioinformatics/code-assistance.qmd), [Data analysis](bioinformatics/data-analysis.qmd), [Module 1](modules/module-01-raw-data-qc/README.md), [Module 2](modules/module-02-alignment-count-matrix/README.md) | [Module 3](modules/module-03-preprocessing-scanpy/README.md) in-class; [Module 4](modules/module-04-clustering-umap/README.md) after-class | Mini-project (PBMC 3k) + capstone proposal |
-| [4](weeks/week-4.qmd) | *Announced before term* | scRNA-seq II — annotation, capstone | [Literature review](bioinformatics/literature-review.qmd), [Protocol design](bioinformatics/protocol-design.qmd) | [Module 5](modules/module-05-annotation-interpretation/README.md) in-class | Capstone (annotation, lit brief, or protocol — student choice) |
+Each week page is self-contained: **readings → practice → knowledge check → project**. All checks have answer keys; all projects have self-assessment rubrics.
 
-: {tbl-colwidths="[5,12,22,25,16,20]"}
+| Unit | Suggested time | Topic | What you'll learn | Project |
+|:----:|:------|:------|:------|:------|
+| [Week 1](weeks/week-1.qmd) | ~3–5 hrs | AI fluency foundations — the 4 D's | [Delegation](fluency/delegation.qmd), [Description](fluency/description.qmd), [Discernment](fluency/discernment.qmd), [Diligence](fluency/diligence.qmd) — applied to your own workflow | 4 D's reflection + tooling check |
+| [Week 2](weeks/week-2.qmd) | ~3–5 hrs | LLM literacy for bio researchers | [How LLMs work](literacy/how-llms-work.qmd), [Prompting](literacy/prompting.qmd), [Tool use & agents](literacy/tool-use-and-agents.qmd), [Ethics & limits](literacy/ethics-and-limits.qmd) | Prompt-engineering exercise (weak vs. strong, with critique) |
+| [Week 3](weeks/week-3.qmd) | ~5–7 hrs | scRNA-seq I — QC, normalisation, clustering | [Code assistance](bioinformatics/code-assistance.qmd), [Data analysis](bioinformatics/data-analysis.qmd), and Modules [3](modules/module-03-preprocessing-scanpy/README.md) & [4](modules/module-04-clustering-umap/README.md) | PBMC 3k mini-project (AI-free baseline + AI-assisted iteration) |
+| [Week 4](weeks/week-4.qmd) | ~5–7 hrs | scRNA-seq II — annotation, capstone | [Literature review](bioinformatics/literature-review.qmd), [Protocol design](bioinformatics/protocol-design.qmd), and [Module 5](modules/module-05-annotation-interpretation/README.md) | Final project — analysis, lit brief, or protocol (your choice) |
+
+: {tbl-colwidths="[7,12,22,40,19]"}
+
+## How to self-assess
+
+Four levels of feedback, all self-driven:
+
+- **Per-page checks** in collapsible callouts on every conceptual page — 3–5 questions with worked answers.
+- **Per-week knowledge checks** at the end of each week page — 5–8 mixed conceptual + applied questions.
+- **Per-week practice exercises** to apply each unit to your own data and questions.
+- **Project self-rubrics** so you can grade your own work against the same dimensions an instructor would.
+
+See [How to use this course](course-how-to-use.qmd) for the full self-assessment model and a learner-progress checklist.

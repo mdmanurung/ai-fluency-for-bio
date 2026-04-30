@@ -289,6 +289,27 @@ This is **plasmacytoid or conventional dendritic cells (DCs)**.
 
 ---
 
+## Self-check
+
+Try to answer before checking. If you miss two, re-read the marker-gene section and the CellTypist section.
+
+1. CellTypist annotates a cluster as "Naive B cell" with confidence 0.97. The top markers in your `rank_genes_groups` output for that cluster are `CD79A`, `CD79B`, `MS4A1`, `IGHD`, `IL4R`. Should you accept the annotation? What changes if the markers were `CD3D`, `IL7R`, `CCR7`?
+2. Differential expression between two adjacent Leiden clusters returns 4,200 significant genes at FDR < 0.05. The AI says "this is a strong biological signal." What's the Discernment move?
+3. You're annotating a *mouse* lung dataset and the AI suggests querying CellTypist with `Immune_All_Low.pkl` (the human PBMC reference). Two things go wrong. Name them.
+4. Your Leiden cluster 7 expresses `CD3D` (T cell marker) AND `CD14` (monocyte marker) at high levels. The AI proposes "T cell / monocyte hybrid." What are the more likely biological explanations?
+
+<details>
+<summary>Self-check answers</summary>
+
+1. With `CD79A/B + MS4A1 + IGHD`, **accept** — those are classical naive B-cell markers; the annotation matches the markers and the confidence is well-supported. With `CD3D + IL7R + CCR7`, the markers are **naive T cells**, not B cells — **reject** the annotation. CellTypist's confidence is calibrated on its reference distribution, not against your data; the only valid Discernment move is to read the markers yourself and check whether they match the suggested label.
+2. 4,200 significant genes between two adjacent clusters means **most of your transcriptome is "different"** — usually not biology. Possible causes: (a) library-size or detection-rate differences between clusters; (b) one cluster is much larger than the other (statistical power, not effect size); (c) cell-cycle or stress signatures are dominating. Discernment moves: check the **log-fold-change distribution** (most "significant" genes will have tiny LFC); check **cluster cell counts**; correct for known confounders before re-running DE. Strong biological signal looks like a small number of genes with large effects.
+3. (i) **Organism convention**: CellTypist's human references use uppercase gene symbols (`CD3E`, `MS4A1`); mouse data uses sentence-case (`Cd3e`, `Ms4a1`), so almost everything is "unknown" because the gene symbols don't match. (ii) **Tissue context**: PBMC reference covers circulating immune cells but not tissue-resident populations (alveolar macrophages, tissue-resident memory T cells, ILC subtypes) that are central to lung biology. Use a mouse-specific reference *and* a tissue-appropriate one — or build one from a published mouse lung atlas.
+4. The most likely explanations, in order: (a) **doublets** — droplets containing one T cell and one monocyte are common at high loading densities, and Scrublet should have flagged them; (b) **ambient RNA contamination** — a high-expression cluster (monocytes have high `CD14`) bleeds into other clusters via cell-free RNA in the input; (c) **sub-population biology** — some real but rare populations (e.g., monocyte-platelet aggregates in inflammation) co-express markers, but these are exceptions and need independent validation. "T cell / monocyte hybrid" without doublet exclusion + ambient correction is almost always an artefact.
+
+</details>
+
+---
+
 ## Key Takeaways
 
 1. **Marker genes, not UMAP proximity, define cell types.** Run `rank_genes_groups` before annotating.

@@ -281,6 +281,27 @@ If the AI suggests running Cellbender or SoupX for ambient RNA correction on top
 
 ---
 
+## Self-check
+
+Try to answer before checking. If you miss two, re-read the QC section.
+
+1. Why save `adata.raw` *before* HVG selection and scaling, not after? What downstream analysis breaks if you skip this step?
+2. You see `n_genes_by_counts` distribution with two peaks — one around 800, one around 4,500. What does each peak likely represent, and what's the right filter strategy?
+3. You ran HVG selection on un-normalised counts and the genes look "biologically plausible" (real markers show up). Why is this still wrong?
+4. Your dataset is mouse retina, not human PBMC. The AI gives you a 5% mt% cutoff. Should you accept it? What's a defensible cutoff for retina, and how would you decide?
+
+<details>
+<summary>Self-check answers</summary>
+
+1. `adata.raw` stores the log-normalised but un-scaled and un-HVG-filtered expression matrix. **Differential expression** (e.g., `sc.tl.rank_genes_groups`) needs to operate on raw log-counts, not on z-scored / HVG-only data — otherwise the LFC magnitudes are uninterpretable and lowly-expressed marker genes are missing entirely. If you skip `adata.raw = adata`, you'll discover the problem when DE returns silly results in Module 5.
+2. The lower peak (~800) is usually **doublets-of-low-quality-cells, ambient-only droplets, or genuinely small-transcriptome cells** (e.g., resting lymphocytes); the higher peak (~4,500) is **probable doublets** (two cells in one droplet share their transcriptomes). The right strategy is *not* a single threshold — it's a band: filter cells with `n_genes < 200` (true empty droplets) and `n_genes > ~6,000` (probable doublets); inspect the middle distribution and run Scrublet for doublet scoring rather than relying on the gene-count tail alone.
+3. HVG selection on un-normalised data picks up genes whose variance is high *because their counts are high*, which is a library-size effect, not biology. Real markers survive (because they're highly expressed and biologically variable), but the HVG list is contaminated with housekeeping genes that vary purely with sequencing depth. Always normalise + log-transform before HVG selection.
+4. **Don't accept it.** Retina has high mitochondrial expression in healthy photoreceptors (energy demand) — a 5% cutoff would discard real cells. Defensible move: plot the violin, look at where the bimodality (if any) splits "biological tail" from "dying cells", and pick a cutoff there — likely 15–20% for retina depending on protocol. Also check organism gene names (`mt-` for mouse vs. `MT-` for human).
+
+</details>
+
+---
+
 ## Key Takeaways
 
 1. **Three core QC metrics:** `n_genes_by_counts` (doublets up, dead cells down), `total_counts` (mirrors genes), `pct_counts_mt` (dead cells up).

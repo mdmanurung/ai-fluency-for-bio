@@ -110,6 +110,15 @@ Document the provenance of each decision — the disclosure rubric will ask whic
 2. Ask the same AI to critique its own protocol. Compare lists — what did it miss in self-critique that you caught?
 3. For the scRNA-seq pilot above: look up the current 10x GEM-X v4 user guide and find the recommended cell-loading concentration for large primary cells. How far off was the AI's number?
 
+::: {.callout-tip collapse="true"}
+## Check your understanding
+1. The AI confidently recommended Chromium v3.1 chemistry when the current kit is GEM-X v4. What's the **structural** reason an AI is likely to be wrong about chemistry version numbers, regardless of which AI tool you use?
+2. The AI suggested a no-enzyme-digest negative control during the critique pass, and the postdoc rejected it. Was the rejection a Discernment success or a Diligence failure? How would you tell?
+3. You ask an AI to critique its own protocol and it returns five suggestions, three useful and two off-base. Why is the critique pass still worth doing even with the off-base suggestions?
+
+**Answers:** 1. Training data has a cutoff, and vendor product lines update faster than that cutoff. The AI's "current" chemistry recommendation reflects what was current when its training data was assembled — usually 1–2 years prior. Even a model with web access often pulls cached or older documentation that ranks high in search results. The fix is the same regardless of model: verify version-specific parameters against the current vendor user guide before ordering. 2. **Discernment success.** A no-enzyme-digest negative control is non-standard for primary-tissue scRNA-seq, costs reagent budget, and adds a sample without testing a hypothesis the experiment cares about. The postdoc rejected it on cost-benefit grounds with a documented reason — that's exactly what Discernment looks like. A Diligence failure would be rejecting the suggestion *without* a reason, or accepting it because the AI suggested it. The presence of a written rationale in the protocol is what distinguishes the two. 3. The critique pass is a cheap mechanism to surface gaps you didn't think to check yourself. Even at 60% useful, the cost is one prompt and reading five bullet points. The off-base suggestions are signal, not noise — they show what kind of mistakes the AI is prone to in your domain, which calibrates how much to trust the AI elsewhere. The wrong move is to take 5/5 as gospel; the right move is to skim, accept the useful ones, document why you rejected the others, and move on.
+:::
+
 ## Further reading
 
 - Boiko, D. A., MacKnight, R., Kline, B., & Gomes, G. (2023). [Autonomous chemical research with large language models](https://doi.org/10.1038/s41586-023-06792-0). *Nature* 624: 570–578. — Demonstrates AI agents autonomously designing and executing chemistry experiments; a useful reference for understanding what AI can and cannot yet transfer to biological protocol design.
