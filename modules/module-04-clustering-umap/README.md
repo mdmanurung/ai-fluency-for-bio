@@ -264,6 +264,27 @@ print(adata)
 
 ---
 
+## Self-check
+
+Try to answer before checking. If you miss two, re-read the section on the dependency chain.
+
+1. Why does running PCA on the un-scaled matrix give different (and usually worse) results than on the scaled matrix? What's the underlying reason for scaling first?
+2. You compute Leiden at resolution 0.5 and get 9 clusters. You re-run at resolution 1.5 and get 22 clusters. Which is "correct"? How do you decide?
+3. The AI tells you "the UMAP shows three groups, so there are three cell types." What's the Discernment problem? What's the right tool for "how many cell types are there"?
+4. You build the neighbour graph with `n_neighbors=5` and the UMAP collapses into one blob. Then you set `n_neighbors=50` and it explodes into many disconnected sub-blobs. Which one is right, and what does the parameter do?
+
+<details>
+<summary>Self-check answers</summary>
+
+1. PCA finds directions of **maximum variance**. Without scaling, genes with high mean expression dominate the variance simply because they have larger absolute count fluctuations — so PC1 reflects "gene with highest mean," not biological structure. Scaling (mean-centring + variance-standardising) puts every gene on equal footing so PCA finds biologically informative directions instead of expression-magnitude artefacts. This is why Scanpy's tutorial sequence is `normalize → log → HVG → scale → PCA`, in that order.
+2. **Neither is "correct" in isolation.** Resolution is a hyperparameter that trades off granularity. The right answer is to (a) check stability — does the cluster count change much between resolution 0.4 and 0.6? if yes, the choice is unstable; (b) run marker-gene detection at both resolutions and see whether 0.5's "cluster 4" is two biologically distinct populations at 1.5 (defensible split) or just over-clustering noise (split is artefactual). Resolution should be tuned with the downstream biological question in mind, not chosen by feel.
+3. UMAP **geometry is dominated by neighbour-graph topology**, not cell biology. Three visual groups in UMAP may be one cell type with batch structure, or eight cell types where some pairs happen to overlap in 2D. The right tool for "how many cell types" is **marker-gene analysis on Leiden clusters** — `sc.tl.rank_genes_groups` followed by checking known markers. UMAP confirms that clusters are well-separated; it doesn't define them.
+4. The right value is whatever makes downstream Leiden clustering and marker-gene analysis sensible — typically `n_neighbors=10–20` for a few-thousand-cell PBMC dataset. `n_neighbors=5` is too local: every cell connects only to nearest neighbours, the graph fragments, UMAP can't find global structure, and Leiden under-clusters. `n_neighbors=50` is too global: distinct populations bleed into each other through dense connections, and Leiden over-fragments. The parameter controls the **scale** at which you're asking "what's nearby?" — too small and you see only the local neighbourhood; too large and everything looks like one population.
+
+</details>
+
+---
+
 ## Key Takeaways
 
 1. **Scale → PCA → neighbors → UMAP → Leiden, in that order.** Each step depends on the previous one.
