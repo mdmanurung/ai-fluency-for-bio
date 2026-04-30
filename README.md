@@ -64,7 +64,7 @@ See the [Syllabus](course-syllabus.qmd) for the full assessment scheme, AI-use p
 - A free-tier LLM chat account (Claude, ChatGPT, or Gemini). Paid tiers help in weeks 3–4 but are not required.
 - A coding assistant (Claude Code, Cursor, or VS Code + Copilot).
 - A grounded literature tool (Elicit, Consensus, SciSpace, or Perplexity sources mode).
-- For the hands-on weeks: a Google account for Colab. Local Scanpy via conda/uv works too — see `weeks/week-3.qmd` Setup.
+- For the hands-on weeks: a Google account for Colab. For a local install, use the pinned `environment.yml` (conda) or `requirements.txt` (pip / uv) at the repo root — `conda env create -f environment.yml && conda activate ai-fluency-for-bio` reproduces the full stack.
 - HPC or cloud access *only* if you want to run Modules 1–2. Otherwise start at Module 3.
 
 ## Repo layout

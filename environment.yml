@@ -1,0 +1,22 @@
+name: ai-fluency-for-bio
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - pip
+  - jupyterlab>=4
+  - ipykernel
+  - scanpy>=1.10
+  - anndata>=0.10
+  - leidenalg>=0.10
+  - python-igraph>=0.11
+  - numpy>=1.26
+  - pandas>=2.1
+  - scipy>=1.11
+  - scikit-learn>=1.4
+  - matplotlib>=3.8
+  - seaborn>=0.13
+  - h5py
+  - pip:
+      - scrublet>=0.2.3

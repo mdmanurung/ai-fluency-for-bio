@@ -1,0 +1,21 @@
+# Pip mirror of environment.yml. Install with:
+#     uv pip install -r requirements.txt
+# or  pip install -r requirements.txt
+#
+# Mirrors Colab's Python 3.11; use conda (environment.yml) on Apple Silicon
+# if igraph wheels misbehave.
+
+scanpy>=1.10
+anndata>=0.10
+leidenalg>=0.10
+igraph>=0.11
+scrublet>=0.2.3
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+scikit-learn>=1.4
+matplotlib>=3.8
+seaborn>=0.13
+h5py
+jupyterlab>=4
+ipykernel

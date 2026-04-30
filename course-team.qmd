@@ -3,7 +3,10 @@ title: "Teaching team"
 ---
 
 ::: {.callout-note}
-This page will be finalised before week 1. If you are reading this before the term starts, names below are placeholders.
+## Course template note
+This repository is a forkable course template. If you are running this course at your institution, fork the repo and replace the placeholders below with your own team and contact info.
+
+If you are a student in a specific offering, this page is finalised before week 1.
 :::
 
 ## Instructor
