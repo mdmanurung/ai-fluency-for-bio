@@ -12,69 +12,69 @@ subtitle: "Epistemic, social, and environmental considerations"
 
 ## Epistemic risks
 
-- **Homogenization** — everyone using the same model converges on the same framings, blind spots, and errors. The default LLM answer becomes the default scientific framing.
-- **Deskilling** — offloading judgment tasks can erode the skills needed to catch the model when it's wrong. The risk is highest for trainees who use AI before developing baseline competence.
-- **Calibration failure** — LLMs present confident, fluent answers regardless of underlying certainty. Used uncritically, this corrodes the habits of calibrated scientific writing.
-- **Epistemic injustice** — Kay, Kasirzadeh & Mohamed (2024) argue that generative AI can amplify *testimonial injustice* (whose voices are heard) and *hermeneutical injustice* (whose conceptual frameworks are usable), particularly outside dominant languages and traditions.
+- *Homogenisation*: everyone using the same model converges on the same framings, blind spots, and errors. The default LLM answer becomes the default scientific framing.
+- *Deskilling*: offloading judgement tasks can erode the skills needed to catch the model when it's wrong. The risk is highest for trainees who use AI before developing baseline competence.
+- *Calibration failure*: LLMs present confident, fluent answers regardless of underlying certainty. Used uncritically, this corrodes the habits of calibrated scientific writing.
+- *Epistemic injustice*: Kay, Kasirzadeh, and Mohamed (2024) argue that generative AI can amplify *testimonial injustice* (whose voices are heard) and *hermeneutical injustice* (whose conceptual frameworks are usable), particularly outside dominant languages and traditions.
 
 ## Authorship and attribution
 
-As of early 2026 the major publishers and bodies have converged on three positions — with meaningful variation in implementation detail:
+As of early 2026, the major publishers and bodies have converged on three positions, with meaningful variation in implementation detail:
 
-1. **AI cannot be listed as an author.** ICMJE, *Nature*, *Science*, and most major publishers are unambiguous on this point. Authorship requires the ability to be accountable for the work — to respond to post-publication queries, accept responsibility for errors, and make corrections. AI systems cannot do this. Listing an AI as an author is not permitted.
+1. AI cannot be listed as an author. ICMJE, *Nature*, *Science*, and most major publishers are unambiguous on this point. Authorship requires the ability to be accountable for the work: to respond to post-publication queries, accept responsibility for errors, and make corrections. AI systems cannot do this. Listing an AI as an author is not permitted.
 
-2. **AI use must be disclosed.** The threshold for what counts as "material use" varies by journal, but the convergent norm is: if AI assisted in writing, data analysis, image generation, or code, that use must be described in the methods or acknowledgments section. Most journals require specifying which tool, for what purpose, and at what stage.
+2. AI use must be disclosed. The threshold for "material use" varies by journal, but the convergent norm is: if AI assisted in writing, data analysis, image generation, or code, that use must be described in the methods or acknowledgments section. Most journals require specifying which tool, for what purpose, and at what stage.
 
-3. **Verbatim AI-generated text must be marked.** Using AI output as a draft and then editing it falls under disclosure; passing AI output verbatim as your own prose may constitute a policy violation or, in assessment contexts, academic misconduct. The distinction between "AI-assisted" and "AI-generated" is increasingly policed by institutional and journal policies.
+3. Verbatim AI-generated text must be marked. Using AI output as a draft and then editing it falls under disclosure. Passing AI output verbatim as your own prose may constitute a policy violation or, in assessment contexts, academic misconduct. The distinction between "AI-assisted" and "AI-generated" is increasingly policed by institutional and journal policies.
 
 ::: {.callout-warning}
-## These policies change — verify before teaching
+## These policies change. Verify before teaching.
 
-ICMJE, *Nature*, and *Science* update their policies on an ongoing basis. Always link to the **current online version** of each policy rather than a cached date-stamped snapshot. The summaries above reflect the convergent position as of early 2026.
+ICMJE, *Nature*, and *Science* update their policies on an ongoing basis. Always link to the current online version of each policy, not a cached date-stamped snapshot. The summaries above reflect the convergent position as of early 2026.
 :::
 
 The distinction worth teaching:
 
-- **Authorship** requires accountability for the work. AI cannot be accountable. AI is never an author.
-- **Acknowledgment / disclosure** is required when AI was used materially. The norms for "materially" are still forming; defaults are converging on "any non-trivial use."
-- **Citation** is for ideas and methods, not for the AI tool. Cite the *underlying paper* the AI surfaced; cite the *method* the AI implemented.
+- *Authorship* requires accountability for the work. AI cannot be accountable. AI is never an author.
+- *Acknowledgment and disclosure* is required when AI was used materially. The norms for "materially" are still forming. Defaults are converging on "any non-trivial use".
+- *Citation* is for ideas and methods, not for the AI tool. Cite the *underlying paper* the AI surfaced. Cite the *method* the AI implemented.
 
 ## Data, privacy, and consent
 
-Read the [Syllabus data policy](../course-syllabus.qmd#data-policy-required-reading-before-any-exercise-using-real-data) before any exercise with real data. Key clarifications:
+Read the [syllabus data policy](../course-syllabus.qmd#data-policy-required-reading-before-any-exercise-using-real-data) before any exercise with real data. A few clarifications:
 
-- **"Zero-retention" API tier ≠ private.** Most vendor "no-retention" tiers still retain data briefly for abuse monitoring and incident response. They are *better* than the consumer chat product, not equivalent to on-device.
-- **"De-identified" ≠ unrestricted.** De-identified clinical data may still be subject to HIPAA / IRB / BAA terms and to your institution's contractual restrictions.
-- **For sensitive workloads**, the safer options are: institutional / on-prem deployments, vendor enterprise tiers with appropriate contracts (e.g., signed BAA where applicable), or fully local inference (e.g., a local quantized model).
-- **Consent frameworks predate LLMs.** Donor consent that allowed "research use" did not anticipate transmission to a third-party model vendor. When in doubt, ask the data steward, not the model.
+- A "zero-retention" API tier is not the same as private. Most vendor "no-retention" tiers still retain data briefly for abuse monitoring and incident response. They are *better* than the consumer chat product, not equivalent to on-device.
+- "De-identified" is not the same as unrestricted. De-identified clinical data may still be subject to HIPAA, IRB, and BAA terms, and to your institution's contractual restrictions.
+- For sensitive workloads, the safer options are institutional or on-prem deployments, vendor enterprise tiers with appropriate contracts (a signed BAA where applicable), or fully local inference (a local quantised model).
+- Consent frameworks predate LLMs. Donor consent that allowed "research use" did not anticipate transmission to a third-party model vendor. When in doubt, ask the data steward, not the model.
 
-## Environmental and labor costs
+## Environmental and labour costs
 
 Honestly stated:
 
-- Pretraining a frontier model uses substantial energy. Per-query inference is small; aggregate inference is not.
-- Annotation, preference labeling, and content moderation depend on human labor, often outsourced under difficult conditions.
-- Neither cost invalidates the technology — both should shape *how often* and *how thoughtlessly* you reach for it.
+- Pretraining a frontier model uses substantial energy. Per-query inference is small. Aggregate inference is not.
+- Annotation, preference labelling, and content moderation depend on human labour, often outsourced under difficult conditions.
+- Neither cost invalidates the technology. Both should shape *how often* and *how thoughtlessly* you reach for it.
 
 ## Limits worth naming
 
 - LLMs are not reliable sources of truth about the world.
 - They are not reliable arbiters of quality, novelty, or significance.
-- They do not "understand" causality, statistics, or biology in any robust sense — though they can produce outputs that look like they do, especially in the dominant subfields of their training distribution.
+- They do not "understand" causality, statistics, or biology in any robust sense, though they can produce outputs that look like they do, especially in the dominant subfields of their training distribution.
 - They are not your peer reviewer. They are not your IRB. They are not your statistical consultant.
 
 ::: {.callout-tip collapse="true"}
 ## Check your understanding
-1. A collaborator wants to list ChatGPT as a co-author on a manuscript because it "drafted half the introduction." What is the convergent publisher position, and what is the underlying reason?
+1. A collaborator wants to list ChatGPT as a co-author on a manuscript because it "drafted half the introduction". What is the convergent publisher position, and what is the underlying reason?
 2. Your institution has a "zero-retention" API tier with the model vendor. Can you safely paste de-identified clinical data into it? What questions would you ask first?
-3. Name one *epistemic* risk and one *labor / environmental* cost of frontier-model use, and explain why the two require different responses.
+3. Name one *epistemic* risk and one *labour or environmental* cost of frontier-model use, and explain why the two require different responses.
 
-**Answers:** 1. AI cannot be listed as an author. Authorship requires accountability — the ability to respond to post-publication queries, accept responsibility for errors, and issue corrections. An AI system cannot be accountable. Disclosure of the AI's contribution in the methods / acknowledgments is the right path, not authorship. 2. Probably not without further checks. "Zero-retention" tiers still typically retain briefly for abuse monitoring and are not equivalent to on-prem. De-identified clinical data may still be subject to HIPAA, IRB protocols, BAAs, and the original donor consent. Ask: does my institution have a signed BAA with this vendor? Does the IRB protocol cover transmission to a third-party model? What did the donor consent permit? 3. *Epistemic:* homogenisation — everyone using the same model converges on the same framings and blind spots, eroding scientific diversity. Response: name AI use, vary tools, keep your own framing. *Labor / environmental:* annotation work performed under difficult outsourced conditions; aggregate inference energy is non-trivial. Response: use AI deliberately, not thoughtlessly; favour vendors with stronger labour and disclosure practices.
+**Answers:** 1. AI cannot be listed as an author. Authorship requires accountability: the ability to respond to post-publication queries, accept responsibility for errors, and issue corrections. An AI system cannot be accountable. Disclosure of the AI's contribution in the methods or acknowledgments is the right path, not authorship. 2. Probably not without further checks. "Zero-retention" tiers still typically retain briefly for abuse monitoring and are not equivalent to on-prem. De-identified clinical data may still be subject to HIPAA, IRB protocols, BAAs, and the original donor consent. Ask: does my institution have a signed BAA with this vendor? Does the IRB protocol cover transmission to a third-party model? What did the donor consent permit? 3. *Epistemic*: homogenisation. Everyone using the same model converges on the same framings and blind spots, eroding scientific diversity. Response: name AI use, vary tools, keep your own framing. *Labour and environmental*: annotation work performed under difficult outsourced conditions, and aggregate inference energy that is not trivial. Response: use AI deliberately, not thoughtlessly, and favour vendors with stronger labour and disclosure practices.
 :::
 
 ## Further reading
 
 - Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI.](https://arxiv.org/abs/2408.11441) *AAAI/ACM AIES.*
-- ICMJE [Recommendations](https://www.icmje.org/recommendations/) — current online version, on AI in authorship.
-- *Nature* [editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai) — current online version.
-- *Science* family editorial AI guidelines — current online version.
+- ICMJE [Recommendations](https://www.icmje.org/recommendations/), current online version, on AI in authorship.
+- *Nature* [editorial policies on AI](https://www.nature.com/nature-portfolio/editorial-policies/ai), current online version.
+- *Science* family editorial AI guidelines, current online version.

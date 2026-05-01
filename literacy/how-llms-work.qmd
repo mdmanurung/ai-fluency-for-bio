@@ -6,20 +6,20 @@ subtitle: "Just enough to reason about their behavior in research"
 ::: {.callout-note}
 ## Learning objectives
 - Explain, at a working level, what an LLM is doing when it generates text.
-- Distinguish the major training stages and connect them to observed model behavior.
-- Use the right vocabulary for failure modes: **fabrication** (made-up facts/citations) vs. **confabulation** (the mechanism that produces them).
+- Distinguish the major training stages and connect them to observed model behaviour.
+- Use the right vocabulary for failure modes: *fabrication* (made-up facts and citations) and *confabulation* (the mechanism that produces them).
 :::
 
 ::: {.callout-warning}
 ## Scope
-This is a **working** model of how LLMs behave, not a mechanistic account. For accuracy, see the linked technical readings — what's here will let you reason about *behavior in your workflow*, not about model internals.
+This is a working model of how LLMs behave, not a mechanistic account. For accuracy, see the linked technical readings. What's here will let you reason about *behaviour in your workflow*, not about model internals.
 :::
 
 ## What an LLM is
 
-A language model is trained to predict the next token given all previous tokens. **Tokens** are not words — they are subword units, roughly 3–4 characters on average for English prose. "Transformer" and " transformer" are different tokens; "GPT" may be a single token; an emoji may expand into several. Tokenization is opaque to users and causes systematic failures on tasks that require character-level reasoning (counting letters, precise string manipulation, certain code patterns).
+A language model is trained to predict the next token given all previous tokens. **Tokens** are not words. They are subword units, roughly 3 to 4 characters on average for English prose. "Transformer" and " transformer" are different tokens. "GPT" may be a single token. An emoji may expand into several. Tokenisation is opaque to users and causes systematic failures on tasks that require character-level reasoning: counting letters, precise string manipulation, certain code patterns.
 
-The prediction is carried out by a **transformer** — an architecture that uses attention mechanisms to weight every token in the context against every other token at each layer. The practical upshot: the model can integrate information from anywhere in the context window, but it does not distinguish *things that are true* from *patterns that complete this sequence plausibly*. There is no internal "fact store" being queried — there is a very large set of learned associations over token sequences.
+The prediction is carried out by a **transformer**, an architecture that uses attention mechanisms to weight every token in the context against every other token at each layer. The practical upshot: the model can integrate information from anywhere in the context window, but it does not distinguish *things that are true* from *patterns that complete this sequence plausibly*. There is no internal "fact store" being queried. There is a very large set of learned associations over token sequences.
 
 ### Attention in one head: a toy calculation
 
@@ -27,7 +27,7 @@ To make this concrete, here is how one attention head computes which tokens to w
 
 > `gene` · `is` · `not` · `expressed`
 
-Each token is mapped to three small vectors — **Q** (query), **K** (key), **V** (value) — by learned weight matrices. For illustration, use toy two-dimensional vectors (real models use 64–128 dimensions per head):
+Each token is mapped to three small vectors (Q for query, K for key, V for value) by learned weight matrices. For illustration, use toy two-dimensional vectors. Real models use 64 to 128 dimensions per head.
 
 | Token | K vector |
 |:------|:---------|
@@ -36,75 +36,75 @@ Each token is mapped to three small vectors — **Q** (query), **K** (key), **V*
 | not | [1, 0] |
 | expressed | [1, 1] |
 
-The query for **expressed** is Q = [1, 2]. To find how much "expressed" should attend to each preceding token, compute the dot product Q · K_i:
+The query for "expressed" is Q = [1, 2]. To find how much "expressed" should attend to each preceding token, compute the dot product Q · K_i:
 
 | Token | Q · K_i | Scaled ÷ √2 ≈ 1.41 |
 |:------|:--------|:-------------------|
-| gene | 1×2 + 2×1 = **4** | 4 ÷ 1.41 ≈ **2.83** |
-| is | 1×0 + 2×1 = **2** | 2 ÷ 1.41 ≈ **1.41** |
-| not | 1×1 + 2×0 = **1** | 1 ÷ 1.41 ≈ **0.71** |
-| expressed | 1×1 + 2×1 = **3** | 3 ÷ 1.41 ≈ **2.12** |
+| gene | 1×2 + 2×1 = 4 | 4 ÷ 1.41 ≈ 2.83 |
+| is | 1×0 + 2×1 = 2 | 2 ÷ 1.41 ≈ 1.41 |
+| not | 1×1 + 2×0 = 1 | 1 ÷ 1.41 ≈ 0.71 |
+| expressed | 1×1 + 2×1 = 3 | 3 ÷ 1.41 ≈ 2.12 |
 
-The scaling by √d_k prevents the dot products from growing so large that softmax saturates. Apply softmax to the scaled scores (exp of each, divided by the sum):
+Scaling by √d_k prevents the dot products from growing so large that softmax saturates. Apply softmax to the scaled scores (exp of each, divided by the sum):
 
 | Token | exp(score) | Attention weight |
 |:------|:-----------|:----------------|
-| gene | exp(2.83) ≈ 16.9 | **0.54** |
-| is | exp(1.41) ≈ 4.1 | **0.13** |
-| not | exp(0.71) ≈ 2.0 | **0.06** |
-| expressed | exp(2.12) ≈ 8.3 | **0.27** |
+| gene | exp(2.83) ≈ 16.9 | 0.54 |
+| is | exp(1.41) ≈ 4.1 | 0.13 |
+| not | exp(0.71) ≈ 2.0 | 0.06 |
+| expressed | exp(2.12) ≈ 8.3 | 0.27 |
 | *sum* | *31.3* | *1.00* |
 
 The output for "expressed" is then the weighted sum of all V vectors:
 
 > output = 0.54·V_gene + 0.13·V_is + 0.06·V_not + 0.27·V_expressed
 
-**What this tells you.** With these toy vectors, "expressed" draws mostly from "gene" (54%) and itself (27%), and barely from "not" (6%). In a real trained model the weights would look very different — the training signal would push "not" much higher because negation is semantically critical. The arithmetic above is real; only the Q/K vectors are invented. Every layer of every head in a frontier model runs this same computation millions of times per forward pass.
+What this tells you: with these toy vectors, "expressed" draws mostly from "gene" (54%) and from itself (27%), and barely from "not" (6%). In a real trained model the weights would look very different. The training signal would push "not" much higher, because negation is semantically critical. The arithmetic above is real. Only the Q and K vectors are invented. Every layer of every head in a frontier model runs this same computation millions of times per forward pass.
 
 Two inference-time parameters that matter:
 
-- **Temperature** — scales the sharpness of the next-token distribution before sampling. Temperature 0 is greedy (always pick the most probable token — deterministic, useful for structured output and code). Higher temperatures increase diversity and apparent creativity, but also incoherence and fabrication rate. API defaults vary; most sit around 0.7–1.0.
-- **Context window** — the maximum number of tokens the model can attend to in a single inference call. Modern frontier models have windows of 100 K–1 M tokens. Effective use at very long contexts is uneven: information in the middle of a very long context is attended to less reliably than information at the start or end (the "lost in the middle" finding).
+- *Temperature* scales the sharpness of the next-token distribution before sampling. Temperature 0 is greedy: always pick the most probable token. It is deterministic and useful for structured output and code. Higher temperatures increase diversity and apparent creativity, but also incoherence and fabrication rate. API defaults vary, but most sit around 0.7 to 1.0.
+- *Context window* is the maximum number of tokens the model can attend to in a single inference call. Modern frontier models have windows of 100K to 1M tokens. Effective use at very long contexts is uneven: information in the middle of a very long context is attended to less reliably than information at the start or end (the "lost in the middle" finding).
 
-Key takeaways for a working researcher:
+Three things to keep in mind as a working researcher:
 
-- An LLM is a function from *token sequence* to *probability distribution over next tokens*.
-- The model has no internal representation of "what is true" — only "what is likely given the training distribution and the in-context evidence."
-- Long contexts are not memory — the prompt window is the entire world the model can see at inference time.
+- An LLM is a function from a *token sequence* to a *probability distribution over next tokens*.
+- The model has no internal representation of "what is true". It only has "what is likely given the training distribution and the in-context evidence".
+- Long contexts are not memory. The prompt window is the entire world the model can see at inference time.
 
 ## Training stages (simplified)
 
-Modern frontier models go through *at least*:
+Modern frontier models go through at least four stages:
 
-1. **Pretraining** — next-token prediction on a large corpus of text and code. Source of broad knowledge and most factual content; also source of factual errors and biases in the training distribution.
-2. **Supervised fine-tuning (SFT)** — training on curated instruction/response pairs. Shapes the assistant format and follows-instructions behavior.
-3. **Preference optimization** (RLHF, DPO, RLAIF, constitutional methods) — training against human or AI preferences. Shapes helpfulness, honesty, refusals, and *materially affects factual and reasoning behavior* — not just tone.
-4. **Safety / character / red-team passes** — additional tuning for refusals, persona, and adversarial robustness.
+1. *Pretraining*: next-token prediction on a large corpus of text and code. This is the source of broad knowledge and most factual content. It is also the source of factual errors and biases in the training distribution.
+2. *Supervised fine-tuning (SFT)*: training on curated instruction-and-response pairs. Shapes the assistant format and follows-instructions behaviour.
+3. *Preference optimisation* (RLHF, DPO, RLAIF, constitutional methods): training against human or AI preferences. Shapes helpfulness, honesty, and refusals. It also *materially affects factual and reasoning behaviour*, not just tone.
+4. *Safety, character, and red-team passes*: additional tuning for refusals, persona, and adversarial robustness.
 
-Don't memorize this list. The takeaway: **post-training is not just "polish."** Two models with similar pretraining can behave very differently because of preference and safety tuning.
+Don't memorise this list. The point: post-training is not just "polish". Two models with similar pretraining can behave very differently because of preference and safety tuning.
 
 ## Why models fabricate
 
-We use **fabrication** for the *outcome* (made-up facts, fake citations, invented function signatures) and **confabulation** for the *mechanism* (the model fills gaps in plausible ways from the training distribution). "Hallucination" is the common term but understates the harm when applied to citations.
+We use *fabrication* for the *outcome* (made-up facts, fake citations, invented function signatures) and *confabulation* for the *mechanism* (the model filling gaps in plausible ways from the training distribution). "Hallucination" is the common term, but it understates the harm when applied to citations.
 
 Why it happens:
 
-- Training rewards fluent, plausible completion — not abstention or calibrated uncertainty.
-- For rare facts (a specific paper, a recent tool version, a niche protocol), the model interpolates from neighbors in the training distribution.
+- Training rewards fluent, plausible completion, not abstention or calibrated uncertainty.
+- For rare facts (a specific paper, a recent tool version, a niche protocol), the model interpolates from neighbours in the training distribution.
 - Preference tuning further pushes toward confident, helpful-sounding answers.
 
 Huang et al. (2023) distinguish two useful types:
 
-- **Factuality fabrication** — output contradicts a verifiable real-world fact.
-- **Faithfulness fabrication** — output contradicts the source the model was given (e.g., a misquote from a paper you pasted in).
+- *Factuality fabrication*: the output contradicts a verifiable real-world fact.
+- *Faithfulness fabrication*: the output contradicts a source the model was given. For example, a misquote from a paper you pasted in.
 
-Both happen; both demand different defenses.
+Both happen, and they need different defences.
 
 ## What this means for you
 
-- Facts at the long tail of the training distribution (specific papers, recent tools, niche protocols) are the **highest-risk outputs**.
+- Facts at the long tail of the training distribution (specific papers, recent tools, niche protocols) are the highest-risk outputs.
 - Context you provide in the prompt is *qualitatively* more reliable than facts the model recalls.
-- Retrieval (RAG), tool use, and grounding in real documents reduce — but do not eliminate — fabrication. They can introduce *faithfulness* fabrication where they reduce *factuality* fabrication.
+- Retrieval (RAG), tool use, and grounding in real documents reduce fabrication, but they do not eliminate it. They can introduce *faithfulness* fabrication where they reduce *factuality* fabrication.
 
 ::: {.callout-tip collapse="true"}
 ## Check your understanding
@@ -117,7 +117,7 @@ Both happen; both demand different defenses.
 
 ## Further reading
 
-- Bender et al. (2021), [Stochastic Parrots](https://dl.acm.org/doi/10.1145/3442188.3445922) — foundational, pre-RLHF.
-- Wei et al. (2022), [Emergent Abilities](https://arxiv.org/abs/2206.07682) — read with Schaeffer et al. (2023), [Are Emergent Abilities a Mirage?](https://arxiv.org/abs/2304.15004)
-- Ouyang et al. (2022), [Training Language Models to Follow Instructions](https://arxiv.org/abs/2203.02155) — InstructGPT / RLHF.
-- Huang et al. (2023), [A Survey on Hallucination in LLMs](https://arxiv.org/abs/2311.05232) — taxonomy and mitigation.
+- Bender et al. (2021). [Stochastic Parrots](https://dl.acm.org/doi/10.1145/3442188.3445922). Foundational, pre-RLHF.
+- Wei et al. (2022). [Emergent Abilities](https://arxiv.org/abs/2206.07682). Read with Schaeffer et al. (2023), [Are Emergent Abilities a Mirage?](https://arxiv.org/abs/2304.15004)
+- Ouyang et al. (2022). [Training Language Models to Follow Instructions](https://arxiv.org/abs/2203.02155). The InstructGPT and RLHF paper.
+- Huang et al. (2023). [A Survey on Hallucination in LLMs](https://arxiv.org/abs/2311.05232). Taxonomy and mitigation.
