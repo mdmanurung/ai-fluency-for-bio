@@ -1,28 +1,28 @@
 ---
 title: "Literature review"
-subtitle: "AI for reading, synthesizing, and finding papers — safely"
+subtitle: "AI for reading, synthesising, and finding papers, safely"
 ---
 
 ::: {.callout-note}
 ## Learning objectives
-- Use AI tools to summarize and triage literature without fabricating citations.
-- Distinguish tools that ground in real sources (Elicit, Consensus, SciSpace, Perplexity w/ citations) from tools that don't.
+- Use AI tools to summarise and triage literature without fabricating citations.
+- Distinguish tools that ground in real sources (Elicit, Consensus, SciSpace, Perplexity with citations) from tools that don't.
 - Build a verification habit for every AI-sourced citation.
 :::
 
 ## The fundamental rule
 
-**Never cite a paper an AI surfaces without verifying it exists and reading it.** The failure mode here is severe: fabricated citations are scientific misconduct.
+Never cite a paper an AI surfaces without verifying it exists and reading it. The failure mode is severe. Fabricated citations are scientific misconduct.
 
 ## Triaging a new topic
 
-AI is useful as a **starting point** for literature review:
+AI is useful as a starting point for literature review:
 
 - Generating a first-pass vocabulary for unfamiliar subfields.
-- Summarizing a paper you've already obtained.
+- Summarising a paper you've already obtained.
 - Extracting structured information (species, sample size, method) from abstracts.
 
-It is **not useful** as the final word on:
+It is not useful as the final word on:
 
 - What the important papers are.
 - What a paper says if you haven't given the AI the paper.
@@ -30,100 +30,100 @@ It is **not useful** as the final word on:
 
 ## Grounded vs. ungrounded tools
 
-- **Grounded** (RAG, search-augmented): queries a real corpus, returns citations that should exist. Still verify. Examples: Elicit, Consensus, Perplexity-with-sources, SciSpace.
-- **Ungrounded** (base LLM): asks the model to recall papers from training. Expect a substantial fabrication rate, especially for specific citations.
+- *Grounded tools* (RAG, search-augmented) query a real corpus and return citations that should exist. Still verify. Examples: Elicit, Consensus, Perplexity with sources, SciSpace.
+- *Ungrounded tools* (base LLM) ask the model to recall papers from training. Expect a substantial fabrication rate, especially for specific citations.
 
 ## A verification workflow
 
-For every citation an AI surfaces — including from grounded tools — run this five-step check before incorporating:
+For every citation an AI surfaces, including from grounded tools, run this five-step check before incorporating:
 
-1. **Copy the full citation** as given: title, authors, journal, year, DOI or URL.
-2. **Resolve the DOI.** Paste it into `doi.org`. If the URL does not resolve, the citation is fabricated — stop here.
-3. **Check title and authors.** Does the page that loads match what the AI claimed? Pay close attention to the article title and first two authors; these are the fields AI hallucinates most creatively.
-4. **Verify it is on-topic.** Open the abstract on PubMed (search the title or PMID) and confirm the paper is actually about what the AI said it was about.
-5. **Only then incorporate.** Budget ~3 minutes per citation. If you cannot verify in 3 minutes, refuse to cite it.
+1. Copy the full citation as given: title, authors, journal, year, DOI or URL.
+2. Resolve the DOI. Paste it into `doi.org`. If the URL does not resolve, the citation is fabricated. Stop here.
+3. Check the title and authors. Does the page that loads match what the AI claimed? Pay close attention to the article title and first two authors. These are the fields AI hallucinates most creatively.
+4. Verify it is on-topic. Open the abstract on PubMed (search the title or PMID) and confirm the paper is actually about what the AI said it was about.
+5. Only then incorporate. Budget about three minutes per citation. If you cannot verify in three minutes, refuse to cite it.
 
-A grounded tool reduces (but does not eliminate) fabrication; it can still misstate what papers say. Steps 4 and 5 apply regardless of which tool you use.
+A grounded tool reduces fabrication, but it does not eliminate it. It can still misstate what papers say. Steps 4 and 5 apply regardless of which tool you use.
 
-## Worked example: scoping a review on "spatial transcriptomics in the tumor microenvironment"
+## Worked example: scoping a review on "spatial transcriptomics in the tumour microenvironment"
 
-A graduate student wants a reading list on this topic before a lab meeting. Here is the workflow with an explicit verification log at each hand-off. The citations below represent the typical output *pattern* — your actual session will differ.
+A graduate student wants a reading list on this topic before a lab meeting. Here is the workflow with an explicit verification log at each hand-off. The citations below represent the typical output *pattern*. Your actual session will differ.
 
-### Step 1 — First-pass vocabulary from a base LLM
+### Step 1: first-pass vocabulary from a base LLM
 
-**Prompt (ungrounded, no internet access):**
+A prompt to an ungrounded model with no internet access:
 
 > What are the key concepts and methods in spatial transcriptomics applied to the tumor microenvironment? Give me 5 foundational papers I should read.
 
-**What the AI returns:** a confident list of five citations. The vocabulary section is genuinely useful — terms like *10x Visium*, *Slide-seq*, *cell-type deconvolution*, *RCTD*, *immune exclusion*, and *immunosuppressive niche* are real and worth knowing. The citations are a different matter.
+The AI returns a confident list of five citations. The vocabulary section is genuinely useful. Terms like *10x Visium*, *Slide-seq*, *cell-type deconvolution*, *RCTD*, *immune exclusion*, and *immunosuppressive niche* are real and worth knowing. The citations are a different matter.
 
-**Verification log — base LLM output:**
+Verification log for the base LLM output:
 
 | Citation as given | DOI resolves? | Title matches? | Verdict |
 |:-----------------|:-------------|:--------------|:--------|
-| Chen et al. 2021, *Nat Commun* 12: 3847 | Yes — to an unrelated metabolomics paper | **No** | **Fabricated** |
-| Zhao et al. 2021, *Cancer Cell* 39: 411 | No response | — | **Fabricated** |
+| Chen et al. 2021, *Nat Commun* 12: 3847 | Yes, to an unrelated metabolomics paper | No | Fabricated |
+| Zhao et al. 2021, *Cancer Cell* 39: 411 | No response | — | Fabricated |
 | Rodriques et al. 2019, *Science* | Yes | Yes | Pass to step 4 |
 | Moncada et al. 2020, *Nat Biotechnol* | Yes | Yes | Pass to step 4 |
 | Cable et al. 2022, *Nat Biotechnol* | Yes | Yes | Pass to step 4 |
 
-Two of five fabricated. The DOI for Chen et al. resolved — but to a completely different paper in a different field. That is the most dangerous hallucination type: it passes a superficial check (the link works) but fails on content. **Catching it requires reading the page that loads, not just confirming the link does not 404.**
+Two of five fabricated. The DOI for Chen et al. resolved, but to a completely different paper in a different field. That is the most dangerous hallucination type. It passes a superficial check (the link works) but fails on content. Catching it requires reading the page that loads, not just confirming the link does not 404.
 
-The Zhao et al. DOI returned no response at all — that failure is more obvious but catches fewer students off guard than the Chen pattern.
+The Zhao et al. DOI returned no response at all. That failure is more obvious, but it catches fewer students off guard than the Chen pattern.
 
-### Step 2 — Switch to a grounded tool for the actual reading list
+### Step 2: switch to a grounded tool for the actual reading list
 
-Run the same query in Elicit (which searches a deduplicated corpus of ~138 million papers from Semantic Scholar, PubMed, and OpenAlex). Citations now exist by construction — Elicit cannot invent a paper that is not in its index.
+Run the same query in Elicit, which searches a deduplicated corpus of about 138 million papers from Semantic Scholar, PubMed, and OpenAlex. Citations now exist by construction. Elicit cannot invent a paper that is not in its index.
 
-**Verification log — Elicit output (sample):**
+Verification log for the Elicit output (sample):
 
 | Citation as given | DOI resolves? | Title matches? | Abstract on-topic? | Verdict |
 |:-----------------|:-------------|:--------------|:------------------|:--------|
-| Ji et al. 2020, *Cell* | Yes | Yes | Yes — spatial architecture, squamous carcinoma | Include |
-| Cable et al. 2022, *Nat Biotechnol* | Yes | Yes | Yes — RCTD deconvolution for spatial data | Include |
-| Moncada et al. 2020, *Nat Biotechnol* | Yes | Yes | Yes — spatial + scRNA-seq integration | Include |
+| Ji et al. 2020, *Cell* | Yes | Yes | Yes (spatial architecture, squamous carcinoma) | Include |
+| Cable et al. 2022, *Nat Biotechnol* | Yes | Yes | Yes (RCTD deconvolution for spatial data) | Include |
+| Moncada et al. 2020, *Nat Biotechnol* | Yes | Yes | Yes (spatial and scRNA-seq integration) | Include |
 
-Zero fabrications. But Elicit's auto-extracted summary for Cable et al. states the tool works on "10x Visium data only" — the actual paper applies to any spatial platform. Step 4 still matters: read the abstract yourself before deciding a paper belongs in your review.
+Zero fabrications. But Elicit's auto-extracted summary for Cable et al. states the tool works on "10x Visium data only", and the actual paper applies to any spatial platform. Step 4 still matters. Read the abstract yourself before deciding a paper belongs in your review.
 
-### Step 3 — Use AI to extract structure from papers you hold
+### Step 3: use AI to extract structure from papers you hold
 
 Once you have the verified PDFs, the highest-reliability AI move is to paste the abstract and ask for structured extraction:
 
 > From this abstract, extract: (1) the spatial platform used, (2) the cancer type, (3) the immune cell populations analysed, (4) the main finding in one sentence.
 
-The source text is provided by you, so the AI cannot fabricate what it is summarising. Verify the extraction against the original abstract before copying it into your notes.
+You provide the source text, so the AI cannot fabricate what it is summarising. Verify the extraction against the original abstract before copying it into your notes.
 
 ::: {.callout-tip}
 ## Where the 4 D's showed up
-- **Description** — framing the search precisely ("spatial transcriptomics in the tumor microenvironment, foundational methods papers, 2019–2023" rather than just "cancer AI") shapes what a grounded tool retrieves.
-- **Discernment** — running the five-step check; catching the DOI that resolves to the wrong paper; reading tool summaries critically rather than accepting them.
-- *Delegation* — using a grounded tool for first-pass triage; using AI to extract structured fields from papers you already hold.
-- *Diligence* — every citation in your final list was touched by a human eye before inclusion. You are the author of record, not the AI.
+- *Description*: framing the search precisely ("spatial transcriptomics in the tumour microenvironment, foundational methods papers, 2019 to 2023" rather than just "cancer AI") shapes what a grounded tool retrieves.
+- *Discernment*: running the five-step check, catching the DOI that resolves to the wrong paper, and reading tool summaries critically rather than accepting them.
+- *Delegation*: using a grounded tool for first-pass triage, and using AI to extract structured fields from papers you already hold.
+- *Diligence*: every citation in your final list was touched by a human eye before inclusion. You are the author of record, not the AI.
 :::
 
 ## Common failure modes
 
-- **Stopping at "the link works."** A hallucinated citation can carry a real DOI that belongs to a different paper. The title and content check is non-optional.
-- **Trusting grounded tools unconditionally.** Elicit and Consensus can misstate what a paper says even when the paper exists. Their summaries are starting points, not quotable claims.
-- **Outsourcing synthesis.** Asking an AI "what does the field say about X?" produces a confident synthesis that may blend real results with fabricated ones. Read the primary sources; synthesise in your own words.
+- *Stopping at "the link works"*. A hallucinated citation can carry a real DOI that belongs to a different paper. The title and content check is non-optional.
+- *Trusting grounded tools unconditionally*. Elicit and Consensus can misstate what a paper says even when the paper exists. Their summaries are starting points, not quotable claims.
+- *Outsourcing synthesis*. Asking an AI "what does the field say about X?" produces a confident synthesis that may blend real results with fabricated ones. Read the primary sources and synthesise in your own words.
 
 ## Exercises
 
-1. Ask an ungrounded LLM for 10 citations on a niche topic in your field. Verify each against PubMed. Record your hit rate.
-2. Repeat with a grounded tool (Elicit, Consensus, or Perplexity-with-sources). Compare fabrication rates and the accuracy of the auto-generated summaries.
+1. Ask an ungrounded LLM for ten citations on a niche topic in your field. Verify each against PubMed. Record your hit rate.
+2. Repeat with a grounded tool (Elicit, Consensus, or Perplexity with sources). Compare fabrication rates and the accuracy of the auto-generated summaries.
 3. Take a paper you know well. Give its abstract to an AI and ask it to extract three structured fields. Check each extraction against the original. Record any errors.
 
 ::: {.callout-tip collapse="true"}
 ## Check your understanding
-1. The five-step workflow has a step that catches **citation drift** (a real paper, but the cited claim isn't in it). Which step, and why is drift more dangerous than fabrication?
-2. A grounded tool returns a summary that says "this paper showed effect X." You confirmed the paper exists and is on-topic. Why is this still not enough to quote the claim?
-3. You ask an ungrounded LLM for 10 citations and 6 are fabricated. The fabrication rate is high but the failure mode is *less* dangerous than a single citation that resolves to the wrong paper. Why?
+1. The five-step workflow has a step that catches *citation drift* (a real paper, but the cited claim isn't in it). Which step, and why is drift more dangerous than fabrication?
+2. A grounded tool returns a summary that says "this paper showed effect X". You confirmed the paper exists and is on-topic. Why is this still not enough to quote the claim?
+3. You ask an ungrounded LLM for ten citations and six are fabricated. The fabrication rate is high, but the failure mode is *less* dangerous than a single citation that resolves to the wrong paper. Why?
 
-**Answers:** 1. Step 4 — verifying that the cited claim actually appears in the paper. Drift is more dangerous than fabrication because the resolved DOI passes the metadata check; the reader trusts that a resolved citation supports the claim. Fabrication is caught immediately by the existence check; drift survives unless someone reads the source. 2. Grounded-tool summaries can misstate what a paper says even when the paper exists — the model still has to read the paper and produce text, and that production step can hallucinate. Quote the **paper**, not the **summary**; the summary is a pointer, not a source. 3. A 60% fabrication rate is obvious — every citation has to be checked, the user knows the tool is unreliable, and verification is built into the workflow. A single drifted citation among nine clean ones is *not* obvious — it carries the same surface signals (resolved DOI, real authors, sensible title) as a correct one, so it slips past surface checks. The dangerous failure mode is the one that looks like the safe one.
+**Answers:** 1. Step 4: verifying that the cited claim actually appears in the paper. Drift is more dangerous than fabrication because the resolved DOI passes the metadata check, and the reader trusts that a resolved citation supports the claim. Fabrication is caught immediately by the existence check. Drift survives unless someone reads the source. 2. Grounded-tool summaries can misstate what a paper says even when the paper exists. The model still has to read the paper and produce text, and that production step can hallucinate. Quote the *paper*, not the *summary*. The summary is a pointer, not a source. 3. A 60% fabrication rate is obvious. Every citation has to be checked, the user knows the tool is unreliable, and verification is built into the workflow. A single drifted citation among nine clean ones is not obvious. It carries the same surface signals (resolved DOI, real authors, sensible title) as a correct one, so it slips past surface checks. The dangerous failure mode is the one that looks like the safe one.
 :::
 
 ## Further reading
 
-- Walters, W. H., & Wilder, E. I. (2023). [Fabrication and errors in the bibliographic citations generated by ChatGPT](https://doi.org/10.1038/s41598-023-41032-5). *Scientific Reports* 13: 14045. — Systematic study of 636 AI-generated citations; GPT-3.5 fabricated 55% and GPT-4 fabricated 18%. The study that quantified why the fundamental rule above is non-negotiable.
-- Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI](https://arxiv.org/abs/2408.11441). *AAAI/ACM AIES.* — Frames the risk that uncritical AI use in research undermines collective scientific knowledge; grounds the "outsource synthesis" failure mode in a broader ethical argument.
-- [Discernment](../fluency/discernment.qmd) in this course — the five-step verification workflow is a direct application of the Discernment D; revisit the verification checklist there if any step above feels ambiguous.
+- Walters, W. H., & Wilder, E. I. (2023). [Fabrication and errors in the bibliographic citations generated by ChatGPT](https://doi.org/10.1038/s41598-023-41032-5). *Scientific Reports* 13: 14045. A systematic study of 636 AI-generated citations. GPT-3.5 fabricated 55% and GPT-4 fabricated 18%. The study that quantified why the fundamental rule above is non-negotiable.
+- Kay, J., Kasirzadeh, A., & Mohamed, S. (2024). [Epistemic injustice in generative AI](https://arxiv.org/abs/2408.11441). *AAAI/ACM AIES.* Frames the risk that uncritical AI use in research undermines collective scientific knowledge. Grounds the "outsource synthesis" failure mode in a broader ethical argument.
+- [Discernment](../fluency/discernment.qmd) in this course. The five-step verification workflow is a direct application of the Discernment D. Revisit the verification checklist there if any step above feels ambiguous.

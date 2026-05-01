@@ -12,27 +12,27 @@ subtitle: "AI-assisted exploration, QC, and interpretation on scRNA-seq data"
 
 ::: {.callout-tip}
 ## How this page relates to Module 3
-[Module 3](../modules/module-03-preprocessing-scanpy/README.md) is the **runnable procedure**. This page is the **AI-fluency lens** on those same steps: where AI helps, where it fails, and which decisions stay yours.
+[Module 3](../modules/module-03-preprocessing-scanpy/README.md) is the runnable procedure. This page is the AI-fluency lens on those same steps: where AI helps, where it fails, and which decisions stay yours.
 :::
 
-## Where AI helps most — and least
+## Where AI helps most, and least
 
-**Helps:** boilerplate I/O (`sc.read_10x_mtx`, `sc.datasets.pbmc3k`, mt-flagging); standard pipeline scaffolds (Scanpy, Seurat); plot recipes (violin, scatter, [UMAP](../reference/glossary.qmd), dotplot); explaining unfamiliar output ("what does this scrublet histogram mean?").
+AI helps with: boilerplate I/O (`sc.read_10x_mtx`, `sc.datasets.pbmc3k`, mt-flagging); standard pipeline scaffolds (Scanpy, Seurat); plot recipes (violin, scatter, [UMAP](../reference/glossary.qmd), dotplot); and explaining unfamiliar output ("what does this scrublet histogram mean?").
 
-**Falls short on:** tissue-specific thresholds (the textbook 5% mt cutoff is for PBMCs — neurons or muscle break that rule); reading clustering for biology (Leiden gives clusters; identity is markers + prior knowledge); borderline cases (high-mt tail = ambient RNA, dying cells, real biology, or all three — the AI will tell you a story, don't let it).
+AI falls short on: tissue-specific thresholds (the textbook 5% mt cutoff is for PBMCs; neurons and muscle break that rule); reading clustering for biology (Leiden gives clusters, but identity comes from markers and prior knowledge); and borderline cases (a high-mt tail can be ambient RNA, dying cells, real biology, or all three; the AI will tell you a story, don't let it).
 
 ## A template workflow
 
-1. **Describe the dataset to the AI** — platform, organism, tissue, expected cell types, library version, total cells. Practice the [Description](../fluency/description.qmd) D.
-2. **Ask for a QC plan**, not a QC answer. Critique the plan. Then execute.
-3. **Run each step yourself** (or via an AI coding assistant you supervise). Look at every plot.
-4. **Write interpretations in your own words.** Use AI for prose polishing, not reasoning.
+1. Describe the dataset to the AI: platform, organism, tissue, expected cell types, library version, total cells. Practice the [Description](../fluency/description.qmd) D.
+2. Ask for a QC plan, not a QC answer. Critique the plan. Then execute.
+3. Run each step yourself, or via an AI coding assistant you supervise. Look at every plot.
+4. Write interpretations in your own words. Use AI for prose polishing, not reasoning.
 
 ## Worked example: QC on 10x PBMC 3k
 
-The course dataset is the [10x PBMC 3k](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0) — 2,700 PBMCs from a healthy donor, 10x Chromium v1, ≈8 well-characterised cell types. Scanpy bundles it as `sc.datasets.pbmc3k()`. The runnable code is in [Module 3](../modules/module-03-preprocessing-scanpy/README.md); the commentary below proceeds in the same order.
+The course dataset is the [10x PBMC 3k](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0): 2,700 PBMCs from a healthy donor, 10x Chromium v1, about 8 well-characterised cell types. Scanpy bundles it as `sc.datasets.pbmc3k()`. The runnable code is in [Module 3](../modules/module-03-preprocessing-scanpy/README.md). The commentary below proceeds in the same order.
 
-### Step 1 — Frame the dataset for the AI
+### Step 1: frame the dataset for the AI
 
 ```python
 import scanpy as sc
@@ -41,9 +41,9 @@ adata.var_names_make_unique()
 print(adata)              # n_obs × n_vars = 2700 × 32738
 ```
 
-The AI writes the load + dedup + print pattern from a one-line description. **Yours**: tell the AI explicitly that this is *human* PBMCs from a *10x Chromium v1* run with a *healthy donor*, expecting ≈8 cell types. Without that context every later suggestion (mt threshold, doublet rate, marker panel, organism prefix) is a guess.
+The AI writes the load, dedup, and print pattern from a one-line description. Your job is to tell the AI explicitly that this is *human* PBMCs from a *10x Chromium v1* run with a *healthy donor*, expecting about 8 cell types. Without that context every later suggestion (mt threshold, doublet rate, marker panel, organism prefix) is a guess.
 
-### Step 2 — Calculate QC metrics
+### Step 2: calculate QC metrics
 
 ```python
 adata.var['mt'] = adata.var_names.str.startswith('MT-')   # human prefix
@@ -51,9 +51,9 @@ sc.pp.calculate_qc_metrics(adata, qc_vars=['mt'], percent_top=None,
                            log1p=False, inplace=True)
 ```
 
-The prefix is `MT-` for human and `mt-` for mouse. An AI that does not know your organism will pick one — and on a mouse dataset it silently flags *zero* mt-genes. Always specify organism in the prompt; always confirm `adata.var['mt'].sum() > 0` before trusting the result.
+The prefix is `MT-` for human and `mt-` for mouse. An AI that does not know your organism will pick one. On a mouse dataset it silently flags *zero* mt-genes. Always specify organism in the prompt. Always confirm `adata.var['mt'].sum() > 0` before trusting the result.
 
-### Step 3 — Read the violin plots
+### Step 3: read the violin plots
 
 ```python
 sc.pl.violin(adata, ['n_genes_by_counts', 'total_counts', 'pct_counts_mt'],
@@ -62,13 +62,13 @@ sc.pl.violin(adata, ['n_genes_by_counts', 'total_counts', 'pct_counts_mt'],
 
 The AI can describe what these metrics mean. It cannot read *your* plots. Look at the shape:
 
-- A clean PBMC 3k violin: tight `n_genes_by_counts` centred at 1,000–1,500, thin upper tail, `pct_counts_mt` mostly below 5%.
-- Bimodal `n_genes_by_counts` → possible doublet population, cell-type imbalance, or empty-droplet contamination.
-- Long upper `total_counts` tail without a corresponding `n_genes_by_counts` shoulder → ambient RNA rather than doublets.
+- A clean PBMC 3k violin has a tight `n_genes_by_counts` centred at 1,000 to 1,500, a thin upper tail, and `pct_counts_mt` mostly below 5%.
+- Bimodal `n_genes_by_counts` suggests a possible doublet population, cell-type imbalance, or empty-droplet contamination.
+- A long upper `total_counts` tail without a corresponding `n_genes_by_counts` shoulder suggests ambient RNA rather than doublets.
 
-"What threshold should I use?" → textbook answer. "Given a clean unimodal violin centred at 1,200 genes with a thin upper shoulder above 2,500, what max-genes threshold removes plausible doublets without trimming real cells?" → calibrated answer.
+"What threshold should I use?" returns the textbook answer. "Given a clean unimodal violin centred at 1,200 genes with a thin upper shoulder above 2,500, what max-genes threshold removes plausible doublets without trimming real cells?" returns a calibrated one.
 
-### Step 4 — Choose thresholds and filter
+### Step 4: choose thresholds and filter
 
 ```python
 sc.pp.filter_cells(adata, min_genes=200)
@@ -77,9 +77,9 @@ adata = adata[adata.obs.n_genes_by_counts < 2500, :]
 adata = adata[adata.obs.pct_counts_mt < 5, :]
 ```
 
-The AI drafts the four lines. Every number is yours. PBMCs tolerate 5% mt because PBMCs are robust; neurons or muscle regularly show 15–25% mt% in healthy cells, and a 5% cutoff would silently delete most of the experiment. Threshold = [Discernment](../fluency/discernment.qmd); code = delegation.
+The AI drafts the four lines. Every number is yours. PBMCs tolerate 5% mt because PBMCs are tough. Neurons and muscle regularly show 15 to 25% mt in healthy cells, and a 5% cutoff would silently delete most of the experiment. Thresholds are [Discernment](../fluency/discernment.qmd). Code is delegation.
 
-### Step 5 — Doublet detection (Scrublet)
+### Step 5: doublet detection (Scrublet)
 
 ```python
 import scrublet as scr
@@ -89,9 +89,9 @@ adata.obs['doublet_score'] = doublet_scores
 adata.obs['predicted_doublet'] = predicted_doublets
 ```
 
-Ask whether the predicted doublet rate matches your loading concentration. PBMC 3k loaded ≈3,000 cells; expected ≈2–4%. If Scrublet flags 12%, something is off — either over-aggressive call or over-loaded input. Either way, a flag for you, not for the AI to silently accept.
+Ask whether the predicted doublet rate matches your loading concentration. PBMC 3k loaded about 3,000 cells, with an expected rate of 2 to 4%. If Scrublet flags 12%, something is off: either an over-aggressive call or an over-loaded input. Either way, that is a flag for you, not for the AI to silently accept.
 
-### Step 6 — Normalise, log-transform, select HVGs
+### Step 6: normalise, log-transform, and select HVGs
 
 ```python
 sc.pp.normalize_total(adata, target_sum=1e4)
@@ -101,9 +101,9 @@ sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
 adata = adata[:, adata.var.highly_variable]
 ```
 
-`target_sum=1e4` is convention, not law — appropriate when it matches your median library size. HVG defaults are also convention; expect ≈1,800–2,000 HVGs for PBMC 3k. If you get 200 or 8,000, the defaults are wrong and you retune.
+`target_sum=1e4` is convention, not law. It is appropriate when it matches your median library size. HVG defaults are also convention. Expect about 1,800 to 2,000 HVGs for PBMC 3k. If you get 200 or 8,000, the defaults are wrong and you retune.
 
-### Step 7 — Embed and cluster
+### Step 7: embed and cluster
 
 ```python
 sc.pp.scale(adata, max_value=10)
@@ -114,41 +114,41 @@ sc.tl.leiden(adata, resolution=0.5)
 sc.pl.umap(adata, color='leiden')
 ```
 
-Most useful and most dangerous step. Useful: AI remembers the boilerplate, suggests reasonable parameter starts, explains why `n_pcs` matters. Dangerous: it will name your clusters from `leiden` IDs alone if you let it — a confident hallucination, since identity comes from markers and biological context, not cluster numbers. Choose `resolution`, `n_neighbors`, `n_pcs` yourself; run the elbow plot; look at the UMAP; ask whether the cluster count matches your expected cell-type count (≈8 for PBMC 3k). Pass to Module 5 for annotation — by markers, *not* by guessing.
+This is the most useful and most dangerous step. Useful, because the AI remembers the boilerplate, suggests reasonable parameter starts, and explains why `n_pcs` matters. Dangerous, because it will name your clusters from `leiden` IDs alone if you let it. That is a confident hallucination. Identity comes from markers and biological context, not cluster numbers. Choose `resolution`, `n_neighbors`, and `n_pcs` yourself. Run the elbow plot. Look at the UMAP. Ask whether the cluster count matches your expected cell-type count (about 8 for PBMC 3k). Pass to Module 5 for annotation, by markers, *not* by guessing.
 
 ::: {.callout-tip}
 ## Where the 4 D's showed up
-- **Description** — telling the AI it is *human* PBMCs from *10x Chromium v1* so it picks the right mt prefix and doublet expectation.
-- **Discernment** — reading violin plots, doublet score distribution, and UMAP shape yourself; rejecting one-size-fits-all thresholds.
-- **Diligence** — owning every threshold and parameter; documenting choices in the notebook for the disclosure rubric.
-- *Delegation* — boilerplate I/O, plotting, and per-cell metric calls, where AI is reliable when given organism context.
+- *Description*: telling the AI it is *human* PBMCs from *10x Chromium v1* so it picks the right mt prefix and doublet expectation.
+- *Discernment*: reading violin plots, doublet score distribution, and UMAP shape yourself, and rejecting one-size-fits-all thresholds.
+- *Diligence*: owning every threshold and parameter, and documenting choices in the notebook for the disclosure rubric.
+- *Delegation*: boilerplate I/O, plotting, and per-cell metric calls, where AI is reliable when given organism context.
 :::
 
 ## Common failure modes
 
-- **Trusting the textbook threshold.** PBMC 5%, neuron 20%, muscle 25%; ask for tissue-specific reasoning, not a universal answer.
-- **Asking for a QC answer instead of a QC plan.** "Is this dataset clean?" is the wrong question. "What evidence would I need to call this dataset clean?" is the right one.
-- **Letting the AI name your clusters.** Cluster identity is markers + prior knowledge, not Leiden numbers.
-- **Wrong organism prefix.** `MT-` (human) vs `mt-` (mouse). Mismatch silently flags zero mt-genes and corrupts every threshold downstream.
+- *Trusting the textbook threshold*. PBMC 5%, neuron 20%, muscle 25%. Ask for tissue-specific reasoning, not a universal answer.
+- *Asking for a QC answer instead of a QC plan*. "Is this dataset clean?" is the wrong question. "What evidence would I need to call this dataset clean?" is the right one.
+- *Letting the AI name your clusters*. Cluster identity is markers and prior knowledge, not Leiden numbers.
+- *Wrong organism prefix*. `MT-` for human, `mt-` for mouse. A mismatch silently flags zero mt-genes and corrupts every threshold downstream.
 
 ## Exercises
 
-1. Load PBMC 3k. Without consulting an AI, sketch a QC plan in 5 bullets before any code. Compare with what the AI suggests. Where do you disagree?
-2. Take a small dataset of your own (or a public one from your subfield). Frame it for an AI in three sentences (platform / organism / expected biology). Then ask for a QC plan. Critique it before running.
-3. Run the worked example end-to-end. Record one decision where you overrode the AI's first suggestion, and one where you accepted it. The disclosure rubric for the week 3 mini-project asks for both.
+1. Load PBMC 3k. Without consulting an AI, sketch a QC plan in five bullets before any code. Compare with what the AI suggests. Where do you disagree?
+2. Take a small dataset of your own, or a public one from your subfield. Frame it for an AI in three sentences (platform, organism, expected biology). Then ask for a QC plan. Critique it before running.
+3. Run the worked example end-to-end. Record one decision where you overrode the AI's first suggestion, and one where you accepted it. The disclosure rubric for the Week 3 mini-project asks for both.
 
 ::: {.callout-tip collapse="true"}
 ## Check your understanding
 1. You are running QC on a *mouse* lung scRNA-seq dataset. The AI suggests `adata.var['mt'] = adata.var_names.str.startswith('MT-')`. What goes wrong, and what is the fix?
-2. Your PBMC dataset shows a `pct_counts_mt` median of 12% with a tail to 25%. The AI recommends a 5% cutoff "as standard for PBMCs." Should you accept it? Why or why not?
+2. Your PBMC dataset shows a `pct_counts_mt` median of 12% with a tail to 25%. The AI recommends a 5% cutoff "as standard for PBMCs". Should you accept it? Why or why not?
 3. Scrublet on a 3,000-cell PBMC sample flags 11% as predicted doublets. What does that flag, and what would you check before filtering?
 
-**Answers:** 1. The mouse mt-gene prefix is `mt-` (lowercase), not `MT-`. The flag column will be all `False`, `pct_counts_mt` will be 0 for every cell, and you will silently fail to filter dying cells. Fix: `adata.var_names.str.startswith('mt-')`. 2. No — the suggestion ignores your data. A median of 12% means most cells would be filtered. Either your dissociation was harsh (rerun upstream) or 5% is the wrong cutoff for *this* sample; inspect the violin and pick a threshold above the main body but below the dying-cell tail. 3. Expected doublet rate for ~3k loaded cells is ≈2–4%. 11% is 3× expected. Check loading concentration (over-loading?), Scrublet's expected-doublet-rate parameter, and whether two real but transcriptionally similar cell types are being misread as doublets.
+**Answers:** 1. The mouse mt-gene prefix is `mt-` (lowercase), not `MT-`. The flag column will be all `False`, `pct_counts_mt` will be 0 for every cell, and you will silently fail to filter dying cells. Fix: `adata.var_names.str.startswith('mt-')`. 2. No. The suggestion ignores your data. A median of 12% means most cells would be filtered. Either your dissociation was harsh (rerun upstream) or 5% is the wrong cutoff for *this* sample. Inspect the violin and pick a threshold above the main body but below the dying-cell tail. 3. The expected doublet rate for about 3,000 loaded cells is 2 to 4%. 11% is roughly three times that. Check loading concentration (was it over-loaded?), Scrublet's expected-doublet-rate parameter, and whether two real but transcriptionally similar cell types are being misread as doublets.
 :::
 
 ## Further reading
 
-- Wolf, F. A., Angerer, P., & Theis, F. J. (2018). [SCANPY: large-scale single-cell gene expression data analysis](https://doi.org/10.1186/s13059-017-1382-0). *Genome Biology* 19:15. — The Scanpy paper.
-- Heumos, L., Schaar, A. C., Lance, C., et al. (2023). [Best practices for single-cell analysis across modalities](https://doi.org/10.1038/s41576-023-00586-w). *Nature Reviews Genetics* 24, 550–572. — The QC, normalisation, and clustering decisions above; pre-AI, but its human-judgement points are exactly where the AI is unreliable.
-- Wolock, S. L., Lopez, R., & Klein, A. M. (2019). [Scrublet: Computational identification of cell doublets in single-cell transcriptomic data](https://doi.org/10.1016/j.cels.2018.11.005). *Cell Systems* 8, 281–291. — Read before trusting any predicted-doublet rate.
+- Wolf, F. A., Angerer, P., & Theis, F. J. (2018). [SCANPY: large-scale single-cell gene expression data analysis](https://doi.org/10.1186/s13059-017-1382-0). *Genome Biology* 19:15. The Scanpy paper.
+- Heumos, L., Schaar, A. C., Lance, C., et al. (2023). [Best practices for single-cell analysis across modalities](https://doi.org/10.1038/s41576-023-00586-w). *Nature Reviews Genetics* 24, 550–572. The QC, normalisation, and clustering decisions above. Pre-AI, but its human-judgement points are exactly where the AI is unreliable.
+- Wolock, S. L., Lopez, R., & Klein, A. M. (2019). [Scrublet: Computational identification of cell doublets in single-cell transcriptomic data](https://doi.org/10.1016/j.cels.2018.11.005). *Cell Systems* 8, 281–291. Read before trusting any predicted-doublet rate.
 - 10x Genomics. [PBMC 3k dataset documentation](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0).
