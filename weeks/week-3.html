@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 3 — scRNA-seq I (QC → clustering) – AI Fluency Foundations for Biology</title>
+<title>Week 3: scRNA-seq I (QC to clustering) – AI Fluency Foundations for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Week 3 — scRNA-seq I (QC → clustering) – AI Fluency Foundations for Biology">
+<meta property="og:title" content="Week 3: scRNA-seq I (QC to clustering) – AI Fluency Foundations for Biology">
 <meta property="og:description" content="AI-assisted single-cell QC, normalisation, and clustering on PBMC 3k">
 <meta property="og:site_name" content="AI Fluency Foundations for Biology">
 </head>
@@ -597,14 +597,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
   <li><a href="#hands-on-practice" id="toc-hands-on-practice" class="nav-link" data-scroll-target="#hands-on-practice">Hands-on practice</a>
   <ul class="collapse">
-  <li><a href="#exercise-3.1-predict-then-run" id="toc-exercise-3.1-predict-then-run" class="nav-link" data-scroll-target="#exercise-3.1-predict-then-run">Exercise 3.1 — Predict-then-run</a></li>
-  <li><a href="#exercise-3.2-threshold-defence" id="toc-exercise-3.2-threshold-defence" class="nav-link" data-scroll-target="#exercise-3.2-threshold-defence">Exercise 3.2 — Threshold defence</a></li>
-  <li><a href="#exercise-3.3-ai-assisted-vs.-ai-free-diff" id="toc-exercise-3.3-ai-assisted-vs.-ai-free-diff" class="nav-link" data-scroll-target="#exercise-3.3-ai-assisted-vs.-ai-free-diff">Exercise 3.3 — AI-assisted vs.&nbsp;AI-free diff</a></li>
+  <li><a href="#exercise-3.1-predict-then-run" id="toc-exercise-3.1-predict-then-run" class="nav-link" data-scroll-target="#exercise-3.1-predict-then-run">Exercise 3.1: predict, then run</a></li>
+  <li><a href="#exercise-3.2-threshold-defence" id="toc-exercise-3.2-threshold-defence" class="nav-link" data-scroll-target="#exercise-3.2-threshold-defence">Exercise 3.2: threshold defence</a></li>
+  <li><a href="#exercise-3.3-ai-assisted-vs.-ai-free-diff" id="toc-exercise-3.3-ai-assisted-vs.-ai-free-diff" class="nav-link" data-scroll-target="#exercise-3.3-ai-assisted-vs.-ai-free-diff">Exercise 3.3: AI-assisted vs.&nbsp;AI-free diff</a></li>
   </ul></li>
   <li><a href="#knowledge-check" id="toc-knowledge-check" class="nav-link" data-scroll-target="#knowledge-check">Knowledge check</a></li>
-  <li><a href="#project-pbmc-3k-mini-project" id="toc-project-pbmc-3k-mini-project" class="nav-link" data-scroll-target="#project-pbmc-3k-mini-project">Project — PBMC 3k mini-project</a>
+  <li><a href="#project-pbmc-3k-mini-project" id="toc-project-pbmc-3k-mini-project" class="nav-link" data-scroll-target="#project-pbmc-3k-mini-project">Project: PBMC 3k mini-project</a>
   <ul class="collapse">
-  <li><a href="#self-rubric-pbmc-3k-mini-project" id="toc-self-rubric-pbmc-3k-mini-project" class="nav-link" data-scroll-target="#self-rubric-pbmc-3k-mini-project">Self-rubric — PBMC 3k mini-project</a></li>
+  <li><a href="#self-rubric-pbmc-3k-mini-project" id="toc-self-rubric-pbmc-3k-mini-project" class="nav-link" data-scroll-target="#self-rubric-pbmc-3k-mini-project">Self-rubric: PBMC 3k mini-project</a></li>
   </ul></li>
   <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further">Going further</a></li>
   </ul>
@@ -616,7 +616,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-3.html">Week 3 — scRNA-seq I (QC → clustering)</a></li><li class="breadcrumb-item"><a href="../weeks/week-3.html">Week 3 path</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week 3 — scRNA-seq I (QC → clustering)</h1>
+<h1 class="title">Week 3: scRNA-seq I (QC to clustering)</h1>
 <p class="subtitle lead">AI-assisted single-cell QC, normalisation, and clustering on PBMC 3k</p>
 </div>
 
@@ -645,16 +645,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Load a 10x scRNA-seq count matrix into Scanpy and exercise the <strong>Description</strong> D by framing the dataset for an AI assistant.</li>
-<li>Apply tissue-aware QC thresholds and exercise the <strong>Discernment</strong> D by reading the violin plots yourself before accepting an AI suggestion.</li>
-<li>Build PCA → neighbours → UMAP → Leiden, using AI for boilerplate while owning parameter choices.</li>
+<li>Load a 10x scRNA-seq count matrix into Scanpy and exercise the <em>Description</em> D by framing the dataset for an AI assistant.</li>
+<li>Apply tissue-aware QC thresholds and exercise the <em>Discernment</em> D by reading the violin plots yourself before accepting an AI suggestion.</li>
+<li>Build the PCA, neighbours, UMAP, and Leiden pipeline, using AI for boilerplate while owning parameter choices.</li>
 <li>Produce an AI-free baseline of the QC pass and compare it to your AI-assisted iteration.</li>
 </ul>
 </div>
 </div>
 <section id="suggested-pacing" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-pacing">Suggested pacing</h2>
-<p>This is a heavier unit than Weeks 1–2 — plan on <strong>~5–7 hours</strong>.</p>
+<p>This is a heavier unit than Weeks 1 and 2. Plan on five to seven hours.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -666,81 +666,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">Tooling setup: confirm Colab works <em>or</em> local environment loads PBMC 3k (run <a href="../weeks/starter-week3-python.html">Python starter</a>)</td>
-<td style="text-align: left;">~30 min</td>
+<td style="text-align: left;">Tooling setup: confirm Colab works, <em>or</em> a local environment loads PBMC 3k (run the <a href="../weeks/starter-week3-python.html">Python starter</a>)</td>
+<td style="text-align: left;">30 min</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">Read code assistance + data analysis</td>
-<td style="text-align: left;">~1 hr</td>
+<td style="text-align: left;">Read code assistance and data analysis</td>
+<td style="text-align: left;">1 hr</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
-<td style="text-align: left;">Skim Modules 1–2; work through Module 3 in Colab</td>
-<td style="text-align: left;">~1.5 hrs</td>
+<td style="text-align: left;">Skim Modules 1 and 2; work through Module 3 in Colab</td>
+<td style="text-align: left;">1.5 hrs</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">Work through Module 4 in Colab</td>
-<td style="text-align: left;">~1 hr</td>
+<td style="text-align: left;">1 hr</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">Hands-on practice exercises</td>
-<td style="text-align: left;">~1 hr</td>
+<td style="text-align: left;">1 hr</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">Knowledge check</td>
-<td style="text-align: left;">~30 min</td>
+<td style="text-align: left;">30 min</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
-<td style="text-align: left;">Project: PBMC 3k mini-project (AI-free baseline + AI-assisted iteration)</td>
-<td style="text-align: left;">~2 hrs (often more — give it a day)</td>
+<td style="text-align: left;">Project: PBMC 3k mini-project (AI-free baseline plus AI-assisted iteration)</td>
+<td style="text-align: left;">2 hrs (often more; give it a day)</td>
 </tr>
 </tbody>
 </table>
-<p>If you have not used Scanpy before, add ~1 hour for orientation.</p>
+<p>If you have not used Scanpy before, add about an hour for orientation.</p>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <ul>
-<li>A working <strong>Google Colab</strong> account (course default — Modules 3–5 run in the browser; no install). <em>Or</em> a local Python ≥ 3.11 environment with <code>scanpy</code>, <code>scrublet</code>, <code>leidenalg</code>, <code>pandas</code>, <code>numpy</code>, <code>matplotlib</code>, pinned with <code>conda</code> or <code>uv</code>.</li>
-<li>Coding assistant set up and working in your editor (Claude Code, Cursor, or VS Code + Copilot).</li>
-<li>Course dataset confirmed loadable on your machine — run the <a href="../weeks/starter-week3-python.html">Python starter</a> before starting Module 3.</li>
+<li>A working Google Colab account (the course default; Modules 3 to 5 run in the browser, no install needed). Or a local Python 3.11 or later environment with <code>scanpy</code>, <code>scrublet</code>, <code>leidenalg</code>, <code>pandas</code>, <code>numpy</code>, and <code>matplotlib</code>, pinned with <code>conda</code> or <code>uv</code>.</li>
+<li>A coding assistant set up and working in your editor (Claude Code, Cursor, or VS Code with Copilot).</li>
+<li>The course dataset confirmed loadable on your machine. Run the <a href="../weeks/starter-week3-python.html">Python starter</a> before starting Module 3.</li>
 </ul>
 </section>
 <section id="course-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="course-dataset">Course dataset</h2>
-<p>Weeks 3 and 4 use the <strong>10x PBMC 3k</strong> dataset — 2,700 peripheral blood mononuclear cells from a healthy donor, sequenced on Illumina NextSeq 500 with 10x Chromium v1. The matrix is bundled with Scanpy and loads in one call:</p>
+<p>Weeks 3 and 4 use the 10x PBMC 3k dataset: 2,700 peripheral blood mononuclear cells from a healthy donor, sequenced on Illumina NextSeq 500 with 10x Chromium v1. The matrix is bundled with Scanpy and loads in one call:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scanpy <span class="im">as</span> sc</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> sc.datasets.pbmc3k()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># AnnData object with n_obs × n_vars = 2700 × 32738</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>PBMC 3k is the “hello world” dataset for single-cell analysis: small, well-characterised (≈8 cell types — T, B, NK, monocytes, DCs), and small enough to run end-to-end in a free Colab session. We use it for <strong>both</strong> the Week 3 mini-project and the Week 4 final project.</p>
-<p>Run the <a href="../weeks/starter-week3-python.html">Python starter</a> to confirm the data loads on your machine. The starter stops at “load + confirm shape + one summary table” — the mini-project baseline is yours to write (see the <a href="../course-syllabus.html#ai-use-policy">AI-use policy</a>).</p>
+<p>PBMC 3k is the “hello world” dataset for single-cell analysis. It is small, well-characterised, and runs end-to-end in a free Colab session. The eight cell types are T, B, and NK cells, monocytes, and dendritic cells. We use it for both the Week 3 mini-project and the Week 4 final project.</p>
+<p>Run the <a href="../weeks/starter-week3-python.html">Python starter</a> to confirm the data loads on your machine. The starter stops at “load, confirm shape, one summary table”. The mini-project baseline is yours to write (see the <a href="../course-syllabus.html#ai-use-policy">AI-use policy</a>).</p>
 </section>
 <section id="readings" class="level2">
 <h2 class="anchored" data-anchor-id="readings">Readings</h2>
 <p>Read the conceptual pages first, then run the modules.</p>
 <ul>
-<li><a href="../bioinformatics/code-assistance.html">Code assistance</a> — <strong>focus on</strong>: the debugging pattern (reproducer → minimal example → ask) and the AI-assisted test-writing example. This is how you’ll fix things when Module 3 inevitably breaks somewhere.</li>
-<li><a href="../bioinformatics/data-analysis.html">Data analysis</a> — <strong>focus on</strong>: the AI-fluency lens on QC. The page walks through the same workflow Module 3 runs, but with explicit accept/reject reasoning at each AI suggestion.</li>
-<li><a href="../modules/module-01-raw-data-qc/README.md">Module 1 — Raw data QC</a> — FastQC interpretation for 10x reads. (Reading only; no run required.)</li>
-<li><a href="../modules/module-02-alignment-count-matrix/README.md">Module 2 — Alignment &amp; count matrix</a> — Cell Ranger / STARsolo. (Reading only unless you have HPC and want to run it.)</li>
+<li><a href="../bioinformatics/code-assistance.html">Code assistance</a>. Focus on the debugging pattern (reproducer, minimal example, ask) and the AI-assisted test-writing example. This is how you’ll fix things when Module 3 inevitably breaks somewhere.</li>
+<li><a href="../bioinformatics/data-analysis.html">Data analysis</a>. Focus on the AI-fluency lens on QC. The page walks through the same workflow Module 3 runs, but with explicit accept/reject reasoning at each AI suggestion.</li>
+<li><a href="../modules/module-01-raw-data-qc/README.md">Module 1: raw data QC</a>. FastQC interpretation for 10x reads. Reading only, no run required.</li>
+<li><a href="../modules/module-02-alignment-count-matrix/README.md">Module 2: alignment and count matrix</a>. Cell Ranger or STARsolo. Reading only unless you have HPC and want to run it.</li>
 </ul>
 <p>Then run, in Colab or your local environment:</p>
 <ul>
-<li><a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3 — Preprocessing in Scanpy</a> — load, QC metrics, violin plots, threshold filter, normalise, log-transform, HVG selection.</li>
-<li><a href="../modules/module-04-clustering-umap/README.md">Module 4 — Clustering &amp; UMAP</a> — PCA → neighbours → UMAP → Leiden.</li>
+<li><a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3: preprocessing in Scanpy</a>. Load, QC metrics, violin plots, threshold filter, normalise, log-transform, and HVG selection.</li>
+<li><a href="../modules/module-04-clustering-umap/README.md">Module 4: clustering and UMAP</a>. PCA, neighbours, UMAP, Leiden.</li>
 </ul>
 </section>
 <section id="hands-on-practice" class="level2">
 <h2 class="anchored" data-anchor-id="hands-on-practice">Hands-on practice</h2>
-<p>These are designed to surface where the AI’s defaults will fail you on real data. Do each one before moving on.</p>
+<p>These exercises surface where the AI’s defaults will fail you on real data. Do each one before moving on.</p>
 <section id="exercise-3.1-predict-then-run" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.1-predict-then-run">Exercise 3.1 — Predict-then-run</h3>
-<p>Before running the <a href="../weeks/starter-week3-python.html">Python starter</a>, write down (on paper, in a notebook cell, anywhere visible): what you expect <code>adata.shape</code> to be, what <code>adata.var_names[:5]</code> will look like, and what range you expect <code>pct_counts_mt</code> to fall in for healthy donor PBMC. Then run the starter and compare.</p>
+<h3 class="anchored" data-anchor-id="exercise-3.1-predict-then-run">Exercise 3.1: predict, then run</h3>
+<p>Before running the <a href="../weeks/starter-week3-python.html">Python starter</a>, write down somewhere visible (on paper, in a notebook cell, anywhere): what you expect <code>adata.shape</code> to be, what <code>adata.var_names[:5]</code> will look like, and what range you expect <code>pct_counts_mt</code> to fall in for healthy donor PBMC. Then run the starter and compare.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -755,18 +755,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <p>You’re calibrated if you got at least two of three right. Common surprises:</p>
 <ul>
-<li>The matrix is <code>n_obs × n_vars = 2700 × 32738</code> — the var dimension is the <em>full transcriptome</em>, not just expressed genes. Most of those columns are zero.</li>
+<li>The matrix is <code>n_obs × n_vars = 2700 × 32738</code>. The var dimension is the <em>full transcriptome</em>, not just expressed genes. Most of those columns are zero.</li>
 <li>The var names are gene symbols (uppercase for human), not Ensembl IDs.</li>
-<li>For healthy PBMC, <code>pct_counts_mt</code> median should be ≤ 5% with a tail to ≈10%. If your prior was “20%+”, you were thinking of a damaged or stressed dataset.</li>
+<li>For healthy PBMC, the <code>pct_counts_mt</code> median should be at most 5%, with a tail to about 10%. If your prior was “20% or more”, you were thinking of a damaged or stressed dataset.</li>
 </ul>
-<p>The exercise isn’t a quiz — it’s about noticing whether your prior matches the data. If you weren’t sure what to predict, that’s the signal: read the <a href="../bioinformatics/data-analysis.html">data analysis</a> page before doing the project.</p>
+<p>The exercise isn’t a quiz. It is about noticing whether your prior matches the data. If you weren’t sure what to predict, that is the signal. Read the <a href="../bioinformatics/data-analysis.html">data analysis</a> page before doing the project.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="exercise-3.2-threshold-defence" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.2-threshold-defence">Exercise 3.2 — Threshold defence</h3>
-<p>In Module 3 you choose threshold values for <code>pct_counts_mt</code>, <code>n_genes_by_counts</code>, and minimum cells per gene. For <strong>one</strong> of those thresholds, write a one-paragraph defence (≤ 8 sentences) of the value you chose: what does the violin plot show, what tissue-specific knowledge informed the threshold, and what would change your mind?</p>
+<h3 class="anchored" data-anchor-id="exercise-3.2-threshold-defence">Exercise 3.2: threshold defence</h3>
+<p>In Module 3 you choose threshold values for <code>pct_counts_mt</code>, <code>n_genes_by_counts</code>, and minimum cells per gene. For one of those thresholds, write a one-paragraph defence (eight sentences or fewer) of the value you chose: what does the violin plot show, what tissue-specific knowledge informed the threshold, and what would change your mind?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -779,24 +779,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A good defence references <strong>the histogram you actually plotted</strong>, not a generic “5% is standard”. Strong defences include:</p>
+<p>A good defence references the histogram you actually plotted, not a generic “5% is standard”. Strong defences include:</p>
 <ul>
-<li>A specific value drawn from the data (median + tail point), not a literature default.</li>
-<li>Tissue-specific reasoning (PBMC is a healthy fresh-frozen sample; mitochondrial enrichment &gt; 10% likely indicates dying cells, not biology).</li>
-<li>A counterfactual: what would the violin look like for you to choose 8% instead of 5%? “If the median were 8% with a heavy tail to 25%, I’d suspect a dissociation issue and check upstream QC.”</li>
+<li>A specific value drawn from the data (median, tail point), not a literature default.</li>
+<li>Tissue-specific reasoning. PBMC is a healthy fresh-frozen sample, so mitochondrial enrichment above 10% likely indicates dying cells, not biology.</li>
+<li>A counterfactual. What would the violin look like for you to choose 8% instead of 5%? “If the median were 8% with a heavy tail to 25%, I’d suspect a dissociation issue and check upstream QC.”</li>
 </ul>
-<p>A weak defence: “I used 5% because the AI suggested it and the <a href="../bioinformatics/data-analysis.html">data analysis</a> page used 5%.” That’s not Discernment — that’s deference.</p>
+<p>A weak defence: “I used 5% because the AI suggested it and the <a href="../bioinformatics/data-analysis.html">data analysis</a> page used 5%”. That is not Discernment. That is deference.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="exercise-3.3-ai-assisted-vs.-ai-free-diff" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3.3-ai-assisted-vs.-ai-free-diff">Exercise 3.3 — AI-assisted vs.&nbsp;AI-free diff</h3>
-<p>After completing your AI-free baseline (~25 lines, no AI) <em>and</em> the AI-assisted iteration (Modules 3–4 with AI help), list <strong>three substantive differences</strong> between the two outputs. For each, classify it as:</p>
+<h3 class="anchored" data-anchor-id="exercise-3.3-ai-assisted-vs.-ai-free-diff">Exercise 3.3: AI-assisted vs.&nbsp;AI-free diff</h3>
+<p>After completing your AI-free baseline (about 25 lines, no AI) <em>and</em> the AI-assisted iteration (Modules 3 and 4 with AI help), list three substantive differences between the two outputs. For each, classify it as:</p>
 <ul>
-<li><strong>Improvement</strong> (the AI suggestion was right and you accepted it).</li>
-<li><strong>Regression</strong> (the AI suggestion was wrong and you (should have) rejected it).</li>
-<li><strong>Equivalent</strong> (different but both defensible).</li>
+<li><em>Improvement</em>: the AI suggestion was right and you accepted it.</li>
+<li><em>Regression</em>: the AI suggestion was wrong and you (should have) rejected it.</li>
+<li><em>Equivalent</em>: different but both defensible.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -810,13 +810,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A useful diff list is <strong>specific and reproducible</strong>. Examples of strong entries:</p>
+<p>A useful diff list is specific and reproducible. Examples of strong entries:</p>
 <ul>
-<li>“AI used <code>sc.pp.normalize_total(adata, target_sum=1e4)</code> instead of my baseline’s <code>target_sum=None</code>. <strong>Improvement</strong> — explicit median scaling is the Scanpy default and makes downstream comparisons stable across cells.”</li>
-<li>“AI omitted my <code>min_genes=200</code> filter on cells. <strong>Regression</strong> — without it, the HVG selection picks up empty droplets as ‘cells with unique expression patterns’, which contaminates the PCA.”</li>
-<li>“AI used 30 PCs for the neighbour graph; I used 50. <strong>Equivalent</strong> — the elbow plot is ambiguous between 20 and 50; both produce stable Leiden clusters at resolution 0.5.”</li>
+<li>“AI used <code>sc.pp.normalize_total(adata, target_sum=1e4)</code> instead of my baseline’s <code>target_sum=None</code>. <em>Improvement.</em> Explicit median scaling is the Scanpy default and makes downstream comparisons stable across cells.”</li>
+<li>“AI omitted my <code>min_genes=200</code> filter on cells. <em>Regression.</em> Without it, the HVG selection picks up empty droplets as ‘cells with unique expression patterns’, which contaminates the PCA.”</li>
+<li>“AI used 30 PCs for the neighbour graph; I used 50. <em>Equivalent.</em> The elbow plot is ambiguous between 20 and 50, and both produce stable Leiden clusters at resolution 0.5.”</li>
 </ul>
-<p>If your diff list is just “the AI version is shorter” or “the AI version uses different variable names”, you didn’t actually compare outputs — go back and run both pipelines through the same downstream check (Leiden cluster count, top markers per cluster).</p>
+<p>If your diff list is just “the AI version is shorter” or “the AI version uses different variable names”, you didn’t actually compare outputs. Go back and run both pipelines through the same downstream check (Leiden cluster count, top markers per cluster).</p>
 </div>
 </div>
 </div>
@@ -830,47 +830,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Knowledge check — Week 3
+<span class="screen-reader-only">Tip</span>Knowledge check: Week 3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>The AI suggests <code>adata.var['mt'] = adata.var_names.str.startswith('MT-')</code> for a <em>mouse</em> lung dataset. What goes wrong and what’s the fix?</li>
-<li>Your PBMC dataset shows <code>pct_counts_mt</code> median 12% with a tail to 25%. The AI recommends a 5% cutoff “as standard for PBMCs.” Should you accept it? Why or why not?</li>
+<li>The AI suggests <code>adata.var['mt'] = adata.var_names.str.startswith('MT-')</code> for a <em>mouse</em> lung dataset. What goes wrong, and what is the fix?</li>
+<li>Your PBMC dataset shows <code>pct_counts_mt</code> median 12% with a tail to 25%. The AI recommends a 5% cutoff “as standard for PBMCs”. Should you accept it? Why or why not?</li>
 <li>Scrublet on a 3,000-cell PBMC sample flags 11% as predicted doublets. What does that flag, and what would you check before filtering?</li>
-<li>The standard Scanpy clustering pipeline is <strong>PCA → neighbours → UMAP → Leiden</strong>. Why this order, and what goes wrong if you compute UMAP before neighbours?</li>
+<li>The standard Scanpy clustering pipeline is PCA, neighbours, UMAP, then Leiden. Why this order, and what goes wrong if you compute UMAP before neighbours?</li>
 <li>You ran <code>sc.pp.highly_variable_genes</code> on un-normalised data and got plausible-looking genes back. Why is this a bug even though the output looks fine?</li>
-<li>The AI generates a UMAP and tells you “cluster 4 is T cells based on the embedding shape.” What’s the Discernment problem with this sentence?</li>
-<li>You’ve done your AI-free baseline, then run the AI-assisted iteration, and the cluster count differs (8 vs.&nbsp;11). The AI says “this is normal variability.” What do you check before accepting that explanation?</li>
+<li>The AI generates a UMAP and tells you “cluster 4 is T cells based on the embedding shape”. What is the Discernment problem with this sentence?</li>
+<li>You’ve done your AI-free baseline, then run the AI-assisted iteration, and the cluster count differs (8 vs.&nbsp;11). The AI says “this is normal variability”. What do you check before accepting that explanation?</li>
 </ol>
 <p><strong>Answers:</strong></p>
 <ol type="1">
-<li><p>Mouse mitochondrial genes are <code>mt-Nd1</code>, <code>mt-Co1</code>, etc. — lowercase prefix. The <code>'MT-'</code> filter matches zero genes in mouse, so your <code>pct_counts_mt</code> is silently 0 for every cell, which means <strong>no cells get filtered for mitochondrial enrichment</strong>. Fix: use <code>'mt-'</code> for mouse, or detect dynamically (<code>startswith(('MT-', 'mt-'))</code>). This is one of the most common organism-convention bugs in scRNA-seq.</p></li>
-<li><p><strong>No.</strong> The 5% rule is a heuristic for healthy PBMC; if your median is 12%, the dataset is either stressed/damaged at sample prep or contains a tissue with naturally higher mitochondrial expression (some immune cells run hotter). Accepting 5% would discard most of your data. Plot the violin, look at the distribution, and pick a cutoff that splits “biological tail” from “dying cells” — likely 20–25% here, with an upstream check on what happened at dissociation.</p></li>
-<li><p>Scrublet flags <strong>probable doublets</strong> — droplets that received two cells. 11% is high for a 3,000-cell sample (target loading is usually &lt; 5% doublet rate). Before filtering, check: (a) was the 10x loading concentration too high? (b) does Scrublet’s UMAP cluster the predicted doublets in a “between-cluster” position consistent with multiplets? (c) are any predicted-doublet clusters actually rare-but-real cell types? Filtering blindly at 11% may delete real biology.</p></li>
-<li><p>The order encodes information dependencies. <strong>PCA</strong> denoises the high-dimensional gene-expression matrix into a few dozen meaningful axes. <strong>Neighbours</strong> builds a kNN graph in PCA space — this is what UMAP and Leiden both consume. <strong>UMAP</strong> projects the kNN graph to 2D for visualisation. <strong>Leiden</strong> clusters on the same kNN graph (independent of UMAP). Computing UMAP before neighbours doesn’t make sense — UMAP needs the graph as input. Computing Leiden on raw gene space (skipping PCA) is a common mistake and produces noise-dominated clusters.</p></li>
-<li><p>HVG selection on un-normalised data picks up genes with high variance because they have <strong>high counts</strong>, not because they have biologically informative variability. Library-size effects dominate. The output “looks fine” because real biology genes (B-cell markers, T-cell markers, etc.) are also highly expressed, so they survive — but so do housekeeping genes that vary purely with sequencing depth. Always normalise (and log-transform) before HVG selection. The Scanpy docs are explicit; the AI sometimes is not.</p></li>
-<li><p>UMAP shape <strong>is not biological evidence</strong>. Cluster 4 might be T cells, but the way to know is to look at <strong>marker genes</strong> in cluster 4 — <code>CD3D</code>, <code>CD3E</code>, <code>TRAC</code>, etc. — not “the embedding looks like a T-cell blob.” UMAP geometry is dominated by neighbour-graph topology, not cell biology; treating shape as identity is exactly the kind of pattern-match the AI is good at and you have to override.</p></li>
-<li><p>Cluster count is sensitive to <strong>resolution</strong> (Leiden’s main hyperparameter), to the <strong>number of PCs</strong>, to the <strong>number of neighbours</strong> in the kNN graph, and to <strong>random seeds</strong>. Before accepting “normal variability”, check: was the seed set the same? Same Leiden resolution? Same PC count? Same neighbour count? If all four match and the count still differs, look at <strong>what’s in the new clusters</strong> — are they sub-clusters of an existing one (resolution effect, often defensible) or completely different cells (a real disagreement, worth investigating)? “Normal variability” is rarely the right answer when the numbers are different and the inputs are not.</p></li>
+<li><p>Mouse mitochondrial genes are <code>mt-Nd1</code>, <code>mt-Co1</code>, and so on, with a lowercase prefix. The <code>'MT-'</code> filter matches zero genes in mouse, so your <code>pct_counts_mt</code> is silently 0 for every cell. No cells get filtered for mitochondrial enrichment. Fix: use <code>'mt-'</code> for mouse, or detect dynamically with <code>startswith(('MT-', 'mt-'))</code>. This is one of the most common organism-convention bugs in scRNA-seq.</p></li>
+<li><p>No.&nbsp;The 5% rule is a heuristic for healthy PBMC. If your median is 12%, the dataset is either stressed or damaged at sample prep, or contains a tissue with naturally higher mitochondrial expression (some immune cells run hotter). Accepting 5% would discard most of your data. Plot the violin, look at the distribution, and pick a cutoff that splits “biological tail” from “dying cells”, likely 20 to 25% here, with an upstream check on what happened at dissociation.</p></li>
+<li><p>Scrublet flags probable doublets, droplets that received two cells. 11% is high for a 3,000-cell sample (target loading is usually below 5% doublet rate). Before filtering, check: (a) was the 10x loading concentration too high? (b) does Scrublet’s UMAP cluster the predicted doublets in a “between-cluster” position consistent with multiplets? (c) are any predicted-doublet clusters actually rare-but-real cell types? Filtering blindly at 11% may delete real biology.</p></li>
+<li><p>The order encodes information dependencies. PCA denoises the high-dimensional gene-expression matrix into a few dozen meaningful axes. Neighbours builds a kNN graph in PCA space, which is what UMAP and Leiden both consume. UMAP projects the kNN graph to 2D for visualisation. Leiden clusters on the same kNN graph, independent of UMAP. Computing UMAP before neighbours doesn’t make sense; UMAP needs the graph as input. Computing Leiden on raw gene space (skipping PCA) is a common mistake and produces noise-dominated clusters.</p></li>
+<li><p>HVG selection on un-normalised data picks up genes with high variance because they have <em>high counts</em>, not because they have biologically informative variability. Library-size effects dominate. The output “looks fine” because real biology genes (B-cell markers, T-cell markers, and so on) are also highly expressed and they survive. So do housekeeping genes that vary purely with sequencing depth. Always normalise and log-transform before HVG selection. The Scanpy docs are explicit. The AI sometimes is not.</p></li>
+<li><p>UMAP shape is not biological evidence. Cluster 4 might be T cells, but the way to know is to look at marker genes in cluster 4 (<code>CD3D</code>, <code>CD3E</code>, <code>TRAC</code>), not “the embedding looks like a T-cell blob”. UMAP geometry is dominated by neighbour-graph topology, not cell biology. Treating shape as identity is exactly the kind of pattern-match the AI is good at and you have to override.</p></li>
+<li><p>Cluster count is sensitive to resolution (Leiden’s main hyperparameter), to the number of PCs, to the number of neighbours in the kNN graph, and to random seeds. Before accepting “normal variability”, check: was the seed set the same? Same Leiden resolution? Same PC count? Same neighbour count? If all four match and the count still differs, look at what is in the new clusters. Are they sub-clusters of an existing one (a resolution effect, often defensible) or completely different cells (a real disagreement, worth investigating)? “Normal variability” is rarely the right answer when the numbers are different and the inputs are not.</p></li>
 </ol>
 </div>
 </div>
 </div>
 </section>
 <section id="project-pbmc-3k-mini-project" class="level2">
-<h2 class="anchored" data-anchor-id="project-pbmc-3k-mini-project">Project — PBMC 3k mini-project</h2>
-<p>A scoped AI-assisted scRNA-seq analysis. Produce a reproducible Quarto/Jupyter notebook (or Colab link) containing:</p>
+<h2 class="anchored" data-anchor-id="project-pbmc-3k-mini-project">Project: PBMC 3k mini-project</h2>
+<p>A scoped AI-assisted scRNA-seq analysis. Produce a reproducible Quarto or Jupyter notebook (or Colab link) containing:</p>
 <ol type="1">
-<li><strong>AI-free baseline</strong> (~25 lines): hand-write <code>sc.datasets.pbmc3k()</code> → mt-gene flag → three QC violin plots → threshold filter → log-normalise. Run it. Save the output. <strong>No AI assistance</strong> for this section. (See the <a href="../course-syllabus.html#ai-use-policy">AI-use policy</a>.)</li>
-<li><strong>AI-assisted iteration</strong>: extend the baseline with HVG selection, scaling, PCA, neighbours, UMAP, and Leiden clustering. AI assistance is encouraged here — use <a href="../modules/module-04-clustering-umap/README.md">Module 4</a> as your reference.</li>
-<li><strong>Diff and discussion</strong>: list every substantive AI suggestion. For each, mark <em>accepted</em> / <em>rejected</em> and note why. The strength of your work here is in the <em>quality of your discernment</em> — accepting and rejecting both have to be defensible.</li>
-<li><strong>Reproducibility artifact</strong>: pinned environment file (<code>environment.yml</code> or <code>uv.lock</code>) committed alongside the report, <em>or</em> a working Colab link. State which.</li>
-<li><strong>Disclosure statement</strong> per the <a href="../course-syllabus.html#disclosure-rubric">rubric</a>.</li>
+<li>AI-free baseline (about 25 lines). Hand-write <code>sc.datasets.pbmc3k()</code>, an mt-gene flag, three QC violin plots, a threshold filter, and log-normalisation. Run it. Save the output. No AI assistance for this section. See the <a href="../course-syllabus.html#ai-use-policy">AI-use policy</a>.</li>
+<li>AI-assisted iteration. Extend the baseline with HVG selection, scaling, PCA, neighbours, UMAP, and Leiden clustering. AI assistance is encouraged here. Use <a href="../modules/module-04-clustering-umap/README.md">Module 4</a> as your reference.</li>
+<li>Diff and discussion. List every substantive AI suggestion. For each, mark <em>accepted</em> or <em>rejected</em> and note why. The strength of your work here is in the <em>quality of your discernment</em>. Accepting and rejecting both have to be defensible.</li>
+<li>Reproducibility artifact. A pinned environment file (<code>environment.yml</code> or <code>uv.lock</code>) committed alongside the report, <em>or</em> a working Colab link. State which.</li>
+<li>Disclosure statement per the <a href="../course-syllabus.html#disclosure-rubric">rubric</a>.</li>
 </ol>
 <section id="self-rubric-pbmc-3k-mini-project" class="level3">
-<h3 class="anchored" data-anchor-id="self-rubric-pbmc-3k-mini-project">Self-rubric — PBMC 3k mini-project</h3>
+<h3 class="anchored" data-anchor-id="self-rubric-pbmc-3k-mini-project">Self-rubric: PBMC 3k mini-project</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 57%">
@@ -886,41 +886,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>AI-free baseline correctness</strong></td>
-<td style="text-align: left;">Doesn’t run, missing required steps, or shows clear AI fingerprints (style/idioms not yours)</td>
-<td style="text-align: left;">~25-line baseline runs end-to-end, hand-written, three violins + filter + log-normalise</td>
+<td style="text-align: left;">AI-free baseline correctness</td>
+<td style="text-align: left;">Doesn’t run, missing required steps, or shows clear AI fingerprints (style or idioms not yours)</td>
+<td style="text-align: left;">About 25 lines, runs end-to-end, hand-written, with three violins, a filter, and log-normalisation</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>AI-assisted iteration quality</strong></td>
-<td style="text-align: left;">Steps in wrong order; HVG before normalise; UMAP without neighbours; etc.</td>
-<td style="text-align: left;">Pipeline runs in correct order; produces stable Leiden clusters; UMAP + cluster labels render</td>
+<td style="text-align: left;">AI-assisted iteration quality</td>
+<td style="text-align: left;">Steps in wrong order: HVG before normalise, UMAP without neighbours, and so on</td>
+<td style="text-align: left;">Pipeline runs in the correct order, produces stable Leiden clusters, and renders UMAP plus cluster labels</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Discernment log</strong></td>
-<td style="text-align: left;">Generic (“accepted AI suggestions”); no rejected suggestions named</td>
-<td style="text-align: left;">At least 3 specific accepts and 1 specific reject, each with a 1–2 sentence reason</td>
+<td style="text-align: left;">Discernment log</td>
+<td style="text-align: left;">Generic (“accepted AI suggestions”), with no rejected suggestions named</td>
+<td style="text-align: left;">At least 3 specific accepts and 1 specific reject, each with a one- or two-sentence reason</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Reproducibility</strong></td>
-<td style="text-align: left;">No environment artifact; or Colab link that fails to open</td>
-<td style="text-align: left;">Pinned env file <em>or</em> working Colab link committed; specify which</td>
+<td style="text-align: left;">Reproducibility</td>
+<td style="text-align: left;">No environment artifact, or a Colab link that fails to open</td>
+<td style="text-align: left;">A pinned env file <em>or</em> a working Colab link committed. Specify which.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Disclosure</strong></td>
+<td style="text-align: left;">Disclosure</td>
 <td style="text-align: left;">Vague or absent</td>
-<td style="text-align: left;">Tool, version, tier, concrete uses, what was verified, at least one rejected suggestion</td>
+<td style="text-align: left;">Tool, version, tier, concrete uses, what was verified, and at least one rejected suggestion</td>
 </tr>
 </tbody>
 </table>
-<p>Score 4–5/5: project is done. Score 2–3/5: pick one row at a 0 and fix it before moving on. Score 0–1/5: revisit Module 3 and the <a href="../bioinformatics/data-analysis.html">data analysis</a> reading; the project is testing your discernment, not your typing.</p>
+<p>Score 4 or 5 of 5: project is done. Score 2 or 3 of 5: pick one row at a 0 and fix it before moving on. Score 0 or 1 of 5: revisit Module 3 and the <a href="../bioinformatics/data-analysis.html">data analysis</a> reading. The project is testing your discernment, not your typing.</p>
 </section>
 </section>
 <section id="going-further" class="level2">
 <h2 class="anchored" data-anchor-id="going-further">Going further</h2>
 <ul>
-<li>If you want to scope a Week 4 final project that builds directly on this one (Path A), draft a one-paragraph plan now while the dataset is fresh: question, expected approach, what the AI will and will not help with. The plan is for <em>you</em> — it costs nothing to write and saves a lot of Week 4.</li>
+<li>If you want to scope a Week 4 final project that builds directly on this one (Path A), draft a one-paragraph plan now, while the dataset is fresh. Note the question, the expected approach, and what the AI will and will not help with. The plan is for <em>you</em>. It costs nothing to write and saves a lot of Week 4.</li>
 <li>For a deeper take on QC choices, the original Scanpy <a href="https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering.html">tutorial</a> is short and the prose is excellent.</li>
-<li>If you want to swap in a different dataset to feel ownership of the choices, the Tabula Muris organ datasets (also Scanpy-bundled) are good next steps — but PBMC 3k is the dataset the rest of the course is calibrated against.</li>
+<li>If you want to swap in a different dataset to feel ownership of the choices, the Tabula Muris organ datasets (also Scanpy-bundled) are good next steps. But PBMC 3k is the dataset the rest of the course is calibrated against.</li>
 </ul>
 
 

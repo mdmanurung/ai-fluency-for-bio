@@ -595,7 +595,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Each entry is a one- or two-sentence working definition — enough to keep reading, not the rigorous treatment. The links point at the course page where the term is introduced or used most directly.</p>
+<p>Each entry is a one- or two-sentence working definition. Enough to keep reading, not the rigorous treatment. The links point at the course page where the term is introduced or used most directly.</p>
 </div>
 </div>
 <section id="ai-llm" class="level2">
@@ -613,24 +613,24 @@ Note
 <p><strong>RAG (retrieval-augmented generation).</strong> Augmenting an LLM with a search step over a document corpus before it answers. The grounding mechanism behind tools like Elicit and Consensus.</p>
 <p><strong>System prompt.</strong> The top-level instruction that frames who the assistant is and how it should behave. Persists across the conversation. See <a href="../literacy/prompting.html">Prompting</a>.</p>
 <p><strong>Temperature.</strong> A scalar that controls the randomness of next-token sampling. 0 is greedy / deterministic; higher values widen the distribution. See <a href="../literacy/how-llms-work.html">How LLMs work</a>.</p>
-<p><strong>Token.</strong> The atomic unit a model reads and emits — typically a sub-word fragment, not a whole word. Token boundaries explain quirks like why “scRNA-seq” splits awkwardly. See <a href="../literacy/how-llms-work.html">How LLMs work</a>.</p>
+<p><strong>Token.</strong> The atomic unit a model reads and emits. Typically a sub-word fragment, not a whole word. Token boundaries explain quirks like why “scRNA-seq” splits awkwardly. See <a href="../literacy/how-llms-work.html">How LLMs work</a>.</p>
 </section>
 <section id="scrna-seq-bioinformatics" class="level2">
 <h2 class="anchored" data-anchor-id="scrna-seq-bioinformatics">scRNA-seq / bioinformatics</h2>
 <p><strong>AnnData.</strong> The Python data structure (<code>anndata.AnnData</code>) that Scanpy operates on: a count matrix <code>X</code> plus aligned cell metadata (<code>obs</code>), gene metadata (<code>var</code>), and embeddings (<code>obsm</code>). See <a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a>.</p>
-<p><strong>Batch effect.</strong> Technical variation that correlates with sample, run, or batch — and obscures biological signal. Corrected with Harmony, Scanorama, or batch-aware modelling.</p>
+<p><strong>Batch effect.</strong> Technical variation that correlates with sample, run, or batch, and that obscures biological signal. Corrected with Harmony, Scanorama, or batch-aware modelling.</p>
 <p><strong>Cell type annotation.</strong> Assigning a biological label (e.g., “CD14+ Monocyte”) to each cluster based on marker-gene expression. See <a href="../modules/module-05-annotation-interpretation/README.md">Module 5</a>.</p>
 <p><strong>Count matrix.</strong> The cells × genes integer matrix produced by Cell Ranger or STARsolo from aligned reads. The starting point of all downstream analysis. See <a href="../modules/module-02-alignment-count-matrix/README.md">Module 2</a>.</p>
 <p><strong>Doublet.</strong> Two cells captured in one droplet, scoring artificially high gene counts. Detected with Scrublet or DoubletFinder. See <a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a>.</p>
 <p><strong>FASTQ.</strong> The text-based sequencing-read format with quality scores. The raw output of an Illumina run, before alignment. See <a href="../modules/module-01-raw-data-qc/README.md">Module 1</a>.</p>
-<p><strong>GEM-X.</strong> 10x Genomics’ current single-cell capture chemistry (v4 as of 2024); successor to the v3.1 chemistry that earlier protocols and AI training data describe. See <a href="../bioinformatics/protocol-design.html">Protocol design</a>.</p>
-<p><strong>Ground truth.</strong> A label or measurement treated as correct for evaluation. In scRNA-seq cell-typing this is often “an expert annotated this dataset with marker-gene support” — strong, but not infallible.</p>
+<p><strong>GEM-X.</strong> 10x Genomics’ current single-cell capture chemistry (v4 as of 2024). The successor to the v3.1 chemistry that earlier protocols and AI training data describe. See <a href="../bioinformatics/protocol-design.html">Protocol design</a>.</p>
+<p><strong>Ground truth.</strong> A label or measurement treated as correct for evaluation. In scRNA-seq cell-typing this is often “an expert annotated this dataset with marker-gene support”. Strong, but not infallible.</p>
 <p><strong>HTO (hashtag oligonucleotide).</strong> Antibody-conjugated oligos that mark cells from each sample with a unique barcode, allowing pooled capture and computational demultiplexing. Reduces batch effects.</p>
 <p><strong>Leiden.</strong> A graph-based clustering algorithm that improves on Louvain by guaranteeing well-connected communities. Standard for scRNA-seq via <code>sc.tl.leiden</code>. See <a href="../modules/module-04-clustering-umap/README.md">Module 4</a>.</p>
 <p><strong>Marker gene.</strong> A gene whose expression is enriched in one cluster relative to all others, used to assign a cell-type label. Found with <code>sc.tl.rank_genes_groups</code>. See <a href="../modules/module-05-annotation-interpretation/README.md">Module 5</a>.</p>
-<p><strong>Mitochondrial fraction (<code>pct_counts_mt</code>).</strong> Percentage of a cell’s UMI counts coming from mitochondrial genes. High values flag dying or stressed cells. Tissue-dependent threshold (PBMCs: ≤5%; neurons: ≤20%). See <a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a>.</p>
-<p><strong>PBMC 3k.</strong> The 10x Genomics demonstration dataset bundled with Scanpy as <code>sc.datasets.pbmc3k()</code> — 2,700 peripheral blood mononuclear cells from a healthy donor, ≈8 well-characterised cell types. The course’s hands-on dataset.</p>
-<p><strong>UMAP.</strong> Uniform Manifold Approximation and Projection — a non-linear embedding that places similar cells nearby in 2D. <strong>Visualisation tool only</strong>: inter-cluster distances are not quantitatively meaningful. See <a href="../modules/module-04-clustering-umap/README.md">Module 4</a>.</p>
+<p><strong>Mitochondrial fraction (<code>pct_counts_mt</code>).</strong> Percentage of a cell’s UMI counts coming from mitochondrial genes. High values flag dying or stressed cells. The threshold is tissue-dependent (PBMCs: 5% or below; neurons: 20% or below). See <a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a>.</p>
+<p><strong>PBMC 3k.</strong> The 10x Genomics demonstration dataset bundled with Scanpy as <code>sc.datasets.pbmc3k()</code>. 2,700 peripheral blood mononuclear cells from a healthy donor, with about 8 well-characterised cell types. The course’s hands-on dataset.</p>
+<p><strong>UMAP.</strong> Uniform Manifold Approximation and Projection. A non-linear embedding that places similar cells nearby in 2D. Visualisation tool only. Inter-cluster distances are not quantitatively meaningful. See <a href="../modules/module-04-clustering-umap/README.md">Module 4</a>.</p>
 
 
 </section>

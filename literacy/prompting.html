@@ -611,11 +611,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="anatomy-of-a-prompt" class="level2">
 <h2 class="anchored" data-anchor-id="anatomy-of-a-prompt">Anatomy of a prompt</h2>
-<p>A conversation with an LLM is made up of three conceptually distinct message types:</p>
+<p>A conversation with an LLM is made up of three message types:</p>
 <ul>
-<li><strong>System prompt</strong> — set once per session, before any user input. Contains durable instructions: persona, output format, access rules, standing context (a document, a data schema, lab conventions). In raw API calls you control this directly; in wrapped products (ChatGPT, Claude.ai) it is partially or fully hidden.</li>
-<li><strong>User prompt</strong> — the specific request for this turn. What most people mean when they say “the prompt.”</li>
-<li><strong>Assistant turns</strong> — the model’s prior responses, fed back into context verbatim. In few-shot prompting, you pre-populate assistant turns with worked examples to pattern-match against.</li>
+<li>A <strong>system prompt</strong> is set once per session, before any user input. It contains durable instructions: persona, output format, access rules, and standing context (a document, a data schema, lab conventions). In raw API calls you control this directly. In wrapped products (ChatGPT, Claude.ai) it is partially or fully hidden.</li>
+<li>A <strong>user prompt</strong> is the specific request for this turn. It is what most people mean when they say “the prompt”.</li>
+<li><strong>Assistant turns</strong> are the model’s prior responses, fed back into context verbatim. In few-shot prompting, you pre-populate assistant turns with worked examples to pattern-match against.</li>
 </ul>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -623,7 +623,7 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
-    subgraph ctx["Context window — one flat token stream"]
+    subgraph ctx["Context window: one flat token stream"]
         direction TB
         S["**System prompt**\ndurable instructions, persona,\nformat rules, standing context"]
         U["**User turn**\nthis request"]
@@ -637,40 +637,40 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>The model sees all three as a flat token sequence — there is no architecturally privileged “ground truth” channel. A well-structured system prompt shapes behavior because the model learned, during training, that system-prompt-style text predicts certain response patterns. It does not “obey” the system prompt; it continues a pattern it has seen before.</p>
+<p>The model sees all three as a flat token sequence. There is no architecturally privileged “ground truth” channel. A well-structured system prompt shapes behaviour because the model learned, during training, that system-prompt-style text predicts certain response patterns. It does not “obey” the system prompt. It continues a pattern it has seen before.</p>
 </section>
 <section id="patterns-that-work" class="level2">
 <h2 class="anchored" data-anchor-id="patterns-that-work">Patterns that work</h2>
 <ol type="1">
-<li><strong>Role + task + context + format</strong> — “You are X. Do Y. Given Z. Return in format F.”</li>
-<li><strong>Few-shot</strong> — show 2–3 input/output pairs before the real input.</li>
-<li><strong>Decomposition</strong> — explicitly break a complex task into subtasks.</li>
-<li><strong>Self-critique</strong> — ask the model to critique its own output before finalizing.</li>
-<li><strong>Constrained output</strong> — specify the exact schema (JSON, table columns, section headings).</li>
+<li><em>Role, task, context, format</em>. “You are X. Do Y. Given Z. Return in format F.”</li>
+<li><em>Few-shot</em>. Show 2 or 3 input-output pairs before the real input.</li>
+<li><em>Decomposition</em>. Explicitly break a complex task into subtasks.</li>
+<li><em>Self-critique</em>. Ask the model to critique its own output before finalising.</li>
+<li><em>Constrained output</em>. Specify the exact schema (JSON, table columns, section headings).</li>
 </ol>
 </section>
 <section id="patterns-that-reliably-fail" class="level2">
 <h2 class="anchored" data-anchor-id="patterns-that-reliably-fail">Patterns that reliably fail</h2>
 <ul>
-<li>“Don’t hallucinate.” (It will. Better: provide sources.)</li>
-<li>“Be accurate.” (Meaningless on its own.)</li>
-<li>“Summarize this paper” on a paper the model has never seen. (Use RAG or paste the paper.)</li>
+<li>“Don’t hallucinate.” It will. Better: provide sources.</li>
+<li>“Be accurate.” Meaningless on its own.</li>
+<li>“Summarise this paper” on a paper the model has never seen. Use RAG or paste the paper.</li>
 </ul>
 </section>
 <section id="worked-example-extracting-structured-info-from-a-methods-section" class="level2">
 <h2 class="anchored" data-anchor-id="worked-example-extracting-structured-info-from-a-methods-section">Worked example: extracting structured info from a methods section</h2>
 <p>Suppose you want to pull the sequencing platform, read length, and library prep kit from a batch of methods sections.</p>
-<p><strong>Weak prompt:</strong></p>
+<p>A weak prompt:</p>
 <blockquote class="blockquote">
 <p>Summarize this methods section.</p>
 </blockquote>
-<p>Output: a paragraph. Readable; useless for downstream data entry.</p>
-<p><strong>Slightly better, still weak:</strong></p>
+<p>Output: a paragraph. Readable, but useless for downstream data entry.</p>
+<p>A slightly better but still weak prompt:</p>
 <blockquote class="blockquote">
 <p>Extract the key sequencing parameters from this methods section.</p>
 </blockquote>
-<p>Output: inconsistent — sometimes a list, sometimes prose, sometimes includes parameters you didn’t want, sometimes omits ones you did.</p>
-<p><strong>Strong prompt:</strong></p>
+<p>Output: inconsistent. Sometimes a list, sometimes prose, sometimes including parameters you didn’t want, sometimes omitting ones you did.</p>
+<p>A strong prompt:</p>
 <pre><code>You are a precise scientific data extractor.
 Extract exactly the following fields from the methods section I provide.
 Return a JSON object with these keys and no others:
@@ -681,7 +681,7 @@ Return a JSON object with these keys and no others:
 
 If a field is not stated in the text, set it to null. Do not infer.
 Do not add keys beyond the three listed.
-Return only the JSON object — no prose, no explanation.
+Return only the JSON object. No prose, no explanation.
 
 Methods section:
 &lt;text&gt;
@@ -690,20 +690,20 @@ Methods section:
 <p>Why this works:</p>
 <ul>
 <li>Role framing sets the expectation for precision over fluency.</li>
-<li>Explicit field list prevents the model from deciding what counts as “key.”</li>
+<li>An explicit field list prevents the model from deciding what counts as “key”.</li>
 <li><code>null</code> for missing data prevents fabrication of unstated values.</li>
-<li>Structural schema (key names, types, allowed values) beats prose description.</li>
+<li>A structural schema (key names, types, allowed values) beats a prose description.</li>
 <li>“Return only the JSON object” suppresses verbose preamble.</li>
 </ul>
-<p><strong>Iteration log</strong> — when building an extractor for more than ten documents, keep a running table: prompt version, test input, output, verdict. Change one variable per iteration. Save the winner as a reusable template.</p>
+<p>When you build an extractor for more than ten documents, keep a running iteration log: prompt version, test input, output, verdict. Change one variable per iteration. Save the winner as a reusable template.</p>
 </section>
 <section id="iterating-on-prompts" class="level2">
 <h2 class="anchored" data-anchor-id="iterating-on-prompts">Iterating on prompts</h2>
-<p>Treat prompting like any other optimization:</p>
+<p>Treat prompting like any other optimisation:</p>
 <ul>
 <li>Hold the test input fixed.</li>
 <li>Change one thing per iteration.</li>
-<li>Keep a log — prompt, output, verdict.</li>
+<li>Keep a log: prompt, output, verdict.</li>
 <li>Save the winner as a reusable template.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -719,11 +719,11 @@ Methods section:
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Why does a system prompt shape model behaviour, given that the model sees system / user / assistant turns as one flat token stream?</li>
+<li>Why does a system prompt shape model behaviour, given that the model sees system, user, and assistant turns as one flat token stream?</li>
 <li>You add <code>"Don't hallucinate"</code> to your system prompt. Why does this not work, and what would?</li>
 <li>Your structured-extraction prompt asks for three fields but the model returns a paragraph instead of JSON. Name two changes that would tighten the format compliance.</li>
 </ol>
-<p><strong>Answers:</strong> 1. The model learned during training that system-prompt-style text precedes certain response patterns. It is continuing a learned pattern, not “obeying” an instruction — the text in the system position still has to be the kind of text that the model has seen produce the desired behaviour. 2. The model has no internal “fact store” to suppress fabrication; the instruction is content the model can ignore as easily as follow. What works: provide the source text yourself (paste the paper, retrieve via RAG), require structured output that is hard to fabricate plausibly (DOI + verbatim title), and tell the model to use <code>null</code> when it does not know. 3. Specify the schema explicitly (key names, types, allowed values); say “Return only the JSON object — no prose, no explanation”; provide a worked example output (few-shot); set <code>null</code> as the required value for missing fields rather than letting the model decide.</p>
+<p><strong>Answers:</strong> 1. The model learned during training that system-prompt-style text precedes certain response patterns. It is continuing a learned pattern, not “obeying” an instruction. The text in the system position still has to be the kind of text that the model has seen produce the desired behaviour. 2. The model has no internal “fact store” to suppress fabrication. The instruction is content the model can ignore as easily as follow. What works: provide the source text yourself (paste the paper, retrieve via RAG), require structured output that is hard to fabricate plausibly (DOI plus verbatim title), and tell the model to use <code>null</code> when it does not know. 3. Specify the schema explicitly (key names, types, allowed values). Say “Return only the JSON object. No prose, no explanation”. Provide a worked example output (few-shot). Set <code>null</code> as the required value for missing fields rather than letting the model decide.</p>
 </div>
 </div>
 </div>
@@ -731,10 +731,10 @@ Methods section:
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
-<li>Anthropic. (2025). <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview">Prompt engineering overview</a>. <em>Anthropic developer docs</em> — current reference for Claude-specific prompting; the principles generalize.</li>
-<li>Wei, J., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2201.11903">Chain-of-thought prompting elicits reasoning in large language models</a>. <em>NeurIPS 2022</em> — the paper that established chain-of-thought as a reliable technique.</li>
-<li>Brown, T., et al.&nbsp;(2020). <a href="https://arxiv.org/abs/2005.14165">Language models are few-shot learners</a>. <em>NeurIPS 2020</em> — the GPT-3 paper; Section 2.3 introduces few-shot prompting as used in practice.</li>
-<li>Schulhoff, S., et al.&nbsp;(2024). <a href="https://arxiv.org/abs/2406.06608">The prompt report: A systematic survey of prompt engineering techniques</a>. arXiv:2406.06608 — comprehensive taxonomy of prompting strategies with empirical comparisons.</li>
+<li>Anthropic. (2025). <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview">Prompt engineering overview</a>. <em>Anthropic developer docs.</em> The current reference for Claude-specific prompting. The principles generalise.</li>
+<li>Wei, J., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2201.11903">Chain-of-thought prompting elicits reasoning in large language models</a>. <em>NeurIPS 2022.</em> The paper that established chain-of-thought as a reliable technique.</li>
+<li>Brown, T., et al.&nbsp;(2020). <a href="https://arxiv.org/abs/2005.14165">Language models are few-shot learners</a>. <em>NeurIPS 2020.</em> The GPT-3 paper. Section 2.3 introduces few-shot prompting as used in practice.</li>
+<li>Schulhoff, S., et al.&nbsp;(2024). <a href="https://arxiv.org/abs/2406.06608">The prompt report: A systematic survey of prompt engineering techniques</a>. arXiv:2406.06608. A complete taxonomy of prompting strategies with empirical comparisons.</li>
 </ul>
 
 

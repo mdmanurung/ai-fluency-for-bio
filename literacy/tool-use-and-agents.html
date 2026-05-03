@@ -617,29 +617,29 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The agentic-AI landscape moves on a 6-month cycle. Specific products, APIs, and capability claims here will be out of date soon. Treat the <strong>categories and risk patterns</strong> as durable; verify any specific tool claim before relying on it.</p>
+<p>The agentic-AI landscape moves on a six-month cycle. Specific products, APIs, and capability claims here will be out of date soon. Treat the categories and risk patterns as durable. Verify any specific tool claim before relying on it.</p>
 </div>
 </div>
 <section id="tool-use-in-one-paragraph" class="level2">
 <h2 class="anchored" data-anchor-id="tool-use-in-one-paragraph">Tool use in one paragraph</h2>
-<p>Modern LLMs can be given access to <em>tools</em> — functions they can call during a conversation (e.g., run a shell command, query a database, fetch a URL). The model decides when to call a tool, constructs the call, receives the result, and continues. This moves the system from “text predictor” to “loop that can act on the world.”</p>
+<p>Modern LLMs can be given access to <em>tools</em>: functions they can call during a conversation, like run a shell command, query a database, or fetch a URL. The model decides when to call a tool, constructs the call, receives the result, and continues. This moves the system from “text predictor” to “loop that can act on the world”.</p>
 </section>
 <section id="the-spectrum-by-blast-radius" class="level2">
 <h2 class="anchored" data-anchor-id="the-spectrum-by-blast-radius">The spectrum (by blast radius)</h2>
 <ul>
-<li><strong>Chat assistant</strong> (pure text) — low <a href="../reference/glossary.html">blast radius</a>. Failure = a bad paragraph. Mitigation = read it.</li>
-<li><strong>Coding assistant with file edits</strong> (Cursor, Claude Code, Copilot) — moderate blast radius. Failure = bad diffs, broken local state. Mitigation = human review before commit, version control, sandboxed checkout.</li>
-<li><strong>Agentic assistant with shell + network</strong> — large blast radius. Failure = destructive commands, leaked credentials, runaway loops, exfiltration. Mitigation = sandboxing, scoped permissions, explicit confirmations, dry-run modes, audit logs.</li>
+<li>A <em>chat assistant</em> (pure text) has a low <a href="../reference/glossary.html">blast radius</a>. Failure means a bad paragraph. Mitigation: read it.</li>
+<li>A <em>coding assistant with file edits</em> (Cursor, Claude Code, Copilot) has a moderate blast radius. Failure means bad diffs and broken local state. Mitigation: human review before commit, version control, sandboxed checkout.</li>
+<li>An <em>agentic assistant with shell and network</em> has a large blast radius. Failure means destructive commands, leaked credentials, runaway loops, and exfiltration. Mitigation: sandboxing, scoped permissions, explicit confirmations, dry-run modes, audit logs.</li>
 </ul>
 <p>The blast-radius framing matters more than the marketing label. A “chat assistant” with a single shell tool is functionally an agent.</p>
 </section>
 <section id="implications-for-research-workflows" class="level2">
 <h2 class="anchored" data-anchor-id="implications-for-research-workflows">Implications for research workflows</h2>
 <ul>
-<li>For analysis tasks, a coding assistant that reads/writes files is often the sweet spot — high productivity, low surprise surface.</li>
-<li>For long-running literature or data-collection tasks, agentic setups are tempting — but verify at every boundary, and prefer human-in-the-loop confirmation for irreversible actions.</li>
+<li>For analysis tasks, a coding assistant that reads and writes files is often the sweet spot. High productivity, low surprise surface.</li>
+<li>For long-running literature or data-collection tasks, agentic setups are tempting, but verify at every boundary and prefer human-in-the-loop confirmation for irreversible actions.</li>
 <li>Never give an agent credentials it doesn’t need. Never give an agent credentials whose blast radius you can’t bound.</li>
-<li>Treat any agent with write access to a shared system (cloud bucket, lab database, version-controlled repo with auto-deploy) as a junior collaborator who never sleeps, has no judgment, and submits to whoever’s prompt is loudest.</li>
+<li>Treat any agent with write access to a shared system (cloud bucket, lab database, version-controlled repo with auto-deploy) as a junior collaborator who never sleeps, has no judgement, and submits to whoever’s prompt is loudest.</li>
 </ul>
 </section>
 <section id="pattern-a-a-minimal-agent-for-bibliography-cleanup" class="level2">
@@ -647,46 +647,46 @@ ul.task-list li input[type="checkbox"] {
 <p>A postdoc has a <code>.bib</code> file with 80 entries, many with incorrect or missing DOIs, inconsistent journal abbreviations, and wrong years. She wants to verify and fix each entry against CrossRef. The task is tedious by hand; the AI can automate the lookups. This is an agent: it reads a file, calls an external API in a loop, and proposes writes.</p>
 <p>The loop, at the level of what the human approves:</p>
 <ol type="1">
-<li><strong>Read</strong> — load <code>references.bib</code>, parse into a list of entries.</li>
-<li><strong>For each entry</strong> — send title + first author to the CrossRef <code>/works</code> endpoint; retrieve the best match above a similarity threshold.</li>
-<li><strong>Propose</strong> — surface the diff (current vs.&nbsp;CrossRef) to the human: <code>DOI: missing → 10.1093/nar/gkab1049</code>, <code>year: 2020 → 2021</code>.</li>
-<li><strong>Human confirms</strong> — the human reviews each proposed change and types <code>y</code> or <code>n</code> (or <code>skip</code>).</li>
-<li><strong>Write</strong> — only after explicit confirmation, overwrite the entry.</li>
+<li><em>Read</em>. Load <code>references.bib</code> and parse it into a list of entries.</li>
+<li><em>For each entry</em>. Send the title and first author to the CrossRef <code>/works</code> endpoint and retrieve the best match above a similarity threshold.</li>
+<li><em>Propose</em>. Surface the diff (current vs.&nbsp;CrossRef) to the human: <code>DOI: missing → 10.1093/nar/gkab1049</code>, <code>year: 2020 → 2021</code>.</li>
+<li><em>Human confirms</em>. The human reviews each proposed change and types <code>y</code>, <code>n</code>, or <code>skip</code>.</li>
+<li><em>Write</em>. Only after explicit confirmation, overwrite the entry.</li>
 </ol>
-<p>The key design decision is step 4. Without a human-confirm gate, the agent would silently correct entries that CrossRef matched wrong (common for short titles or names shared across multiple papers), overwrite your canonical abbreviation choices with CrossRef’s, and propagate errors faster than you can track them. The confirm gate converts an irreversible bulk operation into a reviewed sequence of small, reversible decisions. The agent’s value is not autonomy — it is eliminating tedious API lookups, leaving only judgment calls.</p>
+<p>The key design decision is step 4. Without a human-confirm gate, the agent would silently correct entries that CrossRef matched wrong (common for short titles or names shared across multiple papers), overwrite your canonical abbreviation choices with CrossRef’s, and propagate errors faster than you can track them. The confirm gate turns an irreversible bulk operation into a reviewed sequence of small, reversible decisions. The agent’s value is not autonomy. It is eliminating tedious API lookups and leaving only judgement calls.</p>
 </section>
 <section id="pattern-b-a-coding-assistant-editing-your-repo" class="level2">
 <h2 class="anchored" data-anchor-id="pattern-b-a-coding-assistant-editing-your-repo">Pattern B: a coding assistant editing your repo</h2>
-<p>Cursor, Claude Code, and Copilot Chat all sit one step short of full agents: they propose file edits and <em>also</em> propose the diff for human review before applying. The blast-radius argument applies in miniature.</p>
+<p>Cursor, Claude Code, and Copilot Chat all sit one step short of full agents: they propose file edits and they <em>also</em> propose the diff for human review before applying. The blast-radius argument applies in miniature.</p>
 <p>A typical edit-with-confirm loop:</p>
 <ol type="1">
-<li><strong>You describe a change</strong> — “refactor <code>validate_qc_outputs</code> to take an optional <code>min_cells</code> argument, default 1000.”</li>
-<li><strong>The assistant reads the relevant files</strong> — your test file, the function, its callers.</li>
-<li><strong>It proposes a diff</strong> — added parameter, updated docstring, updated tests, updated one caller.</li>
-<li><strong>You review the diff</strong> — accept all, accept some, reject. The assistant cannot apply changes without your click.</li>
-<li><strong>Tests run</strong> — locally or in CI.</li>
+<li><em>You describe a change</em>. “Refactor <code>validate_qc_outputs</code> to take an optional <code>min_cells</code> argument, default 1000.”</li>
+<li><em>The assistant reads the relevant files</em>. Your test file, the function, its callers.</li>
+<li><em>It proposes a diff</em>. Added parameter, updated docstring, updated tests, updated one caller.</li>
+<li><em>You review the diff</em>. Accept all, accept some, reject. The assistant cannot apply changes without your click.</li>
+<li><em>Tests run</em>, locally or in CI.</li>
 </ol>
-<p>The confirm gate here is the diff review. The asymmetry that makes it work: the AI is fast at producing many small edits, and you are fast at scanning a diff. Removing the gate (an “auto-apply” mode) is the move that turns a coding assistant into an unsupervised agent — and the moment you should re-evaluate the blast radius.</p>
-<p>A failure mode specific to this pattern: an assistant that confidently rewrites a passing test to make a buggy implementation pass. The diff looks reasonable; the test no longer guards what it used to guard. The mitigation is to read the test changes, not just the implementation changes — which is exactly the <a href="../fluency/discernment.html">Discernment</a> move.</p>
+<p>The confirm gate here is the diff review. The asymmetry that makes it work: the AI is fast at producing many small edits, and you are fast at scanning a diff. Removing the gate (an “auto-apply” mode) turns a coding assistant into an unsupervised agent. That is the moment to re-evaluate the blast radius.</p>
+<p>A failure mode specific to this pattern is an assistant that confidently rewrites a passing test to make a buggy implementation pass. The diff looks reasonable. The test no longer guards what it used to guard. The mitigation is to read the test changes, not just the implementation changes. That is exactly the <a href="../fluency/discernment.html">Discernment</a> move.</p>
 </section>
 <section id="when-not-to-use-an-agent" class="level2">
 <h2 class="anchored" data-anchor-id="when-not-to-use-an-agent">When <em>not</em> to use an agent</h2>
 <p>A loop is overhead. If the task does not benefit from the loop, do not use one.</p>
 <ul>
-<li><strong>One-shot tasks.</strong> “Generate a regex for the date format” does not need a loop. A chat completion is enough.</li>
-<li><strong>Irreversible actions without easy rollback.</strong> Submitting a manuscript, sending email, transferring funds, dropping database tables. Even with a confirm gate, the social/scientific cost of one wrong confirmation is too high — keep these in human-only workflows.</li>
-<li><strong>Tasks where the human-confirm gate fires every step.</strong> If you would have to approve every action anyway (e.g., reviewing every proposed edit to a manuscript), the agent is just a slower text editor with extra failure modes.</li>
-<li><strong>High-trust, low-frequency tasks.</strong> Rare actions are exactly the ones whose patterns the AI has not memorised reliably. The cost of a bug is high; the speed-up from automation is small.</li>
+<li><em>One-shot tasks</em>. “Generate a regex for the date format” does not need a loop. A chat completion is enough.</li>
+<li><em>Irreversible actions without easy rollback</em>. Submitting a manuscript, sending email, transferring funds, dropping database tables. Even with a confirm gate, the social or scientific cost of one wrong confirmation is too high. Keep these in human-only workflows.</li>
+<li><em>Tasks where the human-confirm gate fires every step</em>. If you would have to approve every action anyway (reviewing every proposed edit to a manuscript), the agent is just a slower text editor with extra failure modes.</li>
+<li><em>High-trust, low-frequency tasks</em>. Rare actions are exactly the ones whose patterns the AI has not memorised reliably. The cost of a bug is high. The speed-up from automation is small.</li>
 </ul>
-<p>The right question is not “can I build an agent for this?” — current frameworks make that easy. It is “does the loop save more human time than the human-confirm gates and verification overhead cost?”</p>
+<p>The right question is not “can I build an agent for this?”. Current frameworks make that easy. The right question is “does the loop save more human time than the human-confirm gates and verification overhead cost?”.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
-<li>Anthropic. (2025). <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a>. — Practical taxonomy of agentic patterns (augmented LLM, routing, parallelization, orchestration); the blast-radius framing maps onto the orchestrator/subagent distinction.</li>
-<li>Weng, L. (2023). <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">LLM-powered autonomous agents</a>. <em>Lilian Weng’s blog</em> — thorough technical walkthrough of memory, tool use, and planning in agent architectures.</li>
-<li>Yao, S., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2210.03629">ReAct: Synergizing reasoning and acting in language models</a>. <em>ICLR 2023</em> — established the think → act → observe loop underlying most current agent frameworks.</li>
-<li>Ruan, Y., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2309.15817">Identifying the risks of LM agents with an LM-emulated sandbox</a>. arXiv:2309.15817 — empirical study of agent failure modes; good grounding for the blast-radius framing above.</li>
+<li>Anthropic. (2025). <a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a>. A practical taxonomy of agentic patterns (augmented LLM, routing, parallelisation, orchestration). The blast-radius framing maps onto the orchestrator-subagent distinction.</li>
+<li>Weng, L. (2023). <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">LLM-powered autonomous agents</a>. <em>Lilian Weng’s blog.</em> A thorough technical walkthrough of memory, tool use, and planning in agent architectures.</li>
+<li>Yao, S., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2210.03629">ReAct: Synergizing reasoning and acting in language models</a>. <em>ICLR 2023.</em> Established the think-act-observe loop underlying most current agent frameworks.</li>
+<li>Ruan, Y., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2309.15817">Identifying the risks of LM agents with an LM-emulated sandbox</a>. arXiv:2309.15817. Empirical study of agent failure modes. Good grounding for the blast-radius framing above.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -705,7 +705,7 @@ ul.task-list li input[type="checkbox"] {
 <li>You are using a coding assistant in edit-with-confirm mode. What is the most important thing to actually read in the proposed diff, and why?</li>
 <li>Name two task types where building an agent is the wrong move, and explain why for one of them.</li>
 </ol>
-<p><strong>Answers:</strong> 1. The blast radius is the right framing, not the label. A single shell tool gives the assistant the ability to take destructive, irreversible actions on the host system — functionally an agent. 2. Read the test changes, not just the implementation. An assistant can “fix” a failing build by rewriting the test to match a buggy implementation; the diff looks reasonable but the test no longer guards what it used to. 3. Examples: irreversible actions without rollback (submitting a manuscript, sending email — one wrong confirmation has high social/scientific cost); tasks where the human would confirm every step anyway (the agent becomes a slower text editor with extra failure modes); one-shot tasks (a chat completion is enough — no loop needed).</p>
+<p><strong>Answers:</strong> 1. The blast radius is the right framing, not the label. A single shell tool gives the assistant the ability to take destructive, irreversible actions on the host system. Functionally, that’s an agent. 2. Read the test changes, not just the implementation. An assistant can “fix” a failing build by rewriting the test to match a buggy implementation. The diff looks reasonable but the test no longer guards what it used to. 3. Examples: irreversible actions without rollback (submitting a manuscript, sending email, where one wrong confirmation has a high social or scientific cost); tasks where the human would confirm every step anyway (the agent becomes a slower text editor with extra failure modes); one-shot tasks (a chat completion is enough; no loop needed).</p>
 </div>
 </div>
 </div>

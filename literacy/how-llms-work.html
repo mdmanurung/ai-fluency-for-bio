@@ -603,8 +603,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="callout-body-container callout-body">
 <ul>
 <li>Explain, at a working level, what an LLM is doing when it generates text.</li>
-<li>Distinguish the major training stages and connect them to observed model behavior.</li>
-<li>Use the right vocabulary for failure modes: <strong>fabrication</strong> (made-up facts/citations) vs.&nbsp;<strong>confabulation</strong> (the mechanism that produces them).</li>
+<li>Distinguish the major training stages and connect them to observed model behaviour.</li>
+<li>Use the right vocabulary for failure modes: <em>fabrication</em> (made-up facts and citations) and <em>confabulation</em> (the mechanism that produces them).</li>
 </ul>
 </div>
 </div>
@@ -618,20 +618,20 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This is a <strong>working</strong> model of how LLMs behave, not a mechanistic account. For accuracy, see the linked technical readings — what’s here will let you reason about <em>behavior in your workflow</em>, not about model internals.</p>
+<p>This is a working model of how LLMs behave, not a mechanistic account. For accuracy, see the linked technical readings. What’s here will let you reason about <em>behaviour in your workflow</em>, not about model internals.</p>
 </div>
 </div>
 <section id="what-an-llm-is" class="level2">
 <h2 class="anchored" data-anchor-id="what-an-llm-is">What an LLM is</h2>
-<p>A language model is trained to predict the next token given all previous tokens. <strong>Tokens</strong> are not words — they are subword units, roughly 3–4 characters on average for English prose. “Transformer” and ” transformer” are different tokens; “GPT” may be a single token; an emoji may expand into several. Tokenization is opaque to users and causes systematic failures on tasks that require character-level reasoning (counting letters, precise string manipulation, certain code patterns).</p>
-<p>The prediction is carried out by a <strong>transformer</strong> — an architecture that uses attention mechanisms to weight every token in the context against every other token at each layer. The practical upshot: the model can integrate information from anywhere in the context window, but it does not distinguish <em>things that are true</em> from <em>patterns that complete this sequence plausibly</em>. There is no internal “fact store” being queried — there is a very large set of learned associations over token sequences.</p>
+<p>A language model is trained to predict the next token given all previous tokens. <strong>Tokens</strong> are not words. They are subword units, roughly 3 to 4 characters on average for English prose. “Transformer” and ” transformer” are different tokens. “GPT” may be a single token. An emoji may expand into several. Tokenisation is opaque to users and causes systematic failures on tasks that require character-level reasoning: counting letters, precise string manipulation, certain code patterns.</p>
+<p>The prediction is carried out by a <strong>transformer</strong>, an architecture that uses attention mechanisms to weight every token in the context against every other token at each layer. The practical upshot: the model can integrate information from anywhere in the context window, but it does not distinguish <em>things that are true</em> from <em>patterns that complete this sequence plausibly</em>. There is no internal “fact store” being queried. There is a very large set of learned associations over token sequences.</p>
 <section id="attention-in-one-head-a-toy-calculation" class="level3">
 <h3 class="anchored" data-anchor-id="attention-in-one-head-a-toy-calculation">Attention in one head: a toy calculation</h3>
 <p>To make this concrete, here is how one attention head computes which tokens to weight when building the representation for a single token. Use the four-token sentence:</p>
 <blockquote class="blockquote">
 <p><code>gene</code> · <code>is</code> · <code>not</code> · <code>expressed</code></p>
 </blockquote>
-<p>Each token is mapped to three small vectors — <strong>Q</strong> (query), <strong>K</strong> (key), <strong>V</strong> (value) — by learned weight matrices. For illustration, use toy two-dimensional vectors (real models use 64–128 dimensions per head):</p>
+<p>Each token is mapped to three small vectors (Q for query, K for key, V for value) by learned weight matrices. For illustration, use toy two-dimensional vectors. Real models use 64 to 128 dimensions per head.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -658,7 +658,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>The query for <strong>expressed</strong> is Q = [1, 2]. To find how much “expressed” should attend to each preceding token, compute the dot product Q · K_i:</p>
+<p>The query for “expressed” is Q = [1, 2]. To find how much “expressed” should attend to each preceding token, compute the dot product Q · K_i:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -670,27 +670,27 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">gene</td>
-<td style="text-align: left;">1×2 + 2×1 = <strong>4</strong></td>
-<td style="text-align: left;">4 ÷ 1.41 ≈ <strong>2.83</strong></td>
+<td style="text-align: left;">1×2 + 2×1 = 4</td>
+<td style="text-align: left;">4 ÷ 1.41 ≈ 2.83</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">is</td>
-<td style="text-align: left;">1×0 + 2×1 = <strong>2</strong></td>
-<td style="text-align: left;">2 ÷ 1.41 ≈ <strong>1.41</strong></td>
+<td style="text-align: left;">1×0 + 2×1 = 2</td>
+<td style="text-align: left;">2 ÷ 1.41 ≈ 1.41</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">not</td>
-<td style="text-align: left;">1×1 + 2×0 = <strong>1</strong></td>
-<td style="text-align: left;">1 ÷ 1.41 ≈ <strong>0.71</strong></td>
+<td style="text-align: left;">1×1 + 2×0 = 1</td>
+<td style="text-align: left;">1 ÷ 1.41 ≈ 0.71</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">expressed</td>
-<td style="text-align: left;">1×1 + 2×1 = <strong>3</strong></td>
-<td style="text-align: left;">3 ÷ 1.41 ≈ <strong>2.12</strong></td>
+<td style="text-align: left;">1×1 + 2×1 = 3</td>
+<td style="text-align: left;">3 ÷ 1.41 ≈ 2.12</td>
 </tr>
 </tbody>
 </table>
-<p>The scaling by √d_k prevents the dot products from growing so large that softmax saturates. Apply softmax to the scaled scores (exp of each, divided by the sum):</p>
+<p>Scaling by √d_k prevents the dot products from growing so large that softmax saturates. Apply softmax to the scaled scores (exp of each, divided by the sum):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -703,22 +703,22 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td style="text-align: left;">gene</td>
 <td style="text-align: left;">exp(2.83) ≈ 16.9</td>
-<td style="text-align: left;"><strong>0.54</strong></td>
+<td style="text-align: left;">0.54</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">is</td>
 <td style="text-align: left;">exp(1.41) ≈ 4.1</td>
-<td style="text-align: left;"><strong>0.13</strong></td>
+<td style="text-align: left;">0.13</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">not</td>
 <td style="text-align: left;">exp(0.71) ≈ 2.0</td>
-<td style="text-align: left;"><strong>0.06</strong></td>
+<td style="text-align: left;">0.06</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">expressed</td>
 <td style="text-align: left;">exp(2.12) ≈ 8.3</td>
-<td style="text-align: left;"><strong>0.27</strong></td>
+<td style="text-align: left;">0.27</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><em>sum</em></td>
@@ -731,53 +731,53 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>output = 0.54·V_gene + 0.13·V_is + 0.06·V_not + 0.27·V_expressed</p>
 </blockquote>
-<p><strong>What this tells you.</strong> With these toy vectors, “expressed” draws mostly from “gene” (54%) and itself (27%), and barely from “not” (6%). In a real trained model the weights would look very different — the training signal would push “not” much higher because negation is semantically critical. The arithmetic above is real; only the Q/K vectors are invented. Every layer of every head in a frontier model runs this same computation millions of times per forward pass.</p>
+<p>What this tells you: with these toy vectors, “expressed” draws mostly from “gene” (54%) and from itself (27%), and barely from “not” (6%). In a real trained model the weights would look very different. The training signal would push “not” much higher, because negation is semantically critical. The arithmetic above is real. Only the Q and K vectors are invented. Every layer of every head in a frontier model runs this same computation millions of times per forward pass.</p>
 <p>Two inference-time parameters that matter:</p>
 <ul>
-<li><strong>Temperature</strong> — scales the sharpness of the next-token distribution before sampling. Temperature 0 is greedy (always pick the most probable token — deterministic, useful for structured output and code). Higher temperatures increase diversity and apparent creativity, but also incoherence and fabrication rate. API defaults vary; most sit around 0.7–1.0.</li>
-<li><strong>Context window</strong> — the maximum number of tokens the model can attend to in a single inference call. Modern frontier models have windows of 100 K–1 M tokens. Effective use at very long contexts is uneven: information in the middle of a very long context is attended to less reliably than information at the start or end (the “lost in the middle” finding).</li>
+<li><em>Temperature</em> scales the sharpness of the next-token distribution before sampling. Temperature 0 is greedy: always pick the most probable token. It is deterministic and useful for structured output and code. Higher temperatures increase diversity and apparent creativity, but also incoherence and fabrication rate. API defaults vary, but most sit around 0.7 to 1.0.</li>
+<li><em>Context window</em> is the maximum number of tokens the model can attend to in a single inference call. Modern frontier models have windows of 100K to 1M tokens. Effective use at very long contexts is uneven: information in the middle of a very long context is attended to less reliably than information at the start or end (the “lost in the middle” finding).</li>
 </ul>
-<p>Key takeaways for a working researcher:</p>
+<p>Three things to keep in mind as a working researcher:</p>
 <ul>
-<li>An LLM is a function from <em>token sequence</em> to <em>probability distribution over next tokens</em>.</li>
-<li>The model has no internal representation of “what is true” — only “what is likely given the training distribution and the in-context evidence.”</li>
-<li>Long contexts are not memory — the prompt window is the entire world the model can see at inference time.</li>
+<li>An LLM is a function from a <em>token sequence</em> to a <em>probability distribution over next tokens</em>.</li>
+<li>The model has no internal representation of “what is true”. It only has “what is likely given the training distribution and the in-context evidence”.</li>
+<li>Long contexts are not memory. The prompt window is the entire world the model can see at inference time.</li>
 </ul>
 </section>
 </section>
 <section id="training-stages-simplified" class="level2">
 <h2 class="anchored" data-anchor-id="training-stages-simplified">Training stages (simplified)</h2>
-<p>Modern frontier models go through <em>at least</em>:</p>
+<p>Modern frontier models go through at least four stages:</p>
 <ol type="1">
-<li><strong>Pretraining</strong> — next-token prediction on a large corpus of text and code. Source of broad knowledge and most factual content; also source of factual errors and biases in the training distribution.</li>
-<li><strong>Supervised fine-tuning (SFT)</strong> — training on curated instruction/response pairs. Shapes the assistant format and follows-instructions behavior.</li>
-<li><strong>Preference optimization</strong> (RLHF, DPO, RLAIF, constitutional methods) — training against human or AI preferences. Shapes helpfulness, honesty, refusals, and <em>materially affects factual and reasoning behavior</em> — not just tone.</li>
-<li><strong>Safety / character / red-team passes</strong> — additional tuning for refusals, persona, and adversarial robustness.</li>
+<li><em>Pretraining</em>: next-token prediction on a large corpus of text and code. This is the source of broad knowledge and most factual content. It is also the source of factual errors and biases in the training distribution.</li>
+<li><em>Supervised fine-tuning (SFT)</em>: training on curated instruction-and-response pairs. Shapes the assistant format and follows-instructions behaviour.</li>
+<li><em>Preference optimisation</em> (RLHF, DPO, RLAIF, constitutional methods): training against human or AI preferences. Shapes helpfulness, honesty, and refusals. It also <em>materially affects factual and reasoning behaviour</em>, not just tone.</li>
+<li><em>Safety, character, and red-team passes</em>: additional tuning for refusals, persona, and adversarial robustness.</li>
 </ol>
-<p>Don’t memorize this list. The takeaway: <strong>post-training is not just “polish.”</strong> Two models with similar pretraining can behave very differently because of preference and safety tuning.</p>
+<p>Don’t memorise this list. The point: post-training is not just “polish”. Two models with similar pretraining can behave very differently because of preference and safety tuning.</p>
 </section>
 <section id="why-models-fabricate" class="level2">
 <h2 class="anchored" data-anchor-id="why-models-fabricate">Why models fabricate</h2>
-<p>We use <strong>fabrication</strong> for the <em>outcome</em> (made-up facts, fake citations, invented function signatures) and <strong>confabulation</strong> for the <em>mechanism</em> (the model fills gaps in plausible ways from the training distribution). “Hallucination” is the common term but understates the harm when applied to citations.</p>
+<p>We use <em>fabrication</em> for the <em>outcome</em> (made-up facts, fake citations, invented function signatures) and <em>confabulation</em> for the <em>mechanism</em> (the model filling gaps in plausible ways from the training distribution). “Hallucination” is the common term, but it understates the harm when applied to citations.</p>
 <p>Why it happens:</p>
 <ul>
-<li>Training rewards fluent, plausible completion — not abstention or calibrated uncertainty.</li>
-<li>For rare facts (a specific paper, a recent tool version, a niche protocol), the model interpolates from neighbors in the training distribution.</li>
+<li>Training rewards fluent, plausible completion, not abstention or calibrated uncertainty.</li>
+<li>For rare facts (a specific paper, a recent tool version, a niche protocol), the model interpolates from neighbours in the training distribution.</li>
 <li>Preference tuning further pushes toward confident, helpful-sounding answers.</li>
 </ul>
 <p>Huang et al.&nbsp;(2023) distinguish two useful types:</p>
 <ul>
-<li><strong>Factuality fabrication</strong> — output contradicts a verifiable real-world fact.</li>
-<li><strong>Faithfulness fabrication</strong> — output contradicts the source the model was given (e.g., a misquote from a paper you pasted in).</li>
+<li><em>Factuality fabrication</em>: the output contradicts a verifiable real-world fact.</li>
+<li><em>Faithfulness fabrication</em>: the output contradicts a source the model was given. For example, a misquote from a paper you pasted in.</li>
 </ul>
-<p>Both happen; both demand different defenses.</p>
+<p>Both happen, and they need different defences.</p>
 </section>
 <section id="what-this-means-for-you" class="level2">
 <h2 class="anchored" data-anchor-id="what-this-means-for-you">What this means for you</h2>
 <ul>
-<li>Facts at the long tail of the training distribution (specific papers, recent tools, niche protocols) are the <strong>highest-risk outputs</strong>.</li>
+<li>Facts at the long tail of the training distribution (specific papers, recent tools, niche protocols) are the highest-risk outputs.</li>
 <li>Context you provide in the prompt is <em>qualitatively</em> more reliable than facts the model recalls.</li>
-<li>Retrieval (RAG), tool use, and grounding in real documents reduce — but do not eliminate — fabrication. They can introduce <em>faithfulness</em> fabrication where they reduce <em>factuality</em> fabrication.</li>
+<li>Retrieval (RAG), tool use, and grounding in real documents reduce fabrication, but they do not eliminate it. They can introduce <em>faithfulness</em> fabrication where they reduce <em>factuality</em> fabrication.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -804,10 +804,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
-<li>Bender et al.&nbsp;(2021), <a href="https://dl.acm.org/doi/10.1145/3442188.3445922">Stochastic Parrots</a> — foundational, pre-RLHF.</li>
-<li>Wei et al.&nbsp;(2022), <a href="https://arxiv.org/abs/2206.07682">Emergent Abilities</a> — read with Schaeffer et al.&nbsp;(2023), <a href="https://arxiv.org/abs/2304.15004">Are Emergent Abilities a Mirage?</a></li>
-<li>Ouyang et al.&nbsp;(2022), <a href="https://arxiv.org/abs/2203.02155">Training Language Models to Follow Instructions</a> — InstructGPT / RLHF.</li>
-<li>Huang et al.&nbsp;(2023), <a href="https://arxiv.org/abs/2311.05232">A Survey on Hallucination in LLMs</a> — taxonomy and mitigation.</li>
+<li>Bender et al.&nbsp;(2021). <a href="https://dl.acm.org/doi/10.1145/3442188.3445922">Stochastic Parrots</a>. Foundational, pre-RLHF.</li>
+<li>Wei et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2206.07682">Emergent Abilities</a>. Read with Schaeffer et al.&nbsp;(2023), <a href="https://arxiv.org/abs/2304.15004">Are Emergent Abilities a Mirage?</a></li>
+<li>Ouyang et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2203.02155">Training Language Models to Follow Instructions</a>. The InstructGPT and RLHF paper.</li>
+<li>Huang et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2311.05232">A Survey on Hallucination in LLMs</a>. Taxonomy and mitigation.</li>
 </ul>
 
 

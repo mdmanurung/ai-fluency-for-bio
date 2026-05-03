@@ -599,19 +599,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="logistics" class="level2">
 <h2 class="anchored" data-anchor-id="logistics">Logistics</h2>
 <ul>
-<li><strong>Format</strong>: self-paced. No instructor, no schedule, no grades.</li>
-<li><strong>Suggested pacing</strong>: ~1 week per unit, ~3–5 hours per week (Weeks 1–2) or ~5–7 hours per week (Weeks 3–4). Allow yourself <strong>4–8 weeks</strong> end-to-end depending on background and time.</li>
-<li><strong>Cadence</strong>: each week page is self-contained — readings → practice → knowledge check → project. Move at the speed you learn.</li>
-<li><strong>Duration scope</strong>: this is a <strong>foundations</strong> course; real fluency develops over months of supervised practice on real research problems. Plan accordingly.</li>
+<li>Format: self-paced. No instructor, no schedule, no grades.</li>
+<li>Suggested pacing: about a week per unit, three to five hours for Weeks 1 and 2, five to seven hours for Weeks 3 and 4. Allow yourself four to eight weeks end-to-end depending on background and time.</li>
+<li>Cadence: each week page is self-contained (readings, practice, knowledge check, project). Move at the speed you learn.</li>
+<li>Duration scope: this is a foundations course. Real fluency develops over months of supervised practice on real research problems. Plan accordingly.</li>
 </ul>
 </section>
 <section id="prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
 <ul>
-<li>Working comfort with R <em>or</em> Python at a scripting level (read and modify a 100-line script).</li>
-<li>An LLM chat account — free tier of Claude, ChatGPT, or Gemini works for most exercises (see budget note below).</li>
+<li>Working comfort with R or Python at a scripting level. You should be able to read and modify a 100-line script.</li>
+<li>An LLM chat account. The free tier of Claude, ChatGPT, or Gemini works for most exercises (see the budget note below).</li>
 <li>A GitHub account.</li>
-<li>Laptop with terminal access; ability to install <a href="https://quarto.org/">Quarto</a> and a code assistant.</li>
+<li>A laptop with terminal access, and the ability to install <a href="https://quarto.org/">Quarto</a> and a code assistant.</li>
 </ul>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -623,19 +623,19 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Free-tier LLMs work for Week 1–2 chat exercises. The Week 3 mini-project and Week 4 final project benefit from a paid tier (Claude Pro / ChatGPT Plus) or institutional API access — free-tier rate limits will otherwise interrupt sustained code-assistance sessions. If you have institutional access via a research computing service, check whether they offer enterprise LLM access before paying out of pocket.</p>
+<p>Free-tier LLMs work for the Week 1 and Week 2 chat exercises. The Week 3 mini-project and the Week 4 final project benefit from a paid tier (Claude Pro, ChatGPT Plus) or institutional API access. Free-tier rate limits will otherwise interrupt sustained code-assistance sessions. If you have institutional access through a research computing service, check whether they offer enterprise LLM access before paying out of pocket.</p>
 </div>
 </div>
 </section>
 <section id="required-tools" class="level2">
 <h2 class="anchored" data-anchor-id="required-tools">Required tools</h2>
 <ul>
-<li><strong><a href="https://quarto.org/">Quarto</a></strong> (current stable; ≥ 1.5) — for reproducible reports.</li>
-<li><strong>Git + GitHub</strong> — for version control and storing your project artifacts.</li>
-<li><strong>A coding assistant</strong> (one of): <a href="https://docs.claude.com/en/docs/claude-code/overview">Claude Code</a>, <a href="https://cursor.sh/">Cursor</a>, or VS Code + <a href="https://github.com/features/copilot">GitHub Copilot</a>.</li>
-<li><strong>A chat LLM</strong> (one of): <a href="https://claude.ai/">Claude</a>, ChatGPT, or Gemini. Course examples use Claude by default.</li>
-<li><strong>A grounded literature tool</strong> (one of): <a href="https://elicit.com/">Elicit</a>, <a href="https://consensus.app/">Consensus</a>, <a href="https://scispace.com/">SciSpace</a>, or Perplexity (sources mode).</li>
-<li><strong>Bioinformatics environment</strong>: Python with <a href="https://scanpy.readthedocs.io/">Scanpy</a> is the course default for the hands-on track. The 5-module scRNA-seq pipeline runs in <strong>Google Colab</strong> out of the box (no install required for Modules 3–5; Modules 1–2 need HPC or are skippable). If you prefer a local setup, a pinned environment (<code>conda</code> or <code>uv</code>) is supported — see <a href="./weeks/week-3.html">Week 3</a>. R/<a href="https://satijalab.org/seurat/">Seurat</a> users can substitute the equivalent Bioconductor toolchain for the mini-project; pointers in <a href="./bioinformatics/code-assistance.html">Code assistance</a>.</li>
+<li><a href="https://quarto.org/">Quarto</a>, current stable, version 1.5 or later, for reproducible reports.</li>
+<li>Git and GitHub, for version control and storing your project artifacts.</li>
+<li>A coding assistant. Pick one of <a href="https://docs.claude.com/en/docs/claude-code/overview">Claude Code</a>, <a href="https://cursor.sh/">Cursor</a>, or VS Code with <a href="https://github.com/features/copilot">GitHub Copilot</a>.</li>
+<li>A chat LLM. Pick one of <a href="https://claude.ai/">Claude</a>, ChatGPT, or Gemini. Course examples use Claude by default.</li>
+<li>A grounded literature tool. Pick one of <a href="https://elicit.com/">Elicit</a>, <a href="https://consensus.app/">Consensus</a>, <a href="https://scispace.com/">SciSpace</a>, or Perplexity in sources mode.</li>
+<li>A bioinformatics environment. Python with <a href="https://scanpy.readthedocs.io/">Scanpy</a> is the course default. The 5-module scRNA-seq pipeline runs in Google Colab out of the box. You don’t need a local install for Modules 3 to 5. Modules 1 and 2 need HPC, or you can skip them. If you prefer a local setup, a pinned <code>conda</code> or <code>uv</code> environment is supported (see <a href="./weeks/week-3.html">Week 3</a>). R and <a href="https://satijalab.org/seurat/">Seurat</a> users can substitute the equivalent Bioconductor toolchain for the mini-project. Pointers are in <a href="./bioinformatics/code-assistance.html">Code assistance</a>.</li>
 </ul>
 </section>
 <section id="course-structure" class="level2">
@@ -659,9 +659,9 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: left;">Foundations &amp; the 4 D’s</td>
-<td style="text-align: left;">Tooling setup; workflow audit</td>
-<td style="text-align: left;">Reflection (≤ 500 words) + tooling confirmation</td>
+<td style="text-align: left;">Foundations and the 4 D’s</td>
+<td style="text-align: left;">Tooling setup, workflow audit</td>
+<td style="text-align: left;">Reflection (500 words or fewer), plus tooling confirmation</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
@@ -671,19 +671,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
-<td style="text-align: left;">scRNA-seq I — QC, normalisation, clustering (Modules 3 &amp; 4)</td>
-<td style="text-align: left;">Module 3 + Module 4 in Colab</td>
-<td style="text-align: left;">Mini-project: reproducible AI-assisted PBMC 3k QC + clustering report</td>
+<td style="text-align: left;">scRNA-seq I: QC, normalisation, clustering (Modules 3 and 4)</td>
+<td style="text-align: left;">Modules 3 and 4 in Colab</td>
+<td style="text-align: left;">Mini-project: reproducible AI-assisted PBMC 3k QC and clustering report</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: left;">scRNA-seq II — annotation, final project (Module 5)</td>
+<td style="text-align: left;">scRNA-seq II: annotation, final project (Module 5)</td>
 <td style="text-align: left;">Module 5 in Colab</td>
-<td style="text-align: left;">Final project: literature brief, analysis, or protocol — your choice</td>
+<td style="text-align: left;">Final project. Your choice of literature brief, analysis, or protocol</td>
 </tr>
 </tbody>
 </table>
-<p>Modules 1 (FastQC) and 2 (Cell Ranger / STARsolo) are reading material before Week 3 if you want the full picture. Module 2 needs HPC; if you don’t have it, skip directly to Module 3 — a pre-built count matrix is loaded by Scanpy.</p>
+<p>Modules 1 (FastQC) and 2 (Cell Ranger or STARsolo) are reading material before Week 3 if you want the full picture. Module 2 needs HPC. If you don’t have it, skip to Module 3. Scanpy loads a pre-built count matrix.</p>
 </section>
 <section id="self-assessment" class="level2">
 <h2 class="anchored" data-anchor-id="self-assessment">Self-assessment</h2>
@@ -703,31 +703,31 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Per-page <strong>Check your understanding</strong></td>
+<td style="text-align: left;">Per-page “Check your understanding”</td>
 <td style="text-align: left;">Bottom of each conceptual page</td>
-<td style="text-align: left;">Confirm a single page landed before moving on (3–5 questions, worked answers)</td>
+<td style="text-align: left;">Confirm a page landed before moving on (3 to 5 questions with worked answers)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Per-week <strong>Knowledge check</strong></td>
+<td style="text-align: left;">Per-week knowledge check</td>
 <td style="text-align: left;">End of each week page</td>
-<td style="text-align: left;">Cumulative check across the week’s readings (5–8 mixed conceptual + applied questions)</td>
+<td style="text-align: left;">Cumulative check across the week’s readings (5 to 8 mixed conceptual and applied questions)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Per-week <strong>Hands-on practice</strong></td>
+<td style="text-align: left;">Per-week hands-on practice</td>
 <td style="text-align: left;">Middle of each week page</td>
-<td style="text-align: left;">Apply the unit to your own data / questions (2–3 small exercises with self-check answers)</td>
+<td style="text-align: left;">Apply the unit to your own data and questions (2 or 3 small exercises with self-check answers)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Project <strong>self-rubric</strong></td>
+<td style="text-align: left;">Project self-rubric</td>
 <td style="text-align: left;">End of each week page (Weeks 1, 2, 3, 4)</td>
 <td style="text-align: left;">Grade your own project against the same dimensions an instructor would</td>
 </tr>
 </tbody>
 </table>
-<p>If you miss two or more knowledge-check questions on a topic, revisit the reading and redo the practice. The <strong>disclosure rubric</strong> below applies to every project — it is not graded by anyone, but if you cannot defend the disclosure, the project is not finished.</p>
+<p>If you miss two or more knowledge-check questions on a topic, revisit the reading and redo the practice. The disclosure rubric below applies to every project. No one grades it for you, but if you cannot defend your disclosure, the project is not finished.</p>
 <section id="disclosure-rubric" class="level3">
 <h3 class="anchored" data-anchor-id="disclosure-rubric">Disclosure rubric</h3>
-<p>Every project includes a disclosure section, scored on these dimensions (use it as a self-check on whether your work meets the bar):</p>
+<p>Every project includes a disclosure section. Score it on these dimensions, and use the rubric as a self-check on whether your work meets the bar:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 57%">
@@ -743,85 +743,85 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Tools listed</strong></td>
+<td style="text-align: left;">Tools listed</td>
 <td style="text-align: left;">None or vague (“used AI”)</td>
-<td style="text-align: left;">Specific tool, version/model, and access tier (e.g., “Claude Sonnet 4.6, Pro tier, web UI”)</td>
+<td style="text-align: left;">Specific tool, version or model, and access tier (e.g., “Claude Sonnet 4.6, Pro tier, web UI”)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Use described</strong></td>
+<td style="text-align: left;">Use described</td>
 <td style="text-align: left;">Generic (“for help”)</td>
-<td style="text-align: left;">Concrete uses (“drafted DESeq2 scaffold; rewrote intro paragraph; suggested 3 papers, 2 verified, 1 fabricated”)</td>
+<td style="text-align: left;">Concrete uses (“drafted DESeq2 scaffold, rewrote intro paragraph, suggested 3 papers of which 2 verified and 1 fabricated”)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Verification stated</strong></td>
+<td style="text-align: left;">Verification stated</td>
 <td style="text-align: left;">Not mentioned</td>
 <td style="text-align: left;">Names what you checked and how (ran tests, verified citations on PubMed, ran code on test data)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Rejections noted</strong></td>
+<td style="text-align: left;">Rejections noted</td>
 <td style="text-align: left;">Not mentioned</td>
 <td style="text-align: left;">Lists at least one AI suggestion you rejected and why</td>
 </tr>
 </tbody>
 </table>
-<p>A template disclosure paragraph is provided with each project.</p>
+<p>A template disclosure paragraph comes with each project.</p>
 </section>
 </section>
 <section id="ai-use-policy" class="level2">
 <h2 class="anchored" data-anchor-id="ai-use-policy">AI-use policy</h2>
-<p>This is a course about using AI tools well. <strong>You are expected to use them on most exercises.</strong> Following pedagogical research, two projects include an <strong>AI-free or AI-second baseline component</strong> so you can develop and demonstrate the underlying skill, not just the collaboration skill:</p>
+<p>This is a course about using AI tools well. You are expected to use them on most exercises. Two projects include an AI-free or AI-second baseline component so you can build and demonstrate the underlying skill, not only the collaboration skill:</p>
 <ul>
-<li><strong>Week 1 reflection</strong>: write your initial classification of three of your own tasks <em>without</em> AI consultation. Then, optionally, run them past an AI and note what changed.</li>
-<li><strong>Week 3 mini-project</strong>: write a small (~25-line) AI-free baseline of the PBMC 3k QC pass <em>first</em>, by hand — <code>sc.datasets.pbmc3k()</code>, mt-gene flag, three QC violin plots, threshold filter, log-normalise. Then iterate with an AI assistant on the rest (clustering, marker checks, refactor). Submit both, with a short note on what the AI changed and why you accepted or rejected each change.</li>
+<li>Week 1 reflection: write your initial classification of three of your own tasks without AI consultation. Then, optionally, run them past an AI and note what changed.</li>
+<li>Week 3 mini-project: write a small (about 25-line) AI-free baseline of the PBMC 3k QC pass first, by hand. Use <code>sc.datasets.pbmc3k()</code>, flag mitochondrial genes, plot three QC violins, filter on thresholds, and log-normalise. Then iterate with an AI assistant on the rest (clustering, marker checks, refactor). Submit both, with a short note on what the AI changed and why you accepted or rejected each change.</li>
 </ul>
 <p>For all projects:</p>
 <ul>
-<li><strong>Disclose</strong> which tools you used and how. See the disclosure rubric above.</li>
-<li><strong>Verify</strong> every factual claim, citation, and piece of code before relying on it.</li>
-<li><strong>Own</strong> your output: you are the author of record. AI-generated text used verbatim must be quoted or marked.</li>
-<li><strong>Protect</strong> sensitive data: see the data policy below.</li>
+<li>Disclose which tools you used and how. See the disclosure rubric above.</li>
+<li>Verify every factual claim, citation, and piece of code before relying on it.</li>
+<li>Own your output. You are the author of record. AI-generated text used verbatim must be quoted or marked.</li>
+<li>Protect sensitive data. See the data policy below.</li>
 </ul>
 </section>
 <section id="data-policy-required-reading-before-any-exercise-using-real-data" class="level2">
 <h2 class="anchored" data-anchor-id="data-policy-required-reading-before-any-exercise-using-real-data">Data policy (required reading before any exercise using real data)</h2>
-<p>Do <strong>not</strong> paste any of the following into a third-party LLM service without explicit, documented permission and an approved data-handling pathway:</p>
+<p>Do not paste any of the following into a third-party LLM service without explicit, documented permission and an approved data-handling pathway:</p>
 <ul>
-<li><strong>Patient-identifiable data</strong> or any PHI under HIPAA (US) / personal data under GDPR (EU/UK).</li>
-<li><strong>Controlled-access data</strong> (NIH dbGaP, UK Biobank, EGA, etc.) — controlled-access agreements typically prohibit third-party transmission.</li>
-<li><strong>BAA-restricted clinical data</strong> — even de-identified data may be subject to your institution’s Business Associate Agreements.</li>
-<li><strong>Embargoed pre-publication data</strong> — including unpublished collaborator data, manuscripts under review, and grant proposals.</li>
-<li><strong>Sequence or other data</strong> under a Material Transfer Agreement (MTA) with restrictive terms.</li>
+<li>Patient-identifiable data, or any PHI under HIPAA (US) or personal data under GDPR (EU/UK).</li>
+<li>Controlled-access data (NIH dbGaP, UK Biobank, EGA, and similar). Controlled-access agreements typically prohibit third-party transmission.</li>
+<li>BAA-restricted clinical data. Even de-identified data may be subject to your institution’s Business Associate Agreements.</li>
+<li>Embargoed pre-publication data, including unpublished collaborator data, manuscripts under review, and grant proposals.</li>
+<li>Sequence or other data covered by a Material Transfer Agreement with restrictive terms.</li>
 </ul>
-<p>For any such data: use <strong>on-premises</strong>, <strong>institutional</strong>, or <strong>vendor enterprise tiers with appropriate contracts</strong> (e.g., zero-retention with a signed BAA where applicable). When in doubt, consult your IRB / data steward / institutional privacy office <em>before</em> the exercise, not after.</p>
-<p>The course dataset (10x PBMC 3k) is public and safe to use with any tool. Supplementary references to other public datasets (e.g., from GEO or ArrayExpress) are also safe.</p>
+<p>For any such data, use on-premises tools, institutional tools, or vendor enterprise tiers with appropriate contracts (zero-retention with a signed BAA where applicable). When in doubt, consult your IRB, data steward, or institutional privacy office before the exercise, not after.</p>
+<p>The course dataset (10x PBMC 3k) is public and safe to use with any tool. Public supplementary datasets (from GEO, ArrayExpress, and similar archives) are also safe.</p>
 </section>
 <section id="recommended-readings" class="level2">
 <h2 class="anchored" data-anchor-id="recommended-readings">Recommended readings</h2>
-<p>Two short readings per unit is the assigned load; the rest is a menu.</p>
-<p><strong>Foundations / fluency</strong></p>
+<p>Two short readings per unit is the assigned load. The rest is a menu.</p>
+<p><strong>Foundations and fluency</strong></p>
 <ul>
-<li>Anthropic, <a href="https://www.anthropic.com/ai-fluency"><em>AI Fluency: Framework &amp; Foundations</em></a> — the source of the 4 D’s framework. Free course materials and PDF available from Anthropic.</li>
-<li>Mollick, E. (2024). <em>Co-Intelligence: Living and Working with AI.</em> Portfolio. — practical framing for working with LLMs.</li>
+<li>Anthropic. <a href="https://www.anthropic.com/ai-fluency"><em>AI Fluency: Framework &amp; Foundations</em></a>. The source of the 4 D’s framework. Free course materials and a PDF are available from Anthropic.</li>
+<li>Mollick, E. (2024). <em>Co-Intelligence: Living and Working with AI.</em> Portfolio. Practical framing for working with LLMs.</li>
 </ul>
 <p><strong>How LLMs work and why they fail</strong></p>
 <ul>
-<li>Bender, E. M., Gebru, T., McMillan-Major, A., &amp; Shmitchell, S. (2021). <a href="https://dl.acm.org/doi/10.1145/3442188.3445922">On the dangers of stochastic parrots: Can language models be too big? 🦜</a> <em>FAccT ’21.</em> Foundational; pre-RLHF era.</li>
-<li>Wei, J., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2206.07682">Emergent abilities of large language models.</a> <em>TMLR.</em> — Read with the critique below.</li>
-<li>Schaeffer, R., Miranda, B., &amp; Koyejo, S. (2023). <a href="https://arxiv.org/abs/2304.15004">Are emergent abilities of large language models a mirage?</a> <em>NeurIPS.</em> — Important counterpoint to Wei et al.</li>
-<li>Ouyang, L., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2203.02155">Training language models to follow instructions with human feedback.</a> <em>NeurIPS.</em> — InstructGPT / RLHF.</li>
-<li>Huang, L., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2311.05232">A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions.</a> <em>ACM TOIS.</em> — Useful taxonomy: factuality vs.&nbsp;faithfulness hallucination.</li>
+<li>Bender, E. M., Gebru, T., McMillan-Major, A., &amp; Shmitchell, S. (2021). <a href="https://dl.acm.org/doi/10.1145/3442188.3445922">On the dangers of stochastic parrots: Can language models be too big? 🦜</a> <em>FAccT ’21.</em> Foundational, pre-RLHF era.</li>
+<li>Wei, J., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2206.07682">Emergent abilities of large language models.</a> <em>TMLR.</em> Read alongside the critique below.</li>
+<li>Schaeffer, R., Miranda, B., &amp; Koyejo, S. (2023). <a href="https://arxiv.org/abs/2304.15004">Are emergent abilities of large language models a mirage?</a> <em>NeurIPS.</em> An important counterpoint to Wei et al.</li>
+<li>Ouyang, L., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2203.02155">Training language models to follow instructions with human feedback.</a> <em>NeurIPS.</em> The InstructGPT and RLHF paper.</li>
+<li>Huang, L., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2311.05232">A survey on hallucination in large language models: Principles, taxonomy, challenges, and open questions.</a> <em>ACM TOIS.</em> A useful taxonomy: factuality vs.&nbsp;faithfulness hallucination.</li>
 </ul>
-<p><strong>AI in biology / science</strong></p>
+<p><strong>AI in biology and science</strong></p>
 <ul>
-<li>Bunne, C., et al.&nbsp;(2024). <a href="https://www.cell.com/cell/fulltext/S0092-8674(24)01332-1">How to build the virtual cell with artificial intelligence: Priorities and opportunities.</a> <em>Cell</em> 187(25), 7045–7063. — Forward-looking perspective; advanced.</li>
-<li>Boiko, D. A., MacKnight, R., Kline, B., &amp; Gomes, G. (2023). <a href="https://www.nature.com/articles/s41586-023-06792-0">Autonomous chemical research with large language models.</a> <em>Nature</em> 624, 570–578. — Chemistry rather than biology; useful as analogy for autonomous research workflows.</li>
+<li>Bunne, C., et al.&nbsp;(2024). <a href="https://www.cell.com/cell/fulltext/S0092-8674(24)01332-1">How to build the virtual cell with artificial intelligence: Priorities and opportunities.</a> <em>Cell</em> 187(25), 7045–7063. Forward-looking perspective, advanced.</li>
+<li>Boiko, D. A., MacKnight, R., Kline, B., &amp; Gomes, G. (2023). <a href="https://www.nature.com/articles/s41586-023-06792-0">Autonomous chemical research with large language models.</a> <em>Nature</em> 624, 570–578. Chemistry rather than biology, useful as an analogy for autonomous research workflows.</li>
 </ul>
 <p><strong>Ethics and policy</strong></p>
 <ul>
-<li>Kay, J., Kasirzadeh, A., &amp; Mohamed, S. (2024). <a href="https://arxiv.org/abs/2408.11441">Epistemic injustice in generative AI.</a> <em>AAAI/ACM AIES.</em> — Frames the epistemic risks of generative AI for shared knowledge.</li>
-<li>ICMJE — current <a href="https://www.icmje.org/recommendations/">Recommendations</a> on AI in authorship (read the current online version, not a static cite).</li>
-<li><em>Nature</em> — current <a href="https://www.nature.com/nature-portfolio/editorial-policies/ai">editorial policies on AI</a> (current online version).</li>
-<li><em>Science</em> — current AI policies via the journal family’s editorial guidelines (current online version).</li>
+<li>Kay, J., Kasirzadeh, A., &amp; Mohamed, S. (2024). <a href="https://arxiv.org/abs/2408.11441">Epistemic injustice in generative AI.</a> <em>AAAI/ACM AIES.</em> Frames the epistemic risks of generative AI for shared knowledge.</li>
+<li>ICMJE. Current <a href="https://www.icmje.org/recommendations/">Recommendations</a> on AI in authorship. Read the current online version, not a static cite.</li>
+<li><em>Nature</em>. Current <a href="https://www.nature.com/nature-portfolio/editorial-policies/ai">editorial policies on AI</a>. Read the current online version.</li>
+<li><em>Science</em>. Current AI policies in the journal family’s editorial guidelines. Read the current online version.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -833,22 +833,22 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Citations were verified at the time of writing (April 2026). Editorial policies and “current best” surveys date quickly — confirm before relying on them. Items not flagged as core are still valuable supplements; the assigned load is two short readings per unit.</p>
+<p>Citations were verified at the time of writing (April 2026). Editorial policies and “current best” surveys go stale quickly. Confirm before relying on them. Items not flagged as core are still valuable supplements. The assigned load is two short readings per unit.</p>
 </div>
 </div>
 </section>
 <section id="course-policies" class="level2">
 <h2 class="anchored" data-anchor-id="course-policies">Course policies</h2>
 <ul>
-<li><strong>Pacing</strong>: there are no deadlines. The “weeks” are recommended pacing milestones, not a schedule.</li>
-<li><strong>Working with peers (optional)</strong>: if you take this with a study group, share verification approaches and prompt logs but write your own work. Use the <a href="./reference/peer-review.html">self-review template</a> on each other’s projects.</li>
-<li><strong>AI collaboration</strong>: governed by the AI-use policy above. Disclosure is the bar.</li>
+<li>Pacing: there are no deadlines. The “weeks” are recommended pacing milestones, not a schedule.</li>
+<li>Working with peers (optional): if you take this with a study group, share verification approaches and prompt logs, but write your own work. Use the <a href="./reference/peer-review.html">self-review template</a> on each other’s projects.</li>
+<li>AI collaboration: governed by the AI-use policy above. Disclosure is the bar.</li>
 </ul>
 </section>
 <section id="academic-integrity" class="level2">
 <h2 class="anchored" data-anchor-id="academic-integrity">Academic integrity</h2>
-<p>If you are taking this course as part of a programme that submits credit, the same standard applies as in any course: AI output submitted as your own unverified, undisclosed work — without verification or critical engagement — violates academic integrity, regardless of how the text was produced. The disclosure rubric makes the expectation concrete.</p>
-<p>If you are taking the course on your own, the same standard still applies — to <em>yourself</em>. Disclosure and verification are habits to build now, not bureaucracy to perform later.</p>
+<p>If you take this course as part of a programme that submits credit, the same standard applies as in any course. AI output submitted as your own unverified, undisclosed work, without verification or critical engagement, violates academic integrity regardless of how the text was produced. The disclosure rubric makes the expectation concrete.</p>
+<p>If you take the course on your own, the same standard still applies, to yourself. Disclosure and verification are habits to build now, not bureaucracy to perform later.</p>
 </section>
 <section id="accessibility" class="level2">
 <h2 class="anchored" data-anchor-id="accessibility">Accessibility</h2>

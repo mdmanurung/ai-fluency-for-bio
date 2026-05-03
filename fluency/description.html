@@ -600,49 +600,49 @@ ul.task-list li input[type="checkbox"] {
 <div class="callout-body-container callout-body">
 <ul>
 <li>Structure a request so an AI assistant can act on it without guessing.</li>
-<li>Provide the <em>minimum sufficient context</em> — not a dump, not a one-liner.</li>
-<li>Diagnose failure modes that stem from under-description rather than model limitations.</li>
+<li>Provide the <em>minimum sufficient context</em>: not a dump, not a one-liner.</li>
+<li>Diagnose failure modes that come from under-description rather than from model limitations.</li>
 </ul>
 </div>
 </div>
 <section id="the-core-idea" class="level2">
 <h2 class="anchored" data-anchor-id="the-core-idea">The core idea</h2>
-<p><strong>Description</strong> is how you translate a fuzzy intention into something an AI can act on. Most “bad AI output” in research contexts is actually bad description. The model filled in the gaps you left — often with plausible-sounding but wrong assumptions.</p>
-<p>A well-described task usually includes:</p>
+<p><strong>Description</strong> is how you translate a fuzzy intention into something an AI can act on. Most “bad AI output” in research contexts is actually bad description. The model filled in the gaps you left, often with plausible-sounding but wrong assumptions.</p>
+<p>A well-described task usually includes five elements:</p>
 <ol type="1">
-<li><strong>Goal</strong> — what you want, in one sentence.</li>
-<li><strong>Context</strong> — who you are, what the data is, what’s upstream and downstream.</li>
-<li><strong>Constraints</strong> — file formats, libraries, reproducibility requirements, style.</li>
-<li><strong>Success criteria</strong> — how you’ll know the output is correct.</li>
-<li><strong>Anti-goals</strong> — what the AI should <em>not</em> do.</li>
+<li><em>Goal</em>: what you want, in one sentence.</li>
+<li><em>Context</em>: who you are, what the data is, what is upstream and downstream.</li>
+<li><em>Constraints</em>: file formats, libraries, reproducibility requirements, style.</li>
+<li><em>Success criteria</em>: how you’ll know the output is correct.</li>
+<li><em>Anti-goals</em>: what the AI should <em>not</em> do.</li>
 </ol>
 </section>
 <section id="worked-example-describing-an-scrna-seq-qc-request" class="level2">
 <h2 class="anchored" data-anchor-id="worked-example-describing-an-scrna-seq-qc-request">Worked example: describing an scRNA-seq QC request</h2>
-<p>A graduate student is starting QC on a 10x Chromium v1 PBMC dataset (≈2,700 cells from a healthy human donor — the canonical PBMC 3k). She wants an AI coding assistant to write a Python script for the sample-level QC pass before clustering.</p>
-<p><strong>The request she sends first:</strong></p>
+<p>A graduate student is starting QC on a 10x Chromium v1 PBMC dataset: about 2,700 cells from a healthy human donor, the canonical PBMC 3k. She wants an AI coding assistant to write a Python script for the sample-level QC pass before clustering.</p>
+<p>The request she sends first:</p>
 <pre><code>Write me a Python script to do QC on my scRNA-seq data.</code></pre>
-<p>The AI produces something. It is plausible. It probably uses Seurat-style <code>mt-</code> prefix because that pattern is common in older single-cell tutorials, or it picks <code>MT-</code> and assumes the species. It likely hardcodes thresholds (200 minimum genes, 5% mt) without checking the violin plots. It may produce a Jupyter notebook rather than a script. It will not flag the right doublet rate because it has no information about loading concentration. The output is a generic QC script for someone else’s problem — coherent, runnable, subtly wrong for her situation in ways she may not catch until hours later.</p>
-<p>What the AI had to invent: the input format, the organism, the cell count, the chemistry version, the expected cell-type count, the downstream analysis, the threshold for filtering, the doublet-detection tool, and the deliverable format. It filled in every gap with a plausible default. Some of those defaults will happen to match her needs. Some won’t.</p>
-<p><strong>The request she sends after applying the five-part structure:</strong></p>
+<p>The AI produces something. It is plausible. It probably uses the Seurat-style <code>mt-</code> prefix because that pattern is common in older single-cell tutorials, or it picks <code>MT-</code> and assumes the species. It likely hardcodes thresholds (200 minimum genes, 5% mt) without checking the violin plots. It may produce a Jupyter notebook rather than a script. It will not flag the right doublet rate because it has no information about loading concentration. The output is a generic QC script for someone else’s problem. It is coherent, it runs, and it is subtly wrong for her situation in ways she may not catch until hours later.</p>
+<p>What the AI had to invent: the input format, the organism, the cell count, the chemistry version, the expected cell-type count, the downstream analysis, the filtering thresholds, the doublet-detection tool, and the deliverable format. It filled in every gap with a plausible default. Some of those defaults will happen to match her needs. Some won’t.</p>
+<p>The request she sends after applying the five-part structure:</p>
 <pre><code>## Goal
 Write a Python script to perform sample-level QC on a 10x scRNA-seq count
 matrix before clustering and annotation.
 
 ## Context
-- 10x Chromium v1, human PBMCs from a healthy donor, ~2,700 cells (PBMC 3k)
-- Loaded via `sc.datasets.pbmc3k()`; AnnData with ~32,000 genes
-- Expecting ≈8 well-characterised cell types (T, B, NK, monocytes, DCs)
-- Loaded ≈3,000 cells; expected doublet rate ≈2-4%
-- Downstream: HVG selection → PCA → neighbours → UMAP → Leiden clustering
+- 10x Chromium v1, human PBMCs from a healthy donor, about 2,700 cells (PBMC 3k)
+- Loaded via `sc.datasets.pbmc3k()`; AnnData with about 32,000 genes
+- Expecting around 8 well-characterised cell types (T, B, NK, monocytes, DCs)
+- Loaded about 3,000 cells; expected doublet rate 2 to 4%
+- Downstream: HVG selection, PCA, neighbours, UMAP, Leiden clustering
 
 ## Constraints
-- Use scanpy + scrublet + matplotlib only; no additional packages
-- Output: one PDF of QC plots — three QC violins (n_genes_by_counts,
-  total_counts, pct_counts_mt), total_counts vs. pct_counts_mt scatter,
-  total_counts vs. n_genes_by_counts scatter, doublet-score histogram
-- Deliverable is a Python script, not a notebook; runs from the command line
-  and writes the post-QC AnnData to a specified .h5ad path
+- Use scanpy, scrublet, and matplotlib only; no additional packages
+- Output: one PDF of QC plots, with three QC violins (n_genes_by_counts,
+  total_counts, pct_counts_mt), a total_counts vs. pct_counts_mt scatter,
+  a total_counts vs. n_genes_by_counts scatter, and a doublet-score histogram
+- Deliverable is a Python script, not a notebook. It runs from the command
+  line and writes the post-QC AnnData to a specified .h5ad path
 
 ## Success criteria
 - mt-gene flag uses `MT-` (human prefix); script asserts &gt;0 mt genes detected
@@ -651,17 +651,17 @@ matrix before clustering and annotation.
 - Save raw counts to `adata.raw` before any scaling
 
 ## Anti-goals
-- Do not run PCA, clustering, or annotation in this script — that is the
+- Do not run PCA, clustering, or annotation in this script. That is the
   next step
 - Do not impute missing values; AnnData treats sparse zeros correctly
 - Do not produce per-cell or per-gene plots beyond the QC overview;
   this is a sample-level QC pass only</code></pre>
-<p>The two prompts differ in length by about 200 words. The structured version takes perhaps three minutes to write. Here is what each element actually did:</p>
-<p><strong>Goal</strong> made the scope unambiguous: pre-clustering sample-level QC, not the clustering itself. Without it, the AI might add PCA, neighbours, and UMAP — turning a 30-line QC script into a 200-line analysis pipeline.</p>
-<p><strong>Context</strong> gave the AI the data shape and chemistry so it didn’t invent the read structure, the organism so it picked the right mt prefix (<code>MT-</code> for human, not <code>mt-</code>), the expected cell-type count so it could calibrate clustering recommendations later, and the downstream step so it understood why this script ends at filtered + log-normalised AnnData.</p>
-<p><strong>Constraints</strong> prevented scope creep and specified the deliverable format. Without the package constraint, the AI might pull in <code>pegasus</code>, <code>scvi-tools</code>, or <code>bbknn</code> depending on what it has seen in similar contexts. Without the “script, not notebook” constraint, it may produce a <code>.ipynb</code> file.</p>
-<p><strong>Success criteria</strong> are the specific technical decisions the researcher owns — <code>MT-</code> not <code>mt-</code>, the 5% mt threshold (PBMC-appropriate; she would use 20% for neurons), the explicit <code>adata.raw</code> save before any future scaling. These are scientific judgments. Putting them in the prompt is not over-specifying; it is the researcher doing her job rather than delegating it.</p>
-<p><strong>Anti-goals</strong> are often the highest-value element. “Do not impute” and “do not run clustering” prevent the AI from doing something plausible but wrong for this workflow. LLMs are trained to be helpful; they will add clustering or imputation if those steps appear in QC pipelines they have seen, unless told not to.</p>
+<p>The two prompts differ in length by about 200 words. The structured version takes perhaps three minutes to write. Here is what each element actually did.</p>
+<p>The goal made the scope unambiguous: pre-clustering sample-level QC, not the clustering itself. Without it, the AI might add PCA, neighbours, and UMAP, turning a 30-line QC script into a 200-line analysis pipeline.</p>
+<p>The context gave the AI the data shape and chemistry so it didn’t invent the read structure. It gave the organism so the AI picked the right mt prefix (<code>MT-</code> for human, not <code>mt-</code>). It gave the expected cell-type count so the AI could calibrate clustering recommendations later. And it gave the downstream step so the AI understood why this script ends at filtered, log-normalised AnnData.</p>
+<p>The constraints prevented scope creep and pinned down the deliverable format. Without the package constraint, the AI might pull in <code>pegasus</code>, <code>scvi-tools</code>, or <code>bbknn</code> depending on what it has seen in similar contexts. Without the “script, not notebook” constraint, it may hand back a <code>.ipynb</code> file.</p>
+<p>The success criteria are the specific technical decisions the researcher owns. <code>MT-</code> not <code>mt-</code>. The 5% mt threshold (PBMC-appropriate; she would use 20% for neurons). The explicit <code>adata.raw</code> save before any future scaling. These are scientific judgements. Putting them in the prompt is not over-specifying. It is the researcher doing her job rather than delegating it.</p>
+<p>The anti-goals are often the highest-value element. “Do not impute” and “do not run clustering” prevent the AI from doing something plausible but wrong for this workflow. LLMs are trained to be helpful, so they add clustering or imputation if those steps appear in QC pipelines they have seen, unless told not to.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -672,16 +672,16 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The structured version is longer, but the time saved in debugging, revision, and verification is larger. The goal is not brevity in the prompt — it is precision.</p>
+<p>The structured version is longer, but the time saved in debugging, revision, and verification is much larger. The goal is not brevity in the prompt. It is precision.</p>
 </div>
 </div>
 </section>
 <section id="common-failure-modes" class="level2">
 <h2 class="anchored" data-anchor-id="common-failure-modes">Common failure modes</h2>
 <ul>
-<li><strong>Under-specified data shape</strong> → AI invents column names.</li>
-<li><strong>Missing domain constraints</strong> → AI uses the wrong organism’s reference.</li>
-<li><strong>No success criteria</strong> → AI hands back something plausible you can’t verify.</li>
+<li>An under-specified data shape lets the AI invent column names.</li>
+<li>Missing domain constraints let the AI use the wrong organism’s reference.</li>
+<li>No success criteria leaves you with something plausible that you can’t verify.</li>
 </ul>
 </section>
 <section id="exercises" class="level2">
@@ -703,11 +703,11 @@ Tip
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Of the five Description elements (Goal, Context, Constraints, Success criteria, Anti-goals), which one is most often the highest-leverage to add — and why?</li>
-<li>The PBMC QC prompt specifies “5% mitochondrial threshold.” This looks like over-specification — isn’t picking thresholds the AI’s job? What is the actual purpose of putting this in the success criteria?</li>
+<li>Of the five Description elements (Goal, Context, Constraints, Success criteria, Anti-goals), which one is most often the highest-leverage to add, and why?</li>
+<li>The PBMC QC prompt specifies “5% mitochondrial threshold”. This looks like over-specification. Isn’t picking thresholds the AI’s job? What is the actual purpose of putting this in the success criteria?</li>
 <li>You give an AI assistant the goal “Write a Python script for QC on my scRNA-seq data” with no other context. Name three things the AI must invent, and the failure mode each invention can cause.</li>
 </ol>
-<p><strong>Answers:</strong> 1. Anti-goals. LLMs are trained to be helpful; without explicit “do not do X,” they often add plausible-but-wrong steps from similar workflows in their training data (clustering inside a QC script, imputation, scope creep). A well-placed anti-goal prevents the most common failure: a result that looks reasonable but is for someone else’s problem. 2. Picking thresholds is the <em>researcher’s</em> job; the threshold encodes a tissue-specific scientific judgement (5% works for PBMCs; neurons need 15–20%). Putting it in the success criteria documents that the human owns the call and prevents the AI from picking a default that might silently delete most of the experiment. This is Description, not over-specification — the researcher is doing her job rather than delegating it. 3. Examples (any three): organism — wrong mt prefix flags zero mt-genes; chemistry version — outdated loading parameters; expected cell-type count — unhelpful clustering parameter recommendations; deliverable format — script vs.&nbsp;notebook mismatch; downstream step — script overruns into clustering and annotation.</p>
+<p><strong>Answers:</strong> 1. Anti-goals. LLMs are trained to be helpful, so without explicit “do not do X” they often add plausible-but-wrong steps from similar workflows in their training data: clustering inside a QC script, imputation, scope creep. A well-placed anti-goal prevents the most common failure, which is a result that looks reasonable but is for someone else’s problem. 2. Picking thresholds is the <em>researcher’s</em> job. The threshold encodes a tissue-specific scientific judgement. 5% works for PBMCs; neurons need 15 to 20%. Putting it in the success criteria documents that the human owns the call and prevents the AI from picking a default that might silently delete most of the experiment. This is Description, not over-specification. The researcher is doing her job rather than delegating it. 3. Examples (any three): organism, where the wrong mt prefix flags zero mt-genes; chemistry version, with outdated loading parameters; expected cell-type count, leading to unhelpful clustering parameter recommendations; deliverable format, with a script vs.&nbsp;notebook mismatch; downstream step, where the script overruns into clustering and annotation.</p>
 </div>
 </div>
 </div>
@@ -715,10 +715,10 @@ Tip
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
-<li>Wei, J., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2201.11903">Chain-of-thought prompting elicits reasoning in large language models</a>. <em>NeurIPS 2022.</em> — The foundational paper on structured prompting; explains why providing intermediate steps and context improves model output.</li>
-<li>White, J., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2302.11382">A prompt pattern catalog to enhance prompt engineering with ChatGPT</a>. arXiv:2302.11382. — Practical taxonomy of prompt patterns, including context-setting, output-constraint, and persona patterns that map directly to the five-part structure.</li>
-<li>Liu, P., et al.&nbsp;(2023). <a href="https://dl.acm.org/doi/10.1145/3560815">Pre-train, prompt, and predict: A systematic survey of prompting methods in NLP</a>. <em>ACM Computing Surveys</em> 55(9). — More technical; contains the “task formulation” framing that explains why constraints and success criteria matter structurally, not just stylistically.</li>
-<li>Ouyang, L., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2203.02155">Training language models to follow instructions with human feedback</a>. <em>NeurIPS 2022.</em> — Also cited in <a href="../literacy/how-llms-work.html">How LLMs work</a>. Explains why models respond better to structured specification: RLHF training shapes models to fill in gaps rather than ask for clarification.</li>
+<li>Wei, J., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2201.11903">Chain-of-thought prompting elicits reasoning in large language models</a>. <em>NeurIPS 2022.</em> The foundational paper on structured prompting. Explains why providing intermediate steps and context improves model output.</li>
+<li>White, J., et al.&nbsp;(2023). <a href="https://arxiv.org/abs/2302.11382">A prompt pattern catalog to enhance prompt engineering with ChatGPT</a>. arXiv:2302.11382. A practical taxonomy of prompt patterns, including context-setting, output-constraint, and persona patterns that map directly onto the five-part structure.</li>
+<li>Liu, P., et al.&nbsp;(2023). <a href="https://dl.acm.org/doi/10.1145/3560815">Pre-train, prompt, and predict: A systematic survey of prompting methods in NLP</a>. <em>ACM Computing Surveys</em> 55(9). More technical. Contains the “task formulation” framing that explains why constraints and success criteria matter structurally, not just stylistically.</li>
+<li>Ouyang, L., et al.&nbsp;(2022). <a href="https://arxiv.org/abs/2203.02155">Training language models to follow instructions with human feedback</a>. <em>NeurIPS 2022.</em> Also cited in <a href="../literacy/how-llms-work.html">How LLMs work</a>. Explains why models respond better to structured specification: RLHF training shapes models to fill in gaps rather than ask for clarification.</li>
 </ul>
 
 

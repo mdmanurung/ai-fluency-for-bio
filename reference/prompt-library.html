@@ -630,14 +630,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Each template below distils a worked pattern from the corresponding bioinformatics page into a fill-in-the-blank prompt. <strong>They are starting points, not magic strings</strong> — the value is the structure (specifying intent, environment, and constraints up front), not the exact wording. Adapt to your task; verify the output as the linked page describes.</p>
+<p>Each template below distils a worked pattern from the corresponding bioinformatics page into a fill-in-the-blank prompt. They are starting points, not magic strings. The value is the structure (specifying intent, environment, and constraints up front), not the exact wording. Adapt to your task and verify the output as the linked page describes.</p>
 </div>
 </div>
 <section id="debugging-a-stack-trace" class="level2">
 <h2 class="anchored" data-anchor-id="debugging-a-stack-trace">1. Debugging a stack trace</h2>
-<p><strong>Source pattern:</strong> <a href="../bioinformatics/code-assistance.html">Code assistance</a> — the four-part debugging pattern.</p>
-<p><strong>When to use:</strong> something failed with a traceback you do not immediately understand and you want a focused first-pass diagnosis.</p>
-<p><strong>Template:</strong></p>
+<p>Source pattern: <a href="../bioinformatics/code-assistance.html">Code assistance</a>, the four-part debugging pattern.</p>
+<p>When to use: something failed with a traceback you do not immediately understand and you want a focused first-pass diagnosis.</p>
+<p>Template:</p>
 <pre><code>I am running {what the script is doing in one sentence} and {package} is failing.
 
 Full traceback:
@@ -647,61 +647,61 @@ Full traceback:
 Minimal failing code (the smallest block that reproduces the error):
 
 ```python
-{the smallest reproducer — strip everything else out}</code></pre>
+{the smallest reproducer; strip everything else out}</code></pre>
 <p>Intent: I expect {what the function is supposed to do and what you expected to happen}.</p>
 <p>Environment: Python {version}, {package}=={version}, {related packages}=={versions}, {dataset / organism / platform context if relevant}.</p>
 <pre><code>
-**Verify before trusting:** the AI's first guess is often a defensive try/except that hides the bug. Make sure the suggested fix addresses the *cause* (e.g., the missing pre-condition) and not just the symptom.
+Verify before trusting: the AI's first guess is often a defensive try/except that hides the bug. Make sure the suggested fix addresses the *cause* (the missing pre-condition) and not just the symptom.
 
 ---
 
 ## 2. Test writing for a function with a docstring
 
-**Source pattern:** [Code assistance](../bioinformatics/code-assistance.qmd) — `validate_qc_outputs` worked example.
+Source pattern: [Code assistance](../bioinformatics/code-assistance.qmd), the `validate_qc_outputs` worked example.
 
-**When to use:** you have a function whose contract you have written yourself, and you want pytest scaffolding around it without losing the contract.
+When to use: you have a function whose contract you have written yourself, and you want pytest scaffolding around it without losing the contract.
 
-**Template:**
+Template:
 </code></pre>
 <p>Function <code>{name}</code> has the signature and docstring below. {One sentence on the dataset and the realistic input the function will see.} Environment: Python {version}, {packages}=={versions}, pytest {version}.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{paste your signature <span class="kw">and</span> docstring — you wrote the contract, <span class="kw">not</span> the AI}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{paste your signature <span class="kw">and</span> docstring<span class="op">;</span> you wrote the contract, <span class="kw">not</span> the AI}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Draft pytest test cases covering the contract in the docstring. Use a fixture where appropriate. Do not invent additional contract beyond the docstring.</p>
 <pre><code>
-**Verify before trusting:** prune tests that validate *dataset identity* rather than *contract* (e.g., "exactly 2,638 cells" — fragile). Add the test the AI missed for your domain (e.g., dtype, organism convention, view-vs-copy semantics for AnnData).
+Verify before trusting: prune tests that validate *dataset identity* rather than *contract* (a literal "exactly 2,638 cells" assertion is fragile). Add the test the AI missed for your domain (dtype, organism convention, view-vs-copy semantics for AnnData).
 
 ---
 
 ## 3. Literature triage on an unfamiliar topic
 
-**Source pattern:** [Literature review](../bioinformatics/literature-review.qmd) — the five-step verification workflow.
+Source pattern: [Literature review](../bioinformatics/literature-review.qmd), the five-step verification workflow.
 
-**When to use:** scoping a review or background section in a subfield you do not know yet. **Use a grounded tool (Elicit, Consensus, SciSpace, Perplexity-with-sources) for the citation list itself.** Use the prompt below for the vocabulary scaffold.
+When to use: scoping a review or background section in a subfield you do not know yet. Use a grounded tool (Elicit, Consensus, SciSpace, Perplexity with sources) for the citation list itself. Use the prompt below for the vocabulary scaffold.
 
-**Template:**
+Template:
 </code></pre>
 <p>I am scoping a review of {topic} for {audience: lab meeting / introduction / grant specific aims}. Time horizon: {date range}. {Application context: e.g., “applied to the tumor microenvironment” / “in mouse models” / “in primary tissue”.}</p>
 <ol type="1">
-<li>List 8–10 key concepts and methods in this area in 2026.</li>
-<li>List 3–5 landmark / foundational papers.</li>
-<li>List 3–5 currently active research groups or recent reviews (last 2–3 years).</li>
+<li>List 8 to 10 key concepts and methods in this area in 2026.</li>
+<li>List 3 to 5 landmark or foundational papers.</li>
+<li>List 3 to 5 currently active research groups or recent reviews (last 2 to 3 years).</li>
 </ol>
 <p>For each citation, give: title, first author, year, journal, and DOI if known.</p>
 <pre><code>
-**Verify every citation** with the five-step check on [Literature review](../bioinformatics/literature-review.qmd): copy DOI → resolve via doi.org → confirm title and authors match → check abstract on PubMed → only then incorporate. Budget ~3 minutes per citation; refuse to cite anything you cannot verify.
+Verify every citation with the five-step check on [Literature review](../bioinformatics/literature-review.qmd): copy DOI, resolve via doi.org, confirm title and authors match, check the abstract on PubMed, and only then incorporate. Budget about three minutes per citation. Refuse to cite anything you cannot verify.
 
-**Switch tools if** the ungrounded LLM returns ≥1 citation whose DOI does not resolve or resolves to a different paper. Re-run the same query in Elicit / Consensus.
+Switch tools if the ungrounded LLM returns at least one citation whose DOI does not resolve, or resolves to a different paper. Re-run the same query in Elicit or Consensus.
 
 ---
 
 ## 4. Protocol critique mode
 
-**Source pattern:** [Protocol design](../bioinformatics/protocol-design.qmd) — the sparring-partner workflow, step 4.
+Source pattern: [Protocol design](../bioinformatics/protocol-design.qmd), the sparring-partner workflow, step 4.
 
-**When to use:** you have drafted (or generated) a protocol and want a fast critique pass for missing controls and likely failure modes before showing it to your PI.
+When to use: you have drafted (or generated) a protocol and want a fast critique pass for missing controls and likely failure modes before showing it to your PI.
 
-**Template:**
+Template:
 </code></pre>
-<p>Below is a draft protocol for {scientific question — one sentence}. Constraints: {platform / organism / sample size / budget / time window}.</p>
+<p>Below is a draft protocol for {scientific question, one sentence}. Constraints: {platform / organism / sample size / budget / time window}.</p>
 <pre><code>{paste the full draft protocol here, including reagent versions, concentrations,
 and timing}</code></pre>
 <p>Critique this protocol. Specifically:</p>
@@ -711,10 +711,10 @@ and timing}</code></pre>
 <li>List version-dependent parameters (chemistries, kit versions, software releases) that I should verify against the current vendor or developer documentation before ordering reagents or running.</li>
 <li>Flag anything that depends on tacit lab knowledge an AI cannot have. ```</li>
 </ol>
-<p><strong>Verify before trusting:</strong></p>
+<p>Verify before trusting:</p>
 <ul>
-<li>Cross-check every reagent version, kit code, or instrument firmware against the <strong>current</strong> vendor documentation. Training data lags by months to years, and version numbers update silently. (See the GEM-X v4 vs.&nbsp;v3.1 example on <a href="../bioinformatics/protocol-design.html">Protocol design</a>.)</li>
-<li>Cell-loading concentrations, cycle counts, and timing parameters depend on cell type and platform; the AI gives the textbook number, not necessarily the right one.</li>
+<li>Cross-check every reagent version, kit code, or instrument firmware against the <em>current</em> vendor documentation. Training data lags by months to years, and version numbers update silently. (See the GEM-X v4 vs.&nbsp;v3.1 example on <a href="../bioinformatics/protocol-design.html">Protocol design</a>.)</li>
+<li>Cell-loading concentrations, cycle counts, and timing parameters depend on cell type and platform. The AI gives the textbook number, not necessarily the right one.</li>
 <li>Treat the critique as a starting list, not a clearance. Your PI’s review and a small dry run remain non-optional.</li>
 </ul>
 <hr>
@@ -723,11 +723,11 @@ and timing}</code></pre>
 <h2 class="anchored" data-anchor-id="a-note-on-temperature-and-reproducibility">A note on temperature and reproducibility</h2>
 <p>If you are documenting a prompt for a deliverable’s disclosure, record:</p>
 <ul>
-<li>The exact tool, model, and version (e.g., “Claude Sonnet 4.6, web UI, default settings”).</li>
+<li>The exact tool, model, and version (“Claude Sonnet 4.6, web UI, default settings”).</li>
 <li>The full prompt text.</li>
 <li>The date of the session.</li>
 </ul>
-<p>LLM outputs are non-deterministic at default settings; documenting the prompt does not guarantee reproducibility, but it does enable replication and critique. The disclosure rubric in the <a href="../course-syllabus.html#disclosure-rubric">Syllabus</a> requires “tools listed” and “use described” — these notes satisfy both.</p>
+<p>LLM outputs are non-deterministic at default settings. Documenting the prompt does not guarantee reproducibility, but it does enable replication and critique. The disclosure rubric in the <a href="../course-syllabus.html#disclosure-rubric">Syllabus</a> requires “tools listed” and “use described”. These notes satisfy both.</p>
 
 
 </section>

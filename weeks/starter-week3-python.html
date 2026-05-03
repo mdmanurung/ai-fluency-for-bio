@@ -629,26 +629,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>What this is — and what it is not
+<span class="screen-reader-only">Important</span>What this is, and what it is not
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This starter loads the PBMC 3k dataset, confirms the AnnData is what you think it is, and renders one summary table. <strong>It does not perform the QC analysis.</strong> That is the week 3 mini-project’s <em>AI-free baseline</em> — you write that yourself, by hand, before you involve an AI assistant. See the <a href="../course-syllabus.html#ai-use-policy">syllabus AI-use policy</a>.</p>
+<p>This starter loads the PBMC 3k dataset, confirms the AnnData is what you think it is, and renders one summary table. It does not perform the QC analysis. That is the Week 3 mini-project’s <em>AI-free baseline</em>. You write it yourself, by hand, before you involve an AI assistant. See the <a href="../course-syllabus.html#ai-use-policy">syllabus AI-use policy</a>.</p>
 <p>If you copy from this starter into your baseline, you are short-circuiting the assignment. The starter exists so you do not waste the first 30 minutes of the workshop on installs and shapes.</p>
 </div>
 </div>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>The course default is <strong>Google Colab</strong> — open <a href="https://colab.research.google.com/">colab.research.google.com</a>, create a new notebook, and run the cells below. On the first run, install Scanpy:</p>
+<p>The course default is Google Colab. Open <a href="https://colab.research.google.com/">colab.research.google.com</a>, create a new notebook, and run the cells below. On the first run, install Scanpy:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q scanpy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you prefer a local install, the repo ships pinned environments. Pick one:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conda (recommended for Apple Silicon — igraph wheels can misbehave on pip there)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conda (recommended for Apple Silicon, where igraph wheels can misbehave on pip)</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate ai-fluency-for-bio</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># or pip / uv</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>environment.yml</code> and <code>requirements.txt</code> install the full course stack (Scanpy, scrublet, leidenalg, igraph, jupyterlab) — enough for every starter, module, and the week 3 mini-project. You only need the bare <code>pip install scanpy</code> above if you are running this single starter on Colab and nothing else.</p>
+<p><code>environment.yml</code> and <code>requirements.txt</code> install the full course stack (Scanpy, scrublet, leidenalg, igraph, jupyterlab), enough for every starter, module, and the Week 3 mini-project. You only need the bare <code>pip install scanpy</code> above if you are running this single starter on Colab and nothing else.</p>
 </section>
 <section id="load-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="load-the-dataset">Load the dataset</h2>
@@ -664,7 +664,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># expect: AnnData object with n_obs × n_vars = 2700 × 32738</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> adata.n_obs <span class="op">==</span> <span class="dv">2700</span>, <span class="st">"unexpected cell count"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> adata.n_vars <span class="op">==</span> <span class="dv">32738</span>, <span class="st">"unexpected gene count"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If either assertion fails, <strong>stop</strong>. Either Scanpy’s bundled dataset has changed in a new version (check <code>sc.__version__</code>) or you loaded the wrong matrix. The downstream baseline will produce nonsense if the shape is not what you expect.</p>
+<p>If either assertion fails, stop. Either Scanpy’s bundled dataset has changed in a new version (check <code>sc.__version__</code>) or you loaded the wrong matrix. The downstream baseline will produce nonsense if the shape is not what you expect.</p>
 </section>
 <section id="one-summary-table" class="level2">
 <h2 class="anchored" data-anchor-id="one-summary-table">One summary table</h2>
@@ -685,15 +685,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    ],</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Read the output. The median should be roughly 800–1,000; the maximum reaches a few thousand. The minimum reveals empty droplets and dying cells — these are the cells your QC will filter out. Recognising this is part of the <a href="../fluency/discernment.html">Discernment</a> move you exercise in the baseline.</p>
+<p>Read the output. The median should be roughly 800 to 1,000, and the maximum reaches a few thousand. The minimum reveals empty droplets and dying cells. These are the cells your QC will filter out. Recognising this is part of the <a href="../fluency/discernment.html">Discernment</a> move you exercise in the baseline.</p>
 <p>That is the end of the starter. From here, the baseline is yours.</p>
 </section>
 <section id="where-to-go-next" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-go-next">Where to go next</h2>
 <ul>
-<li><a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3 — Preprocessing &amp; QC in Scanpy</a> — the full runnable QC walkthrough you’ll work through in Week 3.</li>
-<li><a href="../bioinformatics/data-analysis.html">Data analysis</a> — the AI-fluency lens on QC, with the AI’s role and the human’s discernment move called out at every step.</li>
-<li><a href="../weeks/week-3.html">Week 3 — scRNA-seq I</a> — the mini-project.</li>
+<li><a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3: preprocessing and QC in Scanpy</a>. The full runnable QC walkthrough you’ll work through in Week 3.</li>
+<li><a href="../bioinformatics/data-analysis.html">Data analysis</a>. The AI-fluency lens on QC, with the AI’s role and the human’s discernment move called out at every step.</li>
+<li><a href="../weeks/week-3.html">Week 3: scRNA-seq I</a>. The mini-project.</li>
 </ul>
 
 

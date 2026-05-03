@@ -591,17 +591,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#where-ai-helps-most-and-least" id="toc-where-ai-helps-most-and-least" class="nav-link active" data-scroll-target="#where-ai-helps-most-and-least">Where AI helps most — and least</a></li>
+  <li><a href="#where-ai-helps-most-and-least" id="toc-where-ai-helps-most-and-least" class="nav-link active" data-scroll-target="#where-ai-helps-most-and-least">Where AI helps most, and least</a></li>
   <li><a href="#a-template-workflow" id="toc-a-template-workflow" class="nav-link" data-scroll-target="#a-template-workflow">A template workflow</a></li>
   <li><a href="#worked-example-qc-on-10x-pbmc-3k" id="toc-worked-example-qc-on-10x-pbmc-3k" class="nav-link" data-scroll-target="#worked-example-qc-on-10x-pbmc-3k">Worked example: QC on 10x PBMC 3k</a>
   <ul class="collapse">
-  <li><a href="#step-1-frame-the-dataset-for-the-ai" id="toc-step-1-frame-the-dataset-for-the-ai" class="nav-link" data-scroll-target="#step-1-frame-the-dataset-for-the-ai">Step 1 — Frame the dataset for the AI</a></li>
-  <li><a href="#step-2-calculate-qc-metrics" id="toc-step-2-calculate-qc-metrics" class="nav-link" data-scroll-target="#step-2-calculate-qc-metrics">Step 2 — Calculate QC metrics</a></li>
-  <li><a href="#step-3-read-the-violin-plots" id="toc-step-3-read-the-violin-plots" class="nav-link" data-scroll-target="#step-3-read-the-violin-plots">Step 3 — Read the violin plots</a></li>
-  <li><a href="#step-4-choose-thresholds-and-filter" id="toc-step-4-choose-thresholds-and-filter" class="nav-link" data-scroll-target="#step-4-choose-thresholds-and-filter">Step 4 — Choose thresholds and filter</a></li>
-  <li><a href="#step-5-doublet-detection-scrublet" id="toc-step-5-doublet-detection-scrublet" class="nav-link" data-scroll-target="#step-5-doublet-detection-scrublet">Step 5 — Doublet detection (Scrublet)</a></li>
-  <li><a href="#step-6-normalise-log-transform-select-hvgs" id="toc-step-6-normalise-log-transform-select-hvgs" class="nav-link" data-scroll-target="#step-6-normalise-log-transform-select-hvgs">Step 6 — Normalise, log-transform, select HVGs</a></li>
-  <li><a href="#step-7-embed-and-cluster" id="toc-step-7-embed-and-cluster" class="nav-link" data-scroll-target="#step-7-embed-and-cluster">Step 7 — Embed and cluster</a></li>
+  <li><a href="#step-1-frame-the-dataset-for-the-ai" id="toc-step-1-frame-the-dataset-for-the-ai" class="nav-link" data-scroll-target="#step-1-frame-the-dataset-for-the-ai">Step 1: frame the dataset for the AI</a></li>
+  <li><a href="#step-2-calculate-qc-metrics" id="toc-step-2-calculate-qc-metrics" class="nav-link" data-scroll-target="#step-2-calculate-qc-metrics">Step 2: calculate QC metrics</a></li>
+  <li><a href="#step-3-read-the-violin-plots" id="toc-step-3-read-the-violin-plots" class="nav-link" data-scroll-target="#step-3-read-the-violin-plots">Step 3: read the violin plots</a></li>
+  <li><a href="#step-4-choose-thresholds-and-filter" id="toc-step-4-choose-thresholds-and-filter" class="nav-link" data-scroll-target="#step-4-choose-thresholds-and-filter">Step 4: choose thresholds and filter</a></li>
+  <li><a href="#step-5-doublet-detection-scrublet" id="toc-step-5-doublet-detection-scrublet" class="nav-link" data-scroll-target="#step-5-doublet-detection-scrublet">Step 5: doublet detection (Scrublet)</a></li>
+  <li><a href="#step-6-normalise-log-transform-and-select-hvgs" id="toc-step-6-normalise-log-transform-and-select-hvgs" class="nav-link" data-scroll-target="#step-6-normalise-log-transform-and-select-hvgs">Step 6: normalise, log-transform, and select HVGs</a></li>
+  <li><a href="#step-7-embed-and-cluster" id="toc-step-7-embed-and-cluster" class="nav-link" data-scroll-target="#step-7-embed-and-cluster">Step 7: embed and cluster</a></li>
   </ul></li>
   <li><a href="#common-failure-modes" id="toc-common-failure-modes" class="nav-link" data-scroll-target="#common-failure-modes">Common failure modes</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
@@ -660,88 +660,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a> is the <strong>runnable procedure</strong>. This page is the <strong>AI-fluency lens</strong> on those same steps: where AI helps, where it fails, and which decisions stay yours.</p>
+<p><a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a> is the runnable procedure. This page is the AI-fluency lens on those same steps: where AI helps, where it fails, and which decisions stay yours.</p>
 </div>
 </div>
 <section id="where-ai-helps-most-and-least" class="level2">
-<h2 class="anchored" data-anchor-id="where-ai-helps-most-and-least">Where AI helps most — and least</h2>
-<p><strong>Helps:</strong> boilerplate I/O (<code>sc.read_10x_mtx</code>, <code>sc.datasets.pbmc3k</code>, mt-flagging); standard pipeline scaffolds (Scanpy, Seurat); plot recipes (violin, scatter, <a href="../reference/glossary.html">UMAP</a>, dotplot); explaining unfamiliar output (“what does this scrublet histogram mean?”).</p>
-<p><strong>Falls short on:</strong> tissue-specific thresholds (the textbook 5% mt cutoff is for PBMCs — neurons or muscle break that rule); reading clustering for biology (Leiden gives clusters; identity is markers + prior knowledge); borderline cases (high-mt tail = ambient RNA, dying cells, real biology, or all three — the AI will tell you a story, don’t let it).</p>
+<h2 class="anchored" data-anchor-id="where-ai-helps-most-and-least">Where AI helps most, and least</h2>
+<p>AI helps with: boilerplate I/O (<code>sc.read_10x_mtx</code>, <code>sc.datasets.pbmc3k</code>, mt-flagging); standard pipeline scaffolds (Scanpy, Seurat); plot recipes (violin, scatter, <a href="../reference/glossary.html">UMAP</a>, dotplot); and explaining unfamiliar output (“what does this scrublet histogram mean?”).</p>
+<p>AI falls short on: tissue-specific thresholds (the textbook 5% mt cutoff is for PBMCs; neurons and muscle break that rule); reading clustering for biology (Leiden gives clusters, but identity comes from markers and prior knowledge); and borderline cases (a high-mt tail can be ambient RNA, dying cells, real biology, or all three; the AI will tell you a story, don’t let it).</p>
 </section>
 <section id="a-template-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="a-template-workflow">A template workflow</h2>
 <ol type="1">
-<li><strong>Describe the dataset to the AI</strong> — platform, organism, tissue, expected cell types, library version, total cells. Practice the <a href="../fluency/description.html">Description</a> D.</li>
-<li><strong>Ask for a QC plan</strong>, not a QC answer. Critique the plan. Then execute.</li>
-<li><strong>Run each step yourself</strong> (or via an AI coding assistant you supervise). Look at every plot.</li>
-<li><strong>Write interpretations in your own words.</strong> Use AI for prose polishing, not reasoning.</li>
+<li>Describe the dataset to the AI: platform, organism, tissue, expected cell types, library version, total cells. Practice the <a href="../fluency/description.html">Description</a> D.</li>
+<li>Ask for a QC plan, not a QC answer. Critique the plan. Then execute.</li>
+<li>Run each step yourself, or via an AI coding assistant you supervise. Look at every plot.</li>
+<li>Write interpretations in your own words. Use AI for prose polishing, not reasoning.</li>
 </ol>
 </section>
 <section id="worked-example-qc-on-10x-pbmc-3k" class="level2">
 <h2 class="anchored" data-anchor-id="worked-example-qc-on-10x-pbmc-3k">Worked example: QC on 10x PBMC 3k</h2>
-<p>The course dataset is the <a href="https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0">10x PBMC 3k</a> — 2,700 PBMCs from a healthy donor, 10x Chromium v1, ≈8 well-characterised cell types. Scanpy bundles it as <code>sc.datasets.pbmc3k()</code>. The runnable code is in <a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a>; the commentary below proceeds in the same order.</p>
+<p>The course dataset is the <a href="https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0">10x PBMC 3k</a>: 2,700 PBMCs from a healthy donor, 10x Chromium v1, about 8 well-characterised cell types. Scanpy bundles it as <code>sc.datasets.pbmc3k()</code>. The runnable code is in <a href="../modules/module-03-preprocessing-scanpy/README.md">Module 3</a>. The commentary below proceeds in the same order.</p>
 <section id="step-1-frame-the-dataset-for-the-ai" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-frame-the-dataset-for-the-ai">Step 1 — Frame the dataset for the AI</h3>
+<h3 class="anchored" data-anchor-id="step-1-frame-the-dataset-for-the-ai">Step 1: frame the dataset for the AI</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scanpy <span class="im">as</span> sc</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> sc.datasets.pbmc3k()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>adata.var_names_make_unique()</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(adata)              <span class="co"># n_obs × n_vars = 2700 × 32738</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The AI writes the load + dedup + print pattern from a one-line description. <strong>Yours</strong>: tell the AI explicitly that this is <em>human</em> PBMCs from a <em>10x Chromium v1</em> run with a <em>healthy donor</em>, expecting ≈8 cell types. Without that context every later suggestion (mt threshold, doublet rate, marker panel, organism prefix) is a guess.</p>
+<p>The AI writes the load, dedup, and print pattern from a one-line description. Your job is to tell the AI explicitly that this is <em>human</em> PBMCs from a <em>10x Chromium v1</em> run with a <em>healthy donor</em>, expecting about 8 cell types. Without that context every later suggestion (mt threshold, doublet rate, marker panel, organism prefix) is a guess.</p>
 </section>
 <section id="step-2-calculate-qc-metrics" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-calculate-qc-metrics">Step 2 — Calculate QC metrics</h3>
+<h3 class="anchored" data-anchor-id="step-2-calculate-qc-metrics">Step 2: calculate QC metrics</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>adata.var[<span class="st">'mt'</span>] <span class="op">=</span> adata.var_names.<span class="bu">str</span>.startswith(<span class="st">'MT-'</span>)   <span class="co"># human prefix</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sc.pp.calculate_qc_metrics(adata, qc_vars<span class="op">=</span>[<span class="st">'mt'</span>], percent_top<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                           log1p<span class="op">=</span><span class="va">False</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The prefix is <code>MT-</code> for human and <code>mt-</code> for mouse. An AI that does not know your organism will pick one — and on a mouse dataset it silently flags <em>zero</em> mt-genes. Always specify organism in the prompt; always confirm <code>adata.var['mt'].sum() &gt; 0</code> before trusting the result.</p>
+<p>The prefix is <code>MT-</code> for human and <code>mt-</code> for mouse. An AI that does not know your organism will pick one. On a mouse dataset it silently flags <em>zero</em> mt-genes. Always specify organism in the prompt. Always confirm <code>adata.var['mt'].sum() &gt; 0</code> before trusting the result.</p>
 </section>
 <section id="step-3-read-the-violin-plots" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-read-the-violin-plots">Step 3 — Read the violin plots</h3>
+<h3 class="anchored" data-anchor-id="step-3-read-the-violin-plots">Step 3: read the violin plots</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sc.pl.violin(adata, [<span class="st">'n_genes_by_counts'</span>, <span class="st">'total_counts'</span>, <span class="st">'pct_counts_mt'</span>],</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>             jitter<span class="op">=</span><span class="fl">0.4</span>, multi_panel<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The AI can describe what these metrics mean. It cannot read <em>your</em> plots. Look at the shape:</p>
 <ul>
-<li>A clean PBMC 3k violin: tight <code>n_genes_by_counts</code> centred at 1,000–1,500, thin upper tail, <code>pct_counts_mt</code> mostly below 5%.</li>
-<li>Bimodal <code>n_genes_by_counts</code> → possible doublet population, cell-type imbalance, or empty-droplet contamination.</li>
-<li>Long upper <code>total_counts</code> tail without a corresponding <code>n_genes_by_counts</code> shoulder → ambient RNA rather than doublets.</li>
+<li>A clean PBMC 3k violin has a tight <code>n_genes_by_counts</code> centred at 1,000 to 1,500, a thin upper tail, and <code>pct_counts_mt</code> mostly below 5%.</li>
+<li>Bimodal <code>n_genes_by_counts</code> suggests a possible doublet population, cell-type imbalance, or empty-droplet contamination.</li>
+<li>A long upper <code>total_counts</code> tail without a corresponding <code>n_genes_by_counts</code> shoulder suggests ambient RNA rather than doublets.</li>
 </ul>
-<p>“What threshold should I use?” → textbook answer. “Given a clean unimodal violin centred at 1,200 genes with a thin upper shoulder above 2,500, what max-genes threshold removes plausible doublets without trimming real cells?” → calibrated answer.</p>
+<p>“What threshold should I use?” returns the textbook answer. “Given a clean unimodal violin centred at 1,200 genes with a thin upper shoulder above 2,500, what max-genes threshold removes plausible doublets without trimming real cells?” returns a calibrated one.</p>
 </section>
 <section id="step-4-choose-thresholds-and-filter" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-choose-thresholds-and-filter">Step 4 — Choose thresholds and filter</h3>
+<h3 class="anchored" data-anchor-id="step-4-choose-thresholds-and-filter">Step 4: choose thresholds and filter</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sc.pp.filter_cells(adata, min_genes<span class="op">=</span><span class="dv">200</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sc.pp.filter_genes(adata, min_cells<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[adata.obs.n_genes_by_counts <span class="op">&lt;</span> <span class="dv">2500</span>, :]</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[adata.obs.pct_counts_mt <span class="op">&lt;</span> <span class="dv">5</span>, :]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The AI drafts the four lines. Every number is yours. PBMCs tolerate 5% mt because PBMCs are robust; neurons or muscle regularly show 15–25% mt% in healthy cells, and a 5% cutoff would silently delete most of the experiment. Threshold = <a href="../fluency/discernment.html">Discernment</a>; code = delegation.</p>
+<p>The AI drafts the four lines. Every number is yours. PBMCs tolerate 5% mt because PBMCs are tough. Neurons and muscle regularly show 15 to 25% mt in healthy cells, and a 5% cutoff would silently delete most of the experiment. Thresholds are <a href="../fluency/discernment.html">Discernment</a>. Code is delegation.</p>
 </section>
 <section id="step-5-doublet-detection-scrublet" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-doublet-detection-scrublet">Step 5 — Doublet detection (Scrublet)</h3>
+<h3 class="anchored" data-anchor-id="step-5-doublet-detection-scrublet">Step 5: doublet detection (Scrublet)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scrublet <span class="im">as</span> scr</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>scrub <span class="op">=</span> scr.Scrublet(adata.X)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>doublet_scores, predicted_doublets <span class="op">=</span> scrub.scrub_doublets()</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>adata.obs[<span class="st">'doublet_score'</span>] <span class="op">=</span> doublet_scores</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>adata.obs[<span class="st">'predicted_doublet'</span>] <span class="op">=</span> predicted_doublets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ask whether the predicted doublet rate matches your loading concentration. PBMC 3k loaded ≈3,000 cells; expected ≈2–4%. If Scrublet flags 12%, something is off — either over-aggressive call or over-loaded input. Either way, a flag for you, not for the AI to silently accept.</p>
+<p>Ask whether the predicted doublet rate matches your loading concentration. PBMC 3k loaded about 3,000 cells, with an expected rate of 2 to 4%. If Scrublet flags 12%, something is off: either an over-aggressive call or an over-loaded input. Either way, that is a flag for you, not for the AI to silently accept.</p>
 </section>
-<section id="step-6-normalise-log-transform-select-hvgs" class="level3">
-<h3 class="anchored" data-anchor-id="step-6-normalise-log-transform-select-hvgs">Step 6 — Normalise, log-transform, select HVGs</h3>
+<section id="step-6-normalise-log-transform-and-select-hvgs" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-normalise-log-transform-and-select-hvgs">Step 6: normalise, log-transform, and select HVGs</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sc.pp.normalize_total(adata, target_sum<span class="op">=</span><span class="fl">1e4</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sc.pp.log1p(adata)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>adata.raw <span class="op">=</span> adata</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sc.pp.highly_variable_genes(adata, min_mean<span class="op">=</span><span class="fl">0.0125</span>, max_mean<span class="op">=</span><span class="dv">3</span>, min_disp<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>adata <span class="op">=</span> adata[:, adata.var.highly_variable]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>target_sum=1e4</code> is convention, not law — appropriate when it matches your median library size. HVG defaults are also convention; expect ≈1,800–2,000 HVGs for PBMC 3k. If you get 200 or 8,000, the defaults are wrong and you retune.</p>
+<p><code>target_sum=1e4</code> is convention, not law. It is appropriate when it matches your median library size. HVG defaults are also convention. Expect about 1,800 to 2,000 HVGs for PBMC 3k. If you get 200 or 8,000, the defaults are wrong and you retune.</p>
 </section>
 <section id="step-7-embed-and-cluster" class="level3">
-<h3 class="anchored" data-anchor-id="step-7-embed-and-cluster">Step 7 — Embed and cluster</h3>
+<h3 class="anchored" data-anchor-id="step-7-embed-and-cluster">Step 7: embed and cluster</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sc.pp.scale(adata, max_value<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sc.tl.pca(adata, svd_solver<span class="op">=</span><span class="st">'arpack'</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sc.pp.neighbors(adata, n_neighbors<span class="op">=</span><span class="dv">10</span>, n_pcs<span class="op">=</span><span class="dv">40</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sc.tl.umap(adata)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>sc.tl.leiden(adata, resolution<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>sc.pl.umap(adata, color<span class="op">=</span><span class="st">'leiden'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Most useful and most dangerous step. Useful: AI remembers the boilerplate, suggests reasonable parameter starts, explains why <code>n_pcs</code> matters. Dangerous: it will name your clusters from <code>leiden</code> IDs alone if you let it — a confident hallucination, since identity comes from markers and biological context, not cluster numbers. Choose <code>resolution</code>, <code>n_neighbors</code>, <code>n_pcs</code> yourself; run the elbow plot; look at the UMAP; ask whether the cluster count matches your expected cell-type count (≈8 for PBMC 3k). Pass to Module 5 for annotation — by markers, <em>not</em> by guessing.</p>
+<p>This is the most useful and most dangerous step. Useful, because the AI remembers the boilerplate, suggests reasonable parameter starts, and explains why <code>n_pcs</code> matters. Dangerous, because it will name your clusters from <code>leiden</code> IDs alone if you let it. That is a confident hallucination. Identity comes from markers and biological context, not cluster numbers. Choose <code>resolution</code>, <code>n_neighbors</code>, and <code>n_pcs</code> yourself. Run the elbow plot. Look at the UMAP. Ask whether the cluster count matches your expected cell-type count (about 8 for PBMC 3k). Pass to Module 5 for annotation, by markers, <em>not</em> by guessing.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -753,10 +753,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>Description</strong> — telling the AI it is <em>human</em> PBMCs from <em>10x Chromium v1</em> so it picks the right mt prefix and doublet expectation.</li>
-<li><strong>Discernment</strong> — reading violin plots, doublet score distribution, and UMAP shape yourself; rejecting one-size-fits-all thresholds.</li>
-<li><strong>Diligence</strong> — owning every threshold and parameter; documenting choices in the notebook for the disclosure rubric.</li>
-<li><em>Delegation</em> — boilerplate I/O, plotting, and per-cell metric calls, where AI is reliable when given organism context.</li>
+<li><em>Description</em>: telling the AI it is <em>human</em> PBMCs from <em>10x Chromium v1</em> so it picks the right mt prefix and doublet expectation.</li>
+<li><em>Discernment</em>: reading violin plots, doublet score distribution, and UMAP shape yourself, and rejecting one-size-fits-all thresholds.</li>
+<li><em>Diligence</em>: owning every threshold and parameter, and documenting choices in the notebook for the disclosure rubric.</li>
+<li><em>Delegation</em>: boilerplate I/O, plotting, and per-cell metric calls, where AI is reliable when given organism context.</li>
 </ul>
 </div>
 </div>
@@ -765,18 +765,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="common-failure-modes" class="level2">
 <h2 class="anchored" data-anchor-id="common-failure-modes">Common failure modes</h2>
 <ul>
-<li><strong>Trusting the textbook threshold.</strong> PBMC 5%, neuron 20%, muscle 25%; ask for tissue-specific reasoning, not a universal answer.</li>
-<li><strong>Asking for a QC answer instead of a QC plan.</strong> “Is this dataset clean?” is the wrong question. “What evidence would I need to call this dataset clean?” is the right one.</li>
-<li><strong>Letting the AI name your clusters.</strong> Cluster identity is markers + prior knowledge, not Leiden numbers.</li>
-<li><strong>Wrong organism prefix.</strong> <code>MT-</code> (human) vs <code>mt-</code> (mouse). Mismatch silently flags zero mt-genes and corrupts every threshold downstream.</li>
+<li><em>Trusting the textbook threshold</em>. PBMC 5%, neuron 20%, muscle 25%. Ask for tissue-specific reasoning, not a universal answer.</li>
+<li><em>Asking for a QC answer instead of a QC plan</em>. “Is this dataset clean?” is the wrong question. “What evidence would I need to call this dataset clean?” is the right one.</li>
+<li><em>Letting the AI name your clusters</em>. Cluster identity is markers and prior knowledge, not Leiden numbers.</li>
+<li><em>Wrong organism prefix</em>. <code>MT-</code> for human, <code>mt-</code> for mouse. A mismatch silently flags zero mt-genes and corrupts every threshold downstream.</li>
 </ul>
 </section>
 <section id="exercises" class="level2">
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
 <ol type="1">
-<li>Load PBMC 3k. Without consulting an AI, sketch a QC plan in 5 bullets before any code. Compare with what the AI suggests. Where do you disagree?</li>
-<li>Take a small dataset of your own (or a public one from your subfield). Frame it for an AI in three sentences (platform / organism / expected biology). Then ask for a QC plan. Critique it before running.</li>
-<li>Run the worked example end-to-end. Record one decision where you overrode the AI’s first suggestion, and one where you accepted it. The disclosure rubric for the week 3 mini-project asks for both.</li>
+<li>Load PBMC 3k. Without consulting an AI, sketch a QC plan in five bullets before any code. Compare with what the AI suggests. Where do you disagree?</li>
+<li>Take a small dataset of your own, or a public one from your subfield. Frame it for an AI in three sentences (platform, organism, expected biology). Then ask for a QC plan. Critique it before running.</li>
+<li>Run the worked example end-to-end. Record one decision where you overrode the AI’s first suggestion, and one where you accepted it. The disclosure rubric for the Week 3 mini-project asks for both.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -792,10 +792,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>You are running QC on a <em>mouse</em> lung scRNA-seq dataset. The AI suggests <code>adata.var['mt'] = adata.var_names.str.startswith('MT-')</code>. What goes wrong, and what is the fix?</li>
-<li>Your PBMC dataset shows a <code>pct_counts_mt</code> median of 12% with a tail to 25%. The AI recommends a 5% cutoff “as standard for PBMCs.” Should you accept it? Why or why not?</li>
+<li>Your PBMC dataset shows a <code>pct_counts_mt</code> median of 12% with a tail to 25%. The AI recommends a 5% cutoff “as standard for PBMCs”. Should you accept it? Why or why not?</li>
 <li>Scrublet on a 3,000-cell PBMC sample flags 11% as predicted doublets. What does that flag, and what would you check before filtering?</li>
 </ol>
-<p><strong>Answers:</strong> 1. The mouse mt-gene prefix is <code>mt-</code> (lowercase), not <code>MT-</code>. The flag column will be all <code>False</code>, <code>pct_counts_mt</code> will be 0 for every cell, and you will silently fail to filter dying cells. Fix: <code>adata.var_names.str.startswith('mt-')</code>. 2. No — the suggestion ignores your data. A median of 12% means most cells would be filtered. Either your dissociation was harsh (rerun upstream) or 5% is the wrong cutoff for <em>this</em> sample; inspect the violin and pick a threshold above the main body but below the dying-cell tail. 3. Expected doublet rate for ~3k loaded cells is ≈2–4%. 11% is 3× expected. Check loading concentration (over-loading?), Scrublet’s expected-doublet-rate parameter, and whether two real but transcriptionally similar cell types are being misread as doublets.</p>
+<p><strong>Answers:</strong> 1. The mouse mt-gene prefix is <code>mt-</code> (lowercase), not <code>MT-</code>. The flag column will be all <code>False</code>, <code>pct_counts_mt</code> will be 0 for every cell, and you will silently fail to filter dying cells. Fix: <code>adata.var_names.str.startswith('mt-')</code>. 2. No.&nbsp;The suggestion ignores your data. A median of 12% means most cells would be filtered. Either your dissociation was harsh (rerun upstream) or 5% is the wrong cutoff for <em>this</em> sample. Inspect the violin and pick a threshold above the main body but below the dying-cell tail. 3. The expected doublet rate for about 3,000 loaded cells is 2 to 4%. 11% is roughly three times that. Check loading concentration (was it over-loaded?), Scrublet’s expected-doublet-rate parameter, and whether two real but transcriptionally similar cell types are being misread as doublets.</p>
 </div>
 </div>
 </div>
@@ -803,9 +803,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
-<li>Wolf, F. A., Angerer, P., &amp; Theis, F. J. (2018). <a href="https://doi.org/10.1186/s13059-017-1382-0">SCANPY: large-scale single-cell gene expression data analysis</a>. <em>Genome Biology</em> 19:15. — The Scanpy paper.</li>
-<li>Heumos, L., Schaar, A. C., Lance, C., et al.&nbsp;(2023). <a href="https://doi.org/10.1038/s41576-023-00586-w">Best practices for single-cell analysis across modalities</a>. <em>Nature Reviews Genetics</em> 24, 550–572. — The QC, normalisation, and clustering decisions above; pre-AI, but its human-judgement points are exactly where the AI is unreliable.</li>
-<li>Wolock, S. L., Lopez, R., &amp; Klein, A. M. (2019). <a href="https://doi.org/10.1016/j.cels.2018.11.005">Scrublet: Computational identification of cell doublets in single-cell transcriptomic data</a>. <em>Cell Systems</em> 8, 281–291. — Read before trusting any predicted-doublet rate.</li>
+<li>Wolf, F. A., Angerer, P., &amp; Theis, F. J. (2018). <a href="https://doi.org/10.1186/s13059-017-1382-0">SCANPY: large-scale single-cell gene expression data analysis</a>. <em>Genome Biology</em> 19:15. The Scanpy paper.</li>
+<li>Heumos, L., Schaar, A. C., Lance, C., et al.&nbsp;(2023). <a href="https://doi.org/10.1038/s41576-023-00586-w">Best practices for single-cell analysis across modalities</a>. <em>Nature Reviews Genetics</em> 24, 550–572. The QC, normalisation, and clustering decisions above. Pre-AI, but its human-judgement points are exactly where the AI is unreliable.</li>
+<li>Wolock, S. L., Lopez, R., &amp; Klein, A. M. (2019). <a href="https://doi.org/10.1016/j.cels.2018.11.005">Scrublet: Computational identification of cell doublets in single-cell transcriptomic data</a>. <em>Cell Systems</em> 8, 281–291. Read before trusting any predicted-doublet rate.</li>
 <li>10x Genomics. <a href="https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0">PBMC 3k dataset documentation</a>.</li>
 </ul>
 

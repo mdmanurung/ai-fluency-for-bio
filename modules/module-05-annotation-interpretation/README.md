@@ -1,29 +1,29 @@
-# Module 5: Cell Type Annotation & Biological Interpretation
+# Module 5: cell-type annotation and biological interpretation
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mdmanurung/ai-fluency-for-bio/blob/main/modules/module-05-annotation-interpretation/notebook.ipynb)
 
-**Estimated Time to Complete: ~90 mins**
+Estimated time to complete: 90 mins.
 
-> **Tools needed:** Google Colab (free, no installation), Claude or ChatGPT (free web)
-> **Prerequisites:** Complete Module 4, or load the saved `pbmc3k_processed.h5ad`
+> Tools needed: Google Colab (free, no installation), and Claude or ChatGPT (free web).
+> Prerequisites: complete Module 4, or load the saved `pbmc3k_processed.h5ad`.
 >
-> Click the **Open in Colab** badge above to launch the runnable notebook. The README below is the narrative companion.
+> Click the Open in Colab badge above to launch the runnable notebook. The README below is the narrative companion.
 
 ---
 
-## Hook: 12 Clusters, No Labels
+## Hook: 12 clusters, no labels
 
-You have a beautiful UMAP. Twelve numbered clusters. But cluster 0 is not a cell type —
-it is a set of cells that share a transcriptional state. The biology only begins when you
-answer: **which genes define each cluster, and what cell type does that pattern represent?**
+You have a beautiful UMAP. Twelve numbered clusters. But cluster 0 is not a cell type.
+It is a set of cells that share a transcriptional state. The biology only begins when
+you answer: which genes define each cluster, and what cell type does that pattern represent?
 
 This is the step where domain knowledge, literature, and AI work together. No algorithm
-can fully replace knowing that *NKG7* + *GNLY* means NK cell — but AI can dramatically
-speed up the lookup, flag contradictions, and draft your annotation rationale.
+can fully replace knowing that *NKG7* and *GNLY* mean NK cell. But AI can speed up the
+lookup, flag contradictions, and draft your annotation rationale.
 
 ---
 
-## Setup: Load the Processed Data
+## Setup: load the processed data
 
 ```python
 !pip install scanpy celltypist -q
@@ -45,7 +45,7 @@ If you don't have the saved file, re-run the Module 4 setup block first.
 
 ---
 
-## Part 1: Find Marker Genes per Cluster
+## Part 1: find marker genes per cluster
 
 Scanpy's `rank_genes_groups` finds genes that are differentially expressed in each
 cluster compared to all other cells.
@@ -56,7 +56,7 @@ sc.tl.rank_genes_groups(
     adata,
     groupby='leiden',
     use_raw=True,
-    method='wilcoxon',    # Wilcoxon rank-sum test — more robust than t-test for scRNA-seq
+    method='wilcoxon',    # Wilcoxon rank-sum test; more reliable than t-test for scRNA-seq
     n_genes=25
 )
 
@@ -82,7 +82,7 @@ print(top5.to_string())
 
 ---
 
-## Part 2: Visualize Markers with Dotplots
+## Part 2: visualise markers with dotplots
 
 A dotplot shows, for each cluster, the fraction of cells expressing a gene (dot size)
 and the mean expression level (color intensity).
@@ -106,7 +106,7 @@ sc.pl.stacked_violin(adata, marker_genes, groupby='leiden', use_raw=True)
 
 ---
 
-## Part 3: AI-Assisted Cluster Annotation
+## Part 3: AI-assisted cluster annotation
 
 For each cluster, take the top 10 marker genes and ask an LLM to identify the cell type.
 
@@ -128,35 +128,38 @@ Please:
 <details>
 <summary>View Gold Standard Output</summary>
 
-**Expected AI response for this cluster:**
+Expected AI response for this cluster.
 
-**Most likely cell type: B cells (naïve or transitional)**
+Most likely cell type: B cells (naïve or transitional).
 
-**Diagnostic markers:**
-- `MS4A1` (CD20) — canonical B cell surface marker, used clinically for B cell depletion therapy
-- `CD79A` / `CD79B` — components of the B cell receptor complex; highly specific for B cells
-- `CD19` — pan-B cell marker; present from pro-B to mature B cells
-- `PAX5` — transcription factor required for B cell lineage commitment
-- `IGHM` + `IGHD` — co-expression suggests naïve B cells (IgM+IgD+ is the naïve B cell surface receptor isotype)
+Diagnostic markers:
 
-**Alternative interpretations:**
-- If `IRF4` and `PRDM1` (Blimp-1) are also elevated, some cells may be transitioning to plasmablasts
-- Check for `JCHAIN` and `MZB1` — if present, a plasma cell sub-cluster may be contaminating this cluster
+- `MS4A1` (CD20). Canonical B cell surface marker. Used clinically for B cell depletion therapy.
+- `CD79A` and `CD79B`. Components of the B cell receptor complex. Highly specific for B cells.
+- `CD19`. Pan-B cell marker. Present from pro-B to mature B cells.
+- `PAX5`. Transcription factor required for B cell lineage commitment.
+- `IGHM` plus `IGHD`. Co-expression suggests naïve B cells. IgM+IgD+ is the naïve B cell surface receptor isotype.
 
-**Confirmatory genes to check:**
-- `VPREB3` — late pre-B / transitional B cell marker
-- `TCL1A` — enriched in naïve and transitional B cells vs. memory B cells
-- `CD27` — memory B cell marker; absence supports naïve annotation
+Alternative interpretations:
 
-**Red flag to watch for:** If the AI annotates this as a T cell because of the HLA genes,
-that is wrong — HLA-DR expression is present on professional antigen-presenting cells
+- If `IRF4` and `PRDM1` (Blimp-1) are also elevated, some cells may be transitioning to plasmablasts.
+- Check for `JCHAIN` and `MZB1`. If present, a plasma cell sub-cluster may be contaminating this cluster.
+
+Confirmatory genes to check:
+
+- `VPREB3`. Late pre-B or transitional B cell marker.
+- `TCL1A`. Enriched in naïve and transitional B cells vs. memory B cells.
+- `CD27`. Memory B cell marker. Absence supports naïve annotation.
+
+Red flag to watch for: if the AI annotates this as a T cell because of the HLA genes,
+that is wrong. HLA-DR expression is present on professional antigen-presenting cells,
 including B cells, and is not T cell-specific.
 
 </details>
 
 ---
 
-## Part 4: Automated Annotation with CellTypist
+## Part 4: automated annotation with CellTypist
 
 For a quick first pass, CellTypist uses a pre-trained classifier to annotate cells
 against a reference atlas.
@@ -185,13 +188,13 @@ adata.obs['celltypist_label'] = predictions.predicted_labels.majority_voting.val
 sc.pl.umap(adata, color=['leiden', 'celltypist_label'], ncols=2)
 ```
 
-> **Treat CellTypist as a hypothesis, not a ground truth.** It excels at major immune
+> Treat CellTypist as a hypothesis, not a ground truth. It does well at major immune
 > populations but may split or merge sub-populations incorrectly. Always cross-check
 > with your own marker gene analysis from Part 1.
 
 ---
 
-## Part 5: Assign Final Cell Type Labels
+## Part 5: assign final cell type labels
 
 After reviewing dotplots, AI-assisted annotation, and CellTypist:
 
@@ -218,7 +221,7 @@ sc.pl.umap(
     color=['cell_type'],
     legend_loc='on data',
     legend_fontsize=10,
-    title='PBMC 3k — Annotated Cell Types',
+    title='PBMC 3k: annotated cell types',
     frameon=False,
     save='pbmc3k_annotated_umap.pdf'    # saves to ./pbmc3k_annotated_umap.pdf
 )
@@ -226,13 +229,13 @@ sc.pl.umap(
 
 ---
 
-## Part 6: Differential Expression Between Conditions
+## Part 6: differential expression between conditions
 
-When comparing two conditions (e.g., treated vs. untreated, day 0 vs. day 7):
+When comparing two conditions (treated vs. untreated, day 0 vs. day 7):
 
 ```python
 # Example: Compare CD14+ monocytes between two conditions
-# (For PBMC 3k this is a single sample — this code applies to multi-sample datasets)
+# (For PBMC 3k this is a single sample; this code applies to multi-sample datasets)
 
 # Subset to one cell type
 mono = adata[adata.obs['cell_type'] == 'CD14+ Monocyte'].copy()
@@ -254,36 +257,41 @@ sc.pl.rank_genes_groups_violin(adata, groups='CD8 T', n_genes=10)
 
 ---
 
-## Capstone Exercise: Full Annotation
+## Capstone exercise: full annotation
 
 Run the complete annotation pipeline on the PBMC 3k dataset and answer the following
 questions using your dotplots, marker gene tables, and AI assistance:
 
 1. Which cluster expresses both `CD3D` (T cell) and `NKG7` (NK cell)? What cell type is this likely to be?
-2. There are two monocyte clusters — what distinguishes CD14+ monocytes from FCGR3A+ monocytes at the marker gene level?
-3. One cluster has very few cells (<50) and expresses `FCER1A` and `CST3`. What is it, and why is it numerically rare in PBMCs?
+2. There are two monocyte clusters. What distinguishes CD14+ monocytes from FCGR3A+ monocytes at the marker gene level?
+3. One cluster has very few cells (under 50) and expresses `FCER1A` and `CST3`. What is it, and why is it numerically rare in PBMCs?
 
 <details>
 <summary>View Gold Standard Output</summary>
 
-**Q1: CD3D + NKG7 co-expressing cluster**
-This is most likely **NKT cells** (Natural Killer T cells) or cytotoxic T cells
-with NK-like features. Key distinctions:
-- If the cluster also expresses `GNLY` and `KLRD1` at high levels: NKT or NK-like CD8 T
-- Check for `TRAV10` (invariant NKT marker) or `CD56` (NCAM1) to confirm NKT identity
-- A small population with this phenotype is expected in healthy PBMC — not an annotation error
+Q1: CD3D plus NKG7 co-expressing cluster.
 
-**Q2: CD14+ vs. FCGR3A+ Monocytes**
-- **CD14+ monocytes** (classical): `CD14`, `LYZ`, `S100A8`, `S100A9` — pro-inflammatory, phagocytic
-- **FCGR3A+ monocytes** (non-classical): `FCGR3A` (CD16), `MS4A7`, `IFITM2`, `CX3CR1` — patrol vasculature, anti-viral functions, lower `CD14` expression
-- The two populations represent a developmental continuum; classical monocytes can differentiate into non-classical
-- In healthy blood: ~85% classical, ~15% non-classical — which explains the size difference between these clusters
+This is most likely NKT cells (Natural Killer T cells) or cytotoxic T cells with
+NK-like features. Key distinctions:
 
-**Q3: Small FCER1A+ CST3+ cluster**
-This is **plasmacytoid or conventional dendritic cells (DCs)**.
-- `FCER1A` (FcεRI alpha) + `CST3` + `HLA-DQA1` = myeloid/conventional DC (cDC2)
-- Numerically rare because DCs represent <1% of PBMCs in healthy blood
-- They are detectable here because 10x Chromium captures all cells without pre-selection
+- If the cluster also expresses `GNLY` and `KLRD1` at high levels, it is NKT or NK-like CD8 T.
+- Check for `TRAV10` (invariant NKT marker) or `CD56` (NCAM1) to confirm NKT identity.
+- A small population with this phenotype is expected in healthy PBMC. It is not an annotation error.
+
+Q2: CD14+ vs. FCGR3A+ monocytes.
+
+- *CD14+ monocytes* (classical): `CD14`, `LYZ`, `S100A8`, `S100A9`. Pro-inflammatory and phagocytic.
+- *FCGR3A+ monocytes* (non-classical): `FCGR3A` (CD16), `MS4A7`, `IFITM2`, `CX3CR1`. Patrol vasculature, anti-viral functions, with lower `CD14` expression.
+- The two populations represent a developmental continuum. Classical monocytes can differentiate into non-classical.
+- In healthy blood, about 85% are classical and 15% are non-classical, which explains the size difference between these clusters.
+
+Q3: small FCER1A+ CST3+ cluster.
+
+This is plasmacytoid or conventional dendritic cells (DCs).
+
+- `FCER1A` (FcεRI alpha), `CST3`, and `HLA-DQA1` together suggest a myeloid or conventional DC (cDC2).
+- Numerically rare because DCs represent under 1% of PBMCs in healthy blood.
+- They are detectable here because 10x Chromium captures all cells without pre-selection.
 
 </details>
 
@@ -294,49 +302,50 @@ This is **plasmacytoid or conventional dendritic cells (DCs)**.
 Try to answer before checking. If you miss two, re-read the marker-gene section and the CellTypist section.
 
 1. CellTypist annotates a cluster as "Naive B cell" with confidence 0.97. The top markers in your `rank_genes_groups` output for that cluster are `CD79A`, `CD79B`, `MS4A1`, `IGHD`, `IL4R`. Should you accept the annotation? What changes if the markers were `CD3D`, `IL7R`, `CCR7`?
-2. Differential expression between two adjacent Leiden clusters returns 4,200 significant genes at FDR < 0.05. The AI says "this is a strong biological signal." What's the Discernment move?
-3. You're annotating a *mouse* lung dataset and the AI suggests querying CellTypist with `Immune_All_Low.pkl` (the human PBMC reference). Two things go wrong. Name them.
-4. Your Leiden cluster 7 expresses `CD3D` (T cell marker) AND `CD14` (monocyte marker) at high levels. The AI proposes "T cell / monocyte hybrid." What are the more likely biological explanations?
+2. Differential expression between two adjacent Leiden clusters returns 4,200 significant genes at FDR < 0.05. The AI says "this is a strong biological signal". What is the Discernment move?
+3. You are annotating a *mouse* lung dataset and the AI suggests querying CellTypist with `Immune_All_Low.pkl` (the human PBMC reference). Two things go wrong. Name them.
+4. Your Leiden cluster 7 expresses `CD3D` (T cell marker) AND `CD14` (monocyte marker) at high levels. The AI proposes "T cell and monocyte hybrid". What are the more likely biological explanations?
 
 <details>
 <summary>Self-check answers</summary>
 
-1. With `CD79A/B + MS4A1 + IGHD`, **accept** — those are classical naive B-cell markers; the annotation matches the markers and the confidence is well-supported. With `CD3D + IL7R + CCR7`, the markers are **naive T cells**, not B cells — **reject** the annotation. CellTypist's confidence is calibrated on its reference distribution, not against your data; the only valid Discernment move is to read the markers yourself and check whether they match the suggested label.
-2. 4,200 significant genes between two adjacent clusters means **most of your transcriptome is "different"** — usually not biology. Possible causes: (a) library-size or detection-rate differences between clusters; (b) one cluster is much larger than the other (statistical power, not effect size); (c) cell-cycle or stress signatures are dominating. Discernment moves: check the **log-fold-change distribution** (most "significant" genes will have tiny LFC); check **cluster cell counts**; correct for known confounders before re-running DE. Strong biological signal looks like a small number of genes with large effects.
-3. (i) **Organism convention**: CellTypist's human references use uppercase gene symbols (`CD3E`, `MS4A1`); mouse data uses sentence-case (`Cd3e`, `Ms4a1`), so almost everything is "unknown" because the gene symbols don't match. (ii) **Tissue context**: PBMC reference covers circulating immune cells but not tissue-resident populations (alveolar macrophages, tissue-resident memory T cells, ILC subtypes) that are central to lung biology. Use a mouse-specific reference *and* a tissue-appropriate one — or build one from a published mouse lung atlas.
-4. The most likely explanations, in order: (a) **doublets** — droplets containing one T cell and one monocyte are common at high loading densities, and Scrublet should have flagged them; (b) **ambient RNA contamination** — a high-expression cluster (monocytes have high `CD14`) bleeds into other clusters via cell-free RNA in the input; (c) **sub-population biology** — some real but rare populations (e.g., monocyte-platelet aggregates in inflammation) co-express markers, but these are exceptions and need independent validation. "T cell / monocyte hybrid" without doublet exclusion + ambient correction is almost always an artefact.
+1. With `CD79A`, `CD79B`, `MS4A1`, and `IGHD`, accept. Those are classical naive B-cell markers. The annotation matches the markers and the confidence is well-supported. With `CD3D`, `IL7R`, and `CCR7`, the markers are *naive T cells*, not B cells. Reject the annotation. CellTypist's confidence is calibrated on its reference distribution, not against your data. The only valid Discernment move is to read the markers yourself and check whether they match the suggested label.
+2. 4,200 significant genes between two adjacent clusters means most of your transcriptome is "different", which is usually not biology. Possible causes: (a) library-size or detection-rate differences between clusters; (b) one cluster is much larger than the other (statistical power, not effect size); (c) cell-cycle or stress signatures dominating. Discernment moves: check the log-fold-change distribution (most "significant" genes will have tiny LFC); check cluster cell counts; correct for known confounders before re-running DE. Strong biological signal looks like a small number of genes with large effects.
+3. (i) Organism convention. CellTypist's human references use uppercase gene symbols (`CD3E`, `MS4A1`). Mouse data uses sentence-case (`Cd3e`, `Ms4a1`), so almost everything is "unknown" because the gene symbols don't match. (ii) Tissue context. The PBMC reference covers circulating immune cells but not tissue-resident populations (alveolar macrophages, tissue-resident memory T cells, ILC subtypes) that are central to lung biology. Use a mouse-specific reference *and* a tissue-appropriate one, or build one from a published mouse lung atlas.
+4. The most likely explanations, in order: (a) doublets. Droplets containing one T cell and one monocyte are common at high loading densities, and Scrublet should have flagged them. (b) Ambient RNA contamination. A high-expression cluster (monocytes have high `CD14`) bleeds into other clusters via cell-free RNA in the input. (c) Sub-population biology. Some real but rare populations (monocyte-platelet aggregates in inflammation) co-express markers, but these are exceptions and need independent validation. "T cell and monocyte hybrid" without doublet exclusion and ambient correction is almost always an artefact.
 
 </details>
 
 ---
 
-## Key Takeaways
+## Key takeaways
 
-1. **Marker genes, not UMAP proximity, define cell types.** Run `rank_genes_groups` before annotating.
-2. **LLMs are fast annotation assistants, not oracles.** Provide the top 10 ranked genes and ask for alternative interpretations — always verify against a primary reference (Human Cell Atlas, CellMarker database).
-3. **CellTypist gives you a starting hypothesis.** It works well for major immune populations; it struggles with rare or disease-specific states.
-4. **Save your final annotated `.h5ad` file.** It is the complete, reproducible record of your analysis.
+1. Marker genes, not UMAP proximity, define cell types. Run `rank_genes_groups` before annotating.
+2. LLMs are fast annotation assistants, not oracles. Provide the top 10 ranked genes and ask for alternative interpretations. Always verify against a primary reference (Human Cell Atlas, CellMarker database).
+3. CellTypist gives you a starting hypothesis. It works well for major immune populations and struggles with rare or disease-specific states.
+4. Save your final annotated `.h5ad` file. It is the complete, reproducible record of your analysis.
 
 ---
 
-## You Have Completed the Course
+## You have completed the course
 
 Starting from raw FASTQ files, you have:
 
-1. ✅ Assessed raw data quality with FastQC
-2. ✅ Aligned reads and generated a count matrix with Cell Ranger / STARsolo
-3. ✅ Loaded, filtered, normalized, and selected features in Scanpy
-4. ✅ Performed PCA, UMAP, and Leiden clustering
-5. ✅ Annotated cell types using marker genes, AI assistance, and CellTypist
+1. ✅ Assessed raw data quality with FastQC.
+2. ✅ Aligned reads and generated a count matrix with Cell Ranger or STARsolo.
+3. ✅ Loaded, filtered, normalised, and selected features in Scanpy.
+4. ✅ Performed PCA, UMAP, and Leiden clustering.
+5. ✅ Annotated cell types using marker genes, AI assistance, and CellTypist.
 
 Your final output is a publication-ready annotated UMAP with biologically validated cell type labels.
 
-**Next steps to explore:**
-- Trajectory analysis: [Scanpy trajectory tutorial (PAGA)](https://scanpy-tutorials.readthedocs.io/en/latest/paga-paul15.html)
-- Multi-sample integration: [Harmony](https://portals.broadinstitute.org/harmony/) or Scanorama
-- RNA velocity: [scVelo](https://scvelo.readthedocs.io/)
-- Spatial transcriptomics: [Squidpy](https://squidpy.readthedocs.io/)
+Next steps to explore:
+
+- Trajectory analysis: the [Scanpy trajectory tutorial (PAGA)](https://scanpy-tutorials.readthedocs.io/en/latest/paga-paul15.html).
+- Multi-sample integration: [Harmony](https://portals.broadinstitute.org/harmony/) or Scanorama.
+- RNA velocity: [scVelo](https://scvelo.readthedocs.io/).
+- Spatial transcriptomics: [Squidpy](https://squidpy.readthedocs.io/).
 
 ---
 
-*[← Back to Course Home](../../README.md)*
+*[Back to course home](../../README.md)*
