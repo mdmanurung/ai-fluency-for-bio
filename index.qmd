@@ -4,44 +4,44 @@ subtitle: "A self-paced course on collaborating effectively with AI in biologica
 toc: false
 ---
 
-This site hosts the materials for **AI Fluency Foundations for Biology** — a **self-paced** course you can take on your own, at your own pace. There is no instructor, no schedule, no grades. Real fluency develops over months of supervised practice; this course gives you the framework, vocabulary, and habits to start that practice deliberately.
+This site hosts the materials for AI Fluency Foundations for Biology, a self-paced course you can take on your own. There is no instructor, no schedule, no grades. Real fluency develops over months of supervised practice. This course gives you the framework, vocabulary, and habits to start that practice deliberately.
 
-The course covers:
+The course covers four things:
 
-1. **The 4 D's of AI fluency** — Delegation, Description, Discernment, Diligence — adapted for biology research, following [Anthropic's AI Fluency Framework](https://www.anthropic.com/ai-fluency).
-2. **LLM literacy** for bio researchers — how large language models work, prompt, and fail.
-3. **Hands-on bioinformatics** — using AI assistants for code, data analysis, literature review, and protocol design — with worked examples grounded in a single-cell RNA-seq project.
-4. **A complete scRNA-seq pipeline** — modules from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.
+1. The 4 D's of AI fluency (Delegation, Description, Discernment, Diligence) adapted for biology research, following [Anthropic's AI Fluency Framework](https://www.anthropic.com/ai-fluency).
+2. LLM literacy for bio researchers: how large language models work, how to prompt them, and how they fail.
+3. Hands-on bioinformatics with AI assistants for code, data analysis, literature review, and protocol design. Worked examples come from a single-cell RNA-seq project.
+4. A complete scRNA-seq pipeline, from FASTQ to annotated UMAP on 10x PBMC 3k, run with AI in the loop.
 
 ::: {.callout-note}
 ## Subfield scope
-The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D's. The fluency framework and the literacy track are subfield-agnostic — bring data and questions from your own area to every practice exercise and to the final project.
+The hands-on project is single-cell RNA-seq because the tooling is mature, the dataset runs in a free-tier Colab, and the workflow exercises every step of the 4 D's. The fluency framework and the literacy track work for any subfield. Bring data and questions from your own area to every practice exercise and to the final project.
 :::
 
 New here? Start with the [Overview](course-overview.qmd) for learning outcomes, then [How to use this course](course-how-to-use.qmd) for the self-pacing model. Or jump straight to the roadmap below.
 
 ## Roadmap
 
-The course is organised as four units. Each unit takes most learners about **3–5 hours** of focused work, so a one-week cadence is comfortable — but plenty of learners spread it over two weeks, and some compress it into a long weekend. Allow yourself **4–8 weeks** total depending on background and time.
+The course is organised as four units. Each unit takes most learners about three to five hours of focused work, so a one-week cadence is comfortable. Plenty of learners spread it over two weeks, and some compress a unit into a long weekend. Allow yourself four to eight weeks total depending on background and time.
 
-Each week page is self-contained: **readings → practice → knowledge check → project**. All checks have answer keys; all projects have self-assessment rubrics.
+Each week page is self-contained: readings, practice, knowledge check, project. All checks have answer keys, and all projects have self-assessment rubrics.
 
 | Unit | Suggested time | Topic | What you'll learn | Project |
 |:----:|:------|:------|:------|:------|
-| [Week 1](weeks/week-1.qmd) | ~3–5 hrs | AI fluency foundations — the 4 D's | [Delegation](fluency/delegation.qmd), [Description](fluency/description.qmd), [Discernment](fluency/discernment.qmd), [Diligence](fluency/diligence.qmd) — applied to your own workflow | 4 D's reflection + tooling check |
-| [Week 2](weeks/week-2.qmd) | ~3–5 hrs | LLM literacy for bio researchers | [How LLMs work](literacy/how-llms-work.qmd), [Prompting](literacy/prompting.qmd), [Tool use & agents](literacy/tool-use-and-agents.qmd), [Ethics & limits](literacy/ethics-and-limits.qmd) | Prompt-engineering exercise (weak vs. strong, with critique) |
-| [Week 3](weeks/week-3.qmd) | ~5–7 hrs | scRNA-seq I — QC, normalisation, clustering | [Code assistance](bioinformatics/code-assistance.qmd), [Data analysis](bioinformatics/data-analysis.qmd), and Modules [3](modules/module-03-preprocessing-scanpy/README.md) & [4](modules/module-04-clustering-umap/README.md) | PBMC 3k mini-project (AI-free baseline + AI-assisted iteration) |
-| [Week 4](weeks/week-4.qmd) | ~5–7 hrs | scRNA-seq II — annotation, capstone | [Literature review](bioinformatics/literature-review.qmd), [Protocol design](bioinformatics/protocol-design.qmd), and [Module 5](modules/module-05-annotation-interpretation/README.md) | Final project — analysis, lit brief, or protocol (your choice) |
+| [Week 1](weeks/week-1.qmd) | 3–5 hrs | AI fluency foundations: the 4 D's | [Delegation](fluency/delegation.qmd), [Description](fluency/description.qmd), [Discernment](fluency/discernment.qmd), [Diligence](fluency/diligence.qmd), applied to your own workflow | 4 D's reflection plus tooling check |
+| [Week 2](weeks/week-2.qmd) | 3–5 hrs | LLM literacy for bio researchers | [How LLMs work](literacy/how-llms-work.qmd), [Prompting](literacy/prompting.qmd), [Tool use & agents](literacy/tool-use-and-agents.qmd), [Ethics & limits](literacy/ethics-and-limits.qmd) | Prompt-engineering exercise (weak vs. strong, with critique) |
+| [Week 3](weeks/week-3.qmd) | 5–7 hrs | scRNA-seq I: QC, normalisation, clustering | [Code assistance](bioinformatics/code-assistance.qmd), [Data analysis](bioinformatics/data-analysis.qmd), and Modules [3](modules/module-03-preprocessing-scanpy/README.md) and [4](modules/module-04-clustering-umap/README.md) | PBMC 3k mini-project (AI-free baseline plus AI-assisted iteration) |
+| [Week 4](weeks/week-4.qmd) | 5–7 hrs | scRNA-seq II: annotation, capstone | [Literature review](bioinformatics/literature-review.qmd), [Protocol design](bioinformatics/protocol-design.qmd), and [Module 5](modules/module-05-annotation-interpretation/README.md) | Final project: analysis, lit brief, or protocol, your choice |
 
 : {tbl-colwidths="[7,12,22,40,19]"}
 
 ## How to self-assess
 
-Four levels of feedback, all self-driven:
+You get four kinds of feedback, all self-driven:
 
-- **Per-page checks** in collapsible callouts on every conceptual page — 3–5 questions with worked answers.
-- **Per-week knowledge checks** at the end of each week page — 5–8 mixed conceptual + applied questions.
-- **Per-week practice exercises** to apply each unit to your own data and questions.
-- **Project self-rubrics** so you can grade your own work against the same dimensions an instructor would.
+- Per-page checks in collapsible callouts on every conceptual page (3 to 5 questions, with worked answers).
+- Per-week knowledge checks at the end of each week page (5 to 8 mixed conceptual and applied questions).
+- Per-week practice exercises that apply each unit to your own data and questions.
+- Project self-rubrics so you can grade your own work against the same dimensions an instructor would.
 
 See [How to use this course](course-how-to-use.qmd) for the full self-assessment model and a learner-progress checklist.

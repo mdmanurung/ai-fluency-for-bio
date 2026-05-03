@@ -3,63 +3,63 @@ title: "Topic index"
 subtitle: "Browse the conceptual material by subject, not by week"
 ---
 
-The course's primary navigation is **by week** — each unit groups its readings, practice, knowledge check, and project together. But the conceptual pages are themselves organised by subject, and you may want to jump straight to a topic to look something up or to revisit material you read earlier.
+The course's primary navigation is by week. Each unit groups its readings, practice, knowledge check, and project together. But the conceptual pages are themselves organised by subject, and you may want to jump straight to a topic to look something up or revisit material you read earlier.
 
 Use this index when:
 
 - You're stuck on a project and need to re-read the relevant concept.
-- You want to compare related material across the course (e.g., all the discernment moves on different tasks).
+- You want to compare related material across the course (all the discernment moves on different tasks, say).
 - You finished the course and want a one-page overview of where everything lives.
 
-## AI fluency — the 4 D's
+## AI fluency: the 4 D's
 
 Anchored in [Week 1](../weeks/week-1.qmd). Each page has a "Check your understanding" callout at the bottom.
 
-- [Delegation](../fluency/delegation.qmd) — the two-axis rubric (verifiability cost × error consequence) for choosing what to delegate to AI.
-- [Description](../fluency/description.qmd) — framing problems for AI: role, task, context, format. PBMC 3k QC worked example.
-- [Discernment](../fluency/discernment.qmd) — reading AI outputs critically; explicit accept/reject log.
-- [Diligence](../fluency/diligence.qmd) — ownership, verification, disclosure as habits, not bureaucracy.
+- [Delegation](../fluency/delegation.qmd). The two-axis rubric (verifiability cost by error consequence) for choosing what to delegate to AI.
+- [Description](../fluency/description.qmd). Framing problems for AI: role, task, context, format. PBMC 3k QC worked example.
+- [Discernment](../fluency/discernment.qmd). Reading AI outputs critically. Explicit accept/reject log.
+- [Diligence](../fluency/diligence.qmd). Ownership, verification, and disclosure as habits, not bureaucracy.
 
 ## AI literacy for bio
 
 Anchored in [Week 2](../weeks/week-2.qmd).
 
-- [How LLMs work](../literacy/how-llms-work.qmd) — next-token prediction, tokenisation, attention, temperature, context windows; what this means for your workflow.
-- [Prompting](../literacy/prompting.qmd) — system / user / assistant anatomy; weak→strong progression; reliable patterns.
-- [Tool use & agents](../literacy/tool-use-and-agents.qmd) — agent patterns (bibliography cleanup, diff review); the human-confirm gate; when *not* to agent.
-- [Ethics & limits](../literacy/ethics-and-limits.qmd) — authorship norms, hallucination, epistemic injustice, data policy.
+- [How LLMs work](../literacy/how-llms-work.qmd). Next-token prediction, tokenisation, attention, temperature, context windows, and what this means for your workflow.
+- [Prompting](../literacy/prompting.qmd). System, user, and assistant anatomy. Weak-to-strong progression. Reliable patterns.
+- [Tool use & agents](../literacy/tool-use-and-agents.qmd). Agent patterns (bibliography cleanup, diff review). The human-confirm gate. When *not* to agent.
+- [Ethics & limits](../literacy/ethics-and-limits.qmd). Authorship norms, hallucination, epistemic injustice, data policy.
 
 ## Hands-on bioinformatics
 
 Split across [Week 3](../weeks/week-3.qmd) and [Week 4](../weeks/week-4.qmd).
 
-- [Code assistance](../bioinformatics/code-assistance.qmd) (Week 3) — debugging pattern; AI-assisted test writing; PBMC 3k worked example.
-- [Data analysis](../bioinformatics/data-analysis.qmd) (Week 3) — the AI-fluency lens on QC: load → metrics → thresholds → filter → normalise.
-- [Literature review](../bioinformatics/literature-review.qmd) (Week 4) — five-step verification workflow; worked fabricated-citation catch.
-- [Protocol design](../bioinformatics/protocol-design.qmd) (Week 4) — AI-sparring-partner pattern; scRNA-seq lung macrophage pilot with AI errors and wins.
+- [Code assistance](../bioinformatics/code-assistance.qmd) (Week 3). Debugging pattern, AI-assisted test writing, PBMC 3k worked example.
+- [Data analysis](../bioinformatics/data-analysis.qmd) (Week 3). The AI-fluency lens on QC: load, metrics, thresholds, filter, normalise.
+- [Literature review](../bioinformatics/literature-review.qmd) (Week 4). Five-step verification workflow. Worked fabricated-citation catch.
+- [Protocol design](../bioinformatics/protocol-design.qmd) (Week 4). AI-sparring-partner pattern. scRNA-seq lung macrophage pilot with AI errors and wins.
 
 ## scRNA-seq pipeline (modules)
 
-End-to-end PBMC 3k: FASTQ → annotated UMAP. Modules 1–2 are reading; Modules 3–5 are runnable in Colab. Each module has a `Self-check` callout near the end.
+End-to-end PBMC 3k, from FASTQ to annotated UMAP. Modules 1 and 2 are reading. Modules 3 to 5 are runnable in Colab. Each module has a `Self-check` callout near the end.
 
-- [Module 1 — Raw data QC](../modules/module-01-raw-data-qc/README.md) — FastQC; 10x R1/R2 anatomy; read-quality interpretation.
-- [Module 2 — Alignment & count matrix](../modules/module-02-alignment-count-matrix/README.md) — Cell Ranger / STARsolo; web summary; filtered vs. raw matrix.
-- [Module 3 — Preprocessing in Scanpy](../modules/module-03-preprocessing-scanpy/README.md) — load PBMC 3k → QC → normalise → HVG.
-- [Module 4 — Clustering & UMAP](../modules/module-04-clustering-umap/README.md) — scale → PCA → neighbours → UMAP → Leiden.
-- [Module 5 — Annotation & interpretation](../modules/module-05-annotation-interpretation/README.md) — marker genes → cell-type annotation → CellTypist → DE.
+- [Module 1: raw data QC](../modules/module-01-raw-data-qc/README.md). FastQC, 10x R1 and R2 anatomy, read-quality interpretation.
+- [Module 2: alignment and count matrix](../modules/module-02-alignment-count-matrix/README.md). Cell Ranger or STARsolo, the web summary, and filtered vs. raw matrix.
+- [Module 3: preprocessing in Scanpy](../modules/module-03-preprocessing-scanpy/README.md). Load PBMC 3k, QC, normalise, HVG.
+- [Module 4: clustering and UMAP](../modules/module-04-clustering-umap/README.md). Scale, PCA, neighbours, UMAP, Leiden.
+- [Module 5: annotation and interpretation](../modules/module-05-annotation-interpretation/README.md). Marker genes, cell-type annotation, CellTypist, DE.
 
 ## Reference
 
-- [Glossary](glossary.qmd) — short definitions cross-linked across the course.
-- [Prompt library](prompt-library.qmd) — fill-in-the-blank templates (debugging, test writing, literature triage, protocol critique).
-- [Self-review template](peer-review.qmd) — structured feedback for your own (or a peer's) project, mirroring the disclosure rubric.
+- [Glossary](glossary.qmd). Short definitions cross-linked across the course.
+- [Prompt library](prompt-library.qmd). Fill-in-the-blank templates for debugging, test writing, literature triage, and protocol critique.
+- [Self-review template](peer-review.qmd). Structured feedback for your own (or a peer's) project, mirroring the disclosure rubric.
 
 ## Course information
 
-- [Roadmap](../index.qmd) — the recommended unit-by-unit pacing.
-- [Overview](../course-overview.qmd) — learning outcomes and audience.
-- [How to use this course](../course-how-to-use.qmd) — the self-paced model and learner-progress checklist.
-- [Syllabus](../course-syllabus.qmd) — prerequisites, AI-use policy, disclosure rubric, data policy, recommended readings.
-- [Support](../course-support.qmd) — how to get help.
+- [Roadmap](../index.qmd). The recommended unit-by-unit pacing.
+- [Overview](../course-overview.qmd). Learning outcomes and audience.
+- [How to use this course](../course-how-to-use.qmd). The self-paced model and learner-progress checklist.
+- [Syllabus](../course-syllabus.qmd). Prerequisites, AI-use policy, disclosure rubric, data policy, recommended readings.
+- [Support](../course-support.qmd). How to get help.
 - [About the author](../course-team.qmd).
 - [FAQ](../course-faq.qmd).

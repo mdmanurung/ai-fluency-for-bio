@@ -12,13 +12,13 @@ subtitle: "Using AI for bioinformatics scripting and debugging"
 
 ## Scope
 
-This page focuses on **interactive coding assistance** — chat-based or in-IDE AI help for scripts you write and own. Autonomous agents are covered in [Tool use & agents](../literacy/tool-use-and-agents.qmd).
+This page is about *interactive coding assistance*: chat-based or in-IDE AI help for scripts you write and own. Autonomous agents are covered in [Tool use & agents](../literacy/tool-use-and-agents.qmd).
 
-## Where AI helps — and where it fails
+## Where AI helps and where it fails
 
-**Helps:** boilerplate I/O (`fastq`, `vcf`, `bam`, `h5ad`, [AnnData](../reference/glossary.qmd) / Seurat / SingleCellExperiment); refactoring (split a long script into functions, add type hints); translating (R ↔ Python, pandas ↔ polars, Scanpy ↔ Seurat); explaining unfamiliar code blocks.
+AI helps with: boilerplate I/O (`fastq`, `vcf`, `bam`, `h5ad`, [AnnData](../reference/glossary.qmd), Seurat, SingleCellExperiment); refactoring (splitting a long script into functions, adding type hints); translating (R to Python, pandas to polars, Scanpy to Seurat); and explaining unfamiliar code blocks.
 
-**Falls short on:** choosing the *right* clustering resolution or normalisation for *your* data; matching tool versions and API signatures when those changed recently; recalling lesser-known file-format schemas; **organism conventions** — AI defaults to human (`MT-` prefix, `TP53` casing) and is silently wrong on mouse (`mt-`, `Trp53`).
+AI falls short on: choosing the *right* clustering resolution or normalisation for *your* data; matching tool versions and API signatures when those changed recently; recalling lesser-known file-format schemas; and organism conventions. AI defaults to human (`MT-` prefix, `TP53` casing) and is silently wrong on mouse (`mt-`, `Trp53`).
 
 ## A minimum viable workflow
 
@@ -30,20 +30,20 @@ This page focuses on **interactive coding assistance** — chat-based or in-IDE 
 
 ## Debugging with AI
 
-The single most effective move is giving the AI **everything needed to reproduce the failure** in one message — not just the error. The four-part pattern:
+The single most effective move is giving the AI everything needed to reproduce the failure in one message, not just the error. The four-part pattern:
 
-1. **Full traceback** — complete stack trace, not just the last line.
-2. **Minimal failing code** — smallest block that triggers the error, not the whole script.
-3. **One paragraph of intent** — what the function is *supposed* to do.
-4. **Environment** — Python version, package versions (`scanpy.__version__`, etc.).
+1. *Full traceback*. Complete stack trace, not just the last line.
+2. *Minimal failing code*. The smallest block that triggers the error, not the whole script.
+3. *One paragraph of intent*. What the function is *supposed* to do.
+4. *Environment*. Python version, package versions (`scanpy.__version__`, and so on).
 
 ### Same bug, two prompts
 
-**Weak prompt:** *"Getting a KeyError on 'mt'. How do I fix it?"*
+A weak prompt: "Getting a KeyError on 'mt'. How do I fix it?"
 
-The AI guesses. Typical reply: wrap the access in `if 'mt' in adata.var.columns` — a fix that compiles but hides the actual problem (the flag was never computed).
+The AI guesses. A typical reply: wrap the access in `if 'mt' in adata.var.columns`. That compiles, but it hides the actual problem (the flag was never computed).
 
-**Strong prompt:** the full pattern — traceback, minimal code, intent, environment:
+A strong prompt uses the full pattern: traceback, minimal code, intent, environment.
 
 ```text
 sc.pp.calculate_qc_metrics is failing on PBMC 3k.
@@ -64,13 +64,13 @@ Environment: Python 3.11, scanpy 1.10.1, anndata 0.10.7.
 
 With the strong prompt the AI immediately identifies that `qc_vars=['mt']` requires a column called `mt` in `adata.var`, and that you have not added it. Fix: `adata.var['mt'] = adata.var_names.str.startswith('MT-')` *before* the metrics call.
 
-The AI is doing next-token prediction, not causal reasoning. A vague prompt produces a generic completion; a specific prompt produces a specific one. The four-part structure is the [Description](../fluency/description.qmd) skill applied to debugging — and the [prompt library](../reference/prompt-library.qmd#debugging-a-stack-trace) has a fill-in-the-blank version of it.
+The AI is doing next-token prediction, not causal reasoning. A vague prompt produces a generic completion. A specific prompt produces a specific one. The four-part structure is the [Description](../fluency/description.qmd) skill applied to debugging. The [prompt library](../reference/prompt-library.qmd#debugging-a-stack-trace) has a fill-in-the-blank version of it.
 
 ## Worked example: AI-assisted test writing for `validate_qc_outputs`
 
 After [Module 3](../modules/module-03-preprocessing-scanpy/README.md)'s QC walkthrough produces a clean PBMC 3k AnnData, you want to lock that QC contract in code so the next student picking up the notebook does not silently break it.
 
-### Step 1 — Write the contract yourself
+### Step 1: write the contract yourself
 
 ```python
 import anndata as ad
@@ -81,65 +81,65 @@ def validate_qc_outputs(adata: ad.AnnData) -> None:
 
     Checks:
     - obs has n_genes_by_counts, total_counts, pct_counts_mt.
-    - var has the boolean 'mt' flag and ≥1 mitochondrial gene was detected.
+    - var has the boolean 'mt' flag and at least one mitochondrial gene was detected.
     - 1,000 < n_obs < 3,000 (plausible for PBMC 3k after QC).
     - Counts are log-normalised (max value < 15 on a dense slice).
     """
 ```
 
-The docstring *is* the contract. Do not let the AI invent it — that is the [Description](../fluency/description.qmd) step.
+The docstring *is* the contract. Do not let the AI invent it. That is the [Description](../fluency/description.qmd) step.
 
-### Step 2 — Ask the AI to draft pytest test cases
+### Step 2: ask the AI to draft pytest test cases
 
-> *Function `validate_qc_outputs` has the signature and docstring below. The PBMC 3k dataset (`sc.datasets.pbmc3k`) starts at 2,700 × 32,738 and after standard QC has ≈2,638 cells. Environment: Python 3.11, scanpy 1.10.1, anndata 0.10.7, pytest 8. Draft pytest tests covering the contract.*
+> *Function `validate_qc_outputs` has the signature and docstring below. The PBMC 3k dataset (`sc.datasets.pbmc3k`) starts at 2,700 × 32,738 and after standard QC has about 2,638 cells. Environment: Python 3.11, scanpy 1.10.1, anndata 0.10.7, pytest 8. Draft pytest tests covering the contract.*
 
 The AI returns a fixture that runs the QC pipeline end-to-end, then four tests:
 
-- `test_passes_on_valid_qc(qc_adata)` — happy path.
-- `test_missing_obs_column_raises(qc_adata)` — drops `pct_counts_mt`, expects `AssertionError`.
-- `test_no_mt_genes_raises(qc_adata)` — sets `var['mt'] = False`, expects `AssertionError`.
-- `test_unnormalised_counts_raise(qc_adata)` — restores raw counts, expects `AssertionError`.
+- `test_passes_on_valid_qc(qc_adata)`. The happy path.
+- `test_missing_obs_column_raises(qc_adata)`. Drops `pct_counts_mt`, expects `AssertionError`.
+- `test_no_mt_genes_raises(qc_adata)`. Sets `var['mt'] = False`, expects `AssertionError`.
+- `test_unnormalised_counts_raise(qc_adata)`. Restores raw counts, expects `AssertionError`.
 
-This is sound scaffolding; the [Delegation](../fluency/delegation.qmd) move covers the fixture, `pytest.raises` patterns, and the boilerplate test bodies — exactly where AI adds speed without risk.
+This is sound scaffolding. The [Delegation](../fluency/delegation.qmd) move covers the fixture, `pytest.raises` patterns, and the boilerplate test bodies. That is exactly where AI adds speed without risk.
 
-### Step 3 — Prune and extend with Discernment
+### Step 3: prune and extend with Discernment
 
 The AI also proposes tests that `qc_adata.obs.shape[0] == 2638` exactly, that `qc_adata.var.shape[0] >= 13000`, and that the donor is healthy.
 
-**Reject these.** They validate dataset *identity*, not the QC *contract*. Re-run with slightly different thresholds (or on a different PBMC sample) and they break even though the function is correct. [Discernment](../fluency/discernment.qmd) move: keep tests that validate structure your downstream code depends on; discard tests that validate data identity.
+Reject these. They validate dataset *identity*, not the QC *contract*. Re-run with slightly different thresholds, or on a different PBMC sample, and they break even though the function is correct. The [Discernment](../fluency/discernment.qmd) move: keep tests that validate structure your downstream code depends on, and discard tests that validate data identity.
 
-One test the AI misses: that `mt` is **boolean**, not int or string. A user who writes `adata.var['mt'] = adata.var_names.str.startswith('MT-').astype(int)` produces a column that *looks* right and `qc_vars=['mt']` even accepts it, but downstream code that assumes a boolean mask fails silently. Add it yourself:
+One test the AI misses is that `mt` is *boolean*, not int or string. A user who writes `adata.var['mt'] = adata.var_names.str.startswith('MT-').astype(int)` produces a column that *looks* right, and `qc_vars=['mt']` even accepts it, but downstream code that assumes a boolean mask fails silently. Add it yourself:
 
 ```python
 def test_mt_flag_is_boolean(qc_adata):
     assert qc_adata.var['mt'].dtype == bool
 ```
 
-### R / Seurat note
+### R and Seurat note
 
-The scRNA-seq workflow has an R/[Seurat](https://satijalab.org/seurat/) equivalent at every step (`CreateSeuratObject` → `PercentageFeatureSet(pattern = "^MT-")` → `subset` → `NormalizeData` → `ScaleData` → `RunPCA` → `RunUMAP` → `FindClusters`). The `testthat` workflow for the same contract is identical: write the validator in `R/validate.R`, drive it with `testthat::expect_error`. The pattern transfers.
+The scRNA-seq workflow has an R and [Seurat](https://satijalab.org/seurat/) equivalent at every step: `CreateSeuratObject`, `PercentageFeatureSet(pattern = "^MT-")`, `subset`, `NormalizeData`, `ScaleData`, `RunPCA`, `RunUMAP`, `FindClusters`. The `testthat` workflow for the same contract is identical. Write the validator in `R/validate.R` and drive it with `testthat::expect_error`. The pattern transfers.
 
 ::: {.callout-tip}
 ## Where the 4 D's showed up
-- **Description** — writing the signature and docstring yourself gives the AI the contract it needs.
-- **Delegation** — fixture, `pytest.raises`, boilerplate test bodies; AI adds speed without risk.
-- **Discernment** — rejecting brittle dataset-identity tests; catching the boolean-dtype test the AI missed.
-- **Diligence** — you own the contract. If `validate_qc_outputs` passes every test and downstream clustering still breaks, the test suite was incomplete — and that is on you, not the AI.
+- *Description*: writing the signature and docstring yourself gives the AI the contract it needs.
+- *Delegation*: fixture, `pytest.raises`, and boilerplate test bodies. AI adds speed without risk.
+- *Discernment*: rejecting brittle dataset-identity tests, and catching the boolean-dtype test the AI missed.
+- *Diligence*: you own the contract. If `validate_qc_outputs` passes every test and downstream clustering still breaks, the test suite was incomplete. That is on you, not the AI.
 :::
 
 ## Common failure modes
 
-- **Asking the AI to generate the contract.** "Write tests for my QC function" produces tests for the AI's *imagined* function, not yours.
-- **Wrong organism conventions.** AI defaults to human: `MT-` (not `mt-`), `TP53` (not `Trp53`), `MS4A1` (not `Ms4a1`). Specify organism in every prompt; verify the resulting flag is non-empty.
-- **Package hallucination.** AI sometimes suggests imports from packages that do not exist or do not export the named function. `pip show <package>` before trusting a new import.
-- **Stale API signatures.** AI training data lags by months to years. For fast-moving libraries (`scanpy`, `anndata`, `scrublet`), verify in the current docs, not the AI's output.
-- **Operating on AnnData views.** `adata = adata[mask, :]` returns a view; in-place modification triggers warnings that often become silent inconsistencies. Add `.copy()` after subsetting if the next step writes.
+- *Asking the AI to generate the contract*. "Write tests for my QC function" produces tests for the AI's *imagined* function, not yours.
+- *Wrong organism conventions*. AI defaults to human: `MT-` (not `mt-`), `TP53` (not `Trp53`), `MS4A1` (not `Ms4a1`). Specify organism in every prompt and verify the resulting flag is non-empty.
+- *Package hallucination*. AI sometimes suggests imports from packages that do not exist or do not export the named function. Run `pip show <package>` before trusting a new import.
+- *Stale API signatures*. AI training data lags by months to years. For fast-moving libraries (`scanpy`, `anndata`, `scrublet`), verify in the current docs, not the AI's output.
+- *Operating on AnnData views*. `adata = adata[mask, :]` returns a view, and in-place modification triggers warnings that often become silent inconsistencies. Add `.copy()` after subsetting if the next step writes.
 
 ## Exercises
 
-1. Take a 50–100 line bioinformatics script you wrote from scratch. Ask an AI to refactor it. Keep what is better, reject what is worse.
+1. Take a 50- to 100-line bioinformatics script you wrote from scratch. Ask an AI to refactor it. Keep what is better and reject what is worse.
 2. Take a bug you fixed recently. Reconstruct the error state and ask an AI to debug it cold. Apply the four-part pattern. How much does context quality change the answer?
-3. Implement `validate_qc_outputs` for PBMC 3k. Run the AI-generated test suite. Add at least one test the AI missed (consider organism conventions, dtype, view vs. copy). Bring both to the week 3 session.
+3. Implement `validate_qc_outputs` for PBMC 3k. Run the AI-generated test suite. Add at least one test the AI missed (consider organism conventions, dtype, or view vs. copy). Bring both to the Week 3 session.
 
 ::: {.callout-tip collapse="true"}
 ## Check your understanding
@@ -147,11 +147,11 @@ The scRNA-seq workflow has an R/[Seurat](https://satijalab.org/seurat/) equivale
 2. Why is "write tests for my QC function" the wrong delegation prompt? What is the right one?
 3. Your AI-generated test asserts `qc_adata.obs.shape[0] == 2638`. Is this a good test? Why or why not?
 
-**Answers:** 1. Full traceback, minimal failing code, one paragraph of intent, environment (versions, organism, platform). 2. It lets the AI invent the contract — the tests will pass on the AI's imagined function, not yours. The right prompt: "Function `f` has *this* signature and docstring (paste). Draft pytest tests covering *that* contract." 3. No — it validates dataset *identity*, not the QC *contract*. The function is still correct if PBMC 3k is reprocessed at slightly different thresholds (e.g., 2,640 cells) or run on a different PBMC sample; identity assertions break for the wrong reason. Keep contract tests, drop identity tests.
+**Answers:** 1. Full traceback, minimal failing code, one paragraph of intent, and environment (versions, organism, platform). 2. It lets the AI invent the contract. The tests will pass on the AI's imagined function, not yours. The right prompt: "Function `f` has *this* signature and docstring (paste). Draft pytest tests covering *that* contract." 3. No. It validates dataset *identity*, not the QC *contract*. The function is still correct if PBMC 3k is reprocessed at slightly different thresholds (say, 2,640 cells) or run on a different PBMC sample. Identity assertions break for the wrong reason. Keep contract tests, drop identity tests.
 :::
 
 ## Further reading
 
-- Peng, S., Kalliamvakou, E., Cihon, P., & Demirer, M. (2023). [The Impact of AI on Developer Productivity: Evidence from GitHub Copilot](https://arxiv.org/abs/2302.06590). arXiv:2302.06590. — Controlled experiment showing ~56% faster task completion with Copilot; productivity gains were real, but so were the failure modes (stale APIs, non-existent packages).
-- Spracklen, J., Wijewickrama, R., Sakib, A. H. M. N., Maiti, A., Viswanath, B., & Jadliwala, M. (2024). [We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs](https://arxiv.org/abs/2406.10279). arXiv:2406.10279. — All 16 code models tested showed package-hallucination rates averaging 19.6%; motivates the "pip show before you import" rule above.
-- [Description](../fluency/description.qmd) in this course — the four-part debugging pattern and the test-writing prompt above are both applications of Description; read first if the pattern feels unnatural.
+- Peng, S., Kalliamvakou, E., Cihon, P., & Demirer, M. (2023). [The Impact of AI on Developer Productivity: Evidence from GitHub Copilot](https://arxiv.org/abs/2302.06590). arXiv:2302.06590. A controlled experiment showing about 56% faster task completion with Copilot. Productivity gains were real, and so were the failure modes (stale APIs, non-existent packages).
+- Spracklen, J., Wijewickrama, R., Sakib, A. H. M. N., Maiti, A., Viswanath, B., & Jadliwala, M. (2024). [We Have a Package for You! A Comprehensive Analysis of Package Hallucinations by Code Generating LLMs](https://arxiv.org/abs/2406.10279). arXiv:2406.10279. All 16 code models tested showed package-hallucination rates averaging 19.6%. This motivates the "pip show before you import" rule above.
+- [Description](../fluency/description.qmd) in this course. The four-part debugging pattern and the test-writing prompt above are both applications of Description. Read it first if the pattern feels unnatural.

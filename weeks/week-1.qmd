@@ -1,144 +1,144 @@
 ---
-title: "Week 1 — AI fluency foundations"
+title: "Week 1: AI fluency foundations"
 subtitle: "The 4 D's: Delegation, Description, Discernment, Diligence"
 ---
 
 ::: {.callout-note}
 ## Learning objectives
-- Explain the 4 D's framework — Delegation, Description, Discernment, Diligence — in your own words.
+- Explain the 4 D's framework (Delegation, Description, Discernment, Diligence) in your own words.
 - Apply the delegation rubric to a research task you actually do, without consulting an AI first.
 - Frame a real task with enough Description that an AI assistant could attempt it cold.
-- Identify, for one published claim, the Discernment moves required to trust or reject it.
+- For one published claim, identify the Discernment moves required to trust or reject it.
 - Set up a working tooling stack: Quarto, a pinned environment, and a coding assistant.
 :::
 
 ## Suggested pacing
 
-Plan on **~3–5 hours** total this week. A comfortable split:
+Plan on three to five hours total this week. A comfortable split:
 
 | Chunk | What | Time |
 |:------|:-----|:-----|
-| 1 | Read the four D's pages | ~1.5 hrs |
-| 2 | Hands-on practice (workflow audit, AI-free) | ~1 hr |
-| 3 | Knowledge check + revisit weak spots | ~30 min |
-| 4 | Tooling setup (Quarto + environment + assistant) | ~1 hr |
-| 5 | Project: 4 D's reflection | ~1 hr |
+| 1 | Read the four D's pages | 1.5 hrs |
+| 2 | Hands-on practice (workflow audit, AI-free) | 1 hr |
+| 3 | Knowledge check, revisit weak spots | 30 min |
+| 4 | Tooling setup (Quarto, environment, assistant) | 1 hr |
+| 5 | Project: 4 D's reflection | 1 hr |
 
-This is a suggestion, not a schedule. Compress it into a long Saturday or stretch it across two weeks — whatever fits.
+This is a suggestion, not a schedule. Compress it into a long Saturday or stretch it across two weeks. Whatever fits.
 
 ## Readings
 
-Read in order; each builds on the previous one.
+Read in order. Each builds on the previous one.
 
-- [Delegation](../fluency/delegation.qmd) — **focus on**: the two-axis rubric (verifiability cost × error consequence) and why low-stakes alone is not enough to justify full delegation.
-- [Description](../fluency/description.qmd) — **focus on**: the four-part framing (role / task / context / format) and the worked PBMC 3k QC example.
-- [Discernment](../fluency/discernment.qmd) — **focus on**: the explicit accept/reject log; what an AI sees vs. what only you see.
-- [Diligence](../fluency/diligence.qmd) — **focus on**: ownership, verification, disclosure as habits, not bureaucracy.
+- [Delegation](../fluency/delegation.qmd). Focus on the two-axis rubric (verifiability cost by error consequence) and why low-stakes alone is not enough to justify full delegation.
+- [Description](../fluency/description.qmd). Focus on the four-part framing (role, task, context, format) and the worked PBMC 3k QC example.
+- [Discernment](../fluency/discernment.qmd). Focus on the explicit accept/reject log, and on what an AI sees vs. what only you see.
+- [Diligence](../fluency/diligence.qmd). Focus on ownership, verification, and disclosure as habits, not bureaucracy.
 
 Then skim:
 
-- Anthropic, [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency) — overview page. The 4 D's pages above are this course's biology-research adaptation; the source is short, free, and worth the 20 minutes.
+- Anthropic. [*AI Fluency: Framework & Foundations*](https://www.anthropic.com/ai-fluency), overview page. The 4 D's pages above are this course's biology-research adaptation. The source is short, free, and worth the 20 minutes.
 
 ## Hands-on practice
 
-Three short applied exercises. Do them against your own work, not toy examples — that's where the framework starts to feel useful. Each has a self-check.
+Three short applied exercises. Do them against your own work, not toy examples. That is where the framework starts to feel useful. Each has a self-check.
 
-### Exercise 1.1 — Workflow audit (AI-free)
+### Exercise 1.1: workflow audit (AI-free)
 
-Pick **three** tasks you currently do in your own research. Pick a mix: at least one mechanical task, at least one judgement-heavy task. For each, classify it on the [delegation rubric](../fluency/delegation.qmd) (verifiability cost × error consequence) **without consulting any AI**. Write 1–2 sentences justifying each placement.
+Pick three tasks you currently do in your own research. Pick a mix: at least one mechanical task, at least one judgement-heavy task. For each, classify it on the [delegation rubric](../fluency/delegation.qmd) (verifiability cost by error consequence), without consulting any AI. Write one or two sentences justifying each placement.
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 1.1
 A good audit:
 
-- Names the **task** concretely (not "data analysis" but "filter cells with > 20% mitochondrial reads from a 10x AnnData object").
-- Picks tasks that are **actually different** on the two axes — three tasks all in the same quadrant means you're not stress-testing the rubric.
-- Justifies placement using **both axes explicitly**. "It's risky" is not a justification; "the consequence of a wrong threshold is silently dropping real cell types from downstream clustering" is.
+- Names the task concretely (not "data analysis" but "filter cells with > 20% mitochondrial reads from a 10x AnnData object").
+- Picks tasks that are actually different on the two axes. Three tasks all in the same quadrant means you're not stress-testing the rubric.
+- Justifies placement using both axes explicitly. "It's risky" is not a justification. "The consequence of a wrong threshold is silently dropping real cell types from downstream clustering" is.
 
-If all three of your tasks land in the same quadrant, swap two for tasks from a different stage of your workflow (lab planning vs. analysis vs. writing vs. literature).
+If all three of your tasks land in the same quadrant, swap two for tasks from a different stage of your workflow (lab planning, analysis, writing, literature).
 :::
 
-### Exercise 1.2 — Description framing
+### Exercise 1.2: Description framing
 
-Take **one** task from your audit and write a Description-style framing for it: role, task, context, format. Aim for 5–10 sentences. Then ask yourself: could an AI assistant attempt this cold from your framing alone? What would it still get wrong?
+Take one task from your audit and write a Description-style framing for it: role, task, context, format. Aim for five to ten sentences. Then ask yourself: could an AI assistant attempt this cold from your framing alone? What would it still get wrong?
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 1.2
 A strong framing names:
 
-- The **role** (what kind of expert is the AI playing — a Scanpy power-user? a methods-section editor? a wet-lab protocol critic?).
-- The **task** in concrete, verifiable terms (input → output, not "analyse").
-- The **context** the AI does not already know (your dataset's tissue, condition, organism; your lab's conventions; the paper's prior figures).
-- The **format** of the output you want (notebook cells with comments? a bullet list? a single function with a docstring?).
+- The role. What kind of expert is the AI playing? A Scanpy power-user? A methods-section editor? A wet-lab protocol critic?
+- The task in concrete, verifiable terms. Input to output, not "analyse".
+- The context the AI does not already know: your dataset's tissue, condition, and organism; your lab's conventions; the paper's prior figures.
+- The format of the output you want. Notebook cells with comments? A bullet list? A single function with a docstring?
 
-A common failure: the framing is fine for a colleague but not for an AI, because it relies on the colleague's tacit knowledge of your project. The AI does not have that — write it down.
+A common failure is that the framing is fine for a colleague but not for an AI, because it relies on the colleague's tacit knowledge of your project. The AI does not have that. Write it down.
 :::
 
-### Exercise 1.3 — Discernment on a published claim
+### Exercise 1.3: Discernment on a published claim
 
-Find one figure or claim in a recent paper in your field (one you could read in 20 minutes). Write down: (a) what would have to be true for the claim to hold; (b) what the AI assistant's first answer would likely miss; (c) what a Discernment move would look like — what you'd check, in what order, and what would change your mind.
+Find one figure or claim in a recent paper in your field (one you could read in twenty minutes). Write down: (a) what would have to be true for the claim to hold, (b) what the AI assistant's first answer would likely miss, and (c) what a Discernment move would look like (what you'd check, in what order, and what would change your mind).
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 1.3
-You're doing this right if your discernment list includes at least one item that requires **subfield knowledge** an AI would not have — a control that's specific to your tissue, an organism convention, a known artifact in the assay, a methodological footnote that's only present in the supplement.
+You're doing this right if your discernment list includes at least one item that requires subfield knowledge an AI would not have: a control specific to your tissue, an organism convention, a known artifact in the assay, or a methodological footnote that is only in the supplement.
 
-If your list is all "check the statistics", you're using the AI to do the work that's actually yours. Re-read the [Diligence](../fluency/diligence.qmd) page on what owning the output means.
+If your list is all "check the statistics", you're using the AI to do the work that is actually yours. Re-read the [Diligence](../fluency/diligence.qmd) page on what owning the output means.
 :::
 
 ## Knowledge check
 
-Try to answer all six before checking. If you miss two or more, **revisit the readings** before doing the project.
+Try to answer all six before checking. If you miss two or more, revisit the readings before doing the project.
 
 ::: {.callout-tip collapse="true"}
-## Knowledge check — Week 1
+## Knowledge check: Week 1
 1. The delegation rubric has two axes. Name them, and explain why a "low-stakes" task is not automatically a "delegate fully" task.
 2. You write a Description framing that lists role, task, and format, but skips context. What goes wrong when the AI runs the task?
-3. Your colleague says: "the AI's clustering looks reasonable, so I accepted it." What's the Discernment problem with this sentence?
-4. Diligence as defined in this course has three components — ownership, verification, disclosure. For a one-line bug-fix you accepted from a coding assistant, which of the three are non-trivial? Why?
-5. You're choosing whether to delegate the BLAST e-value threshold for an ortholog search. The script that runs BLAST is in the "delegate fully" quadrant. Why is the threshold itself in the "do yourself" quadrant?
-6. You ask an AI to generate a methods paragraph and use it verbatim with light edits, with no disclosure. The text is factually correct. What's wrong with this, and which D is failing?
+3. A colleague says: "the AI's clustering looks reasonable, so I accepted it." What is the Discernment problem with this sentence?
+4. Diligence as defined in this course has three components: ownership, verification, and disclosure. For a one-line bug-fix you accepted from a coding assistant, which of the three are non-trivial? Why?
+5. You are choosing whether to delegate the BLAST e-value threshold for an ortholog search. The script that runs BLAST is in the "delegate fully" quadrant. Why is the threshold itself in the "do yourself" quadrant?
+6. You ask an AI to generate a methods paragraph and use it verbatim with light edits, with no disclosure. The text is factually correct. What is wrong with this, and which D is failing?
 
 **Answers:**
 
-1. **Verifiability cost** (how hard is it to check?) and **error consequence** (what happens if the answer is wrong?). Low-stakes alone is insufficient — a low-stakes task that is expensive to verify still wastes time, and "low-stakes" depends on downstream uses you may not yet know. The rubric requires both axes.
+1. *Verifiability cost* (how hard is it to check?) and *error consequence* (what happens if the answer is wrong?). Low-stakes alone is not enough. A low-stakes task that is expensive to verify still wastes time, and "low-stakes" depends on downstream uses you may not yet know. The rubric requires both axes.
 
-2. The AI fills in the missing context with statistical priors from its training data, not from your project. So it produces something plausible-looking that may be wrong about your tissue, your organism, your lab's conventions, or the dataset's specific quirks. The output looks fine until it silently uses (e.g.) human gene-name conventions on a mouse dataset.
+2. The AI fills in the missing context with statistical priors from its training data, not from your project. It produces something plausible-looking that may be wrong about your tissue, your organism, your lab's conventions, or the dataset's specific quirks. The output looks fine until it silently uses, say, human gene-name conventions on a mouse dataset.
 
-3. "Looks reasonable" is not a Discernment move; it's pattern-matching. The Discernment move is explicit: what would I have to see in the violin plots / UMAP / marker genes to *reject* this clustering? What can I check that the AI cannot? "Looks reasonable" doesn't say what you checked or what would change your mind.
+3. "Looks reasonable" is not a Discernment move. It is pattern-matching. The Discernment move is explicit: what would I have to see in the violin plots, UMAP, or marker genes to *reject* this clustering? What can I check that the AI cannot? "Looks reasonable" does not say what you checked or what would change your mind.
 
-4. **Ownership** is non-trivial — you are the author of record for the patched code, including any bugs the AI introduced. **Verification** is non-trivial if the bug-fix touches behaviour you can't easily test (e.g., a numerical edge case). **Disclosure** is the simplest of the three for a one-line fix, but it's still required when the patched function is in submitted work. The pattern of "trivial fix → no disclosure → no test" is how AI-introduced bugs survive into production.
+4. *Ownership* is non-trivial. You are the author of record for the patched code, including any bugs the AI introduced. *Verification* is non-trivial if the bug-fix touches behaviour you can't easily test, like a numerical edge case. *Disclosure* is the simplest of the three for a one-line fix, but it is still required when the patched function is in submitted work. The pattern "trivial fix, no disclosure, no test" is how AI-introduced bugs survive into production.
 
-5. The BLAST script is mechanical, deterministic, and checkable on a small test set. The e-value threshold is a scientific choice that depends on the research question, the database size, and field conventions. Verifying the threshold requires the same expertise as choosing it — so delegating doesn't save work; it shifts the choice into a position where you cannot cheaply check it.
+5. The BLAST script is mechanical, deterministic, and checkable on a small test set. The e-value threshold is a scientific choice that depends on the research question, the database size, and field conventions. Verifying the threshold requires the same expertise as choosing it. Delegating it does not save work. It shifts the choice into a position where you cannot cheaply check it.
 
-6. **Diligence** is failing — specifically the disclosure habit. Even when the output is factually correct, undisclosed AI-generated text in scientific writing violates current journal policy at most major venues (ICMJE, *Nature*, *Science*) because it removes the reader's ability to calibrate where the text came from. "Factually correct" is not the bar; *traceably authored* is.
+6. *Diligence* is failing, specifically the disclosure habit. Even when the output is factually correct, undisclosed AI-generated text in scientific writing violates current journal policy at most major venues (ICMJE, *Nature*, *Science*), because it removes the reader's ability to calibrate where the text came from. "Factually correct" is not the bar. *Traceably authored* is.
 :::
 
-## Project — Week 1 reflection
+## Project: Week 1 reflection
 
-Write a short reflection (≤ 500 words) covering:
+Write a short reflection (500 words or fewer) covering:
 
-1. **AI-free first pass**: classify three tasks from your own work using the 4 D's rubric, *without* AI input. Note your reasoning.
-2. **AI-second pass**: optionally, run the same three tasks past an AI assistant. Note what changed in your classification, what you accepted, and what you rejected.
-3. **Tooling confirmation**: paste the URL of your `quarto preview` skeleton repo, or attach the rendered HTML.
-4. **Disclosure statement** following the [rubric](../course-syllabus.qmd#disclosure-rubric).
+1. AI-free first pass. Classify three tasks from your own work using the 4 D's rubric, *without* AI input. Note your reasoning.
+2. AI-second pass. Optionally, run the same three tasks past an AI assistant. Note what changed in your classification, what you accepted, and what you rejected.
+3. Tooling confirmation. Paste the URL of your `quarto preview` skeleton repo, or attach the rendered HTML.
+4. Disclosure statement following the [rubric](../course-syllabus.qmd#disclosure-rubric).
 
-The AI-free first pass is the point: the goal is to develop *your* classification skill, not to recognise when an AI's classification is reasonable.
+The AI-free first pass is the point. The goal is to develop *your* classification skill, not to recognise when an AI's classification is reasonable.
 
-### Self-rubric — Week 1 reflection
+### Self-rubric: Week 1 reflection
 
-Use this to grade your own work before you call the project done. Each row is binary; aim for all four hits.
+Use this to grade your own work before you call the project done. Each row is binary. Aim for all four hits.
 
 | Dimension | 0 | 1 |
 |:----------|:---|:---|
-| **AI-free baseline** | Skipped, or the classification clearly references AI suggestions | Three tasks classified with explicit reasoning, written before any AI consultation |
-| **Both rubric axes used** | Justifications mention only one axis (or neither) | Each task placement names both verifiability cost *and* error consequence |
-| **Tooling works** | No repo, no rendered output, or `quarto preview` errors | Skeleton repo with at least one rendered Quarto page; pinned environment file present |
-| **Disclosure** | Vague ("used AI") or absent | Tool, version, tier, concrete uses, what was verified, at least one rejected suggestion |
+| AI-free baseline | Skipped, or the classification clearly references AI suggestions | Three tasks classified with explicit reasoning, written before any AI consultation |
+| Both rubric axes used | Justifications mention only one axis (or neither) | Each task placement names both verifiability cost *and* error consequence |
+| Tooling works | No repo, no rendered output, or `quarto preview` errors | Skeleton repo with at least one rendered Quarto page, and a pinned environment file present |
+| Disclosure | Vague ("used AI") or absent | Tool, version, tier, concrete uses, what was verified, and at least one rejected suggestion |
 
-If you score 4/4: you're done. If you score 3/4: identify the gap, fix it, move on. If you score ≤ 2/4: redo the AI-free pass — the project measures your skill, not the AI's.
+Score 4 of 4: you're done. Score 3 of 4: identify the gap, fix it, move on. Score 2 of 4 or fewer: redo the AI-free pass. The project measures your skill, not the AI's.
 
 ## Going further
 
-- Re-read the four D's pages in two weeks — most learners notice things on the second pass that they missed first time.
+- Re-read the four D's pages in two weeks. Most learners notice things on the second pass that they missed first time.
 - If the workflow audit feels useful, do it again at the end of Week 4 with the same three tasks. Compare what changed.
 - For a deeper take on the framework's source, work through Anthropic's full [AI Fluency](https://www.anthropic.com/ai-fluency) materials.

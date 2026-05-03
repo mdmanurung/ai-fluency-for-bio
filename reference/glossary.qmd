@@ -4,7 +4,7 @@ subtitle: "Working definitions for the AI / LLM and scRNA-seq vocabulary used th
 ---
 
 ::: {.callout-note}
-Each entry is a one- or two-sentence working definition — enough to keep reading, not the rigorous treatment. The links point at the course page where the term is introduced or used most directly.
+Each entry is a one- or two-sentence working definition. Enough to keep reading, not the rigorous treatment. The links point at the course page where the term is introduced or used most directly.
 :::
 
 ## AI / LLM
@@ -35,13 +35,13 @@ Each entry is a one- or two-sentence working definition — enough to keep readi
 
 **Temperature.** A scalar that controls the randomness of next-token sampling. 0 is greedy / deterministic; higher values widen the distribution. See [How LLMs work](../literacy/how-llms-work.qmd).
 
-**Token.** The atomic unit a model reads and emits — typically a sub-word fragment, not a whole word. Token boundaries explain quirks like why "scRNA-seq" splits awkwardly. See [How LLMs work](../literacy/how-llms-work.qmd).
+**Token.** The atomic unit a model reads and emits. Typically a sub-word fragment, not a whole word. Token boundaries explain quirks like why "scRNA-seq" splits awkwardly. See [How LLMs work](../literacy/how-llms-work.qmd).
 
 ## scRNA-seq / bioinformatics
 
 **AnnData.** The Python data structure (`anndata.AnnData`) that Scanpy operates on: a count matrix `X` plus aligned cell metadata (`obs`), gene metadata (`var`), and embeddings (`obsm`). See [Module 3](../modules/module-03-preprocessing-scanpy/README.md).
 
-**Batch effect.** Technical variation that correlates with sample, run, or batch — and obscures biological signal. Corrected with Harmony, Scanorama, or batch-aware modelling.
+**Batch effect.** Technical variation that correlates with sample, run, or batch, and that obscures biological signal. Corrected with Harmony, Scanorama, or batch-aware modelling.
 
 **Cell type annotation.** Assigning a biological label (e.g., "CD14+ Monocyte") to each cluster based on marker-gene expression. See [Module 5](../modules/module-05-annotation-interpretation/README.md).
 
@@ -51,9 +51,9 @@ Each entry is a one- or two-sentence working definition — enough to keep readi
 
 **FASTQ.** The text-based sequencing-read format with quality scores. The raw output of an Illumina run, before alignment. See [Module 1](../modules/module-01-raw-data-qc/README.md).
 
-**GEM-X.** 10x Genomics' current single-cell capture chemistry (v4 as of 2024); successor to the v3.1 chemistry that earlier protocols and AI training data describe. See [Protocol design](../bioinformatics/protocol-design.qmd).
+**GEM-X.** 10x Genomics' current single-cell capture chemistry (v4 as of 2024). The successor to the v3.1 chemistry that earlier protocols and AI training data describe. See [Protocol design](../bioinformatics/protocol-design.qmd).
 
-**Ground truth.** A label or measurement treated as correct for evaluation. In scRNA-seq cell-typing this is often "an expert annotated this dataset with marker-gene support" — strong, but not infallible.
+**Ground truth.** A label or measurement treated as correct for evaluation. In scRNA-seq cell-typing this is often "an expert annotated this dataset with marker-gene support". Strong, but not infallible.
 
 **HTO (hashtag oligonucleotide).** Antibody-conjugated oligos that mark cells from each sample with a unique barcode, allowing pooled capture and computational demultiplexing. Reduces batch effects.
 
@@ -61,8 +61,8 @@ Each entry is a one- or two-sentence working definition — enough to keep readi
 
 **Marker gene.** A gene whose expression is enriched in one cluster relative to all others, used to assign a cell-type label. Found with `sc.tl.rank_genes_groups`. See [Module 5](../modules/module-05-annotation-interpretation/README.md).
 
-**Mitochondrial fraction (`pct_counts_mt`).** Percentage of a cell's UMI counts coming from mitochondrial genes. High values flag dying or stressed cells. Tissue-dependent threshold (PBMCs: ≤5%; neurons: ≤20%). See [Module 3](../modules/module-03-preprocessing-scanpy/README.md).
+**Mitochondrial fraction (`pct_counts_mt`).** Percentage of a cell's UMI counts coming from mitochondrial genes. High values flag dying or stressed cells. The threshold is tissue-dependent (PBMCs: 5% or below; neurons: 20% or below). See [Module 3](../modules/module-03-preprocessing-scanpy/README.md).
 
-**PBMC 3k.** The 10x Genomics demonstration dataset bundled with Scanpy as `sc.datasets.pbmc3k()` — 2,700 peripheral blood mononuclear cells from a healthy donor, ≈8 well-characterised cell types. The course's hands-on dataset.
+**PBMC 3k.** The 10x Genomics demonstration dataset bundled with Scanpy as `sc.datasets.pbmc3k()`. 2,700 peripheral blood mononuclear cells from a healthy donor, with about 8 well-characterised cell types. The course's hands-on dataset.
 
-**UMAP.** Uniform Manifold Approximation and Projection — a non-linear embedding that places similar cells nearby in 2D. **Visualisation tool only**: inter-cluster distances are not quantitatively meaningful. See [Module 4](../modules/module-04-clustering-umap/README.md).
+**UMAP.** Uniform Manifold Approximation and Projection. A non-linear embedding that places similar cells nearby in 2D. Visualisation tool only. Inter-cluster distances are not quantitatively meaningful. See [Module 4](../modules/module-04-clustering-umap/README.md).
