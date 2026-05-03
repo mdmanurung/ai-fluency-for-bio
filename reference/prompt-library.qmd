@@ -5,16 +5,16 @@ subtitle: "Reusable prompt templates for the four bioinformatics tasks"
 
 ::: {.callout-note}
 ## How to use this page
-Each template below distils a worked pattern from the corresponding bioinformatics page into a fill-in-the-blank prompt. **They are starting points, not magic strings** — the value is the structure (specifying intent, environment, and constraints up front), not the exact wording. Adapt to your task; verify the output as the linked page describes.
+Each template below distils a worked pattern from the corresponding bioinformatics page into a fill-in-the-blank prompt. They are starting points, not magic strings. The value is the structure (specifying intent, environment, and constraints up front), not the exact wording. Adapt to your task and verify the output as the linked page describes.
 :::
 
 ## 1. Debugging a stack trace
 
-**Source pattern:** [Code assistance](../bioinformatics/code-assistance.qmd) — the four-part debugging pattern.
+Source pattern: [Code assistance](../bioinformatics/code-assistance.qmd), the four-part debugging pattern.
 
-**When to use:** something failed with a traceback you do not immediately understand and you want a focused first-pass diagnosis.
+When to use: something failed with a traceback you do not immediately understand and you want a focused first-pass diagnosis.
 
-**Template:**
+Template:
 
 ```
 I am running {what the script is doing in one sentence} and {package} is failing.
@@ -28,7 +28,7 @@ Full traceback:
 Minimal failing code (the smallest block that reproduces the error):
 
 ```python
-{the smallest reproducer — strip everything else out}
+{the smallest reproducer; strip everything else out}
 ```
 
 Intent: I expect {what the function is supposed to do and what you expected to happen}.
@@ -37,17 +37,17 @@ Environment: Python {version}, {package}=={version}, {related packages}=={versio
 {dataset / organism / platform context if relevant}.
 ```
 
-**Verify before trusting:** the AI's first guess is often a defensive try/except that hides the bug. Make sure the suggested fix addresses the *cause* (e.g., the missing pre-condition) and not just the symptom.
+Verify before trusting: the AI's first guess is often a defensive try/except that hides the bug. Make sure the suggested fix addresses the *cause* (the missing pre-condition) and not just the symptom.
 
 ---
 
 ## 2. Test writing for a function with a docstring
 
-**Source pattern:** [Code assistance](../bioinformatics/code-assistance.qmd) — `validate_qc_outputs` worked example.
+Source pattern: [Code assistance](../bioinformatics/code-assistance.qmd), the `validate_qc_outputs` worked example.
 
-**When to use:** you have a function whose contract you have written yourself, and you want pytest scaffolding around it without losing the contract.
+When to use: you have a function whose contract you have written yourself, and you want pytest scaffolding around it without losing the contract.
 
-**Template:**
+Template:
 
 ```
 Function `{name}` has the signature and docstring below. {One sentence on the dataset
@@ -55,53 +55,53 @@ and the realistic input the function will see.} Environment: Python {version},
 {packages}=={versions}, pytest {version}.
 
 ```python
-{paste your signature and docstring — you wrote the contract, not the AI}
+{paste your signature and docstring; you wrote the contract, not the AI}
 ```
 
 Draft pytest test cases covering the contract in the docstring. Use a fixture
 where appropriate. Do not invent additional contract beyond the docstring.
 ```
 
-**Verify before trusting:** prune tests that validate *dataset identity* rather than *contract* (e.g., "exactly 2,638 cells" — fragile). Add the test the AI missed for your domain (e.g., dtype, organism convention, view-vs-copy semantics for AnnData).
+Verify before trusting: prune tests that validate *dataset identity* rather than *contract* (a literal "exactly 2,638 cells" assertion is fragile). Add the test the AI missed for your domain (dtype, organism convention, view-vs-copy semantics for AnnData).
 
 ---
 
 ## 3. Literature triage on an unfamiliar topic
 
-**Source pattern:** [Literature review](../bioinformatics/literature-review.qmd) — the five-step verification workflow.
+Source pattern: [Literature review](../bioinformatics/literature-review.qmd), the five-step verification workflow.
 
-**When to use:** scoping a review or background section in a subfield you do not know yet. **Use a grounded tool (Elicit, Consensus, SciSpace, Perplexity-with-sources) for the citation list itself.** Use the prompt below for the vocabulary scaffold.
+When to use: scoping a review or background section in a subfield you do not know yet. Use a grounded tool (Elicit, Consensus, SciSpace, Perplexity with sources) for the citation list itself. Use the prompt below for the vocabulary scaffold.
 
-**Template:**
+Template:
 
 ```
 I am scoping a review of {topic} for {audience: lab meeting / introduction / grant
 specific aims}. Time horizon: {date range}. {Application context: e.g., "applied to
 the tumor microenvironment" / "in mouse models" / "in primary tissue".}
 
-1. List 8–10 key concepts and methods in this area in 2026.
-2. List 3–5 landmark / foundational papers.
-3. List 3–5 currently active research groups or recent reviews (last 2–3 years).
+1. List 8 to 10 key concepts and methods in this area in 2026.
+2. List 3 to 5 landmark or foundational papers.
+3. List 3 to 5 currently active research groups or recent reviews (last 2 to 3 years).
 
 For each citation, give: title, first author, year, journal, and DOI if known.
 ```
 
-**Verify every citation** with the five-step check on [Literature review](../bioinformatics/literature-review.qmd): copy DOI → resolve via doi.org → confirm title and authors match → check abstract on PubMed → only then incorporate. Budget ~3 minutes per citation; refuse to cite anything you cannot verify.
+Verify every citation with the five-step check on [Literature review](../bioinformatics/literature-review.qmd): copy DOI, resolve via doi.org, confirm title and authors match, check the abstract on PubMed, and only then incorporate. Budget about three minutes per citation. Refuse to cite anything you cannot verify.
 
-**Switch tools if** the ungrounded LLM returns ≥1 citation whose DOI does not resolve or resolves to a different paper. Re-run the same query in Elicit / Consensus.
+Switch tools if the ungrounded LLM returns at least one citation whose DOI does not resolve, or resolves to a different paper. Re-run the same query in Elicit or Consensus.
 
 ---
 
 ## 4. Protocol critique mode
 
-**Source pattern:** [Protocol design](../bioinformatics/protocol-design.qmd) — the sparring-partner workflow, step 4.
+Source pattern: [Protocol design](../bioinformatics/protocol-design.qmd), the sparring-partner workflow, step 4.
 
-**When to use:** you have drafted (or generated) a protocol and want a fast critique pass for missing controls and likely failure modes before showing it to your PI.
+When to use: you have drafted (or generated) a protocol and want a fast critique pass for missing controls and likely failure modes before showing it to your PI.
 
-**Template:**
+Template:
 
 ```
-Below is a draft protocol for {scientific question — one sentence}. Constraints:
+Below is a draft protocol for {scientific question, one sentence}. Constraints:
 {platform / organism / sample size / budget / time window}.
 
 ```
@@ -119,10 +119,10 @@ Critique this protocol. Specifically:
 4. Flag anything that depends on tacit lab knowledge an AI cannot have.
 ```
 
-**Verify before trusting:**
+Verify before trusting:
 
-- Cross-check every reagent version, kit code, or instrument firmware against the **current** vendor documentation. Training data lags by months to years, and version numbers update silently. (See the GEM-X v4 vs. v3.1 example on [Protocol design](../bioinformatics/protocol-design.qmd).)
-- Cell-loading concentrations, cycle counts, and timing parameters depend on cell type and platform; the AI gives the textbook number, not necessarily the right one.
+- Cross-check every reagent version, kit code, or instrument firmware against the *current* vendor documentation. Training data lags by months to years, and version numbers update silently. (See the GEM-X v4 vs. v3.1 example on [Protocol design](../bioinformatics/protocol-design.qmd).)
+- Cell-loading concentrations, cycle counts, and timing parameters depend on cell type and platform. The AI gives the textbook number, not necessarily the right one.
 - Treat the critique as a starting list, not a clearance. Your PI's review and a small dry run remain non-optional.
 
 ---
@@ -131,8 +131,8 @@ Critique this protocol. Specifically:
 
 If you are documenting a prompt for a deliverable's disclosure, record:
 
-- The exact tool, model, and version (e.g., "Claude Sonnet 4.6, web UI, default settings").
+- The exact tool, model, and version ("Claude Sonnet 4.6, web UI, default settings").
 - The full prompt text.
 - The date of the session.
 
-LLM outputs are non-deterministic at default settings; documenting the prompt does not guarantee reproducibility, but it does enable replication and critique. The disclosure rubric in the [Syllabus](../course-syllabus.qmd#disclosure-rubric) requires "tools listed" and "use described" — these notes satisfy both.
+LLM outputs are non-deterministic at default settings. Documenting the prompt does not guarantee reproducibility, but it does enable replication and critique. The disclosure rubric in the [Syllabus](../course-syllabus.qmd#disclosure-rubric) requires "tools listed" and "use described". These notes satisfy both.
