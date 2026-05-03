@@ -1,5 +1,5 @@
 ---
-title: "Week 2 — LLM literacy for bio"
+title: "Week 2: LLM literacy for bio"
 subtitle: "How the tools work, and how to prompt them"
 ---
 
@@ -13,121 +13,121 @@ subtitle: "How the tools work, and how to prompt them"
 
 ## Suggested pacing
 
-Plan on **~3–5 hours** total this week.
+Plan on three to five hours total this week.
 
 | Chunk | What | Time |
 |:------|:-----|:-----|
-| 1 | Read the four literacy pages | ~1.5 hrs |
-| 2 | Hands-on practice (solo prompt clinic) | ~1.5 hrs |
-| 3 | Knowledge check + revisit weak spots | ~30 min |
-| 4 | Project: prompt-engineering exercise | ~1 hr |
+| 1 | Read the four literacy pages | 1.5 hrs |
+| 2 | Hands-on practice (solo prompt clinic) | 1.5 hrs |
+| 3 | Knowledge check, revisit weak spots | 30 min |
+| 4 | Project: prompt-engineering exercise | 1 hr |
 
 ## Readings
 
-- [How LLMs work](../literacy/how-llms-work.qmd) — **focus on**: the "what this means for your workflow" section, not the mechanism. Tokenisation, attention, and temperature are means to an end here; the end is calibrating your trust.
-- [Prompting](../literacy/prompting.qmd) — **focus on**: the weak→strong progression and the role/task/context/format anatomy. Mermaid diagram is worth pausing on.
-- [Tool use & agents](../literacy/tool-use-and-agents.qmd) — **focus on**: the human-confirm gate. When an agentic workflow stops being safe, and what to do about it.
-- [Ethics & limits](../literacy/ethics-and-limits.qmd) — **focus on**: the authorship norms (ICMJE, *Nature*, *Science*) and what hallucination looks like in a methods or literature context.
+- [How LLMs work](../literacy/how-llms-work.qmd). Focus on the "what this means for your workflow" section, not the mechanism. Tokenisation, attention, and temperature are means to an end here. The end is calibrating your trust.
+- [Prompting](../literacy/prompting.qmd). Focus on the weak-to-strong progression and the role-task-context-format anatomy. The mermaid diagram is worth pausing on.
+- [Tool use & agents](../literacy/tool-use-and-agents.qmd). Focus on the human-confirm gate: when an agentic workflow stops being safe, and what to do about it.
+- [Ethics & limits](../literacy/ethics-and-limits.qmd). Focus on the authorship norms (ICMJE, *Nature*, *Science*) and what hallucination looks like in a methods or literature context.
 
 ## Hands-on practice
 
-Three exercises. Bring real prompts from your own work — generic examples won't generate useful feedback.
+Three exercises. Bring real prompts from your own work. Generic examples won't generate useful feedback.
 
-### Exercise 2.1 — Weak vs. strong prompt
+### Exercise 2.1: weak vs. strong prompt
 
-Pick **one** recurring task you do (e.g., "summarise this paper", "draft a methods paragraph", "write a Scanpy QC cell"). Write:
+Pick one recurring task you do ("summarise this paper", "draft a methods paragraph", "write a Scanpy QC cell"). Write:
 
-- A **weak** version of the prompt — short, no role, no context, no format constraint.
-- A **strong** version — role, task, context, format, with one or two examples if appropriate.
+- A *weak* version of the prompt: short, no role, no context, no format constraint.
+- A *strong* version: role, task, context, format, with one or two examples if appropriate.
 
-Run both through your LLM. Save both outputs. In 3–5 sentences, name what changed and which prompting patterns made the difference.
+Run both through your LLM. Save both outputs. In three to five sentences, name what changed and which prompting patterns made the difference.
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 2.1
 A useful weak/strong pair shows changes you can name and justify, not just "the strong one is longer". Watch for:
 
-- The strong prompt **constrains the format** (number of bullets, single function, ≤ 5 sentences) — this is usually where the biggest quality jump comes from.
-- The strong prompt **provides context the AI can't infer** (your dataset, your audience, your conventions). If your weak/strong delta is purely "I added more text", you haven't really used the patterns — re-read [Prompting](../literacy/prompting.qmd).
-- The strong prompt's output is **easier to verify**. If you can't tell whether the strong output is right, the prompt is still incomplete.
+- The strong prompt constrains the format (number of bullets, single function, five sentences or fewer). This is usually where the biggest quality jump comes from.
+- The strong prompt provides context the AI can't infer (your dataset, your audience, your conventions). If your weak/strong delta is purely "I added more text", you haven't really used the patterns. Re-read [Prompting](../literacy/prompting.qmd).
+- The strong prompt's output is easier to verify. If you can't tell whether the strong output is right, the prompt is still incomplete.
 :::
 
-### Exercise 2.2 — Solo prompt clinic
+### Exercise 2.2: solo prompt clinic
 
-Take **one** prompt from your own work that disappointed you. Walk it through the four-step clinic:
+Take one prompt from your own work that disappointed you. Walk it through the four-step clinic:
 
-1. **Diagnose**: which failure mode applies? (Vague request? Missing context? Wrong output format? Asking for recall instead of grounding?)
-2. **Fix**: apply one change from [Prompting](../literacy/prompting.qmd) (role + task + context + format; few-shot; constrained output; etc.).
-3. **Rerun**: compare the new output to the original.
-4. **Record**: keep a running log — original prompt / diagnosis / fix / verdict.
+1. *Diagnose*. Which failure mode applies? Vague request? Missing context? Wrong output format? Asking for recall instead of grounding?
+2. *Fix*. Apply one change from [Prompting](../literacy/prompting.qmd): role plus task plus context plus format, few-shot, constrained output, and so on.
+3. *Rerun*. Compare the new output to the original.
+4. *Record*. Keep a running log: original prompt, diagnosis, fix, verdict.
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 2.2
-A clean clinic entry has a **single named failure mode** (not "it was bad") and a **single named fix** (not "I rewrote it"). If you can't name them, the diagnosis is too coarse — try again with a smaller, more specific prompt.
+A clean clinic entry has a single named failure mode (not "it was bad") and a single named fix (not "I rewrote it"). If you can't name them, the diagnosis is too coarse. Try again with a smaller, more specific prompt.
 
-If your fix didn't help: the diagnosis was probably wrong. Common misdiagnoses: "vague request" when the real issue is the AI doesn't have your dataset's conventions; "wrong format" when the real issue is recall vs. grounding (the AI is making things up because it can't look at the source).
+If your fix didn't help, the diagnosis was probably wrong. Common misdiagnoses: "vague request" when the real issue is that the AI doesn't have your dataset's conventions; "wrong format" when the real issue is recall vs. grounding (the AI is making things up because it can't look at the source).
 :::
 
-### Exercise 2.3 — Chat or agent?
+### Exercise 2.3: chat or agent?
 
-For **three** tasks from your workflow audit (Exercise 1.1), decide whether each is best suited to:
+For three tasks from your workflow audit (Exercise 1.1), decide whether each is best suited to:
 
-- **Direct chat** (single-turn or short multi-turn, you in the loop on every step).
-- **Agentic workflow** (a tool-using agent that takes actions in a loop, with you confirming at gate points).
-- **Neither** (the task should be done without AI).
+- *Direct chat*: single-turn or short multi-turn, with you in the loop on every step.
+- *Agentic workflow*: a tool-using agent that takes actions in a loop, with you confirming at gate points.
+- *Neither*: the task should be done without AI.
 
-Write 1–2 sentences justifying each placement, naming the failure mode that would emerge in the wrong choice.
+Write one or two sentences justifying each placement, naming the failure mode that would emerge in the wrong choice.
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 2.3
 Strong placements name the failure mode of the alternative. For example: "Bibliography deduplication is suited to an agent because the per-step verification is cheap (string match) and the action is reversible. In direct chat, I'd be copy-pasting hundreds of lines of YAML, which is where I make transcription errors."
 
-Common errors: putting **scientific judgement** tasks (threshold choices, statistical test selection, interpretation) in the agent column. Re-read [Tool use & agents](../literacy/tool-use-and-agents.qmd) on when not to agent.
+A common error is putting scientific judgement tasks (threshold choices, statistical test selection, interpretation) in the agent column. Re-read [Tool use & agents](../literacy/tool-use-and-agents.qmd) on when not to agent.
 :::
 
 ## Knowledge check
 
 ::: {.callout-tip collapse="true"}
-## Knowledge check — Week 2
-1. An LLM produces text by **next-token prediction** over a learned distribution. What's the practical consequence of this for fact-checking the model's claims about a recent paper?
-2. Temperature is often described as "creativity". What's the more accurate one-line description, and what does temperature 0 *not* guarantee?
-3. You give an LLM a 10,000-token prompt with the relevant context at the top, then a question at the bottom. The model answers as if it didn't see the top. What's the most likely cause, and what's the prompting fix?
-4. You write a prompt with role, task, context, and format — but the output is still wrong. Walk through which of the four parts is likely the problem if (a) the AI's output uses the wrong organism's gene-name convention, (b) the AI's output is a wall of text when you wanted bullets.
-5. You're considering wrapping a literature-review tool around your AI as an agentic workflow ("search PubMed, summarise, write a brief"). Name two failure modes specific to this agent design and two design choices that mitigate them.
+## Knowledge check: Week 2
+1. An LLM produces text by *next-token prediction* over a learned distribution. What is the practical consequence of this for fact-checking the model's claims about a recent paper?
+2. Temperature is often described as "creativity". What is the more accurate one-line description, and what does temperature 0 *not* guarantee?
+3. You give an LLM a 10,000-token prompt with the relevant context at the top, then a question at the bottom. The model answers as if it didn't see the top. What is the most likely cause, and what is the prompting fix?
+4. You write a prompt with role, task, context, and format, but the output is still wrong. Walk through which of the four parts is likely the problem if (a) the AI's output uses the wrong organism's gene-name convention, and (b) the AI's output is a wall of text when you wanted bullets.
+5. You are considering wrapping a literature-review tool around your AI as an agentic workflow ("search PubMed, summarise, write a brief"). Name two failure modes specific to this agent design and two design choices that mitigate them.
 6. ICMJE, *Nature*, and *Science* all currently require disclosure of AI use in scientific writing. Why is this required even when the AI-generated text is factually correct?
 
 **Answers:**
 
-1. The LLM does not "look up" facts — it samples from a distribution conditioned on training data and the prompt. Two consequences: (a) information beyond the training cutoff is unknown to the model; (b) information *inside* the training cutoff may still be confabulated when the relevant detail wasn't well-represented in training. So fact-checking is required for any specific claim about a paper, statistic, or method, regardless of how confidently the model presents it.
+1. The LLM does not "look up" facts. It samples from a distribution conditioned on training data and the prompt. Two consequences: (a) information beyond the training cutoff is unknown to the model, and (b) information *inside* the training cutoff may still be confabulated when the relevant detail wasn't well represented in training. Fact-checking is required for any specific claim about a paper, statistic, or method, regardless of how confidently the model presents it.
 
-2. **Sharpness of the next-token distribution** — temperature 0 picks the highest-probability token; higher temperature samples from a flatter distribution. Temperature 0 does *not* guarantee "the right answer" — it guarantees "the same wrong answer every time" if the most likely token is wrong. Temperature 0 also does not guarantee determinism across model versions, batch sizes, or providers.
+2. *Sharpness of the next-token distribution.* Temperature 0 picks the highest-probability token. Higher temperature samples from a flatter distribution. Temperature 0 does *not* guarantee "the right answer". It guarantees "the same wrong answer every time" if the most likely token is wrong. Temperature 0 also does not guarantee determinism across model versions, batch sizes, or providers.
 
-3. The **lost-in-the-middle / recency-bias** failure: long-context models often weight recent tokens more heavily than earlier ones. Fixes: (a) put the question *and* a short re-statement of the relevant context at the bottom of the prompt; (b) explicitly instruct the model to "use only the context above" before asking the question; (c) for very long inputs, ask the model to first extract the relevant passages, then answer.
+3. The lost-in-the-middle or recency-bias failure: long-context models often weight recent tokens more heavily than earlier ones. Fixes: (a) put the question *and* a short re-statement of the relevant context at the bottom of the prompt; (b) explicitly instruct the model to "use only the context above" before asking the question; (c) for very long inputs, ask the model to first extract the relevant passages, then answer.
 
-4. (a) **Context** is wrong — you didn't tell the model the organism, so it defaulted to whatever convention is most common in its training data (usually human, uppercase). (b) **Format** is wrong — you specified the role and task but didn't constrain the output structure. Add "Respond as a Markdown bullet list, ≤ 5 bullets, no preamble."
+4. (a) Context is wrong. You didn't tell the model the organism, so it defaulted to whatever convention is most common in its training data (usually human, uppercase). (b) Format is wrong. You specified the role and task but didn't constrain the output structure. Add "Respond as a Markdown bullet list, five bullets or fewer, no preamble".
 
-5. Two failure modes: (i) **fabricated citations** — the model invents plausible-looking PMIDs/DOIs that don't resolve; (ii) **silent scope drift** — the agent searches and summarises adjacent topics rather than the one you asked for, and the brief reads coherently anyway. Mitigations: (i) **ground every citation** by having the agent fetch and confirm the metadata against PubMed/CrossRef before quoting it; (ii) **human-confirm gate** before the brief is finalised — show the user the search query and result list, not just the brief, so the user catches scope drift.
+5. Two failure modes: (i) fabricated citations. The model invents plausible-looking PMIDs and DOIs that don't resolve. (ii) Silent scope drift. The agent searches and summarises adjacent topics rather than the one you asked for, and the brief reads coherently anyway. Mitigations: (i) ground every citation by having the agent fetch and confirm the metadata against PubMed or CrossRef before quoting it. (ii) Add a human-confirm gate before the brief is finalised. Show the user the search query and result list, not just the brief, so the user catches scope drift.
 
-6. Disclosure exists so the reader can **calibrate where the text came from**. A factually correct paragraph from an LLM is still produced by a different process than a paragraph the human wrote — the LLM samples from a distribution; the human reasons from evidence and accountability. Disclosure preserves the reader's ability to apply their normal scrutiny. Removing it (even for correct text) violates the implicit contract of scientific writing: the reader assumes the human authored what they read.
+6. Disclosure exists so the reader can calibrate where the text came from. A factually correct paragraph from an LLM is still produced by a different process than a paragraph the human wrote. The LLM samples from a distribution. The human reasons from evidence and accountability. Disclosure preserves the reader's ability to apply their normal scrutiny. Removing it, even for correct text, violates the implicit contract of scientific writing: the reader assumes the human authored what they read.
 :::
 
-## Project — Prompt-engineering exercise
+## Project: prompt-engineering exercise
 
 Produce:
 
-1. **Prompt comparison**: take a recurring task from your work. Submit (a) a weak prompt, (b) a strong prompt using patterns from [Prompting](../literacy/prompting.qmd), (c) outputs from each, (d) a 3–5 sentence critique explaining what changed and why.
-2. **Clinic log**: at least two entries from Exercise 2.2 — original prompt / diagnosis / fix / verdict for each.
-3. **Disclosure statement** following the [rubric](../course-syllabus.qmd#disclosure-rubric). Note which AI tools you used to produce or improve the prompts in parts 1 and 2.
+1. Prompt comparison. Take a recurring task from your work. Submit (a) a weak prompt, (b) a strong prompt using patterns from [Prompting](../literacy/prompting.qmd), (c) outputs from each, and (d) a three- to five-sentence critique explaining what changed and why.
+2. Clinic log. At least two entries from Exercise 2.2: original prompt, diagnosis, fix, verdict for each.
+3. Disclosure statement following the [rubric](../course-syllabus.qmd#disclosure-rubric). Note which AI tools you used to produce or improve the prompts in parts 1 and 2.
 
-### Self-rubric — Prompt-engineering exercise
+### Self-rubric: prompt-engineering exercise
 
 | Dimension | 0 | 1 |
 |:----------|:---|:---|
-| **Prompt anatomy** | Weak/strong differ only in length | Strong prompt visibly applies role + task + context + format (or another named pattern) |
-| **Critique depth** | "The strong one is better" | Names the specific pattern, why it helped, and what the AI still got wrong |
-| **Clinic log specificity** | Vague diagnosis ("it was bad") and vague fix ("I rewrote it") | Each entry names a single failure mode and a single fix; verdict is observable |
-| **Disclosure** | Vague or absent | Tool, version, tier, concrete uses, what was verified, at least one rejected suggestion |
+| Prompt anatomy | Weak and strong differ only in length | Strong prompt visibly applies role plus task plus context plus format (or another named pattern) |
+| Critique depth | "The strong one is better" | Names the specific pattern, why it helped, and what the AI still got wrong |
+| Clinic log specificity | Vague diagnosis ("it was bad") and vague fix ("I rewrote it") | Each entry names a single failure mode and a single fix, with an observable verdict |
+| Disclosure | Vague or absent | Tool, version, tier, concrete uses, what was verified, and at least one rejected suggestion |
 
 ## Going further
 
-- Build a personal **prompt library** of patterns that work for *your* recurring tasks. Treat it like a snippet library: when you find a pattern that consistently works, save it. The course's [prompt library](../reference/prompt-library.qmd) is a starting set.
-- For deeper coverage of the underlying mechanisms, read Karpathy's [Neural Networks: Zero to Hero](https://karpathy.ai/zero-to-hero.html) — long-form video; not required, but excellent.
+- Build a personal prompt library of patterns that work for *your* recurring tasks. Treat it like a snippet library: when you find a pattern that consistently works, save it. The course's [prompt library](../reference/prompt-library.qmd) is a starting set.
+- For deeper coverage of the underlying mechanisms, read Karpathy's [Neural Networks: Zero to Hero](https://karpathy.ai/zero-to-hero.html). Long-form video. Not required, but excellent.

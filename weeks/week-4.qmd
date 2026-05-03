@@ -1,12 +1,12 @@
 ---
-title: "Week 4 — scRNA-seq II (annotation, final project)"
+title: "Week 4: scRNA-seq II (annotation, final project)"
 subtitle: "Cell-type annotation, literature, protocols, and your final project"
 ---
 
 ::: {.callout-note}
 ## Learning objectives
-- Apply marker-based and reference-based cell-type annotation (CellTypist) and exercise the **Discernment** D against the AI's biological claims.
-- Run a small differential-expression analysis between conditions and own the interpretation in your own words (**Diligence**).
+- Apply marker-based and reference-based cell-type annotation (CellTypist) and exercise the *Discernment* D against the AI's biological claims.
+- Run a small differential-expression analysis between conditions and own the interpretation in your own words (*Diligence*).
 - Use grounded literature tools to verify every citation in a short literature brief.
 - Use AI as a sparring partner for protocol design without ceding scientific judgement.
 - Produce a 4-D's-aware final project with a complete disclosure statement.
@@ -14,137 +14,137 @@ subtitle: "Cell-type annotation, literature, protocols, and your final project"
 
 ::: {.callout-warning}
 ## Scope reminder
-The final project is the capstone of the course, not a stand-alone research project. An honest 4-week (or 6-week, at your pace) course cannot deliver an "end-to-end research project" cold. Pick a path that **executes a scoped piece**, demonstrates the 4 D's, and is finishable.
+The final project is the capstone of the course, not a stand-alone research project. An honest four-week (or six-week, at your pace) course cannot deliver an "end-to-end research project" cold. Pick a path that executes a scoped piece, demonstrates the 4 D's, and is finishable.
 :::
 
 ## Suggested pacing
 
-Plan on **~5–7 hours** total this week, plus the final project (often 4–6 additional hours).
+Plan on five to seven hours total this week, plus the final project (often four to six additional hours).
 
 | Chunk | What | Time |
 |:------|:-----|:-----|
-| 1 | Read literature review + protocol design | ~1.5 hrs |
-| 2 | Run Module 5 in Colab (annotation + DE) | ~1.5 hrs |
-| 3 | Hands-on practice exercises | ~1.5 hrs |
-| 4 | Knowledge check | ~30 min |
-| 5 | Final project: scope → execute → write up + 4 D's reflection | ~4–6 hrs (give it 1–2 days) |
+| 1 | Read literature review and protocol design | 1.5 hrs |
+| 2 | Run Module 5 in Colab (annotation and DE) | 1.5 hrs |
+| 3 | Hands-on practice exercises | 1.5 hrs |
+| 4 | Knowledge check | 30 min |
+| 5 | Final project: scope, execute, write up, 4 D's reflection | 4 to 6 hrs (give it 1 to 2 days) |
 
 ## Setup
 
-- For **Path A** (PBMC 3k continuation): post-clustering AnnData ready (output of [Module 4](../modules/module-04-clustering-umap/README.md) from Week 3).
-- For **Path B** (literature brief): a question scoped narrow enough that 5 verified citations are sufficient.
-- For **Path C** (protocol design): the protocol problem and any constraints (organism, equipment, budget, regulatory).
+- For Path A (PBMC 3k continuation): a post-clustering AnnData ready (the output of [Module 4](../modules/module-04-clustering-umap/README.md) from Week 3).
+- For Path B (literature brief): a question scoped narrowly enough that five verified citations are sufficient.
+- For Path C (protocol design): the protocol problem and any constraints (organism, equipment, budget, regulatory).
 
 ## Readings
 
-- [Literature review](../bioinformatics/literature-review.qmd) — **focus on**: the five-step verification workflow and the worked fabricated-citation catch. This is the bar for Path B and for any citation you put in any project.
-- [Protocol design](../bioinformatics/protocol-design.qmd) — **focus on**: the AI-sparring-partner pattern. The two "AI was wrong" moments in the worked example are exactly the moves Path C is testing.
-- [Module 5 — Annotation & interpretation](../modules/module-05-annotation-interpretation/README.md) — full module reading; Path A continuers will run it end-to-end.
+- [Literature review](../bioinformatics/literature-review.qmd). Focus on the five-step verification workflow and the worked fabricated-citation catch. This is the bar for Path B and for any citation you put in any project.
+- [Protocol design](../bioinformatics/protocol-design.qmd). Focus on the AI-sparring-partner pattern. The two "AI was wrong" moments in the worked example are exactly the moves Path C is testing.
+- [Module 5: annotation and interpretation](../modules/module-05-annotation-interpretation/README.md). Full module reading. Path A continuers will run it end-to-end.
 
 ## Hands-on practice
 
 Three exercises designed to surface where AI confidence outruns AI competence on biology.
 
-### Exercise 4.1 — Citation verification
+### Exercise 4.1: citation verification
 
-Pick **three** citations from a recent paper in your field — ideally one from the introduction, one from the methods, and one from the discussion. For each, run the [verification workflow](../bioinformatics/literature-review.qmd): does PubMed/CrossRef return the same authors, journal, year, and title? Does the cited claim actually appear in the abstract or paper?
+Pick three citations from a recent paper in your field, ideally one from the introduction, one from the methods, and one from the discussion. For each, run the [verification workflow](../bioinformatics/literature-review.qmd). Does PubMed or CrossRef return the same authors, journal, year, and title? Does the cited claim actually appear in the abstract or paper?
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 4.1
-You've done this right if at least one of the three forced you to actually open the paper and check the cited claim, not just confirm the metadata. The most common error in AI-generated literature is **citation drift** — the metadata is correct, but the cited claim is not what the paper actually says. Verifying metadata only catches fabrication; verifying the claim catches drift.
+You've done this right if at least one of the three forced you to actually open the paper and check the cited claim, not just confirm the metadata. The most common error in AI-generated literature is *citation drift*: the metadata is correct, but the cited claim is not what the paper actually says. Verifying metadata only catches fabrication. Verifying the claim catches drift.
 
-If all three came back clean on metadata + claim, pick a fourth citation, this time from an AI-generated paragraph. The fabrication rate in AI literature output is high enough that you should see at least one drift in any moderate-length AI summary.
+If all three came back clean on metadata and claim, pick a fourth citation, this time from an AI-generated paragraph. The fabrication rate in AI literature output is high enough that you should see at least one drift in any moderate-length AI summary.
 :::
 
-### Exercise 4.2 — Protocol critique
+### Exercise 4.2: protocol critique
 
-Pick a recent protocol (your own, a colleague's, or a published one). Ask an AI to suggest one improvement to a single step. Then write **the rejection or refinement reasoning**: would you accept the suggestion as-is, modify it, or reject it? Why? What domain knowledge is your reasoning drawing on?
+Pick a recent protocol (your own, a colleague's, or a published one). Ask an AI to suggest one improvement to a single step. Then write the rejection or refinement reasoning: would you accept the suggestion as-is, modify it, or reject it? Why? What domain knowledge is your reasoning drawing on?
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 4.2
-A useful critique names the **specific scientific reason** you'd accept, modify, or reject — not "the AI suggestion is generic" but "the AI suggested raising the annealing temperature by 5°C, which would lose specificity for this primer pair given GC content of 62% and a known cross-reactivity with paralog X."
+A useful critique names the specific scientific reason you'd accept, modify, or reject. Not "the AI suggestion is generic" but "the AI suggested raising the annealing temperature by 5°C, which would lose specificity for this primer pair given GC content of 62% and a known cross-reactivity with paralog X."
 
-Common failure mode: the rejection reasoning is just "the AI doesn't know my system." That's true and not useful — *what* about your system makes the suggestion wrong? If you can't answer, the AI may actually be right; do the experiment.
+A common failure mode is rejection reasoning that is just "the AI doesn't know my system". That is true and not useful. *What* about your system makes the suggestion wrong? If you can't answer, the AI may actually be right. Do the experiment.
 :::
 
-### Exercise 4.3 — Cluster identity prediction
+### Exercise 4.3: cluster identity prediction
 
-After running Module 5 (or before, if you can find marker genes from your own work): for **one** Leiden cluster, write down what cell type you predict it is from the top marker genes alone, **before** checking CellTypist's answer. Then compare. If you and CellTypist agree, ask: would you have predicted the same on a different tissue? If you disagree, who's right and how do you know?
+After running Module 5 (or before, if you can find marker genes from your own work), pick one Leiden cluster and write down what cell type you predict it is from the top marker genes alone, before checking CellTypist's answer. Then compare. If you and CellTypist agree, ask: would you have predicted the same on a different tissue? If you disagree, who is right and how do you know?
 
 ::: {.callout-tip collapse="true"}
 ## Self-check: Exercise 4.3
-Strong cluster predictions reason from **specific markers** ("top markers are `CD14`, `LYZ`, `S100A8` — classical monocytes"), not from **UMAP shape** or **cluster size**. If you and CellTypist agree but you can't name the markers, you weren't really doing the prediction — you were inferring CellTypist's answer from the cluster's position in the UMAP.
+Strong cluster predictions reason from specific markers ("top markers are `CD14`, `LYZ`, `S100A8`, so classical monocytes"), not from UMAP shape or cluster size. If you and CellTypist agree but you can't name the markers, you weren't really doing the prediction. You were inferring CellTypist's answer from the cluster's position in the UMAP.
 
-If you disagree with CellTypist: check whether CellTypist's reference dataset includes your tissue's expected cell types. CellTypist is excellent for the immune cells in PBMC, less reliable for tissue-resident populations or rare/disease-specific states. Disagreement is data, not a problem.
+If you disagree with CellTypist, check whether CellTypist's reference dataset includes your tissue's expected cell types. CellTypist is excellent for the immune cells in PBMC, and less reliable for tissue-resident populations or rare or disease-specific states. Disagreement is data, not a problem.
 :::
 
 ## Knowledge check
 
 ::: {.callout-tip collapse="true"}
-## Knowledge check — Week 4
+## Knowledge check: Week 4
 1. CellTypist annotates a cluster as "B cells" with confidence 0.94. Your top markers in that cluster are `CD79A`, `CD79B`, `MS4A1`. Should you accept the annotation? What about if the marker list were `CD3D`, `CD3E`, `TRAC`?
 2. You're annotating a *mouse* lung dataset and the AI suggests querying CellTypist with the human PBMC reference. Two things go wrong. Name them.
-3. Differential expression between two clusters returns 3,500 significant genes at FDR < 0.05. The AI says "this is a strong biological signal." What's the Discernment problem?
-4. You ask an AI to generate a literature review on a niche question and it returns five citations. Three resolve to real papers, one resolves to a real paper but the abstract doesn't say what's claimed, one returns 404. Where is the AI dangerous in this output?
-5. You're using AI as a sparring partner for a wet-lab protocol design. The AI suggests a control you hadn't considered. What's the right next move — accept it, reject it, or something else?
-6. Your final project's 4 D's reflection says: "I used Delegation by asking the AI to write the code, Description by giving it my dataset, Discernment by checking the output, and Diligence by disclosing." Why is this a weak reflection, and what would a strong one say differently?
-7. In your final project, you used an AI to draft three paragraphs of the methods section. You edited them lightly and submitted them with the disclosure statement. The text is factually correct. What's still required, and what's at risk if it's not done?
+3. Differential expression between two clusters returns 3,500 significant genes at FDR < 0.05. The AI says "this is a strong biological signal". What is the Discernment problem?
+4. You ask an AI to generate a literature review on a niche question and it returns five citations. Three resolve to real papers, one resolves to a real paper but the abstract doesn't say what's claimed, and one returns 404. Where is the AI dangerous in this output?
+5. You are using AI as a sparring partner for a wet-lab protocol design. The AI suggests a control you hadn't considered. What is the right next move: accept it, reject it, or something else?
+6. Your final project's 4 D's reflection says: "I used Delegation by asking the AI to write the code, Description by giving it my dataset, Discernment by checking the output, and Diligence by disclosing". Why is this a weak reflection, and what would a strong one say differently?
+7. In your final project, you used an AI to draft three paragraphs of the methods section. You edited them lightly and submitted them with the disclosure statement. The text is factually correct. What is still required, and what is at risk if it is not done?
 
 **Answers:**
 
-1. With `CD79A/B + MS4A1`, **accept** — those are classical, robust B-cell markers and the signal is unambiguous. With `CD3D/E + TRAC`, the markers are T-cell, not B-cell — **reject** the annotation. CellTypist's confidence is well-calibrated *on the reference distribution*, not on every dataset. The Discernment move is to read the markers yourself; the confidence number is supporting evidence, not the answer.
+1. With `CD79A`, `CD79B`, and `MS4A1`, accept. Those are classical, reliable B-cell markers and the signal is unambiguous. With `CD3D`, `CD3E`, and `TRAC`, the markers are T-cell, not B-cell. Reject the annotation. CellTypist's confidence is well-calibrated *on the reference distribution*, not on every dataset. The Discernment move is to read the markers yourself. The confidence number is supporting evidence, not the answer.
 
-2. (i) **Organism convention**: CellTypist immune references are largely human gene-symbol; mouse genes (`Cd3e`, `Ms4a1`) won't match the reference vocabulary, so almost everything will be flagged "unknown." (ii) **Tissue context**: even with the right organism, PBMC reference doesn't cover lung-resident populations (alveolar macrophages, tissue-resident memory T cells, etc.) — so the cell types CellTypist suggests will be a circulating-immune projection of a tissue-immune dataset. Pick a mouse lung reference (or build one from a published mouse lung atlas), not a human PBMC reference.
+2. (i) Organism convention. CellTypist immune references are largely human gene-symbol. Mouse genes (`Cd3e`, `Ms4a1`) won't match the reference vocabulary, so almost everything will be flagged "unknown". (ii) Tissue context. Even with the right organism, the PBMC reference doesn't cover lung-resident populations (alveolar macrophages, tissue-resident memory T cells, and so on), so the cell types CellTypist suggests will be a circulating-immune projection of a tissue-immune dataset. Pick a mouse lung reference (or build one from a published mouse lung atlas), not a human PBMC reference.
 
-3. 3,500 significant genes between two PBMC clusters means **most of your transcriptome is "different"** — usually a sign that the comparison is dominated by library-size effects, cell-cycle effects, or that one cluster has many more cells (statistical power, not biology). The Discernment moves: check the log-fold-change distribution (most "significant" genes will have tiny LFC), check that you've corrected for library-size differences, check the cluster cell counts (DE between a 200-cell cluster and a 2,000-cell cluster will look hugely significant). Strong biological signal should look like a *small* number of genes with *large* effects — not 3,500 genes barely above the threshold.
+3. 3,500 significant genes between two PBMC clusters means most of your transcriptome is "different". That is usually a sign the comparison is dominated by library-size effects, cell-cycle effects, or that one cluster has many more cells (statistical power, not biology). The Discernment moves: check the log-fold-change distribution (most "significant" genes will have tiny LFC); check that you've corrected for library-size differences; check the cluster cell counts (DE between a 200-cell cluster and a 2,000-cell cluster will look hugely significant). Strong biological signal should look like a *small* number of genes with *large* effects, not 3,500 genes barely above the threshold.
 
-4. The **dangerous output is not the 404** — that's caught immediately. The danger is the **citation that resolves but doesn't say what's claimed**. The reader trusts that a resolved citation supports the claim; AI-generated reviews exploit that trust. The verification workflow's whole point is to catch this case. Treat any AI-generated literature review as suspect for citation drift until every claim has been checked against the cited paper's actual text.
+4. The dangerous output is not the 404. That is caught immediately. The danger is the citation that resolves but doesn't say what's claimed. The reader trusts that a resolved citation supports the claim, and AI-generated reviews exploit that trust. The verification workflow's whole point is to catch this case. Treat any AI-generated literature review as suspect for citation drift until every claim has been checked against the cited paper's actual text.
 
-5. **Investigate it as if it had come from a thoughtful colleague.** If the suggested control would catch a real failure mode you hadn't considered, accept it (and credit the AI in the disclosure). If it's a generic textbook control that doesn't apply to your system, reject it with a written reason. The wrong moves are (a) accepting it because the AI suggested it (Diligence failure) and (b) rejecting it because it came from an AI (Discernment failure — you weren't evaluating the *suggestion*, just the *source*).
+5. Investigate it as if it had come from a thoughtful colleague. If the suggested control would catch a real failure mode you hadn't considered, accept it (and credit the AI in the disclosure). If it is a generic textbook control that doesn't apply to your system, reject it with a written reason. The wrong moves are (a) accepting it because the AI suggested it (a Diligence failure) and (b) rejecting it because it came from an AI (a Discernment failure: you weren't evaluating the *suggestion*, just the *source*).
 
-6. The reflection lists **labels, not actions**. A strong 4 D's reflection names *specific moments*: "Delegation — I delegated the boilerplate of the QC pipeline (mt-gene flag, violin plots, threshold filter) because the verifiability cost was low; I did *not* delegate the threshold value because that required tissue-specific judgement. Description — for the Module 4 PCA → UMAP step, I framed the prompt with the dataset shape, the post-QC AnnData layout, and 'use Scanpy ≥ 1.10 idioms' as the format constraint. Discernment — the AI suggested 30 PCs and I challenged it; the elbow plot was ambiguous between 20 and 50, so I tested both and confirmed Leiden clusters were stable across the range. Diligence — verified marker genes against PanglaoDB before accepting the cluster annotations; rejected one AI-suggested cell-type label that didn't match the markers." The strong reflection says what *happened* in this specific project; the weak one would fit any project.
+6. The reflection lists labels, not actions. A strong 4 D's reflection names *specific moments*: "Delegation: I delegated the boilerplate of the QC pipeline (mt-gene flag, violin plots, threshold filter) because the verifiability cost was low. I did *not* delegate the threshold value because that required tissue-specific judgement. Description: for the Module 4 PCA-to-UMAP step, I framed the prompt with the dataset shape, the post-QC AnnData layout, and 'use Scanpy 1.10 or later idioms' as the format constraint. Discernment: the AI suggested 30 PCs and I challenged it. The elbow plot was ambiguous between 20 and 50, so I tested both and confirmed Leiden clusters were stable across the range. Diligence: verified marker genes against PanglaoDB before accepting the cluster annotations; rejected one AI-suggested cell-type label that didn't match the markers." The strong reflection says what *happened* in this specific project. The weak one would fit any project.
 
-7. Required: the **disclosure statement must name** that those three paragraphs were AI-drafted and human-edited, even though the text is factually correct. At risk if not done: (i) violation of journal AI-disclosure policies (ICMJE, *Nature*, *Science* all require it now); (ii) loss of the reader's ability to calibrate the text — the reader assumes a paragraph in a methods section was written by a human reasoning from evidence, and AI text is produced by a different process; (iii) for trainees, undermining the development of your own scientific writing voice. "Factually correct" is not the bar; *traceably authored* is.
+7. Required: the disclosure statement must name that those three paragraphs were AI-drafted and human-edited, even though the text is factually correct. At risk if not done: (i) violation of journal AI-disclosure policies (ICMJE, *Nature*, *Science* all require it now); (ii) loss of the reader's ability to calibrate the text. The reader assumes a paragraph in a methods section was written by a human reasoning from evidence, and AI text is produced by a different process. (iii) For trainees, undermining the development of your own scientific writing voice. "Factually correct" is not the bar. *Traceably authored* is.
 :::
 
-## Project — Final project
+## Project: final project
 
-Pick **one** of three paths. The path is your choice; the bar is the same for all three.
+Pick one of three paths. The path is your choice. The bar is the same for all three.
 
-- **Path A — scRNA-seq analysis on PBMC 3k.** Continue the mini-project: marker-based annotation, CellTypist, one differential-expression contrast, and an annotated UMAP figure. ([Module 5](../modules/module-05-annotation-interpretation/README.md) is the runnable reference.)
-- **Path B — literature brief.** A scoped review of a question relevant to your work, ≤ 5 verified citations each with a one-sentence relevance note. Verification means each citation has been checked on PubMed or CrossRef and the cited claim has been confirmed against the source paper, per the [verification workflow](../bioinformatics/literature-review.qmd).
-- **Path C — protocol design.** A one-page wet-lab or computational protocol, designed using AI as a sparring partner per [Protocol design](../bioinformatics/protocol-design.qmd). Include controls, sample-size reasoning, expected outcomes, and at least one place where you rejected an AI suggestion with a documented reason.
+- *Path A: scRNA-seq analysis on PBMC 3k.* Continue the mini-project with marker-based annotation, CellTypist, one differential-expression contrast, and an annotated UMAP figure. [Module 5](../modules/module-05-annotation-interpretation/README.md) is the runnable reference.
+- *Path B: literature brief.* A scoped review of a question relevant to your work, with five or fewer verified citations, each with a one-sentence relevance note. Verification means each citation has been checked on PubMed or CrossRef and the cited claim has been confirmed against the source paper, per the [verification workflow](../bioinformatics/literature-review.qmd).
+- *Path C: protocol design.* A one-page wet-lab or computational protocol, designed using AI as a sparring partner per [Protocol design](../bioinformatics/protocol-design.qmd). Include controls, sample-size reasoning, expected outcomes, and at least one place where you rejected an AI suggestion with a documented reason.
 
 Whichever path you pick, every final project must include:
 
-1. **The artifact** (analysis notebook, literature brief, or protocol).
-2. **4 D's reflection** (≤ 500 words): map your process onto Delegation, Description, Discernment, Diligence. Where did each show up? Where did you fail and recover?
-3. **Disclosure statement** per the [rubric](../course-syllabus.qmd#disclosure-rubric).
+1. The artifact (analysis notebook, literature brief, or protocol).
+2. A 4 D's reflection (500 words or fewer). Map your process onto Delegation, Description, Discernment, Diligence. Where did each show up? Where did you fail and recover?
+3. A disclosure statement per the [rubric](../course-syllabus.qmd#disclosure-rubric).
 
-### Self-rubric — Final project
+### Self-rubric: final project
 
-Path-specific dimensions in the first two rows; common dimensions below.
+Path-specific dimensions in the first three rows. Common dimensions below.
 
 | Dimension | 0 | 1 |
 |:----------|:---|:---|
-| **Artifact correctness — Path A** | Annotation skipped, DE returns wall of genes, or UMAP unlabelled | Marker-based annotation defended; ≥ 1 DE contrast with sane gene count; UMAP labelled and saved |
-| **Artifact correctness — Path B** | Some citations not verified, or claims drift from sources | All ≤ 5 citations metadata-verified *and* claim-verified; one-sentence relevance note per citation |
-| **Artifact correctness — Path C** | Missing controls, no sample-size reasoning, or zero AI rejections noted | Controls explicit; sample-size reasoning written down; at least one AI rejection with documented reason |
-| **4 D's reflection specificity** | Generic ("I used Discernment by checking the output") | Names specific moments — what was delegated, how it was framed, what was rejected, how it was verified |
-| **Disclosure** | Vague or absent | Tool, version, tier, concrete uses, what was verified, at least one rejected AI suggestion |
+| Artifact correctness, Path A | Annotation skipped, DE returns a wall of genes, or UMAP unlabelled | Marker-based annotation defended, at least one DE contrast with a sane gene count, UMAP labelled and saved |
+| Artifact correctness, Path B | Some citations not verified, or claims drift from sources | All five or fewer citations metadata-verified *and* claim-verified, with a one-sentence relevance note per citation |
+| Artifact correctness, Path C | Missing controls, no sample-size reasoning, or zero AI rejections noted | Controls explicit, sample-size reasoning written down, and at least one AI rejection with a documented reason |
+| 4 D's reflection specificity | Generic ("I used Discernment by checking the output") | Names specific moments: what was delegated, how it was framed, what was rejected, how it was verified |
+| Disclosure | Vague or absent | Tool, version, tier, concrete uses, what was verified, and at least one rejected AI suggestion |
 
-Score 4–5/5: project is done. Score 2–3/5: pick the path-specific row and fix it; the path is testing a specific skill, not all of them. Score 0–1/5: revisit the relevant reading ([literature review](../bioinformatics/literature-review.qmd) for B, [protocol design](../bioinformatics/protocol-design.qmd) for C, [Module 5](../modules/module-05-annotation-interpretation/README.md) for A).
+Score 4 or 5 of 5: project is done. Score 2 or 3 of 5: pick the path-specific row and fix it. The path is testing a specific skill, not all of them. Score 0 or 1 of 5: revisit the relevant reading ([literature review](../bioinformatics/literature-review.qmd) for B, [protocol design](../bioinformatics/protocol-design.qmd) for C, [Module 5](../modules/module-05-annotation-interpretation/README.md) for A).
 
 ## Wrap-up
 
 You have finished the course. Three things to do before closing the tab:
 
-1. **Reflect honestly**: what habits will you keep? What did you find that the framework missed? What would you do differently on the next dataset?
-2. **Make it visible**: if you want a portfolio artifact, push your final project (and the disclosure statement) to a public GitHub repo and link it from your CV. That's a stronger signal than any certificate this course could issue.
-3. **Plan the next 6 months**: this is a foundations course. Real fluency develops over months of supervised practice on real research problems. Pick *one* habit from the course (the workflow audit, the prompt clinic, the AI-free baseline, the disclosure statement) and keep doing it weekly for 6 months. That's the move that converts the course into actual fluency.
+1. Reflect honestly. What habits will you keep? What did you find that the framework missed? What would you do differently on the next dataset?
+2. Make it visible. If you want a portfolio artifact, push your final project (and the disclosure statement) to a public GitHub repo and link it from your CV. That is a stronger signal than any certificate this course could issue.
+3. Plan the next six months. This is a foundations course. Real fluency develops over months of supervised practice on real research problems. Pick *one* habit from the course (the workflow audit, the prompt clinic, the AI-free baseline, the disclosure statement) and keep doing it weekly for six months. That is the move that converts the course into actual fluency.
 
 ## Going further
 
-- [Module 5 — Annotation & interpretation](../modules/module-05-annotation-interpretation/README.md).
-- [Literature review](../bioinformatics/literature-review.qmd) and [Protocol design](../bioinformatics/protocol-design.qmd) — Paths B and C reference.
+- [Module 5: annotation and interpretation](../modules/module-05-annotation-interpretation/README.md).
+- [Literature review](../bioinformatics/literature-review.qmd) and [Protocol design](../bioinformatics/protocol-design.qmd), the Path B and Path C references.
 - For deeper reading on AI in biology research, see the [recommended readings](../course-syllabus.qmd#recommended-readings) in the syllabus.
