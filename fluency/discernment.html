@@ -558,6 +558,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#the-core-idea" id="toc-the-core-idea" class="nav-link active" data-scroll-target="#the-core-idea">The core idea</a></li>
   <li><a href="#failure-modes-to-watch-for" id="toc-failure-modes-to-watch-for" class="nav-link" data-scroll-target="#failure-modes-to-watch-for">Failure modes to watch for</a></li>
+  <li><a href="#research-specific-failure-modes" id="toc-research-specific-failure-modes" class="nav-link" data-scroll-target="#research-specific-failure-modes">Research-specific failure modes</a></li>
   <li><a href="#a-discernment-checklist" id="toc-a-discernment-checklist" class="nav-link" data-scroll-target="#a-discernment-checklist">A discernment checklist</a>
   <ul class="collapse">
   <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
@@ -625,6 +626,14 @@ ul.task-list li input[type="checkbox"] {
 <li>Silent API drift: code that uses a deprecated function signature.</li>
 <li>Wrong-organism errors: human annotations applied to mouse data.</li>
 </ul>
+</section>
+<section id="research-specific-failure-modes" class="level2">
+<h2 class="anchored" data-anchor-id="research-specific-failure-modes">Research-specific failure modes</h2>
+<p>The generic failure modes above apply everywhere. These four apply with particular force in biological research, where the outputs look professionally competent even when the reasoning is wrong.</p>
+<p><strong>Context stripping.</strong> An LLM summarising a methods section strips away the experimental context that makes the method valid. It may faithfully reproduce what the authors did while omitting the conditions under which the result holds: cell line, passage number, media formulation, time point, treatment concentration. The extracted fact is accurate; the extracted fact without its context is misleading. Mitigation: whenever you extract a claim, extract the experimental conditions alongside it and record both in your notes.</p>
+<p><strong>Coherence fallacy.</strong> A response that reads fluently and hangs together logically <em>feels</em> more credible than it is. Biological prose is especially susceptible because the field has a large stock of standard phrases (“consistent with the literature”, “this suggests a regulatory role”) that an LLM inserts fluently without the underlying knowledge. Mitigation: separate fluency from correctness. A well-written paragraph still requires every factual claim to be sourced and verified independently.</p>
+<p><strong>Methodology mismatch.</strong> The model applies a method that is standard in one subfield to a question from another where it is inappropriate. For example, recommending a bulk RNA-seq normalisation strategy for spatial transcriptomics data, or applying human GWAS interpretation conventions to a mouse QTL study. The method name is familiar and the prose sounds confident; the mismatch is invisible unless you know the target domain well. Mitigation: for any computational method the AI recommends, verify that the method’s assumptions match your data type, organism, and experimental design before running it.</p>
+<p><strong>Average definition.</strong> LLMs are trained on text from across a field. They return the modal answer — what is most commonly said — not the answer appropriate for your specific system, organism, or experimental context. In a heterogeneous field, the modal answer may be wrong for your case. Mitigation: treat AI-generated method recommendations and parameter choices as a starting point from domain-general knowledge. Follow up with literature specific to your organism, tissue, or assay before finalising your approach.</p>
 </section>
 <section id="a-discernment-checklist" class="level2">
 <h2 class="anchored" data-anchor-id="a-discernment-checklist">A discernment checklist</h2>

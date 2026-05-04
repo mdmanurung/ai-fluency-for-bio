@@ -561,6 +561,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#anatomy-of-a-prompt" id="toc-anatomy-of-a-prompt" class="nav-link active" data-scroll-target="#anatomy-of-a-prompt">Anatomy of a prompt</a></li>
   <li><a href="#patterns-that-work" id="toc-patterns-that-work" class="nav-link" data-scroll-target="#patterns-that-work">Patterns that work</a></li>
+  <li><a href="#reading-your-own-output" id="toc-reading-your-own-output" class="nav-link" data-scroll-target="#reading-your-own-output">Reading your own output</a></li>
   <li><a href="#patterns-that-reliably-fail" id="toc-patterns-that-reliably-fail" class="nav-link" data-scroll-target="#patterns-that-reliably-fail">Patterns that reliably fail</a></li>
   <li><a href="#worked-example-extracting-structured-info-from-a-methods-section" id="toc-worked-example-extracting-structured-info-from-a-methods-section" class="nav-link" data-scroll-target="#worked-example-extracting-structured-info-from-a-methods-section">Worked example: extracting structured info from a methods section</a></li>
   <li><a href="#iterating-on-prompts" id="toc-iterating-on-prompts" class="nav-link" data-scroll-target="#iterating-on-prompts">Iterating on prompts</a></li>
@@ -648,6 +649,20 @@ ul.task-list li input[type="checkbox"] {
 <li><em>Self-critique</em>. Ask the model to critique its own output before finalising.</li>
 <li><em>Constrained output</em>. Specify the exact schema (JSON, table columns, section headings).</li>
 </ol>
+</section>
+<section id="reading-your-own-output" class="level2">
+<h2 class="anchored" data-anchor-id="reading-your-own-output">Reading your own output</h2>
+<p>When AI output is vague, generic, or unhelpful, the most useful diagnosis is not “the model failed.” It is: <em>what was underspecified in my prompt?</em></p>
+<p>This is the <strong>mirror effect</strong>: the quality of AI output reflects the quality of your thinking before the prompt was written. Vague output is a diagnostic signal. It means the request did not carry enough specificity — about role, context, output format, or decision criteria — for the model to do better.</p>
+<p>This matters practically. When a prompt fails, the instinct is to rephrase and retry. That often doesn’t help, because rephrasing doesn’t add the missing information. The more productive move is to ask: <em>what would a domain expert need to know to answer this?</em> Then add that to the prompt.</p>
+<p>A useful self-check before iterating:</p>
+<ul>
+<li><strong>Role</strong>: Did you specify who the AI is in this context (expert, extractor, critic)?</li>
+<li><strong>Task</strong>: Is the action unambiguous, or could it be completed many different ways?</li>
+<li><strong>Context</strong>: Did you provide the source material, constraints, or background the answer depends on?</li>
+<li><strong>Format</strong>: Did you specify the output shape (JSON, table, numbered list, one sentence)?</li>
+</ul>
+<p>If any of those four are missing or vague, the output will reflect that absence. Add the missing element and iterate once more. If the output is still unhelpful after the four elements are supplied, the task itself may be beyond what the model can reliably do.</p>
 </section>
 <section id="patterns-that-reliably-fail" class="level2">
 <h2 class="anchored" data-anchor-id="patterns-that-reliably-fail">Patterns that reliably fail</h2>

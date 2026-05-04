@@ -790,9 +790,16 @@ ul.task-list li input[type="checkbox"] {
 <section id="common-failure-modes" class="level2">
 <h2 class="anchored" data-anchor-id="common-failure-modes">Common failure modes</h2>
 <ul>
-<li><em>Stopping at “the link works”</em>. A hallucinated citation can carry a real DOI that belongs to a different paper. The title and content check is non-optional.</li>
-<li><em>Trusting grounded tools unconditionally</em>. Elicit and Consensus can misstate what a paper says even when the paper exists. Their summaries are starting points, not quotable claims.</li>
-<li><em>Outsourcing synthesis</em>. Asking an AI “what does the field say about X?” produces a confident synthesis that may blend real results with fabricated ones. Read the primary sources and synthesise in your own words.</li>
+<li><p><em>Stopping at “the link works”</em>. A hallucinated citation can carry a real DOI that belongs to a different paper. The title and content check is non-optional.</p></li>
+<li><p><em>Trusting grounded tools unconditionally</em>. Elicit and Consensus can misstate what a paper says even when the paper exists. Their summaries are starting points, not quotable claims.</p></li>
+<li><p><em>Outsourcing synthesis</em>. Asking an AI “what does the field say about X?” produces a confident synthesis that may blend real results with fabricated ones. Read the primary sources and synthesise in your own words.</p></li>
+<li><p><em>The foreclosure problem</em>. AI retrieves papers that confirm the concepts already in your query. If you ask about “spatial transcriptomics in the tumour microenvironment”, you will get papers on spatial transcriptomics and the tumour microenvironment. You will not get adjacent work that uses different terminology, comes from a neighbouring field, or challenges the framing of your question. The model optimises for relevance to your stated concepts, which silently forecloses discoveries you didn’t know to look for.</p>
+<p>Concrete mitigations for the foreclosure problem:</p>
+<ul>
+<li><strong>Citation-chain forward and backward.</strong> From a key paper you trust, follow its references (backward) and find papers that cite it via Google Scholar or Semantic Scholar (forward). This surfaces literature outside the AI’s terminology.</li>
+<li><strong>Cross-terminology search.</strong> Repeat the AI-assisted search with a different vocabulary for the same concept (“cell-cell communication” vs.&nbsp;“paracrine signalling”, “spatial gene expression” vs.&nbsp;“spatial omics”). Compare the two result sets. The non-overlapping papers are the ones the first query foreclosed.</li>
+<li><strong>Author-diversity check.</strong> If your AI-assembled reading list is dominated by one or two groups, you may be in a citation cluster. Search by the names of groups you know to be sceptical of the dominant framing in your area and look for their output directly.</li>
+</ul></li>
 </ul>
 </section>
 <section id="exercises" class="level2">
