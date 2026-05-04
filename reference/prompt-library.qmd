@@ -127,6 +127,42 @@ Verify before trusting:
 
 ---
 
+## 5. Paragraph feedback using the MEAL framework
+
+Source pattern: adapted from VIB/ELIXIR "Introduction to Generative AI for Research" (CC-BY 4.0), exercise 07.
+
+When to use: you have drafted a paragraph for a methods section, introduction, or grant specific-aims page and want structured feedback before sharing it. Works best on a single paragraph at a time.
+
+The MEAL framework asks whether a paragraph does four things:
+
+| Component | Question to ask |
+|:----------|:----------------|
+| **M**ain idea | Is there one clear claim the paragraph is making? |
+| **E**vidence | Is that claim supported by data, citations, or worked examples? |
+| **A**nalysis | Is it explained *why* the evidence supports the claim? |
+| **L**ink | Does the paragraph transition to what comes next? |
+
+Template:
+
+```
+Evaluate the paragraph below using the MEAL framework:
+- Main idea: is there a clear, singular claim?
+- Evidence: is the claim supported by data or citations?
+- Analysis: is there explicit reasoning connecting the evidence to the claim?
+- Link: does the paragraph connect to what follows?
+
+For each MEAL component: state whether it is present, partially present, or absent,
+and give one concrete revision suggestion if it is missing or weak.
+
+Paragraph:
+
+{paste one paragraph here}
+```
+
+Verify before trusting: the AI will often flag "analysis" as weak even when it is present but implicit. Check whether the suggested revision actually adds analytical depth, or merely makes the structure more visible. Accept the suggestion only if the paragraph is genuinely clearer afterwards.
+
+---
+
 ## A note on temperature and reproducibility
 
 If you are documenting a prompt for a deliverable's disclosure, record:
