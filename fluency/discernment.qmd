@@ -24,6 +24,18 @@ The default LLM failure mode in biology is not "obviously wrong". It is plausibl
 - Silent API drift: code that uses a deprecated function signature.
 - Wrong-organism errors: human annotations applied to mouse data.
 
+## Research-specific failure modes
+
+The generic failure modes above apply everywhere. These four apply with particular force in biological research, where the outputs look professionally competent even when the reasoning is wrong.
+
+**Context stripping.** An LLM summarising a methods section strips away the experimental context that makes the method valid. It may faithfully reproduce what the authors did while omitting the conditions under which the result holds: cell line, passage number, media formulation, time point, treatment concentration. The extracted fact is accurate; the extracted fact without its context is misleading. Mitigation: whenever you extract a claim, extract the experimental conditions alongside it and record both in your notes.
+
+**Coherence fallacy.** A response that reads fluently and hangs together logically *feels* more credible than it is. Biological prose is especially susceptible because the field has a large stock of standard phrases ("consistent with the literature", "this suggests a regulatory role") that an LLM inserts fluently without the underlying knowledge. Mitigation: separate fluency from correctness. A well-written paragraph still requires every factual claim to be sourced and verified independently.
+
+**Methodology mismatch.** The model applies a method that is standard in one subfield to a question from another where it is inappropriate. For example, recommending a bulk RNA-seq normalisation strategy for spatial transcriptomics data, or applying human GWAS interpretation conventions to a mouse QTL study. The method name is familiar and the prose sounds confident; the mismatch is invisible unless you know the target domain well. Mitigation: for any computational method the AI recommends, verify that the method's assumptions match your data type, organism, and experimental design before running it.
+
+**Average definition.** LLMs are trained on text from across a field. They return the modal answer — what is most commonly said — not the answer appropriate for your specific system, organism, or experimental context. In a heterogeneous field, the modal answer may be wrong for your case. Mitigation: treat AI-generated method recommendations and parameter choices as a starting point from domain-general knowledge. Follow up with literature specific to your organism, tissue, or assay before finalising your approach.
+
 ## A discernment checklist
 
 Use this before acting on any AI-generated output that will enter your research record. A script you'll run. A paragraph you'll submit. A citation you'll include.

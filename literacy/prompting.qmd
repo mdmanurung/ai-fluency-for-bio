@@ -41,6 +41,23 @@ The model sees all three as a flat token sequence. There is no architecturally p
 4. *Self-critique*. Ask the model to critique its own output before finalising.
 5. *Constrained output*. Specify the exact schema (JSON, table columns, section headings).
 
+## Reading your own output
+
+When AI output is vague, generic, or unhelpful, the most useful diagnosis is not "the model failed." It is: *what was underspecified in my prompt?*
+
+This is the **mirror effect**: the quality of AI output reflects the quality of your thinking before the prompt was written. Vague output is a diagnostic signal. It means the request did not carry enough specificity — about role, context, output format, or decision criteria — for the model to do better.
+
+This matters practically. When a prompt fails, the instinct is to rephrase and retry. That often doesn't help, because rephrasing doesn't add the missing information. The more productive move is to ask: *what would a domain expert need to know to answer this?* Then add that to the prompt.
+
+A useful self-check before iterating:
+
+- **Role**: Did you specify who the AI is in this context (expert, extractor, critic)?
+- **Task**: Is the action unambiguous, or could it be completed many different ways?
+- **Context**: Did you provide the source material, constraints, or background the answer depends on?
+- **Format**: Did you specify the output shape (JSON, table, numbered list, one sentence)?
+
+If any of those four are missing or vague, the output will reflect that absence. Add the missing element and iterate once more. If the output is still unhelpful after the four elements are supplied, the task itself may be beyond what the model can reliably do.
+
 ## Patterns that reliably fail
 
 - "Don't hallucinate." It will. Better: provide sources.

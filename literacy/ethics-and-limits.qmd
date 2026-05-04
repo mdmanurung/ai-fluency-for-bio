@@ -27,6 +27,18 @@ As of early 2026, the major publishers and bodies have converged on three positi
 
 3. Verbatim AI-generated text must be marked. Using AI output as a draft and then editing it falls under disclosure. Passing AI output verbatim as your own prose may constitute a policy violation or, in assessment contexts, academic misconduct. The distinction between "AI-assisted" and "AI-generated" is increasingly policed by institutional and journal policies.
 
+A practical taxonomy that maps onto these three positions:
+
+| Tier | Label | What it means |
+|:-----|:------|:--------------|
+| **Assistive** | AI supports human work | The researcher directs, judges, and writes. AI assists with grammar, formatting, code scaffolding, or literature triage. Disclosure required; the work is unambiguously the researcher's. |
+| **Generative** | AI produces substantial content | AI drafts prose, generates figures, or produces analytical code that is used with editing. The researcher is accountable for the final output. Full disclosure of tool, purpose, and stage required. |
+| **Prohibitive** | Not permitted | AI listed as author; AI-generated text passed verbatim without disclosure; AI used in peer review without journal permission. These are policy violations regardless of how useful the AI was. |
+
+The practical question at every use point is: *which tier am I in?* Assistive use is broadly permitted under disclosure norms. Generative use is permitted at most journals under explicit disclosure. Prohibitive use is not permitted.
+
+The underlying reason the Generative tier requires disclosure but is still permitted: the distinction the ICMJE and most journals draw is between *inquiry* and *fabrication*. Using AI to assist inquiry — to move faster, to draft, to search — is a method choice, and methods must be disclosed. Passing AI output as your own intellectual product without disclosure misrepresents the origin of the work. The policy is not about restricting tools; it is about maintaining accurate attribution of intellectual contribution.
+
 ::: {.callout-warning}
 ## These policies change. Verify before teaching.
 

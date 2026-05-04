@@ -106,6 +106,13 @@ You provide the source text, so the AI cannot fabricate what it is summarising. 
 - *Stopping at "the link works"*. A hallucinated citation can carry a real DOI that belongs to a different paper. The title and content check is non-optional.
 - *Trusting grounded tools unconditionally*. Elicit and Consensus can misstate what a paper says even when the paper exists. Their summaries are starting points, not quotable claims.
 - *Outsourcing synthesis*. Asking an AI "what does the field say about X?" produces a confident synthesis that may blend real results with fabricated ones. Read the primary sources and synthesise in your own words.
+- *The foreclosure problem*. AI retrieves papers that confirm the concepts already in your query. If you ask about "spatial transcriptomics in the tumour microenvironment", you will get papers on spatial transcriptomics and the tumour microenvironment. You will not get adjacent work that uses different terminology, comes from a neighbouring field, or challenges the framing of your question. The model optimises for relevance to your stated concepts, which silently forecloses discoveries you didn't know to look for.
+
+  Concrete mitigations for the foreclosure problem:
+
+  - **Citation-chain forward and backward.** From a key paper you trust, follow its references (backward) and find papers that cite it via Google Scholar or Semantic Scholar (forward). This surfaces literature outside the AI's terminology.
+  - **Cross-terminology search.** Repeat the AI-assisted search with a different vocabulary for the same concept ("cell-cell communication" vs. "paracrine signalling", "spatial gene expression" vs. "spatial omics"). Compare the two result sets. The non-overlapping papers are the ones the first query foreclosed.
+  - **Author-diversity check.** If your AI-assembled reading list is dominated by one or two groups, you may be in a citation cluster. Search by the names of groups you know to be sceptical of the dominant framing in your area and look for their output directly.
 
 ## Exercises
 
